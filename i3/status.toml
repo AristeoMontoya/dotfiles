@@ -1,0 +1,31 @@
+theme = "solarized-dark"
+icons = "awesome"
+
+[[block]]
+block = "focused_window"
+max_width = 30
+
+[[block]]
+block = "backlight"
+
+[[block]]
+block = "sound"
+driver = "pulseaudio"
+
+[[block]]
+block = "net"
+device = "wlo1"
+ssid = true
+speed_up = false
+speed_down = false
+
+[[block]]
+block = "battery"
+interval = 10
+device = "BAT0"
+format = "{percentage}"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %d/%m %R"
