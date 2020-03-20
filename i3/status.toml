@@ -3,11 +3,13 @@ icons = "awesome"
 height = 10.0
 
 [[block]]
-block = "focused_window"
-max_width = 30
+block = "music"
+buttons = ["prev", "play", "next"]
+on_collapsed_click = "spotify"
 
 [[block]]
-block = "backlight"
+block = "focused_window"
+max_width = 25
 
 [[block]]
 block = "sound"
