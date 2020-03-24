@@ -1,0 +1,84 @@
+{
+	"layer": "top",
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["pulseaudio", "network", "battery", "disk", "tray", "clock"],
+    "sway/window": {
+        "max-length": 50
+    },
+
+	"mpd": {
+		"format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+		"format-disconnected": "Disconnected ",
+		"format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+		"interval": 2,
+		"consume-icons": {
+			"on": " " // Icon shows only when "consume" is on
+		},
+		"random-icons": {
+			"off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
+			"on": " "
+		},
+		"repeat-icons": {
+			"on": " "
+		},
+		"single-icons": {
+			"on": "1 "
+		},
+		"state-icons": {
+			"paused": "",
+			"playing": ""
+		},
+		"tooltip-format": "MPD (connected)",
+		"tooltip-format-disconnected": "MPD (disconnected)"
+	},
+
+	"pulseaudio": {
+    	"format": "{volume}% {icon}",
+    	"format-bluetooth": "{volume}% {icon}",
+    	"format-muted": "",
+    	"format-icons": {
+        	"headphone": "",
+        	"hands-free": "",
+        	"headset": "",
+        	"phone": "",
+        	"portable": "",
+        	"car": "",
+        	"default": ["", ""]
+    	},
+    	"scroll-step": 1,
+    	"on-click": "amixer -q -D pulse sset Master toggle"
+	},
+
+	"network": {
+    	"interface": "wlo1",
+    	"format": "{ifname}",
+    	"format-wifi": "{essid} ({signalStrength}%) ",
+    	"format-ethernet": "{ifname} ",
+    	"format-disconnected": "", //An empty format will hide the module.
+    	"tooltip-format": "{ifname}",
+    	"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    	"tooltip-format-ethernet": "{ifname} ",
+    	"tooltip-format-disconnected": "Disconnected",
+    	"max-length": 50
+	},
+
+	"battery": {
+        "format": "{capacity}% {icon}",
+		"format-icons": ["", "", "", "", ""]
+    },
+
+    "clock": {
+		"format": "{:%I:%M}",
+        "format-alt": "{:%a, %d/%m  %I:%M}"
+    },
+	"tray": {
+		"icon-size": 14,
+		"spacing": "10"
+	},
+
+	"disk": {
+		"interval": 30,
+		"format": "{percentage_used}%"
+	}
+}

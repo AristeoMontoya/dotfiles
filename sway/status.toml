@@ -1,6 +1,14 @@
-theme = "solarized-dark"
-icons = "awesome"
-height = 10.0
+#theme = "solarized-dark"
+#icons = "awesome"
+
+[theme]
+name = "solarized-dark"
+
+[icons]
+name = "awesome"
+
+[theme.overrides]
+separator = ""
 
 [[block]]
 block = "music"
