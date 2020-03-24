@@ -197,18 +197,22 @@ bindsym $mod+r mode "resize"
 
 #Colores
 set	$bg-color		#282c34
-set	$inactivo		#212121
+set	$inactivo		#454C59
 set	$texto			#f3f4f5
 set	$texto-inact	#676E7D
 set	$urgente 		#E53935
 set $contorno 		#434957
+set $blanco-activo 	#ABB2BF
+
 
 #Colores de ventanas 	Bordes 		Fondo 		Texto 			Indicador 	Borde-hijo
-client.focused			$contorno	$contorno	$contorno		$contorno	$contorno
-client.unfocused		$bg-color	$bg-color 	$bg-color 		$bg-color 	$bg-color
-client.focused_inactive	$bg-color	$bg-color	$bg-color		$bg-color 	$bg-color
+client.focused			$contorno	$contorno	$blanco-activo	$contorno	$contorno
+client.unfocused		$bg-color	$bg-color 	$inactivo 		$bg-color 	$bg-color
+client.focused_inactive	$bg-color	$bg-color	$inactivo		$inactivo 	$bg-color
 client.urgent			$urgente	$urgente	$texto			$bg-color 	$bg-color
 
+title_align center
+titlebar_border_thickness 2
 default_border pixel 2
 titlebar_border_thickness 2
 default_floating_border pixel 2
