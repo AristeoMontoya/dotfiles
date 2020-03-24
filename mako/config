@@ -1,7 +1,11 @@
 font=DejaVu Sans Mono 9
-background-color=#1B1B1BE6
-border-color=#424242E6
+background-color=#1B1B1B
+border-color=#424242
 default-timeout=5000
-border-radius=5
-progress-color=over #00FF00E6
-max-icon-size=60
+border-radius=2
+progress-color=over #00FF00
+max-icon-size=55
+
+[app-name="Google Chrome"]
+default-timeout=5000
+ignore-timeout=0
