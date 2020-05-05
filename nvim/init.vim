@@ -1,6 +1,8 @@
 call plug#begin('~/.data/plugged')
 Plug 'vim-airline/vim-airline'
+Plug 'mattn/emmet-vim'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'ap/vim-css-color'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 Plug 'joshdick/onedark.vim'
@@ -10,10 +12,17 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'vim-syntastic/syntastic'
 Plug 'alvan/vim-closetag'
 Plug 'davidhalter/jedi-vim'
+
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+
 call plug#end()
 
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts = 1
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 set number
+set noswapfile
 set textwidth=0
 set wrapmargin=0
 set tabstop=4
@@ -22,7 +31,9 @@ set nowrap
 set incsearch
 set ignorecase
 
-inoremap 	kl <ESC>
+autocmd filetype markdown set wrap
+autocmd filetype markdown set linebreak
+autocmd filetype markdown set nonumber
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -41,7 +52,7 @@ if (empty($TMUX))
 endif
 
 syntax on
-colorscheme onedark
+colorscheme onedark 
 
 let g:jedi#auto_initialization = 1
 let g:jedi#completions_enabled = 0
@@ -145,6 +156,7 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current line.
 nmap <leader>ac  <Plug>(coc-codeaction)
+
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
@@ -154,121 +166,3 @@ xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
