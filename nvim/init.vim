@@ -1,26 +1,29 @@
+"set encoding=utf-8
 call plug#begin('~/.data/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'mattn/emmet-vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ap/vim-css-color'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'preservim/nerdtree'
 Plug 'joshdick/onedark.vim'
-Plug 'arcticicestudio/nord-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-syntastic/syntastic'
 Plug 'alvan/vim-closetag'
-Plug 'davidhalter/jedi-vim'
-
-
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-
+Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
+autocmd FileType html,css EmmetInstall
+autocmd filetype markdown set wrap
+autocmd filetype markdown set linebreak
+autocmd filetype markdown set nonumber
+autocmd BufRead *.pl set filetype=prolog
 let g:airline_powerline_fonts = 1
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+let mapleader=" "
+set smartindent
 set number
 set noswapfile
 set textwidth=0
@@ -30,37 +33,36 @@ set shiftwidth=4
 set nowrap
 set incsearch
 set ignorecase
-
-autocmd filetype markdown set wrap
-autocmd filetype markdown set linebreak
-autocmd filetype markdown set nonumber
+set clipboard+=unnamedplus 
+set mouse=a
+colorscheme onedark 
+syntax on 
+nnoremap <C-p> :GFiles<CR>
+nnoremap <C-a> :e#<CR> 
+"Cambiar de espacio en el editor
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-n> :resize -5<CR>
+nnoremap <C-N> :resize -5<CR>
+nnoremap <C-s> :w<CR>
+nmap Ñ :belowright split<CR> :terminal<CR> :res 8<CR>
+tnoremap <ESC> <C-\><C-n><C-p>
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-if (empty($TMUX))
-  if (has("nvim"))
-    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
+if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
-
-syntax on
-colorscheme onedark 
-
-let g:jedi#auto_initialization = 1
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#smart_auto_mappings = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#completions_command = ""
-let g:jedi#show_call_signatures = "1"
+"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+"Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+if (has("termguicolors"))
+  set termguicolors
+endif
 
 "A partir de aquí comienza la configuración de CoC"
 " TextEdit might fail if hidden is not set.
