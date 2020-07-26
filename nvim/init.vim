@@ -1,4 +1,3 @@
-"set encoding=utf-8
 call plug#begin('~/.data/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'mattn/emmet-vim'
@@ -13,18 +12,26 @@ Plug 'alvan/vim-closetag'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
+Plug 'luochen1990/rainbow'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
-autocmd FileType html,css EmmetInstall
-autocmd filetype markdown set wrap
-autocmd filetype markdown set linebreak
-autocmd filetype markdown set nonumber
-autocmd BufRead *.pl set filetype=prolog
+syntax on 
+colorscheme onedark 
 let g:airline_powerline_fonts = 1
 let g:user_emmet_install_global = 0
-let mapleader=" "
+"let g:rainbow_active = 1
+"let g:airline_section_x = ''
+"let g:airline_section_y = '' 
+let g:airline_section_z = '%{line(".")}/%{line("$")} : %{col(".")}'
+let mapleader="\ "
+let g:fzf_preview_command = 'bat --color=always --style=grid --theme=OneHalfDark {-1}'
+set splitright
+set cursorline
+set splitbelow
 set smartindent
-set number
+set autoindent
+set number relativenumber
 set noswapfile
 set textwidth=0
 set wrapmargin=0
@@ -35,9 +42,15 @@ set incsearch
 set ignorecase
 set clipboard+=unnamedplus 
 set mouse=a
-colorscheme onedark 
-syntax on 
-nnoremap <C-p> :GFiles<CR>
+autocmd FileType html,css EmmetInstall
+autocmd FileType html set tabstop=2 shiftwidth=2
+autocmd FileType html,css RainbowToggleOff
+autocmd filetype markdown set wrap
+autocmd filetype markdown set linebreak
+autocmd filetype markdown set nonumber
+autocmd filetype haskell set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+autocmd BufRead *.pl set filetype=prolog
+
 nnoremap <C-a> :e#<CR> 
 "Cambiar de espacio en el editor
 nnoremap <C-h> <C-w>h
@@ -47,8 +60,49 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-n> :resize -5<CR>
 nnoremap <C-N> :resize -5<CR>
 nnoremap <C-s> :w<CR>
+noremap <C-p> :call Fzf_dev()<CR>
 nmap Ñ :belowright split<CR> :terminal<CR> :res 8<CR>
 tnoremap <ESC> <C-\><C-n><C-p>
+
+" ripgrep
+if executable('rg')
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+  set grepprg=rg\ --vimgrep
+  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+endif
+
+" Files + devicons
+function! Fzf_dev()
+  let l:fzf_files_options = '--preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {2..-1} | head -'.&lines.'"'
+
+  function! s:files()
+    let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
+    return s:prepend_icon(l:files)
+  endfunction
+
+  function! s:prepend_icon(candidates)
+    let l:result = []
+    for l:candidate in a:candidates
+      let l:filename = fnamemodify(l:candidate, ':p:t')
+      let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
+      call add(l:result, printf('%s %s', l:icon, l:candidate))
+    endfor
+
+    return l:result
+  endfunction
+
+  function! s:edit_file(item)
+    let l:pos = stridx(a:item, ' ')
+    let l:file_path = a:item[pos+1:-1]
+    execute 'silent e' l:file_path
+  endfunction
+
+  call fzf#run({
+        \ 'source': <sid>files(),
+        \ 'sink':   function('s:edit_file'),
+        \ 'options': '-m ' . l:fzf_files_options,
+        \ 'down':    '40%' })
+endfunction
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
