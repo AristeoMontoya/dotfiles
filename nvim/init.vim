@@ -14,7 +14,7 @@ if !exists('g:vscode')
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 	Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 	Plug 'junegunn/fzf.vim'
-	Plug 'luochen1990/rainbow'
+	Plug 'frazrepo/vim-rainbow'
 	Plug 'ryanoasis/vim-devicons'
 	call plug#end()
 
@@ -50,12 +50,13 @@ if !exists('g:vscode')
 	colorscheme onedark 
 	let g:airline_powerline_fonts = 1
 	let g:user_emmet_install_global = 0
-	let g:rainbow_active = 1
 	"let g:airline_section_x = ''
 	"let g:airline_section_y = '' 
 	let g:airline_section_z = '%{line(".")}/%{line("$")} : %{col(".")}'
 	let mapleader="\ "
 	let g:fzf_preview_command = 'bat --color=always --style=grid --theme=OneHalfDark {-1}'
+	let g:rainbow_active = 1
+	let g:rainbow_guifgs = ['#E5C07B', '#C678DD', '#61AFEF', '#FF7A85']
 	set splitright
 	set cursorline
 	set splitbelow
@@ -87,7 +88,6 @@ if !exists('g:vscode')
 	noremap <C-p> :call Fzf_dev()<CR>
 	nmap Ñ :call Terminal()<CR>
 	tnoremap <ESC> <C-\><C-n><C-p>
-
 	" ripgrep
 	if executable('rg')
 	  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
