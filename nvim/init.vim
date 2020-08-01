@@ -1,3 +1,4 @@
+set clipboard+=unnamedplus 
 if !exists('g:vscode')
 	call plug#begin('~/.data/plugged')
 	Plug 'vim-airline/vim-airline'
@@ -37,6 +38,14 @@ if !exists('g:vscode')
 		set smarttab
 	endfunction
 
+	function! Terminal()
+		belowright split
+		terminal
+		res 8
+		set norelativenumber
+		set nonumber
+	endfunction
+
 	syntax on 
 	colorscheme onedark 
 	let g:airline_powerline_fonts = 1
@@ -61,7 +70,6 @@ if !exists('g:vscode')
 	set nowrap
 	set incsearch
 	set ignorecase
-	set clipboard+=unnamedplus 
 	set mouse=a
 	autocmd filetype html,css call Html()
 	autocmd filetype markdown call Markdown()
@@ -77,7 +85,7 @@ if !exists('g:vscode')
 	nnoremap <C-N> :resize -5<CR>
 	nnoremap <C-s> :w<CR>
 	noremap <C-p> :call Fzf_dev()<CR>
-	nmap Ñ :belowright split<CR> :terminal<CR> :res 8<CR>
+	nmap Ñ :call Terminal()<CR>
 	tnoremap <ESC> <C-\><C-n><C-p>
 
 	" ripgrep
