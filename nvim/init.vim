@@ -10,18 +10,16 @@ if !exists('g:vscode')
 	Plug 'sheerun/vim-polyglot'
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'vim-syntastic/syntastic'
-	Plug 'alvan/vim-closetag'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 	Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 	Plug 'junegunn/fzf.vim'
 	Plug 'frazrepo/vim-rainbow'
 	Plug 'ryanoasis/vim-devicons'
+	Plug 'vimwiki/vimwiki'
 	call plug#end()
 
 	function! Html()
-		EmmetInstall
 		set tabstop=2 shiftwidth=2
-		autocmd FileType html,css RainbowToggleOff
 	endfunction
 
 	function! Markdown()
@@ -55,7 +53,6 @@ if !exists('g:vscode')
 	let g:airline_section_z = '%{line(".")}/%{line("$")} : %{col(".")}'
 	let mapleader="\ "
 	let g:fzf_preview_command = 'bat --color=always --style=grid --theme=OneHalfDark {-1}'
-	let g:rainbow_active = 1
 	let g:rainbow_guifgs = ['#E5C07B', '#C678DD', '#61AFEF', '#FF7A85']
 	set splitright
 	set cursorline
@@ -66,6 +63,9 @@ if !exists('g:vscode')
 	set noswapfile
 	set textwidth=0
 	set wrapmargin=0
+	set noexpandtab
+	set copyindent
+	set preserveindent
 	set tabstop=4
 	set shiftwidth=4
 	set nowrap
@@ -76,6 +76,7 @@ if !exists('g:vscode')
 	autocmd filetype markdown call Markdown()
 	autocmd filetype haskell call Haskell()
 	autocmd BufRead *.pl set filetype=prolog
+	autocmd FileType * if &ft != 'html' && &ft != 'css' | :call rainbow#load() | endif
 	nnoremap <C-a> :e#<CR> 
 	" Cambiar de espacio en el editor
 	nnoremap <C-h> <C-w>h
@@ -88,6 +89,7 @@ if !exists('g:vscode')
 	noremap <C-p> :call Fzf_dev()<CR>
 	nmap Ñ :call Terminal()<CR>
 	tnoremap <ESC> <C-\><C-n><C-p>
+
 	" ripgrep
 	if executable('rg')
 	  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
