@@ -1,4 +1,6 @@
 set clipboard+=unnamedplus 
+set ignorecase
+set incsearch
 set mouse=a
 if !exists('g:vscode')
 	call plug#begin('~/.data/plugged')
@@ -70,8 +72,6 @@ if !exists('g:vscode')
 	set tabstop=4
 	set shiftwidth=4
 	set nowrap
-	set incsearch
-	set ignorecase
 	autocmd filetype html,css call Html()
 	autocmd filetype markdown call Markdown()
 	autocmd filetype haskell call Haskell()
