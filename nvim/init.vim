@@ -5,7 +5,7 @@ set mouse=a
 if !exists('g:vscode')
 	call plug#begin('~/.data/plugged')
 	Plug 'vim-airline/vim-airline'
-	Plug 'mattn/emmet-vim'
+	Plug 'turbio/bracey.vim'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'ap/vim-css-color'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -50,7 +50,6 @@ if !exists('g:vscode')
 	syntax on 
 	colorscheme onedark 
 	let g:airline_powerline_fonts = 1
-	let g:user_emmet_install_global = 0
 	"let g:airline_section_x = ''
 	"let g:airline_section_y = '' 
 	let g:airline_section_z = '%{line(".")}/%{line("$")} : %{col(".")}'
