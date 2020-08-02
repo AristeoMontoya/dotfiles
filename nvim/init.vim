@@ -1,4 +1,5 @@
 set clipboard+=unnamedplus 
+set mouse=a
 if !exists('g:vscode')
 	call plug#begin('~/.data/plugged')
 	Plug 'vim-airline/vim-airline'
@@ -71,7 +72,6 @@ if !exists('g:vscode')
 	set nowrap
 	set incsearch
 	set ignorecase
-	set mouse=a
 	autocmd filetype html,css call Html()
 	autocmd filetype markdown call Markdown()
 	autocmd filetype haskell call Haskell()
