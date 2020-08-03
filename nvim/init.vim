@@ -19,6 +19,7 @@ if !exists('g:vscode')
 	Plug 'frazrepo/vim-rainbow'
 	Plug 'ryanoasis/vim-devicons'
 	Plug 'vimwiki/vimwiki'
+	Plug 'preservim/nerdcommenter'
 	call plug#end()
 
 	function! Html()
@@ -48,6 +49,7 @@ if !exists('g:vscode')
 	endfunction
 
 	syntax on 
+	filetype plugin on
 	colorscheme onedark 
 	let g:airline_powerline_fonts = 1
 	"let g:airline_section_x = ''
@@ -86,6 +88,7 @@ if !exists('g:vscode')
 	nnoremap <C-N> :resize -5<CR>
 	nnoremap <C-s> :w<CR>
 	noremap <C-p> :call Fzf_dev()<CR>
+	map <C-f> <Plug>NERDCommenterToggle
 	nmap Ñ :call Terminal()<CR>
 	tnoremap <ESC> <C-\><C-n><C-p>
 
