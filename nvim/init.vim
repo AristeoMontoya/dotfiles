@@ -20,10 +20,13 @@ if !exists('g:vscode')
 	Plug 'ryanoasis/vim-devicons'
 	Plug 'vimwiki/vimwiki'
 	Plug 'preservim/nerdcommenter'
+	Plug 'Yggdroot/indentLine'
+	Plug 'uiiaoo/java-syntax.vim'
 	call plug#end()
 
 	function! Html()
-		set tabstop=2 shiftwidth=2
+		set tabstop=2 
+		set shiftwidth=2
 	endfunction
 
 	function! Markdown()
@@ -48,9 +51,15 @@ if !exists('g:vscode')
 		set nonumber
 	endfunction
 
+	function! Python()
+		let g:indentLine_enabled = 1
+		set nolist
+	endfunction
+
 	syntax on 
 	filetype plugin on
 	colorscheme onedark 
+	let g:indentLine_enabled = 0
 	let g:airline_powerline_fonts = 1
 	"let g:airline_section_x = ''
 	"let g:airline_section_y = '' 
@@ -58,6 +67,8 @@ if !exists('g:vscode')
 	let mapleader="\ "
 	let g:fzf_preview_command = 'bat --color=always --style=grid --theme=OneHalfDark {-1}'
 	let g:rainbow_guifgs = ['#E5C07B', '#C678DD', '#61AFEF', '#FF7A85']
+	set listchars=tab:\¦\ 
+	set list
 	set splitright
 	set cursorline
 	set splitbelow
@@ -76,6 +87,7 @@ if !exists('g:vscode')
 	autocmd filetype html,css call Html()
 	autocmd filetype markdown call Markdown()
 	autocmd filetype haskell call Haskell()
+	autocmd filetype python call Python()
 	autocmd BufRead *.pl set filetype=prolog
 	autocmd FileType * if &ft != 'html' && &ft != 'css' | :call rainbow#load() | endif
 	nnoremap <C-a> :e#<CR> 
@@ -92,7 +104,7 @@ if !exists('g:vscode')
 	nmap Ñ :call Terminal()<CR>
 	tnoremap <ESC> <C-\><C-n><C-p>
 
-	" ripgrep
+	"ripgrep
 	if executable('rg')
 	  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
 	  set grepprg=rg\ --vimgrep
