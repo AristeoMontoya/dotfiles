@@ -66,6 +66,16 @@ if !exists('g:vscode')
 	let mapleader="\ "
 	let g:fzf_preview_command = 'bat --color=always --style=grid --theme=OneHalfDark {-1}'
 	let g:rainbow_guifgs = ['#E5C07B', '#C678DD', '#61AFEF', '#FF7A85']
+	let wiki = { }
+	let wiki.path = '~/vimwiki/'
+	let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
+	let g:vimwiki_list = [wiki]
+	let g:vimwiki_diary_months  = {
+	\ 1: 'Enero', 2: 'Febrero', 3: 'Marzo',
+	\ 4: 'Abril', 5: 'Mayo', 6: 'Junio',
+	\ 7: 'Julio', 8: 'Agosto', 9: 'Septiembre',
+	\ 10: 'Octubre', 11: 'Noviembre', 12: 'Diciembre'
+	\ }
 	set listchars=tab:\¦\ 
 	set list
 	set splitright
@@ -86,11 +96,11 @@ if !exists('g:vscode')
     set nocompatible
 	filetype plugin on
 	autocmd filetype html,css call Html()
-	autocmd filetype markdown call Markdown()
+	autocmd filetype markdown,vimwiki call Markdown()
 	autocmd filetype haskell call Haskell()
 	autocmd filetype python call Python()
 	autocmd BufRead *.pl set filetype=prolog
-	autocmd FileType * if &ft != 'html' && &ft != 'css' && &ft != wiki | :call rainbow#load() | endif
+	autocmd FileType * if &ft !~ 'html\|css\|vimwiki\|text\|help' | :call rainbow#load() | endif
 	nnoremap <C-a> :e#<CR> 
 	" Cambiar de espacio en el editor
 	nnoremap <C-h> <C-w>h
