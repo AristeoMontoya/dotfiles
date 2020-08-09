@@ -57,7 +57,6 @@ if !exists('g:vscode')
 	endfunction
 
 	syntax on 
-	filetype plugin on
 	colorscheme onedark 
 	let g:indentLine_enabled = 0
 	let g:airline_powerline_fonts = 1
@@ -84,12 +83,14 @@ if !exists('g:vscode')
 	set tabstop=4
 	set shiftwidth=4
 	set nowrap
+    set nocompatible
+	filetype plugin on
 	autocmd filetype html,css call Html()
 	autocmd filetype markdown call Markdown()
 	autocmd filetype haskell call Haskell()
 	autocmd filetype python call Python()
 	autocmd BufRead *.pl set filetype=prolog
-	autocmd FileType * if &ft != 'html' && &ft != 'css' | :call rainbow#load() | endif
+	autocmd FileType * if &ft != 'html' && &ft != 'css' && &ft != wiki | :call rainbow#load() | endif
 	nnoremap <C-a> :e#<CR> 
 	" Cambiar de espacio en el editor
 	nnoremap <C-h> <C-w>h
