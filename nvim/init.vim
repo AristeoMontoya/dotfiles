@@ -1,4 +1,4 @@
-set clipboard+=unnamedplus 
+set clipboard+=unnamedplus
 set ignorecase
 set incsearch
 set mouse=a
@@ -26,7 +26,7 @@ if !exists('g:vscode')
 	call plug#end()
 
 	function! Html()
-		set tabstop=2 
+		set tabstop=2
 		set shiftwidth=2
 	endfunction
 
@@ -39,10 +39,10 @@ if !exists('g:vscode')
 	endfunction
 
 	function! Haskell()
-		set tabstop=8 
-		set softtabstop=0 
-		set expandtab 
-		set shiftwidth=4 
+		set tabstop=8
+		set softtabstop=0
+		set expandtab
+		set shiftwidth = 4
 		set smarttab
 	endfunction
 
@@ -59,12 +59,10 @@ if !exists('g:vscode')
 		set nolist
 	endfunction
 
-	syntax on 
-	colorscheme onedark 
+	syntax on
+	colorscheme onedark
 	let g:indentLine_enabled = 0
 	let g:airline_powerline_fonts = 1
-	"let g:airline_section_x = ''
-	"let g:airline_section_y = '' 
 	let g:airline_section_z = '%{line(".")}/%{line("$")} : %{col(".")}'
 	let mapleader="\ "
 	let g:nv_search_paths = ['~/vimwiki']
@@ -73,7 +71,8 @@ if !exists('g:vscode')
 	let wiki = { }
 	let wiki.path = '~/vimwiki/'
 	let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'js': 'javascript',
-	\ 'java': 'java', 'sql': 'sql', 'css': 'css', 'html': 'html'
+	\ 'java': 'java', 'sql': 'sql', 'css': 'css', 'html': 'html', 'hskl': 'haskell',
+	\ 'arduino': 'arduino', 'php': 'php', 'json': 'json', 'sh': 'sh'
 	\}
 	let g:vimwiki_list = [wiki]
 	let g:vimwiki_diary_months  = {
@@ -106,8 +105,10 @@ if !exists('g:vscode')
 	autocmd filetype haskell call Haskell()
 	autocmd filetype python call Python()
 	autocmd BufRead *.pl set filetype=prolog
-	autocmd FileType * if &ft !~ 'html\|css\|vimwiki\|text\|help' | :call rainbow#load() | endif
-	nnoremap <C-a> :e#<CR> 
+	autocmd FileType * if &ft !~ 'html\|css\|vimwiki\|text\|help\|haskell\|sql' | :call rainbow#load() | endif
+	vmap < <gv
+	vmap > >gv
+	nnoremap <C-a> :e#<CR>
 	" Cambiar de espacio en el editor
 	nnoremap <C-h> <C-w>h
 	nnoremap <C-j> <C-w>j
@@ -120,12 +121,14 @@ if !exists('g:vscode')
 	tnoremap <ESC> <C-\><C-n><C-p>
 	nmap Ñ :call Terminal()<CR>
 	map <C-f> <Plug>NERDCommenterToggle
-	hi VimWikiHeader1 guifg=#61AFEF
-	hi VimWikiHeader3 guifg=#E5C07B
-	hi VimWikiHeader4 guifg=#E5C07B
-	hi VimWikiHeader5 guifg=#E5C07B
-	hi VimWikiHeader6 guifg=#E5C07B
-	hi VimWikiBold guifg=#FFFFFF
+	hi def VimwikiHeader1 guifg=#61AFEF
+	hi def VimwikiHeader3 guifg=#E5C07B
+	hi def VimwikiHeader4 guifg=#E5C07B
+	hi def VimwikiHeader5 guifg=#E5C07B
+	hi def VimwikiHeader6 guifg=#E5C07B
+	hi def VimwikiBold gui=bold guifg=#FFFFFF
+	hi def VimwikiBoldItalic gui=bold,italic guifg=#FFFFFF
+	hi def VimwikiCode guifg=#E48AFF
 
 	"ripgrep
 	if executable('rg')
