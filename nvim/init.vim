@@ -2,6 +2,8 @@ set clipboard+=unnamedplus
 set ignorecase
 set incsearch
 set mouse=a
+vmap < <gv
+vmap > >gv
 if !exists('g:vscode')
 	call plug#begin('~/.data/plugged')
 	Plug 'vim-airline/vim-airline'
@@ -106,8 +108,6 @@ if !exists('g:vscode')
 	autocmd filetype python call Python()
 	autocmd BufRead *.pl set filetype=prolog
 	autocmd FileType * if &ft !~ 'html\|css\|vimwiki\|text\|help\|haskell\|sql' | :call rainbow#load() | endif
-	vmap < <gv
-	vmap > >gv
 	nnoremap <C-a> :e#<CR>
 	" Cambiar de espacio en el editor
 	nnoremap <C-h> <C-w>h
