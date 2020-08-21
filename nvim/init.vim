@@ -33,6 +33,7 @@ if !exists('g:vscode')
 	endfunction
 
 	function! Markdown()
+		CocDisable
 		set wrap
 		set linebreak
 		set nonumber
