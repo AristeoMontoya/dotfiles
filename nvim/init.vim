@@ -71,6 +71,7 @@ if !exists('g:vscode')
 	let g:nv_search_paths = ['~/vimwiki']
 	let g:fzf_preview_command = 'bat --color=always --style=grid --theme=OneHalfDark {-1}'
 	let g:rainbow_guifgs = ['#E5C07B', '#C678DD', '#61AFEF', '#FF7A85']
+	let g:vimwiki_folding='syntax'
 	let wiki = { }
 	let wiki.path = '~/vimwiki/'
 	let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'js': 'javascript',
@@ -115,8 +116,10 @@ if !exists('g:vscode')
 	nnoremap <C-j> <C-w>j
 	nnoremap <C-k> <C-w>k
 	nnoremap <C-l> <C-w>l
-	nnoremap <C-n> :resize -5<CR>
-	nnoremap <C-N> :resize -5<CR>
+	nnoremap <A-h> :vertical resize -5<CR>
+	nnoremap <A-j> :resize -5<CR>
+	nnoremap <A-k> :resize +5<CR>
+	nnoremap <A-l> :vertical resize +5<CR>
 	nnoremap <C-s> :w<CR>
 	noremap <C-p> :call Fzf_dev()<CR>
 	tnoremap <ESC> <C-\><C-n><C-p>
