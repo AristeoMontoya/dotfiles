@@ -143,8 +143,10 @@ if !exists('g:vscode')
 
 	" Files + devicons
 	function! Fzf_dev()
-		let repo = system("[ -d .git ]")
+		let repo = system("[ -d .git ]then return 1 fi")
 		echo repo
+		
+
 		"if &ft == 'vimwiki'
 			""Si está en VimWiki, se busca en notas únicamente
 			"NV
