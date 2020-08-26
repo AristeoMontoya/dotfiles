@@ -146,10 +146,10 @@ if !exists('g:vscode')
 		if &ft == 'vimwiki'
 			"Si está en VimWiki, se busca en notas únicamente
 			NV
-		elseif system("git -C . rev-parse") && v:shell_error == 1
+		elseif len(system("git -C . rev-parse")) < 1
 			" Si el directorio es un repositorio se usa GFiles
-			echo 'En repo'
-		else
+			GFiles
+		elseif system('echo -n $PWD') != '/home/aristeo'
 			let l:fzf_files_options = '--preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {2..-1} | head -'.&lines.'"'
 
 			function! s:files()
