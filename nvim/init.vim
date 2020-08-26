@@ -146,7 +146,7 @@ if !exists('g:vscode')
 		if &ft == 'vimwiki'
 			"Si está en VimWiki, se busca en notas únicamente
 			NV
-		elseif git -C getcwd() rev-parse
+		elseif system("git -C getcwd() rev-parse")
 			GFiles
 		else
 			let l:fzf_files_options = '--preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {2..-1} | head -'.&lines.'"'
