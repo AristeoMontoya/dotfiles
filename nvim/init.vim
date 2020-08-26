@@ -144,7 +144,7 @@ if !exists('g:vscode')
 	" Files + devicons
 	function! Fzf_dev()
 		let repo = system("[ -d .git ]")
-		echo repo
+		echo 'El resultado fue' repo 
 		
 
 		"if &ft == 'vimwiki'
