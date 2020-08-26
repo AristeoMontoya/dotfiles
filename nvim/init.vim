@@ -143,10 +143,11 @@ if !exists('g:vscode')
 
 	" Files + devicons
 	function! Fzf_dev()
+		let repo = system("git -C . rev-parse")
 		if &ft == 'vimwiki'
 			"Si está en VimWiki, se busca en notas únicamente
 			NV
-		elseif system("git -C . rev-parse") == 0
+		elseif repo == 0
 			" Si el directorio es un repositorio se usa GFiles
 			echo 'En repo'
 		else
