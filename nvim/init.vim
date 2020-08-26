@@ -146,7 +146,7 @@ if !exists('g:vscode')
 		if &ft == 'vimwiki'
 			"Si está en VimWiki, se busca en notas únicamente
 			NV
-		elseif system("git -C getcwd() rev-parse") == 0
+		elseif system("git -C getcwd() rev-parse") == 1
 			" Si el directorio es un repositorio se usa GFiles
 			GFiles
 		else
