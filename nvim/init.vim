@@ -71,7 +71,6 @@ if !exists('g:vscode')
 	let g:nv_search_paths = ['~/vimwiki']
 	let g:fzf_preview_command = 'bat --color=always --style=grid --theme=OneHalfDark {-1}'
 	let g:rainbow_guifgs = ['#E5C07B', '#C678DD', '#61AFEF', '#FF7A85']
-	let g:vimwiki_folding='syntax'
 	let wiki = { }
 	let wiki.path = '~/vimwiki/'
 	let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'js': 'javascript',
@@ -104,10 +103,10 @@ if !exists('g:vscode')
 	set nowrap
 	set nocompatible
 	filetype plugin on
-	autocmd filetype html,css call Html()
-	autocmd filetype markdown,vimwiki call Markdown()
-	autocmd filetype haskell call Haskell()
-	autocmd filetype python call Python()
+	autocmd FileType html,css call Html()
+	autocmd FileType markdown,vimwiki call Markdown()
+	autocmd FileType haskell call Haskell()
+	autocmd FileType python call Python()
 	autocmd BufRead *.pl set filetype=prolog
 	autocmd FileType * if &ft !~ 'html\|css\|vimwiki\|text\|help\|haskell\|sql' | :call rainbow#load() | endif
 	nnoremap <C-a> :e#<CR>
@@ -179,6 +178,8 @@ if !exists('g:vscode')
 				\ 'sink':   function('s:edit_file'),
 				\ 'options': '-m ' . l:fzf_files_options,
 				\ 'down':    '40%' })
+		else
+			echo 'No se puede hacer búsqueda difusa en home.'
 		endif
 	endfunction
 
