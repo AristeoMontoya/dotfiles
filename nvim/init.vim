@@ -143,9 +143,12 @@ if !exists('g:vscode')
 
 	" Files + devicons
 	function! Fzf_dev()
+		let repo = system("[ -d .git ]")
 		if &ft == 'vimwiki'
 			"Si está en VimWiki, se busca en notas únicamente
 			NV
+		elseif repo == 1 
+			echo 'Si'
 		else
 			let l:fzf_files_options = '--preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {2..-1} | head -'.&lines.'"'
 
