@@ -143,7 +143,7 @@ if !exists('g:vscode')
 
 	" Files + devicons
 	function! Fzf_dev()
-		let repo = system("[ -d .git ]")
+		let repo = "cosa"
 		echo 'El resultado fue' repo 
 		
 
