@@ -147,6 +147,7 @@ if !exists('g:vscode')
 			"Si está en VimWiki, se busca en notas únicamente
 			NV
 		elseif system("git -C getcwd() rev-parse") == 0
+			" Si el directorio es un repositorio se usa GFiles
 			GFiles
 		else
 			let l:fzf_files_options = '--preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {2..-1} | head -'.&lines.'"'
