@@ -109,6 +109,7 @@ if !exists('g:vscode')
 	autocmd FileType python call Python()
 	autocmd BufRead *.pl set filetype=prolog
 	autocmd FileType * if &ft !~ 'html\|css\|vimwiki\|text\|help\|haskell\|sql' | :call rainbow#load() | endif
+	autocmd VimResized * wincmd =
 	nnoremap <C-a> :e#<CR>
 	" Cambiar de espacio en el editor
 	nnoremap <C-h> <C-w>h
