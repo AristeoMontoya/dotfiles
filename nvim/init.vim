@@ -133,6 +133,7 @@ if !exists('g:vscode')
 	hi def VimwikiBold gui=bold guifg=#FFFFFF
 	hi def VimwikiBoldItalic gui=bold,italic guifg=#FFFFFF
 	hi def VimwikiCode guifg=#E48AFF
+	hi link VimwikiPre VimwikiCheckBoxDone
 
 	"ripgrep
 	if executable('rg')
