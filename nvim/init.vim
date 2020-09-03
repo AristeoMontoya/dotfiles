@@ -7,6 +7,7 @@ vmap > >gv
 if !exists('g:vscode')
 	call plug#begin('~/.data/plugged')
 	Plug 'tpope/vim-dadbod'
+	Plug 'kristijanhusak/vim-dadbod-ui'
 	Plug 'shmup/vim-sql-syntax'
 	Plug 'vim-airline/vim-airline'
 	Plug 'turbio/bracey.vim'
