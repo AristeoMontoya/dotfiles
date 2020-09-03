@@ -52,7 +52,7 @@ if !exists('g:vscode')
 	endfunction
 
 	function! Terminal()
-		belowright split
+		botright split
 		terminal
 		res 8
 		set norelativenumber
