@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/aristeo/Documentos/Escuela/Semestre 8/Lenguajes y autómatas 2/CompiladorAutomatas/src/main'
+let g:netrw_dirhist_9='/home/aristeo/Documentos/Escuela/Semestre 8/Lenguajes y autómatas 2/CompiladorAutomatas/src'
+let g:netrw_dirhist_8='/home/aristeo/Documentos/Escuela/Semestre 8/Lenguajes y autómatas 2/CompiladorAutomatas'
+let g:netrw_dirhist_7='/home/aristeo/Documentos/Cursos/Functional Programming in Python'
+let g:netrw_dirhist_6='/home/aristeo/Documentos/Escuela/Semestre 9/Administración de bases de datos/prueba'
+let g:netrw_dirhist_5='/home/aristeo'
+let g:netrw_dirhist_4='/home/aristeo/Documentos/Escuela/Semestre 8/Lenguajes y autómatas 2/CompiladorAutomatas'
+let g:netrw_dirhist_3='/home/aristeo/cronie'
+let g:netrw_dirhist_2='/home/aristeo/Documentos/Proyectos secundarios/Experimentos de git flow/pruebaGradle/src/main/java/pruebaGradle'
+let g:netrw_dirhist_1='/home/aristeo/Documentos/Proyectos secundarios/Experimentos de git flow/pruebaGradle/src/main/java'

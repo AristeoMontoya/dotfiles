@@ -1,0 +1,8 @@
+{
+	"coc.preferences.formatOnSaveFiletypes": ["html", "css", "markdown", "python"],
+	"prettier.tabWidth": 2,
+	"prettier.useTabs": true,
+	"python.jediEnabled": true,
+	"java.home": "/usr/lib/jvm/java-11-openjdk",
+	"phpactor.enable": true
+}
