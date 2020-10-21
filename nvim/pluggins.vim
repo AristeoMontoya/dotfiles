@@ -26,6 +26,18 @@ call plug#begin('~/.data/plugged')
 call plug#end()
 
 if !exists('g:vscode')
+
+	" Definiciones de VimWiki
+	hi def VimwikiHeader1 guifg=#61AFEF
+	hi def VimwikiHeader3 guifg=#E5C07B
+	hi def VimwikiHeader4 guifg=#E5C07B
+	hi def VimwikiHeader5 guifg=#E5C07B
+	hi def VimwikiHeader6 guifg=#E5C07B
+	hi def VimwikiBold gui=bold guifg=#FFFFFF
+	hi def VimwikiBoldItalic gui=bold,italic guifg=#FFFFFF
+	hi def VimwikiCode guifg=#E48AFF
+	hi link VimwikiPre VimwikiCheckBoxDone
+
 	"ripgrep
 	if executable('rg')
 		let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'

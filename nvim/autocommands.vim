@@ -47,7 +47,7 @@ endfunction
 autocmd FileType html,css call Html()
 autocmd FileType markdown,vimwiki call Markdown()
 autocmd FileType haskell call Haskell()
-autocmd FileType python,php call Python()
+autocmd FileType python,php,cpp call Python()
 autocmd BufRead *.pl set filetype=prolog
 autocmd TermOpen * call Terminal()
 autocmd TermClose call CerrarTerminal()
