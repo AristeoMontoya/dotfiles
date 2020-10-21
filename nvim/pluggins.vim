@@ -21,6 +21,7 @@ call plug#begin('~/.data/plugged')
 		Plug 'preservim/nerdcommenter'
 		Plug 'Yggdroot/indentLine'
 		Plug 'uiiaoo/java-syntax.vim'
+"						lug 'airblade/vim-gitgutter'
 	endif
 	Plug 'tpope/vim-surround'
 call plug#end()

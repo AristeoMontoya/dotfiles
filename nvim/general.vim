@@ -25,7 +25,7 @@ let g:vimwiki_diary_months	= {
 \ 10: 'Octubre', 11: 'Noviembre', 12: 'Diciembre'
 \ }
 
-set listchars=tab:\¦\ 
+set listchars=tab:\¦\		" Caracter de identación
 set list					" Caracter para identación
 set noshowmode				" No mostrar el mensaje de modo actual
 set splitright				" Abrir Split vertical a la derecha
@@ -115,4 +115,8 @@ function MyTabLine()
 		let s .= '%=%#TabLineFill#%'
 	endif
 	return s
+endfunction
+
+function Tabulacion()
+	:set noet|retab!
 endfunction
