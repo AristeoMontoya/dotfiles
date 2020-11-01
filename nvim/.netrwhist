@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =0
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/aristeo/Documentos/Escuela/Semestre 9/Temas selectos de base de datos/Data Warehouse'
+let g:netrw_dirhist_1='/home/aristeo/.config/nvim'
 let g:netrw_dirhist_0='/home/aristeo/Documentos/Escuela/Semestre 8/Lenguajes y autómatas 2/CompiladorAutomatas/src/main'
 let g:netrw_dirhist_9='/home/aristeo/Documentos/Escuela/Semestre 8/Lenguajes y autómatas 2/CompiladorAutomatas/src'
 let g:netrw_dirhist_8='/home/aristeo/Documentos/Escuela/Semestre 8/Lenguajes y autómatas 2/CompiladorAutomatas'
@@ -8,5 +10,3 @@ let g:netrw_dirhist_6='/home/aristeo/Documentos/Escuela/Semestre 9/Administraci�
 let g:netrw_dirhist_5='/home/aristeo'
 let g:netrw_dirhist_4='/home/aristeo/Documentos/Escuela/Semestre 8/Lenguajes y autómatas 2/CompiladorAutomatas'
 let g:netrw_dirhist_3='/home/aristeo/cronie'
-let g:netrw_dirhist_2='/home/aristeo/Documentos/Proyectos secundarios/Experimentos de git flow/pruebaGradle/src/main/java/pruebaGradle'
-let g:netrw_dirhist_1='/home/aristeo/Documentos/Proyectos secundarios/Experimentos de git flow/pruebaGradle/src/main/java'

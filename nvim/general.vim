@@ -25,7 +25,7 @@ let g:vimwiki_diary_months	= {
 \ 10: 'Octubre', 11: 'Noviembre', 12: 'Diciembre'
 \ }
 
-set listchars=tab:\¦\		" Caracter de identación
+set listchars=tab:\¦\ 
 set list					" Caracter para identación
 set noshowmode				" No mostrar el mensaje de modo actual
 set splitright				" Abrir Split vertical a la derecha
@@ -46,6 +46,7 @@ set nowrap					" Evita que las líneas se divivan si excede el ancho
 set nocompatible			" Configuraciones de VimWiki
 set tabline=%!MyTabLine()	" Pestañas personalizadas
 filetype plugin on			" Configuraciones de Vimwiki
+
 
 function MyTabLine()
 	let s = '' " complete tabline goes here
@@ -118,5 +119,5 @@ function MyTabLine()
 endfunction
 
 function Tabulacion()
-	:set noet|retab!
+	set noexpandtab|retab!
 endfunction

@@ -1,8 +1,28 @@
 {
-	"coc.preferences.formatOnSaveFiletypes": ["html", "css", "markdown", "python"],
+	"coc.preferences.formatOnSaveFiletypes": [
+		"html",
+		"css",
+		"markdown",
+		"python"
+	],
 	"prettier.tabWidth": 2,
 	"prettier.useTabs": true,
 	"python.jediEnabled": true,
 	"java.home": "/usr/lib/jvm/java-11-openjdk",
-	"phpactor.enable": true
+	"phpactor.enable": true,
+	"languageserver": {
+		"ccls": {
+			"command": "ccls",
+			"filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+			"rootPatterns": [".ccls-root", "compile_commands.json"],
+			"initializationOptions": {
+				"cache": {
+					"directory": ".ccls-cache"
+				},
+				"client": {
+					"snippetSupport": true
+				}
+			}
+		}
+	}
 }
