@@ -5,6 +5,7 @@
 		"markdown",
 		"python"
 	],
+	"suggest.noselect": false,
 	"prettier.tabWidth": 2,
 	"prettier.useTabs": true,
 	"python.jediEnabled": true,

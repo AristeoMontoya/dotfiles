@@ -21,13 +21,11 @@ set shortmess+=c
 set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <" ">
-	\ pumvisible() ? "\<C-n>" :
-	\ <SID>check_back_space() ? "\<" ">" :
-	\ coc#refresh()
-inoremap <expr><S-" "> pumvisible() ? "\<C-p>" : "\<C-h>"
+ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+	" Use <Tab> for confirm completion.
+	" Coc only does snippet and additional edit on confirm.
+	inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
+
 
 function! s:check_back_space() abort
 	let col = col('.') - 1
@@ -76,8 +74,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>f	<Plug>(coc-format-selected)
+nmap <leader>f	<Plug>(coc-format-selected)
 
 augroup mygroup
 	autocmd!
@@ -89,8 +87,8 @@ augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+xmap <leader>a	<Plug>(coc-codeaction-selected)
+nmap <leader>a	<Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current line.
 nmap <leader>ac  <Plug>(coc-codeaction)

@@ -4,7 +4,7 @@ endif
 
 call plug#begin('~/.data/plugged')
 	if !exists('g:vscode')
-		Plug 'turbio/bracey.vim'
+		Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 		Plug 'vim-airline/vim-airline'
 		Plug 'vim-airline/vim-airline-themes'
 		Plug 'ap/vim-css-color'
