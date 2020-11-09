@@ -44,3 +44,9 @@ nmap <space>tn :tabedit<CR>
 
 " Cerrar pestaña
 nmap <space>tk :tabclose<CR>
+
+" Adios popó
+map <left> <nop>
+map <up> <nop>
+map <down> <nop>
+map <right> <nop>

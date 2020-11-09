@@ -21,6 +21,7 @@ call plug#begin('~/.data/plugged')
 		Plug 'preservim/nerdcommenter'
 		Plug 'Yggdroot/indentLine'
 		Plug 'uiiaoo/java-syntax.vim'
+		Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 	endif
 	Plug 'tpope/vim-surround'
 call plug#end()
