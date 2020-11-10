@@ -5,4 +5,5 @@ if !exists('g:vscode')
 	source ~/.config/nvim/coc.vim
 	source ~/.config/nvim/keymaps.vim
 	source ~/.config/nvim/autocommands.vim
+	source ~/.config/nvim/whichkey.vim
 endif
