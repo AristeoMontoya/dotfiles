@@ -18,10 +18,12 @@ call plug#begin('~/.data/plugged')
 		Plug 'frazrepo/vim-rainbow'
 		Plug 'ryanoasis/vim-devicons'
 		Plug 'vimwiki/vimwiki'
-		Plug 'preservim/nerdcommenter'
 		Plug 'Yggdroot/indentLine'
 		Plug 'uiiaoo/java-syntax.vim'
 		Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+		Plug 'puremourning/vimspector'
+		Plug 'liuchengxu/vim-which-key'
+		Plug 'szw/vim-maximizer'
 	endif
 	Plug 'tpope/vim-surround'
 call plug#end()

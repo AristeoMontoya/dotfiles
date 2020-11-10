@@ -4,4 +4,5 @@ set incsearch
 set mouse=a
 vmap < <gv
 vmap > >gv
-let mapleader="\ "
+let mapleader=" "
+nnoremap <SPACE> <Nop>

@@ -1,6 +1,9 @@
 " Cambiar de espacio en el editor
 nnoremap <C-a> :e#<CR>
 
+" 				SPLITS
+" ==================================
+" Reducir split vertical
 " Mover a split izquierdo
 nnoremap <C-h> <C-w>h
 
@@ -22,8 +25,19 @@ nnoremap <A-j> :resize -5<CR>
 " Agrandar split horizontal
 nnoremap <A-k> :resize +5<CR>
 
-" Reducir split vertical
 nnoremap <A-l> :vertical resize +5<CR>
+
+" Crear Split horizontal
+nnoremap <leader>sp :split<CR>
+
+" Crear split verticarl
+nnoremap <leader>sv :vs<CR>
+
+" Rotar splits
+nnoremap <leader>ss <C-W>R
+
+" Mover split a pestaña
+nnoremap <leader>st <C-W>T
 
 " Guardar
 nnoremap <C-s> :w<CR>
@@ -36,17 +50,27 @@ tnoremap <ESC> <C-\><C-n><C-p>
 " Abrir terminal
 nmap Ñ :call AbrirTerminal()<CR>
 
-" comentar línea
-nmap <space>cc <Plug>N
-
 " Nueva pestaña
-nmap <space>tn :tabedit<CR>
+nmap <leader>tn :tabedit<CR>
 
 " Cerrar pestaña
-nmap <space>tk :tabclose<CR>
+nmap <leader>tk :tabclose<CR>
 
 " Adios popó
-map <left> <nop>
-map <up> <nop>
-map <down> <nop>
+map <left>	<nop>
+map <up>	<nop>
+map <down>	<nop>
 map <right> <nop>
+
+" explorador de archivos
+nmap <leader>fe :CocCommand explorer<CR>
+
+" DEBUG
+" Breakpoints
+nmap <leader>dd <Plug>VimspectorToggleBreakpoint
+
+" Iniciar/continuar
+nmap <leader>ds <Plug>VimspectorContinue
+
+" Detener
+nmap <leader>dS <Plug>VimspectorStop
