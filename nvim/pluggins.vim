@@ -1,5 +1,6 @@
-if !exists('g:vscode')
-	let g:polyglot_disabled = ['python-indent', 'python-compiler']
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+if has("termguicolors")
+	set termguicolors
 endif
 
 call plug#begin('~/.data/plugged')
@@ -10,25 +11,29 @@ call plug#begin('~/.data/plugged')
 		Plug 'ap/vim-css-color'
 		Plug 'neoclide/coc.nvim', {'branch': 'release'}
 		Plug 'joshdick/onedark.vim'
-		Plug 'sheerun/vim-polyglot'
 		Plug 'jiangmiao/auto-pairs'
 		Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 		Plug 'junegunn/fzf.vim'
 		Plug 'alok/notational-fzf-vim'
-		Plug 'frazrepo/vim-rainbow'
+		Plug 'luochen1990/rainbow'
 		Plug 'ryanoasis/vim-devicons'
 		Plug 'vimwiki/vimwiki'
 		Plug 'Yggdroot/indentLine'
-		Plug 'uiiaoo/java-syntax.vim'
 		Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 		Plug 'puremourning/vimspector'
 		Plug 'liuchengxu/vim-which-key'
-		Plug 'szw/vim-maximizer'
+		Plug 'nvim-treesitter/nvim-treesitter'
+		Plug 'ThePrimeagen/vim-be-good'
+		Plug 'airblade/vim-gitgutter'
+		Plug 'tpope/vim-commentary'
+		Plug 'tpope/vim-fugitive'
 	endif
 	Plug 'tpope/vim-surround'
 call plug#end()
 
 if !exists('g:vscode')
+
+	let g:airline#extensions#hunks#enabled = 0
 
 	" Definiciones de VimWiki
 	hi def VimwikiHeader1 guifg=#61AFEF
@@ -83,26 +88,46 @@ if !exists('g:vscode')
 
 			call fzf#run({
 				\ 'source': <sid>files(),
-				\ 'sink':   function('s:edit_file'),
+				\ 'sink':	function('s:edit_file'),
 				\ 'options': '-m ' . l:fzf_files_options,
-				\ 'down':    '40%' })
+				\ 'down':	 '40%' })
 		else
 			echo 'No se puede hacer búsqueda difusa en home.'
 		endif
 	endfunction
 
-	"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-	"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-	"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-	if (has("nvim"))
-		"For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-		let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-	endif
+	let g:rainbow_conf = {
+				\'guifgs': ['#E5C07B', '#C678DD', '#61AFEF', '#FF7A85'],
+				\'separately': {
+				\		'*':{},
+				\		'html': 0,
+				\		'css': 0,
+				\		'text': 0,
+				\		'vimwiki': 0,
+				\		'help': 0,
+				\		'haskell': 0,
+				\		'sql': 0,
+				\		'prolog': 0,
+				\		'php': 0,
+				\		'blade': 0
+				\	}
+				\}
 
-	"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-	"Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-	" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-	if (has("termguicolors"))
-		set termguicolors
-	endif
+	lua << EOF
+	require'nvim-treesitter.configs'.setup {
+ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+highlight = {
+	enable = true			   -- false will disable the whole extension
+	},
+	indent = {
+enable = true
+}
+}
+require"nvim-treesitter.highlight"
+local hlmap = vim.treesitter.highlighter.hl_map
+hlmap.error = nil
+hlmap["punctuation.delimiter"] = "Delimiter"
+hlmap["punctuation.bracket"] = nil
+EOF
+	let g:rainbow_active = 1
 endif

@@ -1,5 +1,5 @@
-syntax on				" Coloreo de sintaxis
-colorscheme onedark		" Tema del editor
+"syntax on
+colorscheme onedark
 
 " Identación con espacios para Python
 let g:indentLine_enabled = 0
@@ -10,7 +10,6 @@ let g:airline_right_sep = ''
 let g:airline_section_z = '%{line(".")}/%{line("$")} : %{col(".")}'
 let g:nv_search_paths = ['~/vimwiki']
 let g:fzf_preview_command = 'bat --color=always --style=grid --theme=OneHalfDark {-1}'
-let g:rainbow_guifgs = ['#E5C07B', '#C678DD', '#61AFEF', '#FF7A85']
 let wiki = { }
 let wiki.path = '~/vimwiki/'
 let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'js': 'javascript',
@@ -26,6 +25,7 @@ let g:vimwiki_diary_months	= {
 \ }
 
 set listchars=tab:\¦\ 
+set iskeyword+=-
 set list					" Caracter para identación
 set noshowmode				" No mostrar el mensaje de modo actual
 set splitright				" Abrir Split vertical a la derecha

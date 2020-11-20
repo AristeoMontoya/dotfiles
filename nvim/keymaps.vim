@@ -28,7 +28,7 @@ nnoremap <A-k> :resize +5<CR>
 nnoremap <A-l> :vertical resize +5<CR>
 
 " Crear Split horizontal
-nnoremap <leader>sp :split<CR>
+nnoremap <leader>sh :split<CR>
 
 " Crear split verticarl
 nnoremap <leader>sv :vs<CR>
@@ -48,7 +48,7 @@ noremap <C-p> :call Fzf_dev()<CR>
 tnoremap <ESC> <C-\><C-n><C-p>
 
 " Abrir terminal
-nmap Ñ :call AbrirTerminal()<CR>
+nmap <silent> Ñ :call AbrirTerminal()<CR>
 
 " Nueva pestaña
 nmap <leader>tn :tabedit<CR>
@@ -63,7 +63,7 @@ map <down>	<nop>
 map <right> <nop>
 
 " explorador de archivos
-nmap <leader>fe :CocCommand explorer<CR>
+nmap <silent><leader>fe :CocCommand explorer<CR>
 
 " DEBUG
 " Breakpoints
@@ -74,3 +74,14 @@ nmap <leader>ds <Plug>VimspectorContinue
 
 " Detener
 nmap <leader>dS <Plug>VimspectorStop
+
+" Comentarios
+nnoremap <space>/ :Commentary<CR>
+vnoremap <space>/ :Commentary<CR>
+
+" Sudo aunque no sudo
+cmap w!! w !sudo tee %
+
+" Git
+" Git Status
+nmap <silent><leader>gs :G<CR>

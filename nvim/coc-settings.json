@@ -8,9 +8,15 @@
 	"suggest.noselect": false,
 	"prettier.tabWidth": 2,
 	"prettier.useTabs": true,
-	"python.jediEnabled": true,
+	"python.analysis.typeCheckingMode": "basic",
 	"java.home": "/usr/lib/jvm/java-11-openjdk",
 	"phpactor.enable": true,
+	"explorer.icon.enableNerdfont": true,
+	"explorer.previewAction.onHover": false,
+	"explorer.keyMappings.global": {
+		"<cr>": ["expandable?", "expand", "open"],
+		"v": "open:vsplit"
+	},
 	"languageserver": {
 		"ccls": {
 			"command": "ccls",

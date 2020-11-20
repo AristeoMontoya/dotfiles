@@ -52,5 +52,4 @@ autocmd FileType python,php call Python()
 autocmd BufRead *.pl set filetype=prolog
 autocmd TermOpen * call Terminal()
 autocmd TermClose call CerrarTerminal()
-autocmd FileType * if &ft !~ 'html\|css\|vimwiki\|text\|help\|haskell\|sql\|prolog\|php\|blade' | :call rainbow#load() | endif
 autocmd VimResized * wincmd =

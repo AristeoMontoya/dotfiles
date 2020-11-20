@@ -13,6 +13,11 @@ let g:which_key_map.a = 'Realizar acción CoC'
 
 let g:which_key_map['ac'] = 'Acciones CoC'
 
+let g:which_key_map.g = {
+			\ 'name' : '+Git',
+			\ 's' : [':G'			,	 'Git Status'],
+			\}
+
 let g:which_key_map.d = {
 			\ 'name' : '+Debugger',
 			\ 'd' : ['<Plug>VimspectorToggleBreakpoint'	,	'Conmutar punto de interrupción'],
@@ -23,7 +28,7 @@ let g:which_key_map.d = {
 
 let g:which_key_map.s = {
 			\ 'name' : '+Splits',
-			\ 'p' : ['split'	,		 'Split horizontal'],
+			\ 'h' : ['split'	,		 'Split horizontal'],
 			\ 's' : ['<C-W>R'	,					'Rotar'],
 			\ 't' : ['<C-W>T'	,	'Mover split a pestaña'],
 			\ 'v' : ['vs'		,		   'Split vertical'],
