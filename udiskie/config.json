@@ -1,7 +1,0 @@
-{
-	"program_options": {
-  	"tray": true,
-  	"menu": "flat",
-  	"file_manager": "ranger"
-	}
-}
