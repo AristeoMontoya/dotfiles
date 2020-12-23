@@ -10,12 +10,19 @@ let g:which_key_map.g = {
 			\ 's' : [':G'			,	 'Git Status'],
 			\}
 
+
 let g:which_key_map.s = {
 			\ 'name' : '+Splits',
 			\ 'h' : ['split'	,		 'Split horizontal'],
 			\ 's' : ['<C-W>R'	,					'Rotar'],
 			\ 't' : ['<C-W>T'	,	'Mover split a pestaña'],
 			\ 'v' : ['vs'		,		   'Split vertical'],
+			\}
+
+
+let g:which_key_map.r = {
+			\ 'name' : '+Refactorizar',
+			\ 't' : ['call Tabulacion()' , 'Cambiar espacios a tab'],
 			\}
 
 
@@ -35,7 +42,7 @@ let g:which_key_map.w = {
 			\}
 
 
-let g:which_key_map.w['space'] = {
+let g:which_key_map.w['Space'] = {
 			\ 'name' : 'Más VimWiki',
 			\ 'i' : ['<Plug>VimwikiDiaryGenerateLinks'		,		  'Anexar entradas de diario a índice'],
 			\ 'm' : ['<Plug>VimwikiMakeTomorrowDiaryNote'	,		  'Agregar entrada de mañana a diario'],

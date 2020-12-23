@@ -1,7 +1,7 @@
 " Cambiar de espacio en el editor
 nnoremap <C-a> :e#<CR>
 
-" 				SPLITS
+"				SPLITS
 " ==================================
 " Reducir split vertical
 " Mover a split izquierdo
@@ -42,9 +42,13 @@ nnoremap <leader>st <C-W>T
 " Guardar
 nnoremap <C-s> :w<CR>
 
+" Cambiar espacios por tabs
+nnoremap <silent> <leader>rt :call Tabulacion()<CR>
+
 " Búsqueda difusa
 noremap <C-p> :call Fzf_dev()<CR>
 
+" Salir de insert en terminal
 tnoremap <ESC> <C-\><C-n><C-p>
 
 " Abrir terminal
@@ -86,6 +90,7 @@ cmap w!! w !sudo tee %
 " Git Status
 nmap <silent><leader>gs :G<CR>
 
+" Errores comunes a comandos frecuentes
 :command WQ wq
 :command Wq wq
 :command W w
