@@ -5,11 +5,9 @@ endif
 
 call plug#begin('~/.data/plugged')
 	if !exists('g:vscode')
-		Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 		Plug 'vim-airline/vim-airline'
 		Plug 'vim-airline/vim-airline-themes'
 		Plug 'ap/vim-css-color'
-		Plug 'neoclide/coc.nvim', {'branch': 'release'}
 		Plug 'joshdick/onedark.vim'
 		Plug 'jiangmiao/auto-pairs'
 		Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
@@ -19,11 +17,7 @@ call plug#begin('~/.data/plugged')
 		Plug 'ryanoasis/vim-devicons'
 		Plug 'vimwiki/vimwiki'
 		Plug 'Yggdroot/indentLine'
-		Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-		Plug 'puremourning/vimspector'
 		Plug 'liuchengxu/vim-which-key'
-		Plug 'nvim-treesitter/nvim-treesitter'
-		Plug 'ThePrimeagen/vim-be-good'
 		Plug 'airblade/vim-gitgutter'
 		Plug 'tpope/vim-commentary'
 		Plug 'tpope/vim-fugitive'
@@ -140,6 +134,5 @@ if !exists('g:vscode')
 				\}
 
 	" Cargando configuraciones de Tree sitter
-	luafile ~/.config/nvim/treeSitter.lua
 	let g:rainbow_active = 1
 endif
