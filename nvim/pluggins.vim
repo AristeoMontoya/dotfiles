@@ -34,6 +34,9 @@ if !exists('g:vscode')
 	" Identación con espacios para Python
 	let g:indentLine_enabled = 0
 
+	" Indentar primer nivel
+	let g:indentLine_showFirstIndentLevel = 1
+
 	" Airline
 	let g:airline_powerline_fonts = 1
 	let g:airline_left_sep = ''
