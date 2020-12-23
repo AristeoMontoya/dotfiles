@@ -18,6 +18,7 @@ let g:which_key_map.g = {
 			\ 's' : [':G'			,	 'Git Status'],
 			\}
 
+
 let g:which_key_map.d = {
 			\ 'name' : '+Debugger',
 			\ 'd' : ['<Plug>VimspectorToggleBreakpoint'	,	'Conmutar punto de interrupción'],
@@ -36,8 +37,9 @@ let g:which_key_map.s = {
 
 
 let g:which_key_map.r = {
-			\ 'name' : '+Renombrar',
+			\ 'name' : '+Refactorizar',
 			\ 'n' : ['<Plug>(coc-rename)' , 'Renombrar símbolo'],
+			\ 't' : ['call Tabulacion()' , 'Cambiar espacios a tab'],
 			\}
 
 

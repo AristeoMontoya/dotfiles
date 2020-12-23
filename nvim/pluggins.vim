@@ -23,7 +23,6 @@ call plug#begin('~/.data/plugged')
 		Plug 'puremourning/vimspector'
 		Plug 'liuchengxu/vim-which-key'
 		Plug 'nvim-treesitter/nvim-treesitter'
-		Plug 'ThePrimeagen/vim-be-good'
 		Plug 'airblade/vim-gitgutter'
 		Plug 'tpope/vim-commentary'
 		Plug 'tpope/vim-fugitive'
@@ -37,8 +36,12 @@ if !exists('g:vscode')
 	" Conteo de hunks en AirLine
 	let g:airline#extensions#hunks#enabled = 0
 
-	" Identación con espacios para Python
+	" Identación con espacios para Python y JS
+	" Desactivado por defecto. Se activa por AutoCMD
 	let g:indentLine_enabled = 0
+
+	" Marcar el primer nivel de identación
+	let g:indentLine_showFirstIndentLevel=1
 
 	" Airline
 	let g:airline_powerline_fonts = 1
@@ -61,7 +64,7 @@ if !exists('g:vscode')
 				\ 10: 'Octubre', 11: 'Noviembre', 12: 'Diciembre'
 				\ }
 
-	" Definiciones de VimWiki
+	" Definiciones de grupos de VimWiki
 	hi def VimwikiHeader1 guifg=#61AFEF
 	hi def VimwikiHeader3 guifg=#E5C07B
 	hi def VimwikiHeader4 guifg=#E5C07B
@@ -122,6 +125,7 @@ if !exists('g:vscode')
 		endif
 	endfunction
 
+	" Colores de símbolos de agrupamiento
 	let g:rainbow_conf = {
 				\'guifgs': ['#E5C07B', '#C678DD', '#61AFEF', '#FF7A85'],
 				\'separately': {
