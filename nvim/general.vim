@@ -1,28 +1,5 @@
-"syntax on
+syntax on
 colorscheme onedark
-
-" Identación con espacios para Python
-let g:indentLine_enabled = 0
-" Airline
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_section_z = '%{line(".")}/%{line("$")} : %{col(".")}'
-let g:nv_search_paths = ['~/vimwiki']
-let g:fzf_preview_command = 'bat --color=always --style=grid --theme=OneHalfDark {-1}'
-let wiki = { }
-let wiki.path = '~/vimwiki/'
-let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'js': 'javascript',
-\ 'java': 'java', 'sql': 'sql', 'css': 'css', 'html': 'html', 'hskl': 'haskell',
-\ 'arduino': 'arduino', 'php': 'php', 'json': 'json', 'sh': 'sh'
-\}
-let g:vimwiki_list = [wiki]
-let g:vimwiki_diary_months	= {
-\ 1: 'Enero', 2: 'Febrero', 3: 'Marzo',
-\ 4: 'Abril', 5: 'Mayo', 6: 'Junio',
-\ 7: 'Julio', 8: 'Agosto', 9: 'Septiembre',
-\ 10: 'Octubre', 11: 'Noviembre', 12: 'Diciembre'
-\ }
 
 set listchars=tab:\¦\ 
 set iskeyword+=-
@@ -47,7 +24,6 @@ set nocompatible			" Configuraciones de VimWiki
 set tabline=%!MyTabLine()	" Pestañas personalizadas
 filetype plugin on			" Configuraciones de Vimwiki
 
-
 function MyTabLine()
 	let s = '' " complete tabline goes here
 	" loop through each tab page
@@ -60,7 +36,7 @@ function MyTabLine()
 		endif
 		" set the tab page number (for mouse clicks)
 		let s .= '%' . (t + 1) . 'T'
-		let s .= ' ['
+		let s .= '['
 		" set page number string
 		let s .= t + 1 . '] '
 		" get buffer names and statuses

@@ -1,5 +1,5 @@
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-if has("termguicolors")
+if has('termguicolors')
 	set termguicolors
 endif
 
@@ -27,13 +27,39 @@ call plug#begin('~/.data/plugged')
 		Plug 'airblade/vim-gitgutter'
 		Plug 'tpope/vim-commentary'
 		Plug 'tpope/vim-fugitive'
+		Plug 'easymotion/vim-easymotion'
+		Plug 'endel/vim-github-colorscheme'
 	endif
 	Plug 'tpope/vim-surround'
 call plug#end()
 
 if !exists('g:vscode')
-
+	" Conteo de hunks en AirLine
 	let g:airline#extensions#hunks#enabled = 0
+
+	" Identación con espacios para Python
+	let g:indentLine_enabled = 0
+
+	" Airline
+	let g:airline_powerline_fonts = 1
+	let g:airline_left_sep = ''
+	let g:airline_right_sep = ''
+	let g:airline_section_z = '%{line(".")}/%{line("$")} : %{col(".")}'
+	let g:nv_search_paths = ['~/vimwiki']
+	let g:fzf_preview_command = 'bat --color=always --style=grid --theme=OneHalfDark {-1}'
+	let wiki = { }
+	let wiki.path = '~/vimwiki/'
+	let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'js': 'javascript',
+				\ 'java': 'java', 'sql': 'sql', 'css': 'css', 'html': 'html', 'hskl': 'haskell',
+				\ 'arduino': 'arduino', 'php': 'php', 'json': 'json', 'sh': 'sh'
+				\}
+	let g:vimwiki_list = [wiki]
+	let g:vimwiki_diary_months	= {
+				\ 1: 'Enero', 2: 'Febrero', 3: 'Marzo',
+				\ 4: 'Abril', 5: 'Mayo', 6: 'Junio',
+				\ 7: 'Julio', 8: 'Agosto', 9: 'Septiembre',
+				\ 10: 'Octubre', 11: 'Noviembre', 12: 'Diciembre'
+				\ }
 
 	" Definiciones de VimWiki
 	hi def VimwikiHeader1 guifg=#61AFEF
@@ -113,21 +139,7 @@ if !exists('g:vscode')
 				\	}
 				\}
 
-	lua << EOF
-	require'nvim-treesitter.configs'.setup {
-ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-highlight = {
-	enable = true			   -- false will disable the whole extension
-	},
-	indent = {
-enable = true
-}
-}
-require"nvim-treesitter.highlight"
-local hlmap = vim.treesitter.highlighter.hl_map
-hlmap.error = nil
-hlmap["punctuation.delimiter"] = "Delimiter"
-hlmap["punctuation.bracket"] = nil
-EOF
+	" Cargando configuraciones de Tree sitter
+	luafile ~/.config/nvim/treeSitter.lua
 	let g:rainbow_active = 1
 endif

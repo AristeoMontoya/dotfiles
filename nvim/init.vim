@@ -1,5 +1,4 @@
 source ~/.config/nvim/generalvscode.vim
-source ~/.config/nvim/onedark.vim
 source ~/.config/nvim/pluggins.vim
 if !exists('g:vscode')
 	source ~/.config/nvim/general.vim

@@ -85,3 +85,8 @@ cmap w!! w !sudo tee %
 " Git
 " Git Status
 nmap <silent><leader>gs :G<CR>
+
+:command WQ wq
+:command Wq wq
+:command W w
+:command Q q

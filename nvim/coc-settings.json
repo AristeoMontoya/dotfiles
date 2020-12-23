@@ -6,9 +6,22 @@
 		"python"
 	],
 	"suggest.noselect": false,
+	"python.linting.pylintEnabled": true,
+	"python.jediEnabled": true,
+	"python.linting.pylintArgs": [
+		"--disable=E1120",
+		"--disable=W0621",
+		"--disable=R1705",
+		"--disable=c0103",
+		"--disable=C0116",
+		"--disable=C0301",
+		"--disable=W1401"
+	],
+	"python.formatting.autopep8Args": [
+		"--ignore=E731"
+	],
 	"prettier.tabWidth": 2,
 	"prettier.useTabs": true,
-	"python.analysis.typeCheckingMode": "basic",
 	"java.home": "/usr/lib/jvm/java-11-openjdk",
 	"phpactor.enable": true,
 	"explorer.icon.enableNerdfont": true,
