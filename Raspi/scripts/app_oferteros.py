@@ -1,3 +1,4 @@
+from datetime import datetime
 import time
 import logging
 import sys
@@ -29,7 +30,9 @@ def convert_pdf(event):
                 os.rename(file_path, dir_name + '/' + file)
 
             except Exception as e:
-                logging.error('Error')
+                timestamp = datetime.now().strftime("%Y/%m/%d - %H:%M%:%S")
+                logging.error(f'---- {timestamp} ----')
+                logging.error(f'Error: {e}')
                 time.sleep(2)
                 convert_pdf(event)
 
