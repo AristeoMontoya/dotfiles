@@ -1,20 +1,22 @@
-
-background-opacity: 0.0
+background_opacity: 1.0
+hide_cursor_when_typing: on
 
 font:
-  normal: 
-    family: MesloLGS NF 
-    #family: JetBrains Mono 
-  
-  bold: 
-    family: MesloLGS NF
-    #family: JetBrains Mono
+  normal:
+     family: JetBrainsMono NF
+
+  bold:
+     family: JetBrainsMono NF
 
   italic:
-    family: MesloLGS NF
-    #family: JetBrains Mono
+     family: JetBrainsMono NF
 
-  size: 9.5
+  size: 9
 
 cursor:
- style: Beam
+  style: Beam
+
+window:
+  dimensions:
+    columns: 80
+    lines: 25
