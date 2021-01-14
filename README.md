@@ -15,3 +15,4 @@ De momento solo se usa Neovim 3.4, por lo que se requiere una versión diferente
 - **Samba**: Archivos por red.
 - **Transmission**: Servidor de torrent.
 - **MiniDLNA**: Servidor DLNA.
+- **Mosquitto**: MQTT Broker *En un futuro*.
