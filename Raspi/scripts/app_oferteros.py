@@ -8,33 +8,54 @@ import pyinotify
 from pdf2image import convert_from_path as pdf_converter
 
 
-def convert_pdf(event):
+def split_path(path):
+    path_tuple = os.path.split(path)
+    return path_tuple
+
+
+def dir_listener(watch_dir):
+    logging.info('Escuchando en: %s', watch_dir)
+    while True:
+        watcher = pyinotify.WatchManager()
+
+        notifier = pyinotify.Notifier(watcher, default_proc_fun=event_handler)
+        watcher.add_watch(watch_dir, pyinotify.ALL_EVENTS)
+
+        # Comienza a escuchar eventos
+        notifier.loop()
+
+
+def event_handler(event):
     event_type = event.maskname
-    logging.info(f'Evento: {event_type}')
+    logging.info('Evento: %s', event_type)
 
     if event_type in ('IN_MOVED_TO', 'IN_CREATE'):
         logging.info('Entre los eventos válidos')
         file = event.name
-        logging.info(f'Nombre del archivo: {file}')
+        logging.info('Nombre del archivo: %s', file)
+        convert_pdf(watch_dir, file)
 
-        # Comprobando que el archivo termine en pdf
-        if re.search('.*\.pdf$', file):
-            logging.info('Es PDF')
-            file_path = watch_dir + '/' + file
-            dir_name = file_path[:-4]
-            try:
-                images = pdf_converter(file_path)
-                os.mkdir(dir_name)
-                for i, img in enumerate(images):
-                    img.save(f'{dir_name}/Ofertero ({i + 1}).jpg', 'JPEG')
-                os.rename(file_path, dir_name + '/' + file)
 
-            except Exception as e:
-                timestamp = datetime.now().strftime("%Y/%m/%d - %H:%M%:%S")
-                logging.error(f'---- {timestamp} ----')
-                logging.error(f'Error: {e}')
-                time.sleep(2)
-                convert_pdf(event)
+def convert_pdf(directory, file):
+    # Comprobando que el archivo termine en pdf
+    if re.search('.*\.pdf$', file):
+        logging.info('Es PDF: %s', file)
+        file_name = file[:-4]
+        file_path = directory + '/' + file
+        dir_name = file_path[:-4]
+        try:
+            images = pdf_converter(file_path)
+            os.mkdir(dir_name)
+            for i, img in enumerate(images):
+                img.save(f'{dir_name}/{file_name} ({i + 1}).jpg', 'JPEG')
+            os.rename(file_path, dir_name + '/' + file)
+
+        except Exception as e:
+            timestamp = datetime.now().strftime("%Y/%m/%d - %H:%M%:%S")
+            logging.error('---- %s ----', timestamp)
+            logging.error('Error: %s', e)
+            time.sleep(2)
+            convert_pdf(file)
 
 
 if __name__ == '__main__':
@@ -42,12 +63,11 @@ if __name__ == '__main__':
     logging.basicConfig(filename='log_oferteros.log', level=logging.INFO)
 
     # Directorio a escuchar obtenido de argumentos
-    watch_dir = sys.argv[1]
-    while True:
-        watcher = pyinotify.WatchManager()
+    path = sys.argv[1]
 
-        notifier = pyinotify.Notifier(watcher, default_proc_fun=convert_pdf)
-        watcher.add_watch(watch_dir, pyinotify.ALL_EVENTS)
-
-        # Comienza a escuchar eventos
-        notifier.loop()
+    if os.path.isdir(path):
+        watch_dir = path
+        dir_listener(path)
+    else:
+        file_path = split_path(path)
+        convert_pdf(*file_path)
