@@ -60,7 +60,8 @@ def convert_pdf(directory, file):
 
 if __name__ == '__main__':
     # Archivo de log
-    logging.basicConfig(filename='log_oferteros.log', level=logging.INFO)
+    log_file = '/home/pi/scripts/log_oferteros.log'
+    logging.basicConfig(filename=log_file, level=logging.INFO)
 
     # Directorio a escuchar obtenido de argumentos
     path = sys.argv[1]
