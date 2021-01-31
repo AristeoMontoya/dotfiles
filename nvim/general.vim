@@ -1,5 +1,5 @@
 syntax on
-colorscheme onedark
+colorscheme darkblue
 
 set listchars=tab:\¦\ 
 set iskeyword+=-
