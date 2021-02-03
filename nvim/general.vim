@@ -1,5 +1,6 @@
 syntax on
-colorscheme onedark
+" colorscheme onedark
+" colorscheme gruvbuddy
 
 set listchars=tab:\¦\ 
 set iskeyword+=-
@@ -22,6 +23,7 @@ set shiftwidth=4			" Tamaño de tabulación
 set nowrap					" Evita que las líneas se divivan si excede el ancho
 set nocompatible			" Configuraciones de VimWiki
 set tabline=%!MyTabLine()	" Pestañas personalizadas
+set cmdheight=1
 filetype plugin on			" Configuraciones de Vimwiki
 
 function MyTabLine()
@@ -101,3 +103,15 @@ endfunction
 function Tabulacion()
 	set noexpandtab|retab!
 endfunction
+
+function OpenConfig()
+	tabedit $CONFIGVIM/init.vim
+	tcd $CONFIGVIM
+endfunction
+
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc

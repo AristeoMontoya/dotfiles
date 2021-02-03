@@ -21,11 +21,18 @@ set shortmess+=c
 set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
- autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-	" Use <Tab> for confirm completion.
-	" Coc only does snippet and additional edit on confirm.
-	inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
+" Use <Tab> for confirm completion.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
+
+" Navegar por ventana de sugerencias
+" Navegar hacia abajo en la lista
+inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
+
+" Navegar hacia arriba en la lista
+inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
 
 function! s:check_back_space() abort
 	let col = col('.') - 1
@@ -34,15 +41,6 @@ endfunction
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-"if has('patch8.1.1068')
-	" Use `complete_info` if your (Neo)Vim version supports it.
-	" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-"else
-	"imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-"endif
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -54,7 +52,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> gpr :CocSearch <C-R>=expand("<cword>")<CR><CR>
-nmap <leader> rr <Plug>(coc-rename)
+nmap <leader> rn <Plug>(coc-rename)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -69,9 +67,6 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
 xmap <leader>f	<Plug>(coc-format-selected)
@@ -104,6 +99,5 @@ omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
 " Explorer
-nmap <space>e :CocCommand explorer<CR>
-nmap <space>f :CocCommand explorer --preset floating<CR>
+nmap <silent><space>fe :CocCommand explorer<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif

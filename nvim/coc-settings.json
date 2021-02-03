@@ -1,10 +1,16 @@
 {
+	"html.validate.html": true,
+	"bootstrap-classname.filetypes": [
+		"html",
+		"php"
+	],
 	"coc.preferences.formatOnSaveFiletypes": [
 		"html",
 		"css",
 		"markdown",
 		"python"
 	],
+	"emmet.includeLanguages": {"php": "html"},
 	"suggest.noselect": false,
 	"python.linting.pylintEnabled": true,
 	"python.jediEnabled": true,
@@ -22,8 +28,7 @@
 	],
 	"prettier.tabWidth": 2,
 	"prettier.useTabs": true,
-	"java.home": "/usr/lib/jvm/java-11-openjdk",
-	"phpactor.enable": true,
+	"java.enabled": true,
 	"explorer.icon.enableNerdfont": true,
 	"explorer.previewAction.onHover": false,
 	"explorer.keyMappings.global": {
@@ -33,7 +38,7 @@
 	"languageserver": {
 		"ccls": {
 			"command": "ccls",
-			"filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+			"filetypes": ["c", "cpp", "cuda", "objc", "objcpp", "arduino", "ino"],
 			"rootPatterns": [".ccls-root", "compile_commands.json"],
 			"initializationOptions": {
 				"cache": {
@@ -44,5 +49,6 @@
 				}
 			}
 		}
-	}
+	},
+	"omnisharp.trace.server": "information"
 }

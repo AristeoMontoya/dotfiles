@@ -11,11 +11,27 @@ let g:which_key_map['fe'] = 'Explorador de archivos'
 
 let g:which_key_map.a = 'Realizar acción CoC'
 
+let g:which_key_map.n = 'Eliminar resaltado'
+
 let g:which_key_map['ac'] = 'Acciones CoC'
+
+let g:which_key_map.q = {
+			\ 'name' : '+Quick fixes',
+			\ 'f' : ['<Plug>(coc-fix-current)'	,	 'Quickfix'],
+			\}
+
+
+let g:which_key_map.o = {
+			\ 'name' : '+Abrir',
+			\ 'c' : ['Config'	,	 'Abrir configuración de Neovim'],
+			\}
+
 
 let g:which_key_map.g = {
 			\ 'name' : '+Git',
 			\ 's' : [':G'			,	 'Git Status'],
+			\ 'b' : [':Git blame'	,	 'Git blame'],
+			\ 'l' : [':GcLog'			,	 'Git Log'],
 			\}
 
 

@@ -6,11 +6,8 @@ endif
 call plug#begin('~/.data/plugged')
 	if !exists('g:vscode')
 		Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
-		Plug 'vim-airline/vim-airline'
-		Plug 'vim-airline/vim-airline-themes'
-		Plug 'ap/vim-css-color'
+		Plug 'norcalli/nvim-colorizer.lua'
 		Plug 'neoclide/coc.nvim', {'branch': 'release'}
-		Plug 'joshdick/onedark.vim'
 		Plug 'jiangmiao/auto-pairs'
 		Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 		Plug 'junegunn/fzf.vim'
@@ -18,6 +15,7 @@ call plug#begin('~/.data/plugged')
 		Plug 'luochen1990/rainbow'
 		Plug 'ryanoasis/vim-devicons'
 		Plug 'vimwiki/vimwiki'
+		Plug 'tbabej/taskwiki'
 		Plug 'Yggdroot/indentLine'
 		Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 		Plug 'puremourning/vimspector'
@@ -27,14 +25,17 @@ call plug#begin('~/.data/plugged')
 		Plug 'tpope/vim-commentary'
 		Plug 'tpope/vim-fugitive'
 		Plug 'easymotion/vim-easymotion'
-		Plug 'endel/vim-github-colorscheme'
+		Plug 'tjdevries/colorbuddy.nvim'
+		Plug 'Th3Whit3Wolf/onebuddy'
+		Plug 'nvim-treesitter/playground'
+		Plug 'hoob3rt/lualine.nvim'
 	endif
 	Plug 'tpope/vim-surround'
 call plug#end()
 
 if !exists('g:vscode')
-	" Conteo de hunks en AirLine
-	let g:airline#extensions#hunks#enabled = 0
+	lua require('colorbuddy').colorscheme('onebuddy')
+	lua require'colorizer'.setup()
 
 	" Identación con espacios para Python y JS
 	" Desactivado por defecto. Se activa por AutoCMD
@@ -43,11 +44,6 @@ if !exists('g:vscode')
 	" Marcar el primer nivel de identación
 	let g:indentLine_showFirstIndentLevel=1
 
-	" Airline
-	let g:airline_powerline_fonts = 1
-	let g:airline_left_sep = ''
-	let g:airline_right_sep = ''
-	let g:airline_section_z = '%{line(".")}/%{line("$")} : %{col(".")}'
 	let g:nv_search_paths = ['~/vimwiki']
 	let g:fzf_preview_command = 'bat --color=always --style=grid --theme=OneHalfDark {-1}'
 	let wiki = { }
@@ -145,5 +141,9 @@ if !exists('g:vscode')
 
 	" Cargando configuraciones de Tree sitter
 	luafile ~/.config/nvim/treeSitter.lua
+
+	" Lualine
+	luafile ~/.config/nvim/lualine.lua
+
 	let g:rainbow_active = 1
 endif

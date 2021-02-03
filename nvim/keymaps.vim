@@ -1,73 +1,87 @@
 " Cambiar de espacio en el editor
-nnoremap <C-a> :e#<CR>
+nnoremap <silent> <C-a> :e#<CR>
 
 "				SPLITS
 " ==================================
-" Reducir split vertical
 " Mover a split izquierdo
-nnoremap <C-h> <C-w>h
+nnoremap <silent> <C-h> <C-w>h
 
 " Mover a split de abajo
-nnoremap <C-j> <C-w>j
+nnoremap <silent> <C-j> <C-w>j
 
 " Mover a split de arriba
-nnoremap <C-k> <C-w>k
+nnoremap <silent> <C-k> <C-w>k
 
 " Mover a split derecho
-nnoremap <C-l> <C-w>l
+nnoremap <silent> <C-l> <C-w>l
 
 " Reducir split vertical
-nnoremap <A-h> :vertical resize -5<CR>
+nnoremap <silent> <A-h> :vertical resize -5<CR>
 
 " Reducir splir horizontal
-nnoremap <A-j> :resize -5<CR>
+nnoremap <silent> <A-j> :resize -5<CR>
 
 " Agrandar split horizontal
-nnoremap <A-k> :resize +5<CR>
+nnoremap <silent> <A-k> :resize +5<CR>
 
-nnoremap <A-l> :vertical resize +5<CR>
+" Agrandar split vertial
+nnoremap <silent> <A-l> :vertical resize +5<CR>
 
 " Crear Split horizontal
-nnoremap <leader>sh :split<CR>
+nnoremap <silent> <leader>sh :split<CR>
 
 " Crear split verticarl
-nnoremap <leader>sv :vs<CR>
+nnoremap <silent> <leader>sv :vs<CR>
 
 " Rotar splits
-nnoremap <leader>ss <C-W>R
+nnoremap <silent> <leader>ss <C-W>R
 
 " Mover split a pestaña
-nnoremap <leader>st <C-W>T
+nnoremap <silent> <leader>st <C-W>T
 
 " Guardar
-nnoremap <C-s> :w<CR>
+nnoremap <silent> <C-s> :w<CR>
 
 " Cambiar espacios por tabs
 nnoremap <silent> <leader>rt :call Tabulacion()<CR>
 
+command Tabulacion call Tabulacion()
+
 " Búsqueda difusa
-noremap <C-p> :call Fzf_dev()<CR>
+noremap <silent> <C-p> :call Fzf_dev()<CR>
 
 " Salir de insert en terminal
-tnoremap <ESC> <C-\><C-n><C-p>
+tnoremap <silent> <ESC> <C-\><C-n><C-p>
 
 " Abrir terminal
 nmap <silent> Ñ :call AbrirTerminal()<CR>
 
 " Nueva pestaña
-nmap <leader>tn :tabedit<CR>
+nmap <silent> <leader>tn :tabedit<CR>
 
 " Cerrar pestaña
-nmap <leader>tk :tabclose<CR>
+nmap <silent> <leader>tk :tabclose<CR>
+
+" Alternar pestañas
+noremap <silent> <tab> gt
+
+" Alternar pestañas en orden inverso
+noremap <silent> <S-tab> gT
+
+" Qutiar el marcado de coincidencias de búsqueda
+noremap <silent> <leader>n :noh<CR>
 
 " Adios popó
 map <left>	<nop>
 map <up>	<nop>
 map <down>	<nop>
-map <right> <nop>
+map <right>	<nop>
 
-" explorador de archivos
-nmap <silent><leader>fe :CocCommand explorer<CR>
+" Adios popó para insert
+imap <left>		<nop>
+imap <up>		<nop>
+imap <down>		<nop>
+imap <right>	<nop>
 
 " DEBUG
 " Breakpoints
@@ -80,18 +94,37 @@ nmap <leader>ds <Plug>VimspectorContinue
 nmap <leader>dS <Plug>VimspectorStop
 
 " Comentarios
-nnoremap <space>/ :Commentary<CR>
-vnoremap <space>/ :Commentary<CR>
+nnoremap <silent> <space>/ :Commentary<CR>
+vnoremap <silent> <space>/ :Commentary<CR>
 
 " Sudo aunque no sudo
 cmap w!! w !sudo tee %
 
-" Git
+" ==========================
+" 			Git
+" ==========================
 " Git Status
-nmap <silent><leader>gs :G<CR>
+nmap <silent> <leader>gs :G<CR>
+
+" Git log
+nmap <silent> <leader>gl :GcLog<CR>
+
+" Git blame
+" Blame para modo normal
+nmap <silent> <leader>gb :Git blame<CR>
+
+" Blame para modo visual
+vmap <silent> <leader>gb :Gblame<CR>
 
 " Errores comunes a comandos frecuentes
 :command WQ wq
 :command Wq wq
 :command W w
 :command Q q
+:command QA qa
+:command Qa qa
+
+" Abrir configuraciones
+:command Config call OpenConfig()
+
+nnoremap <silent> <leader>oc :Config<CR>
