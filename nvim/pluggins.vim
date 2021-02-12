@@ -46,19 +46,24 @@ if !exists('g:vscode')
 
 	let g:nv_search_paths = ['~/vimwiki']
 	let g:fzf_preview_command = 'bat --color=always --style=grid --theme=OneHalfDark {-1}'
+
+	" Usar Markdown para VimWiki
+	let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 	let wiki = { }
 	let wiki.path = '~/vimwiki/'
 	let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'js': 'javascript',
 				\ 'java': 'java', 'sql': 'sql', 'css': 'css', 'html': 'html', 'hskl': 'haskell',
 				\ 'arduino': 'arduino', 'php': 'php', 'json': 'json', 'sh': 'sh'
 				\}
-	let g:vimwiki_list = [wiki]
 	let g:vimwiki_diary_months	= {
 				\ 1: 'Enero', 2: 'Febrero', 3: 'Marzo',
 				\ 4: 'Abril', 5: 'Mayo', 6: 'Junio',
 				\ 7: 'Julio', 8: 'Agosto', 9: 'Septiembre',
 				\ 10: 'Octubre', 11: 'Noviembre', 12: 'Diciembre'
 				\ }
+	let g:markdown_folding = 0
+	let g:taskwiki_markup_syntax = 'markdown'
 
 	" Definiciones de grupos de VimWiki
 	hi def VimwikiHeader1 guifg=#61AFEF

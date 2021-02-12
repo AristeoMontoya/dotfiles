@@ -1,5 +1,6 @@
-" Experimento
 syntax on
+" colorscheme onedark
+" colorscheme gruvbuddy
 
 set listchars=tab:\¦\ 
 set iskeyword+=-
