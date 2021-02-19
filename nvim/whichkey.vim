@@ -45,10 +45,13 @@ let g:which_key_map.d = {
 
 let g:which_key_map.s = {
 			\ 'name' : '+Splits',
-			\ 'h' : ['split'	,		 'Split horizontal'],
-			\ 's' : ['<C-W>R'	,					'Rotar'],
-			\ 't' : ['<C-W>T'	,	'Mover split a pestaña'],
-			\ 'v' : ['vs'		,		   'Split vertical'],
+			\ 'h' : ['split'					,		 'Split horizontal'],
+			\ 'r' : ['<C-W>R'					,					'Rotar'],
+			\ 't' : ['<C-W>T'					,	'Mover split a pestaña'],
+			\ 'v' : ['vs'						,			'Split vertical'],
+			\ 's' : ['setlocal spell spelllang=es_mx'	,	'Validar español'],
+			\ 'e' : ['setlocal spell spelllang=en_us'	,		'Validar inglés'],
+			\ 'n' : ['setlocal nospell'					,	'No validar idioma'],
 			\}
 
 

@@ -67,6 +67,7 @@ if !exists('g:vscode')
 
 	" Definiciones de grupos de VimWiki
 	hi def VimwikiHeader1 guifg=#61AFEF
+	hi def VimwikiHeader2 guifg=#98C379
 	hi def VimwikiHeader3 guifg=#E5C07B
 	hi def VimwikiHeader4 guifg=#E5C07B
 	hi def VimwikiHeader5 guifg=#E5C07B
@@ -149,6 +150,9 @@ if !exists('g:vscode')
 
 	" Lualine
 	luafile ~/.config/nvim/lualine.lua
+
+	" Colorizer
+	luafile ~/.config/nvim/colorizer.lua
 
 	let g:rainbow_active = 1
 endif

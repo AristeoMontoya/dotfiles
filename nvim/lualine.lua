@@ -2,4 +2,4 @@ local lualine = require('lualine')
 
 lualine.status()
 
-lualine.theme = 'onedark'
+lualine.options.theme = 'onedark'

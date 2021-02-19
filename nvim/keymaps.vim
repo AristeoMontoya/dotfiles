@@ -34,7 +34,7 @@ nnoremap <silent> <leader>sh :split<CR>
 nnoremap <silent> <leader>sv :vs<CR>
 
 " Rotar splits
-nnoremap <silent> <leader>ss <C-W>R
+nnoremap <silent> <leader>sr <C-W>R
 
 " Mover split a pestaña
 nnoremap <silent> <leader>st <C-W>T
@@ -128,3 +128,13 @@ vmap <silent> <leader>gb :Gblame<CR>
 :command Config call OpenConfig()
 
 nnoremap <silent> <leader>oc :Config<CR>
+
+" Spells
+" Verificar español
+nnoremap <leader>ss :setlocal spell spelllang=es_mx<CR>
+
+" Verificar inglés
+nnoremap <leader>se :setlocal spell spelllang=en_us<CR>
+
+" Dejar de verificar
+nnoremap <silent> <leader>sn :setlocal nospell<CR>

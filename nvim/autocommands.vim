@@ -1,6 +1,7 @@
 " Autocmd's para lenguajes
 function! Txt()
 	let b:indentLine_enabled=1
+	setlocal scrolloff=2
 	setlocal expandtab
 	setlocal nolist
 endfunction
@@ -96,3 +97,7 @@ autocmd BufRead *.pl set filetype=prolog
 
 " Mantener el tamaño de los splits al cambiar el tamaño de ventana
 autocmd VimResized * wincmd =
+
+" Mantener dos líneas extra verticales. Más fácil escribir.
+autocmd BufEnter *.md set scrolloff=2
+autocmd BufLeave *.md set scrolloff=0
