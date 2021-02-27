@@ -28,10 +28,8 @@ def dir_listener(watch_dir):
     logging.info('Escuchando en: %s', watch_dir)
     while True:
         watcher = pyinotify.WatchManager()
-
         notifier = pyinotify.Notifier(watcher, default_proc_fun=event_handler)
-        watcher.add_watch(watch_dir, pyinotify.ALL_EVENTS)
-
+        watcher.add_watch(watch_dir, pyinotify.IN_CLOSE_WRITE)
         # Comienza a escuchar eventos
         notifier.loop()
 
@@ -39,12 +37,10 @@ def dir_listener(watch_dir):
 def event_handler(event):
     event_type = event.maskname
     logging.info('Evento: %s', event_type)
-
-    if event_type in ('IN_MOVED_TO', 'IN_CREATE'):
-        logging.info('Entre los eventos válidos')
-        file = event.name
-        logging.info('Nombre del archivo: %s', file)
-        convert_pdf(watch_dir, file)
+    # El evento se dispara cuando se cierra un archivo escrito
+    file = event.name
+    logging.info('Nombre del archivo: %s', file)
+    convert_pdf(watch_dir, file)
 
 
 def convert_pdf(directory, file):
@@ -55,6 +51,7 @@ def convert_pdf(directory, file):
         logging.info('Archivo: %s', file)
         file_name = file[:-4]
         file_path = directory + '/' + file
+        logging.info('Ruta absoluta: %s', file_path)
         dir_name = file_path[:-4]
         try:
             images = pdf_converter(file_path)

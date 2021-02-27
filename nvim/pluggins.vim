@@ -7,7 +7,7 @@ call plug#begin('~/.data/plugged')
 	if !exists('g:vscode')
 		Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 		Plug 'norcalli/nvim-colorizer.lua'
-		Plug 'neoclide/coc.nvim', {'branch': 'release'}
+		" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 		Plug 'jiangmiao/auto-pairs'
 		Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 		Plug 'junegunn/fzf.vim'
