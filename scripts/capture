@@ -1,0 +1,14 @@
+#!/bin/sh
+FECHA="$(date +%Y-%m-%d)"
+NOMBRE_ARCHIVO="$HOME/vimwiki/capturas/$FECHA.md"
+
+if [ ! -f $NOMBRE_ARCHIVO ]; then
+	echo "# Notas de $FECHA" > $NOMBRE_ARCHIVO
+	echo "- [[$FECHA]]" >> "$HOME/vimwiki/capturas/capturas.md"
+fi
+
+nvim -c "norm Go" \
+	-c "norm Go## $(date +%H:%M)" \
+	-c "norm G2o" \
+	-c "norm zz" \
+	-c "startinsert" $NOMBRE_ARCHIVO
