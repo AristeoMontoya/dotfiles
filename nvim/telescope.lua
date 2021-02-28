@@ -1,3 +1,4 @@
+local actions = require('telescope.actions')
 require('telescope').setup{
   defaults = {
     vimgrep_arguments = {
@@ -40,5 +41,19 @@ require('telescope').setup{
 
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+  }
+}
+
+require('telescope').setup{
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+      },
+      n = {
+      	  ["esc"] = actions.close
+      }
+    },
   }
 }

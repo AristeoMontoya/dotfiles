@@ -47,9 +47,6 @@ nnoremap <silent> <leader>rt :call Tabulacion()<CR>
 
 command Tabulacion call Tabulacion()
 
-" Búsqueda difusa
-noremap <silent> <C-p> :call Fzf_dev()<CR>
-
 " Salir de insert en terminal
 tnoremap <silent> <ESC> <C-\><C-n><C-p>
 
