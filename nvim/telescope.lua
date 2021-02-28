@@ -52,7 +52,7 @@ require('telescope').setup{
         ["<C-k>"] = actions.move_selection_previous,
       },
       n = {
-      	  ["esc"] = actions.close
+        ["esc"] = actions.close
       }
     },
   }
