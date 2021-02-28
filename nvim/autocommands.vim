@@ -14,6 +14,7 @@ endfunction
 function! Markdown()
 	let b:indentLine_enabled=1
 	let b:coc_suggest_disable = 1
+	let g:indentLine_setConceal = 0
 	setlocal wrap
 	setlocal linebreak
 	setlocal nonumber

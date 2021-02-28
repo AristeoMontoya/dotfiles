@@ -1,5 +1,5 @@
 require 'colorizer'.setup {
 	'*';
 	'!vimwiki';
-	'!md';
+	'!markdown';
 }

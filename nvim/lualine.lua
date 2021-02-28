@@ -1,5 +1,5 @@
 local lualine = require('lualine')
-
+lualine.options.section_separators = nil
+lualine.options.component_separators = '|'
 lualine.status()
-
-lualine.theme = 'onedark'
+lualine.options.theme = 'onedark'
