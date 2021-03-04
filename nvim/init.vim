@@ -17,5 +17,4 @@ if !exists('g:vscode')
 	" ------------------------------------
 	source ~/.config/nvim/keymaps.vim
 	source ~/.config/nvim/autocommands.vim
-	"a
 endif
