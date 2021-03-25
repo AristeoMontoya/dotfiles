@@ -141,3 +141,7 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Buscar capturas de notas con Telescope
+nnoremap <leader>fc <cmd>lua require 'finders'.find_captures()<CR>
+nnoremap <leader>fd <cmd>lua require 'finders'.find_definition()<CR>

@@ -1,6 +1,6 @@
 syntax on
 
-set listchars=tab:\¦\ 
+set listchars=tab:\▏\ 
 set iskeyword+=-
 set list					" Caracter para identación
 set noshowmode				" No mostrar el mensaje de modo actual
@@ -108,8 +108,8 @@ function OpenConfig()
 endfunction
 
 function! SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+	if !exists("*synstack")
+		return
+	endif
+	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc

@@ -1,15 +1,23 @@
 local actions = require('telescope.actions')
+
 require('telescope').setup{
   defaults = {
-    vimgrep_arguments = {
-      'rg',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case'
+    mappings = {
+      i = {
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<esc>"] = actions.close
+      },
     },
+    -- vimgrep_arguments = {
+    --   'rg',
+    --   '--color=never',
+    --   '--no-heading',
+    --   '--with-filename',
+    --   '--line-number',
+    --   '--column',
+    --   '--smart-case'
+    -- },
     prompt_position = "bottom",
     prompt_prefix = "> ",
     selection_caret = "> ",
@@ -41,19 +49,5 @@ require('telescope').setup{
 
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
-  }
-}
-
-require('telescope').setup{
-  defaults = {
-    mappings = {
-      i = {
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-k>"] = actions.move_selection_previous,
-      },
-      n = {
-        ["esc"] = actions.close
-      }
-    },
   }
 }

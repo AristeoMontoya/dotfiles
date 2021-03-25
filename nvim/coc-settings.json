@@ -13,20 +13,6 @@
 	],
 	"emmet.includeLanguages": {"php": "html"},
 	"suggest.noselect": false,
-	"python.linting.pylintEnabled": true,
-	"python.jediEnabled": true,
-	"python.linting.pylintArgs": [
-		"--disable=E1120",
-		"--disable=W0621",
-		"--disable=R1705",
-		"--disable=c0103",
-		"--disable=C0116",
-		"--disable=C0301",
-		"--disable=W1401"
-	],
-	"python.formatting.autopep8Args": [
-		"--ignore=E731"
-	],
 	"prettier.tabWidth": 2,
 	"prettier.useTabs": true,
 	"java.enabled": true,
@@ -51,5 +37,6 @@
 			}
 		}
 	},
-	"omnisharp.trace.server": "information"
+	"omnisharp.trace.server": "information",
+	"python.linting.enabled": true
 }

@@ -1,6 +1,5 @@
 " Usar Markdown para VimWiki
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-            \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let wiki = { }
 let wiki.path = '~/vimwiki/'
 let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'js': 'javascript',
@@ -17,6 +16,7 @@ let g:vimwiki_diary_months	= {
 
 let g:taskwiki_markup_syntax = 'markdown'
 let g:taskwiki_disable_concealcursor='yes'
+let g:markdown_folding = 0
 
 " Definiciones de grupos de VimWiki
 hi def VimwikiHeader1 guifg=#61AFEF
@@ -29,4 +29,3 @@ hi def VimwikiBold gui=bold guifg=#FFFFFF
 hi def VimwikiBoldItalic gui=bold,italic guifg=#FFFFFF
 hi def VimwikiCode guifg=#E48AFF
 hi link VimwikiPre VimwikiCheckBoxDone
-

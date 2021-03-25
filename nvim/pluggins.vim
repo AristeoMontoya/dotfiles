@@ -22,7 +22,7 @@ call plug#begin('~/.data/plugged')
 		" Llaves con colores
 		Plug 'luochen1990/rainbow'
 		" Íconos
-		Plug 'ryanoasis/vim-devicons'
+		Plug 'kyazdani42/nvim-web-devicons'
 		" Marcado de identación con espacios
 		Plug 'Yggdroot/indentLine'
 		" Vista previa de MarkDown
@@ -52,6 +52,8 @@ call plug#begin('~/.data/plugged')
 		Plug 'vimwiki/vimwiki'
 		" Integración con TaskWarrior
 		Plug 'tbabej/taskwiki'
+		" Lineas de identación vacías
+		" Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
 	endif
 call plug#end()
 
@@ -64,6 +66,4 @@ if !exists('g:vscode')
 
 	" Marcar el primer nivel de identación
 	let g:indentLine_showFirstIndentLevel=1
-
-	let g:markdown_folding = 0
 endif
