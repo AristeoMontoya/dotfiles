@@ -1,5 +1,5 @@
 " Usar Markdown para VimWiki
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/notas/', 'syntax': 'markdown', 'ext': '.md'}]
 let wiki = { }
 let wiki.path = '~/vimwiki/'
 let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'js': 'javascript',
