@@ -130,8 +130,10 @@ Group.new('TooLong',      c.hue_5,        c.none,          no)
 Group.new('WildMenu',     c.mono_1,       c.mono_3,        no)
 Group.new('Special',      c.hue_2,        c.none,          no)
 Group.new('CodeBlock1',   c.none,         c.special_grey,  no)
+Group.new('CocErrorSign', c.hue_5,        c.none,          no)
 Group.new('CocInfoFloat', c.none,         c.special_grey,  no)
 Group.new('NormalFloat',  c.none,         c.special_grey,  no)
+Group.new('EasyMotionTargetDefault', c.hue_5, c.none,      no)
 
 ---------------------------
 -- Vim Help Highlighting --
