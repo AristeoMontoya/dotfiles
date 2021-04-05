@@ -23,6 +23,7 @@ Neovim sigue estando configurado en vimscript por cuestiones de compatibilidad c
 - **Montado automático de discos:** [Udiskie](https://github.com/coldfix/udiskie)
 - **Barra de estado:** [Waybar](https://github.com/Alexays/Waybar)
 - **Control de audio:** Amixer
+    - **Audio por PipeWire**
 - **Control de reproducción multimedia:** Playerctl
 - **Lanzador de aplicaciones:** [Rofi](https://github.com/davatorium/rofi)
 - **Capturas de pantalla:** [Grim](https://github.com/emersion/grim) + [Slurp](https://github.com/emersion/slurp)
