@@ -43,9 +43,6 @@ call plug#begin('~/.data/plugged')
 		Plug 'tpope/vim-fugitive'
 		" Movimiento vertical mejorado
 		Plug 'easymotion/vim-easymotion'
-		" OneDark
-		Plug 'tjdevries/colorbuddy.nvim'
-		Plug 'Th3Whit3Wolf/onebuddy'
 		" Línea de status
 		Plug 'hoob3rt/lualine.nvim'
 		" Vimwiki
@@ -54,11 +51,13 @@ call plug#begin('~/.data/plugged')
 		Plug 'tbabej/taskwiki'
 		" Lineas de identación vacías
 		" Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
+		" OneDark
+		Plug 'norcalli/nvim-base16.lua'
 	endif
 call plug#end()
 
 if !exists('g:vscode')
-	lua require('colorbuddy').colorscheme('onebuddy')
+	" lua require('colorbuddy').colorscheme('onebuddy')
 
 	" Identación con espacios para Python y JS
 	" Desactivado por defecto. Se activa por AutoCMD

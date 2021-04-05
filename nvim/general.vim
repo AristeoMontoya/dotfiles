@@ -24,6 +24,7 @@ set tabline=%!MyTabLine()	" Pestañas personalizadas
 set cmdheight=1
 filetype plugin on			" Configuraciones de Vimwiki
 
+
 function MyTabLine()
 	let tabLineString = '' " complete tabline goes here
 	" loop through each tab page
