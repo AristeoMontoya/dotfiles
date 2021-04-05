@@ -30,6 +30,7 @@ cmd("hi tstitle guifg=#e5c07b")
 cmd("hi tsinclude guifg=#d291e4")
 cmd("hi tsrepeat guifg=#d291e4")
 cmd("hi tserror guibg=None guifg=#e06c75")
+cmd("hi tscharacter guifg=#98c379")
 
 -- CoC
 cmd("hi pmenusel guibg=#98c379")
