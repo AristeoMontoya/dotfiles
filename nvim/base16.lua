@@ -14,6 +14,7 @@ cmd("hi DiffModified guifg = #81A1C1 guibg = none")
 cmd("hi EndOfBuffer guifg=#282c34")
 cmd("hi Delimiter None")
 cmd("hi Underlined guifg=None")
+cmd("hi Error guifg=None guibg=None")
 
 -- GitGutter
 cmd("hi GitGutterAdd guibg=None")
