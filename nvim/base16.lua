@@ -34,3 +34,13 @@ cmd("hi tscharacter guifg=#98c379")
 
 -- CoC
 cmd("hi pmenusel guibg=#98c379")
+
+-- Lualine
+cmd("hi lualine_y_diff_added_normal guifg=#98c379")
+cmd("hi lualine_y_diff_added_inactive guifg=#98c379")
+
+cmd("hi lualine_y_diff_modified_normal guifg=#56b6c2")
+cmd("hi lualine_y_diff_modified_inactive guifg=#56b6c2")
+
+cmd("hi lualine_y_diff_removed_normal guifg=#e06c75")
+cmd("hi lualine_y_diff_removed_inactive guifg=#e06c75")
