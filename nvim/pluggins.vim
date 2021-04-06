@@ -24,7 +24,7 @@ call plug#begin('~/.data/plugged')
 		" Íconos
 		Plug 'kyazdani42/nvim-web-devicons'
 		" Marcado de identación con espacios
-		" Plug 'Yggdroot/indentLine'
+		Plug 'Yggdroot/indentLine'
 		" Vista previa de MarkDown
 		Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 		" Debugger
@@ -49,8 +49,6 @@ call plug#begin('~/.data/plugged')
 		Plug 'vimwiki/vimwiki'
 		" Integración con TaskWarrior
 		Plug 'tbabej/taskwiki'
-		" Lineas de identación vacías
-		Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
 		" OneDark
 		Plug 'norcalli/nvim-base16.lua'
 	endif

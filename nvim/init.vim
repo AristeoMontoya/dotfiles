@@ -8,8 +8,7 @@ if !exists('g:vscode')
 	luafile ~/.config/nvim/lualine.lua
 	luafile ~/.config/nvim/colorizer.lua
 	luafile ~/.config/nvim/telescope.lua
-	source ~/.config/nvim/indentBlankLine.vim
-	" source ~/.config/nvim/indentLine.vim
+	source ~/.config/nvim/indentLine.vim
 	source ~/.config/nvim/rainbow.vim
 	source ~/.config/nvim/coc.vim
 	source ~/.config/nvim/whichkey.vim
