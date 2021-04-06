@@ -24,7 +24,7 @@ call plug#begin('~/.data/plugged')
 		" Íconos
 		Plug 'kyazdani42/nvim-web-devicons'
 		" Marcado de identación con espacios
-		Plug 'Yggdroot/indentLine'
+		" Plug 'Yggdroot/indentLine'
 		" Vista previa de MarkDown
 		Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 		" Debugger
@@ -50,21 +50,8 @@ call plug#begin('~/.data/plugged')
 		" Integración con TaskWarrior
 		Plug 'tbabej/taskwiki'
 		" Lineas de identación vacías
-		" Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
+		Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
 		" OneDark
 		Plug 'norcalli/nvim-base16.lua'
 	endif
 call plug#end()
-
-if !exists('g:vscode')
-	" lua require('colorbuddy').colorscheme('onebuddy')
-
-	" Identación con espacios para Python y JS
-	" Desactivado por defecto. Se activa por AutoCMD
-	let g:indentLine_enabled = 0
-
-	" Marcar el primer nivel de identación
-	let g:indentLine_showFirstIndentLevel=1
-	let g:indentLine_first_char = "▏" 
-	let g:indentLine_char = "▏" 
-endif
