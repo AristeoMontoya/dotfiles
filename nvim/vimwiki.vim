@@ -16,7 +16,7 @@ let g:vimwiki_diary_months	= {
 
 let g:taskwiki_markup_syntax = 'markdown'
 let g:taskwiki_disable_concealcursor='yes'
-let g:markdown_folding = 0
+let g:markdown_folding=1
 
 " Definiciones de grupos de VimWiki
 hi def VimwikiHeader1 guifg=#61AFEF

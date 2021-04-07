@@ -1,4 +1,5 @@
 call which_key#register('<Space>', "g:which_key_map")
+let g:which_key_use_floating_win=0
 
 nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
 set timeoutlen=500
