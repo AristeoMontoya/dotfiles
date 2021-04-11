@@ -18,7 +18,7 @@ require('lualine').setup {
 		lualine_b = { {'branch', icon = ''} },
 		lualine_c = {'filename'},
 		lualine_x = {'location'},
-		lualine_y = {},
+		lualine_y = { 'diff' },
 		lualine_z = {}
 	}
 }
