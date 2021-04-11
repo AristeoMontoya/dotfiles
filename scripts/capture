@@ -1,6 +1,6 @@
 #!/bin/sh
 FECHA="$(date +%Y-%m-%d)"
-NOMBRE_ARCHIVO="$HOME/vimwiki/capturas/$FECHA.md"
+NOMBRE_ARCHIVO="$HOME/notas/capturas/$FECHA.md"
 
 if [ ! -f $NOMBRE_ARCHIVO ]; then
 	echo "# Notas de $FECHA" > $NOMBRE_ARCHIVO
