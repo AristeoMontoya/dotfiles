@@ -14,7 +14,7 @@ function M.find_captures()
 	},
 		prompt_title = "~ capturas ~",
 		shorten_path = false,
-		cwd = "~/vimwiki/capturas",
+		cwd = "~/notas/capturas",
 	}
 end
 
@@ -32,7 +32,7 @@ function M.find_definition()
 	},
 		prompt_title = "~ Definiciones ~",
 		shorten_path = false,
-		cwd = "~/vimwiki",
+		cwd = "~/notas",
 	}
 end
 
