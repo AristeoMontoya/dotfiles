@@ -12,4 +12,4 @@ nvim -c "norm Go" \
 	-c "norm G2o" \
 	-c "norm zz" \
 	-c "startinsert" $NOMBRE_ARCHIVO \
-	-c "chdir /home/alarm/notas"
+	-c "chdir $HOME/notas"
