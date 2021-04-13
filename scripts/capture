@@ -4,11 +4,12 @@ NOMBRE_ARCHIVO="$HOME/notas/capturas/$FECHA.md"
 
 if [ ! -f $NOMBRE_ARCHIVO ]; then
 	echo "# Notas de $FECHA" > $NOMBRE_ARCHIVO
-	echo "- [[$FECHA]]" >> "$HOME/vimwiki/capturas/capturas.md"
+	echo "- [[$FECHA]]" >> "$HOME/notas/capturas/capturas.md"
 fi
 
 nvim -c "norm Go" \
 	-c "norm Go## $(date +%H:%M)" \
 	-c "norm G2o" \
 	-c "norm zz" \
-	-c "startinsert" $NOMBRE_ARCHIVO
+	-c "startinsert" $NOMBRE_ARCHIVO \
+	-c "chdir /home/alarm/notas"
