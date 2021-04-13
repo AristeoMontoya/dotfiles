@@ -126,6 +126,11 @@ vmap <silent> <leader>gb :Gblame<CR>
 
 nnoremap <silent> <leader>oc :Config<CR>
 
+" Crear captura
+:command Capture call Capture()
+
+nnoremap <silent> <leader>c :Capture<CR>
+
 " Spells
 " Verificar español
 nnoremap <leader>ss :setlocal spell spelllang=es_mx<CR>
