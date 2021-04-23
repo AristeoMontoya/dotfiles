@@ -117,9 +117,10 @@ endfunc
 
 function Capture()
 	let fecha = strftime('%Y-%m-%d')
+	let fechaTitulo = strftime('%A %d de %B de %Y')
 	let archivo = $HOME.'/notas/capturas/'.fecha.'.md'
 	if !filereadable(archivo)
-		let titulo = 'echo "# Notas de '.fecha.'" > '.archivo
+		let titulo = 'echo "# Notas de '.fechaTitulo.'" > '.archivo
 		call system(titulo)
 		let entrada = 'echo "- [['.fecha.']]" >> "'.$HOME.'/notas/capturas/capturas.md"'
 		call system(entrada)

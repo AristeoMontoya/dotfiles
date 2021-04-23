@@ -3,7 +3,8 @@ FECHA="$(date +%Y-%m-%d)"
 NOMBRE_ARCHIVO="$HOME/notas/capturas/$FECHA.md"
 
 if [ ! -f $NOMBRE_ARCHIVO ]; then
-	echo "# Notas de $FECHA" > $NOMBRE_ARCHIVO
+	TITULO="$(date +'%A %d de %B de %Y')"
+	echo "# Notas de $TITULO" > $NOMBRE_ARCHIVO
 	echo "- [[$FECHA]]" >> "$HOME/notas/capturas/capturas.md"
 fi
 
