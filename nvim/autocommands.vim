@@ -1,6 +1,5 @@
 " Autocmd's para lenguajes
 function! Txt()
-	let b:indentLine_enabled=1
 	setlocal scrolloff=2
 	setlocal expandtab
 	setlocal nolist
@@ -12,7 +11,6 @@ function! Html()
 endfunction
 
 function! Markdown()
-	let b:indentLine_enabled=1
 	let b:coc_suggest_disable = 1
 	let g:indentLine_setConceal = 0
 	setlocal wrap
@@ -46,14 +44,12 @@ function! Php()
 endfunction
 
 function! Python()
-	let b:indentLine_enabled=1
 	setlocal shiftwidth=4
 	setlocal colorcolumn=80
 	setlocal nolist
 endfunction
 
 function! JS()
-	let b:indentLine_enabled=1
 	setlocal shiftwidth=2
 	setlocal colorcolumn=80
 	setlocal nolist
