@@ -122,7 +122,7 @@ function Capture()
 	if !filereadable(archivo)
 		let titulo = 'echo "# Notas de '.fechaTitulo.'" > '.archivo
 		call system(titulo)
-		let entrada = 'echo "- [['.fecha.']]" >> "'.$HOME.'/notas/capturas/capturas.md"'
+		let entrada = 'echo "- [ ] [['.fecha.']]" >> "'.$HOME.'/notas/capturas/capturas.md"'
 		call system(entrada)
 	endif
 	

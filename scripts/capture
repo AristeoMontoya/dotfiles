@@ -5,7 +5,7 @@ NOMBRE_ARCHIVO="$HOME/notas/capturas/$FECHA.md"
 if [ ! -f $NOMBRE_ARCHIVO ]; then
 	TITULO="$(date +'%A %d de %B de %Y')"
 	echo "# Notas de $TITULO" > $NOMBRE_ARCHIVO
-	echo "- [[$FECHA]]" >> "$HOME/notas/capturas/capturas.md"
+	echo "- [ ] [[$FECHA]]" >> "$HOME/notas/capturas/capturas.md"
 fi
 
 nvim -c "norm Go" \
