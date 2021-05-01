@@ -127,7 +127,7 @@ vmap <silent> <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>oc :Config<CR>
 
 " Crear captura
-:command Capture call Capture()
+:command Capture lua require 'prueba'
 
 nnoremap <silent> <leader>c :Capture<CR>
 

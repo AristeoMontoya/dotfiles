@@ -114,24 +114,3 @@ function! SynStack()
 	endif
 	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
-
-function Capture()
-	let fecha = strftime('%Y-%m-%d')
-	let fechaTitulo = strftime('%A %d de %B de %Y')
-	let archivo = $HOME.'/notas/capturas/'.fecha.'.md'
-	if !filereadable(archivo)
-		let titulo = 'echo "# Notas de '.fechaTitulo.'" > '.archivo
-		call system(titulo)
-		let entrada = 'echo "- [ ] [['.fecha.']]" >> "'.$HOME.'/notas/capturas/capturas.md"'
-		call system(entrada)
-	endif
-	
-	let timestamp = strftime('%H:%M')
-	execute 'tabedit' archivo
-	execute 'tcd' $HOME.'/notas'
-	execute 'norm Go'
-	execute 'norm Go'.'## '.timestamp
-	execute 'norm G2o'
-	execute 'norm zz'
-	execute 'startinsert'
-endfunc

@@ -9,15 +9,6 @@ require('telescope').setup{
         ["<esc>"] = actions.close
       },
     },
-    -- vimgrep_arguments = {
-    --   'rg',
-    --   '--color=never',
-    --   '--no-heading',
-    --   '--with-filename',
-    --   '--line-number',
-    --   '--column',
-    --   '--smart-case'
-    -- },
     prompt_position = "bottom",
     prompt_prefix = "> ",
     selection_caret = "> ",
