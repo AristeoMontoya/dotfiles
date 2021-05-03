@@ -20,7 +20,7 @@ call plug#begin('~/.data/plugged')
 		Plug 'nvim-lua/plenary.nvim'
 		Plug 'nvim-telescope/telescope.nvim'
 		" Llaves con colores
-		Plug 'luochen1990/rainbow'
+		Plug 'p00f/nvim-ts-rainbow'
 		" Íconos
 		Plug 'kyazdani42/nvim-web-devicons'
 		" Marcado de identación con espacios
