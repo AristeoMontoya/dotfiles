@@ -11,8 +11,7 @@
 		"html",
 		"css",
 		"markdown",
-		"python",
-		"javascript"
+		"python"
 	],
 	"emmet.includeLanguages": {"php": "html"},
 	"suggest.noselect": false,
