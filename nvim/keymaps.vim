@@ -59,6 +59,9 @@ nmap <silent> <leader>tn :tabedit<CR>
 " Cerrar pestaña
 nmap <silent> <leader>tk :tabclose<CR>
 
+" Cerrar buffer
+nmap <silent> <leader>bk :bd<CR>
+
 " Alternar pestañas
 noremap <silent> <tab> gt
 

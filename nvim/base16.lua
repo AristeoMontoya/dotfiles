@@ -31,6 +31,7 @@ cmd("hi tsinclude guifg=#d291e4")
 cmd("hi tsrepeat guifg=#d291e4")
 cmd("hi tserror guibg=None guifg=#e06c75")
 cmd("hi tscharacter guifg=#98c379")
+cmd("hi tsmethod gui=bold guifg=#61afef")
 
 -- CoC
 cmd("hi pmenusel guibg=#98c379")
@@ -44,3 +45,7 @@ cmd("hi lualine_y_diff_modified_inactive guifg=#56b6c2")
 
 cmd("hi lualine_y_diff_removed_normal guifg=#e06c75")
 cmd("hi lualine_y_diff_removed_inactive guifg=#e06c75")
+
+-- Bufferline
+cmd("hi TabLineSel guifg=#98c379 guibg=#282c34")
+cmd("hi TabLineFill guibg=#353b45")

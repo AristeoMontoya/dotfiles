@@ -52,6 +52,7 @@ call plug#begin('~/.data/plugged')
 		" OneDark
 		Plug 'norcalli/nvim-base16.lua'
 		" Tabline
-		Plug 'akinsho/nvim-bufferline.lua'
+		" Plug 'akinsho/nvim-bufferline.lua'
+		Plug 'jose-elias-alvarez/buftabline.nvim'
 		endif
 call plug#end()
