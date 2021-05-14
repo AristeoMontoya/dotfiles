@@ -9,7 +9,6 @@ if !exists('g:vscode')
 	luafile ~/.config/nvim/colorizer.lua
 	luafile ~/.config/nvim/telescope.lua
 	luafile ~/.config/nvim/bufferline.lua
-	luafile ~/.config/nvim/snippets.lua
 	source ~/.config/nvim/indentLine.vim
 	source ~/.config/nvim/coc.vim
 	source ~/.config/nvim/whichkey.vim
