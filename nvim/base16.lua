@@ -49,3 +49,9 @@ cmd("hi lualine_y_diff_removed_inactive guifg=#e06c75")
 -- Bufferline
 cmd("hi TabLineSel guifg=#98c379 guibg=#282c34")
 cmd("hi TabLineFill guibg=#353b45")
+
+cmd("hi BufferLineBackground guifg=#abb2bf guibg=#353b45")
+cmd("hi BufferLineFill guibg=#353b45")
+cmd("hi BufferLineSeparator guibg=#353b45")
+cmd("hi BufferLineIndicatorSelected guifg=#98c379")
+cmd("hi BufferLineBufferSelected gui=bold guifg=#98c379")
