@@ -51,5 +51,7 @@ call plug#begin('~/.data/plugged')
 		Plug 'tbabej/taskwiki'
 		" OneDark
 		Plug 'norcalli/nvim-base16.lua'
-	endif
+		" Tabline
+		Plug 'akinsho/nvim-bufferline.lua'
+		endif
 call plug#end()
