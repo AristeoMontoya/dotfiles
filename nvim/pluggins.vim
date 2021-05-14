@@ -7,6 +7,8 @@ call plug#begin('~/.data/plugged')
 	" El mejor plugin de todos
 	Plug 'tpope/vim-surround'
 	if !exists('g:vscode')
+		" Vimwiki
+		Plug 'vimwiki/vimwiki'
 		" Vista previa web
 		Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 		" Vista previa de colores
@@ -43,8 +45,6 @@ call plug#begin('~/.data/plugged')
 		Plug 'easymotion/vim-easymotion'
 		" Línea de status
 		Plug 'hoob3rt/lualine.nvim'
-		" Vimwiki
-		Plug 'vimwiki/vimwiki'
 		" Integración con TaskWarrior
 		Plug 'tbabej/taskwiki'
 		" OneDark
