@@ -10,7 +10,6 @@ if !exists('g:vscode')
 	luafile ~/.config/nvim/telescope.lua
 	luafile ~/.config/nvim/buftabline.lua
 	source ~/.config/nvim/indentLine.vim
-	" source ~/.config/nvim/rainbow.lua
 	source ~/.config/nvim/coc.vim
 	source ~/.config/nvim/whichkey.vim
 	source ~/.config/nvim/gitgutter.vim
