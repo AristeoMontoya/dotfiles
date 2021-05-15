@@ -7,6 +7,8 @@ call plug#begin('~/.data/plugged')
 	" El mejor plugin de todos
 	Plug 'tpope/vim-surround'
 	if !exists('g:vscode')
+		" Explorador de archivos
+		Plug 'kyazdani42/nvim-tree.lua'
 		" Vimwiki
 		Plug 'vimwiki/vimwiki'
 		" Vista previa web

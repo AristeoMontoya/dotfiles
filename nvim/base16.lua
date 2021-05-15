@@ -56,3 +56,6 @@ cmd("hi BufferLineSeparator guibg=#353b45")
 cmd("hi BufferLineModified guibg=#353b45")
 cmd("hi BufferLineIndicatorSelected guifg=#98c379")
 cmd("hi BufferLineBufferSelected gui=bold guifg=#98c379")
+
+-- NvimTree
+cmd("hi NvimTreeFolderIcon guifg=#61AFEF")
