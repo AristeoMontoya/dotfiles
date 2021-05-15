@@ -1,8 +1,10 @@
-return require('packer').startup(function()
+return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 	-- Surround
 	use 'tpope/vim-surround'
+	-- Explorador de archivos
+	use 'kyazdani42/nvim-tree.lua'
 	-- Vimwiki
 	use 'vimwiki/vimwiki'
 	-- Vista previa web
@@ -22,7 +24,11 @@ return require('packer').startup(function()
 	-- Marcado de identación con espacios
 	use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
 	-- Vista previa de MarkDown
-	use {'iamcco/markdown-preview.nvim', opt = true, config = "vim.call('mkdp#util#install')"}
+	use {'iamcco/markdown-preview.nvim',
+		opt = true,
+		ft = {'markdown'},
+		config = "vim.call('mkdp#util#install')"
+	}
 	-- Debugger
 	use 'puremourning/vimspector'
 	-- Ayuda con accesis directos
@@ -42,7 +48,7 @@ return require('packer').startup(function()
 	-- Línea de status
 	use 'hoob3rt/lualine.nvim'
 	-- Integración con TaskWarrior
-	use 'tbabej/taskwiki'
+	use {'tbabej/taskwiki', opt = true, ft = {'vimwiki'}}
 	-- OneDark
 	use 'norcalli/nvim-base16.lua'
 	-- Tabline
