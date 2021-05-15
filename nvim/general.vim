@@ -1,3 +1,7 @@
+if has('termguicolors')
+	set termguicolors
+endif
+
 syntax on
 
 set listchars=tab:\▏\ 
