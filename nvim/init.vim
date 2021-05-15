@@ -1,5 +1,6 @@
 source ~/.config/nvim/generalvscode.vim
-source ~/.config/nvim/pluggins.vim
+" source ~/.config/nvim/pluggins.vim
+luafile ~/.config/nvim/plugins.lua
 if !exists('g:vscode')
 	source ~/.config/nvim/general.vim
 	" Pluggins
