@@ -40,3 +40,6 @@ Neovim sigue estando configurado en vimscript por cuestiones de compatibilidad c
 - [ ] Migrar de KDE a BSPWM.
 - [ ] Script de configuración automática.
 - [ ] Agregar trabajos de Cronie.
+
+## Neovim
+Cosas
