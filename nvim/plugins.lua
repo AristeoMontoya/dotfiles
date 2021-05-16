@@ -48,7 +48,7 @@ return require('packer').startup(function(use)
 	-- Línea de status
 	use 'hoob3rt/lualine.nvim'
 	-- Integración con TaskWarrior
-	use {'tbabej/taskwiki', opt = true, ft = {'vimwiki'}}
+	use {'tbabej/taskwiki', opt = true, ft = {'markdown'}}
 	-- OneDark
 	use 'norcalli/nvim-base16.lua'
 	-- Tabline
