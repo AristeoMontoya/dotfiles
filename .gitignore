@@ -3,4 +3,4 @@ log_pdf.log
 coc
 nvim
 nvim/plugin
-nvim/plugin/packer_compiled.vim
+packer_compiled.vim
