@@ -5,6 +5,7 @@ PARA_HOY="$(task due:today status:pending count)"
 ESCUELA="$(task +Escuela status:pending count)"
 TRAMITES="$(task +Tramites status:pending count)"
 PROXIMAS="$(task due:tomorrow status:pending count)"
+LAPTOP="$(task +Laptop status:pending count)"
 ETIQUETA=""
 
 if [ $PASADAS -gt 0 ]
@@ -13,7 +14,7 @@ then
 fi
 if [ $ESCUELA -gt 0 ]
 then
-	ETIQUETA="$ETIQUETA  $ESCUELA/"
+	ETIQUETA="$ETIQUETA 拾 $ESCUELA/"
 fi
 if [ $TRAMITES -gt 0 ]
 then
@@ -26,6 +27,10 @@ fi
 if [ $PROXIMAS -gt 0 ]
 then
 	ETIQUETA="$ETIQUETA + $PROXIMAS/"
+fi
+if [ $LAPTOP -gt 0 ]
+then
+	ETIQUETA="$ETIQUETA  $LAPTOP/"
 fi
 
 ETIQUETA="$ETIQUETA  $PEDNIENTES"

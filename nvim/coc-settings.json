@@ -2,6 +2,18 @@
 	"codeLens.enable": true,
 	"java.referencesCodeLens.enabled": true,
 	"java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok.jar",
+	"java.enabled": true,
+	"java.configuration.runtimes": [
+		{
+			"name": "JavaSE-11",
+			"path": "/usr/lib/jvm/java-11-openjdk",
+			"default": true
+		},
+		{
+			"name": "JavaSE-1.8",
+			"path": "/usr/lib/jvm/java-8-jdk"
+		}
+	],
 	"html.validate.html": true,
 	"bootstrap-classname.filetypes": [
 		"html",
@@ -17,13 +29,6 @@
 	"suggest.noselect": false,
 	"prettier.tabWidth": 2,
 	"prettier.useTabs": true,
-	"java.enabled": true,
-	"explorer.icon.enableNerdfont": true,
-	"explorer.previewAction.onHover": false,
-	"explorer.keyMappings.global": {
-		"<cr>": ["expandable?", "expand", "open"],
-		"v": "open:vsplit"
-	},
 	"languageserver": {
 		"ccls": {
 			"command": "ccls",

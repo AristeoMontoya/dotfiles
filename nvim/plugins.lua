@@ -24,11 +24,7 @@ return require('packer').startup(function(use)
 	-- Marcado de identación con espacios
 	use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
 	-- Vista previa de MarkDown
-	use {'iamcco/markdown-preview.nvim',
-		opt = true,
-		ft = {'markdown'},
-		config = "vim.call('mkdp#util#install')"
-	}
+	use {'iamcco/markdown-preview.nvim', config = "vim.call('mkdp#util#install')" }
 	-- Debugger
 	use 'puremourning/vimspector'
 	-- Ayuda con accesis directos
@@ -46,7 +42,10 @@ return require('packer').startup(function(use)
 	-- Movimiento vertical mejorado
 	use 'easymotion/vim-easymotion'
 	-- Línea de status
-	use 'hoob3rt/lualine.nvim'
+	use {
+		'hoob3rt/lualine.nvim',
+		requires = {'kyazdani42/nvim-web-devicons', opt = true}
+	}
 	-- Integración con TaskWarrior
 	use {'tbabej/taskwiki', opt = true, ft = {'markdown'}}
 	-- OneDark

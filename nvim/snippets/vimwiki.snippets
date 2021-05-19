@@ -25,6 +25,9 @@
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 extends markdown
 
+snippet link "Link"
+	[${1:texto}](${2:enlace})
+
 snippet idea "Plantilla de idea"
 	# Idea principal
 
@@ -53,3 +56,11 @@ snippet 100doc "100 Days of Code"
 
 snippet horaActual "Hora actual"
 	`strftime('%H:%m')`
+
+snippet diary "Entrada del diario"
+	# `strftime('%A %d')`
+	## Tareas para hoy | due:`expand('%:t:r:s?\.md$??')`
+
+	${VISUAL}
+
+snippet test 'prueba'

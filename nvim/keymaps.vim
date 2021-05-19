@@ -62,11 +62,11 @@ nmap <silent> <leader>tk :tabclose<CR>
 " Cerrar buffer
 nmap <silent> <leader>bk :bd<CR>
 
-" Alternar pestañas
-noremap <silent> <tab> gt
+" Alternar buffers
+noremap <silent> <tab> :bnext<CR>
 
-" Alternar pestañas en orden inverso
-noremap <silent> <S-tab> gT
+" Alternar buffers en orden inverso
+noremap <silent> <S-tab> :bprevious<CR>
 
 " Qutiar el marcado de coincidencias de búsqueda
 noremap <silent> <leader>n :noh<CR>
