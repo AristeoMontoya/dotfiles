@@ -58,9 +58,11 @@ snippet horaActual "Hora actual"
 	`strftime('%H:%m')`
 
 snippet diary "Entrada del diario"
-	# `strftime('%A %d')`
+	# `strftime('%A %d', strptime('%Y-%m-%d', expand('%:t:r:s?')))`
 	## Tareas para hoy | due:`expand('%:t:r:s?\.md$??')`
 
+	# Notas
 	${VISUAL}
 
-snippet test 'prueba'
+snippet fechaNatural 'Fecha de hoy'
+	`strftime('%A %d de %B de %Y')`
