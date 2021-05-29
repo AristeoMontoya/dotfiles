@@ -20,6 +20,8 @@ function! Markdown()
 	setlocal breakindent
 	setlocal expandtab
 	setlocal nolist
+	nnoremap <buffer> j gj
+	nnoremap <buffer> k gk
 	call Direcciones()
 endfunction
 

@@ -61,6 +61,8 @@ snippet diary "Entrada del diario"
 	# `strftime('%A %d', strptime('%Y-%m-%d', expand('%:t:r:s?')))`
 	## Tareas para hoy | due:`expand('%:t:r:s?\.md$??')`
 
+	## Tareas atrasadas | +OVERDUE -TODAY
+
 	# Notas
 	${VISUAL}
 

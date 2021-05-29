@@ -46,5 +46,6 @@
 	},
 	"omnisharp.trace.server": "information",
 	"python.linting.enabled": true,
-	"snippets.userSnippetsDirectory": "$HOME/.config/nvim/snippets"
+	"snippets.userSnippetsDirectory": "$HOME/.config/nvim/snippets",
+	"python.pythonPath": "python"
 }
