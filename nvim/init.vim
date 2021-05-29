@@ -5,10 +5,10 @@ if !exists('g:vscode')
 	" Pluggins
 	" ------------------------------------
 	luafile ~/.config/nvim/treeSitter.lua
-	luafile ~/.config/nvim/lualine.lua
 	luafile ~/.config/nvim/colorizer.lua
 	luafile ~/.config/nvim/telescope.lua
 	luafile ~/.config/nvim/bufferline.lua
+	luafile ~/.config/nvim/lualine.lua
 	source ~/.config/nvim/nvim-tree.vim
 	source ~/.config/nvim/indentLine.vim
 	source ~/.config/nvim/coc.vim

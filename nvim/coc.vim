@@ -99,7 +99,9 @@ omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<tab>'
+" let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_next = '<C-j>'
 
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<S-tab>'
+" let g:coc_snippet_prev = '<S-tab>'
+let g:coc_snippet_prev = '<C-k>'
