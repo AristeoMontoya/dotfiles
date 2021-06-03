@@ -40,7 +40,15 @@ return require('packer').startup(function(use)
 	-- Integración con comandos de git
 	use 'tpope/vim-fugitive'
 	-- Movimiento vertical mejorado
-	use 'easymotion/vim-easymotion'
+	-- use 'easymotion/vim-easymotion'
+	use {
+		'phaazon/hop.nvim',
+		as = 'hop',
+		config = function()
+    		-- you can configure Hop the way you like here; see :h hop-config
+    		require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+		end
+	}
 	-- Línea de status
 	use {
 		'hoob3rt/lualine.nvim',

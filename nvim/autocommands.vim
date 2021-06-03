@@ -88,6 +88,7 @@ autocmd FileType markdown,vimwiki call Markdown()
 autocmd FileType haskell call Haskell()
 autocmd FileType python,rust call Python()
 autocmd FileType javascript call JS()
+autocmd FileType vue call JS()
 autocmd FileType java call Java()
 autocmd FileType php call Php()
 
