@@ -22,6 +22,8 @@ function! Markdown()
 	setlocal nolist
 	nnoremap <buffer> j gj
 	nnoremap <buffer> k gk
+	nnoremap <buffer> 0 g0
+	nnoremap <buffer> $ g$
 	call Direcciones()
 endfunction
 
