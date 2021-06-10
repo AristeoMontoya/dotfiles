@@ -1,7 +1,6 @@
 .netrwhist
 log_pdf.log
 coc
-nvim
 nvim/plugin
 packer_compiled.vim
 nvim/plugin
