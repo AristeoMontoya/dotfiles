@@ -71,4 +71,6 @@ return require('packer').startup(function(use)
 	use 'hrsh7th/nvim-compe'
     use 'glepnir/lspsaga.nvim'
     use 'kabouzeid/nvim-lspinstall'
+	-- Java
+	use 'mfussenegger/nvim-jdtls'
 end)
