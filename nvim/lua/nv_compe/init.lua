@@ -23,5 +23,6 @@ require'compe'.setup {
 		nvim_lua = true;
 		vsnip = false;
 		ultisnips = false;
+		snippets_nvim = false;
 	};
 }
