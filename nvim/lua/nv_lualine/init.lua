@@ -20,7 +20,7 @@ require('lualine').setup {
 			},
 			{ 
 				'diagnostics',
-				sources = {'coc'},
+				sources = {'nvim_lsp'},
 				color_error = '#e06c75',
 				color_warn ='#e5c07b',
 				color_info = '#56b6c2',

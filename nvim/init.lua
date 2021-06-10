@@ -2,6 +2,7 @@ vim.cmd('source ~/.config/nvim/vimscript/generalvscode.vim')
 vim.cmd('source ~/.config/nvim/vimscript/general.vim')
 require('globals')
 require('plugins')
+require('nv_colorizer')
 require('nv_treesitter')
 require('nv_telescope')
 -- Este es el bueno de las capturas, pero si lo uso se aloca

@@ -33,7 +33,7 @@ function Tabulacion()
 endfunction
 
 function OpenConfig()
-	tabedit $CONFIGVIM/init.vim
+	tabedit $CONFIGVIM/init.lua
 	tcd $CONFIGVIM
 endfunction
 
