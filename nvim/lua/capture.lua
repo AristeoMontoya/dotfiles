@@ -10,9 +10,17 @@ function FileExists(fileName)
 	end
 end
 
+function AddPendingCapture(date, home)
+	local entry = '- [ ] [' .. date .. '](capturas/' .. date .. ')\n'
+	local index = io.open(home .. '/notas/index.md', 'a')
+	io.output(index)
+	io.write(entry)
+	io.close()
+end
+
 function AddStamps(entryTitle, date, home, fileName)
 	local title = '# Notas de ' .. entryTitle
-	local entry = '- [ ] [[' .. date .. ']]\n'
+	local entry = '- [[' .. date .. ']]\n'
 	local capturesIndex = io.open(home .. '/notas/capturas/capturas.md', 'a')
 	local todaysCapture = io.open(fileName, 'w')
 	io.output(capturesIndex)
@@ -32,6 +40,7 @@ local fileName = home .. '/notas/capturas/' .. date .. '.md'
 
 if not FileExists(fileName) then
 	AddStamps(entryTitle, date, home, fileName)
+	AddPendingCapture(date, home)
 end
 
 V.cmd('tabedit ' .. fileName)
