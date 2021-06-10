@@ -17,6 +17,7 @@ vim.cmd('source ~/.config/nvim/vimscript/gitgutter.vim')
 vim.cmd('source ~/.config/nvim/vimscript/vimspector.vim')
 vim.cmd('source ~/.config/nvim/vimscript/vimwiki.vim')
 vim.cmd('source ~/.config/nvim/vimscript/keymaps.vim')
+vim.cmd('source ~/.config/nvim/vimscript/autocommands.vim')
 require('nv_base16')
 
 -- LSP
