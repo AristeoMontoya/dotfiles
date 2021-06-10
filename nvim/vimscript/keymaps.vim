@@ -158,11 +158,10 @@ nnoremap <leader>fd <cmd>lua require 'telescope.finders'.find_definition()<CR>
 nnoremap <leader><leader>f :HopChar1<CR>
 nnoremap <leader><leader>b :HopChar2<CR>
 
-autocmd! CompleteDone * if pumvisible() == 0 | call compe#confirm('<C-y>') | endif
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-" Use <Tab> for confirm completion.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
+" <Tab> para confirmar
+inoremap <expr> <Tab> pumvisible() ? compe#confirm() : "\<Tab>"
 
 " Navegar por ventana de sugerencias
 " Navegar hacia abajo en la lista
