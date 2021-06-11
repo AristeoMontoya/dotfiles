@@ -43,7 +43,7 @@ if not FileExists(fileName) then
 	AddPendingCapture(date, home)
 end
 
-V.cmd('tabedit ' .. fileName)
+V.cmd('edit ' .. fileName)
 V.cmd('tcd ' .. home .. '/notas')
 V.cmd('norm Go')
 V.cmd('norm Go' .. '## ' .. timestamp)
