@@ -66,6 +66,8 @@ return require('packer').startup(function(use)
 	use 'norcalli/nvim-base16.lua'
 	-- Tabline
 	use 'akinsho/nvim-bufferline.lua'
+	-- Snippets
+	use 'SirVer/ultisnips'
 	-- LSP
 	use 'neovim/nvim-lspconfig'
 	use 'hrsh7th/nvim-compe'
