@@ -19,7 +19,8 @@ function AddPendingCapture(date, home)
 	io.close()
 end
 
-function AddStamps(entryTitle, date, home, fileName)
+function AddStamps(date, home, fileName)
+	local entryTitle = os.date('%A %d de %B de %Y')
 	local title = '# Notas de ' .. entryTitle
 	local entry = '- [[' .. date .. ']]\n'
 	local capturesIndex = io.open(home .. '/notas/capturas/capturas.md', 'a')
@@ -32,45 +33,55 @@ function AddStamps(entryTitle, date, home, fileName)
 	io.close()
 end
 
-function GetFileContent(filename)
-	local file = io.open(filename, 'r')
-	local content = file.read(file, '*a')
-	io.close()
-	return content
+function LinkExists(index, date)
+	local pattern = '(- \\[[ |X]\\] \\['..date..'\\]\\(.*))'
+	local command = 'grep -E "'..pattern..'" ' .. index
+	local existe = os.execute(command)
+	-- Por alguna razón Lua maneja true como 512, por lo menos dentro
+	-- de nvim
+	return existe == 512
 end
 
 -- Busca si está marcada la revisión y la deja sin revisar
-function UpdateIndex(index)
-	local content = GetFileContent(index)
-	local file = io.open(index, 'w')
-	local target = '- %[X%] %[' .. os.date('%Y%%-%m%%-%d').. ']'
-	local replacement = '- [ ] [' ..os.date('%Y-%m-%d').. ']'
-	content = string.gsub(content, target, replacement)
-	io.output(file)
-	io.write(content)
-	io.close(file)
+-- Anteriormente usaba io, pero causa segfault en neovim
+function UpdateIndex(index, date)
+	-- Sed puede usar el delimitador se que sea, para no estar escapando
+	-- caracteres estoy usando +
+	if LinkExists(index, date) then
+		local target = '- \\[X\\] \\[' ..date.. '\\]\\(.*\\)'
+		local replacement = '- [ ] [' ..date.. '](capturas/' ..date.. ')'
+		os.execute('sed -i "s+'..target..'+'..replacement..'+g" '..index)
+	else
+		AddPendingCapture(date, os.getenv('HOME'))
+	end
 end
 
-local home = os.getenv('HOME')
-local date = os.date('%Y-%m-%d')
-local entryTitle = os.date('%A %d de %B de %Y')
-local timestamp = os.date('%H:%M')
-
-local fileName = home .. '/notas/capturas/' .. date .. '.md'
-
-if not FileExists(fileName) then
-	AddStamps(entryTitle, date, home, fileName)
-	AddPendingCapture(date, home)
-else
-	UpdateIndex(home.. '/notas/index.md')
+function PrepareCapture(home, date, fileName)
+	if not FileExists(fileName) then
+		AddStamps(date, home, fileName)
+		AddPendingCapture(date, home)
+	else
+		UpdateIndex(home.. '/notas/index.md', date)
+	end
 end
 
-print('Simón')
+function StartInsert(fileName, timestamp)
+	V.cmd('edit ' .. fileName)
+	V.cmd('norm Go')
+	V.cmd('norm Go' .. '## ' .. timestamp)
+	V.cmd('norm G2o')
+	V.cmd('norm zz')
+	V.cmd('startinsert')
+end
 
-V.cmd('edit ' .. fileName)
-V.cmd('tcd ' .. home .. '/notas')
-V.cmd('norm Go')
-V.cmd('norm Go' .. '## ' .. timestamp)
-V.cmd('norm G2o')
-V.cmd('norm zz')
-V.cmd('startinsert')
+function CreateCapture()
+	local home = os.getenv('HOME')
+	local date = os.date('%Y-%m-%d')
+	local timestamp = os.date('%H:%M')
+	local fileName = home .. '/notas/capturas/' .. date .. '.md'
+
+	PrepareCapture(home, date, fileName)
+	StartInsert(fileName, timestamp)
+end
+
+CreateCapture()

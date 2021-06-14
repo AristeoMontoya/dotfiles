@@ -130,7 +130,7 @@ vmap <silent> <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>oc :Config<CR>
 
 " Crear captura
-:command Capture lua require 'capture'
+:command Capture luafile ~/.config/nvim/lua/capture.lua
 
 nnoremap <silent> <leader>c :Capture<CR>
 
