@@ -59,3 +59,5 @@ cmd("hi BufferLineBufferSelected gui=bold guifg=#98c379")
 
 -- NvimTree
 cmd("hi NvimTreeFolderIcon guifg=#61AFEF")
+cmd("hi NvimTreeNormal guibg=#1f2228")
+cmd("hi NvimTreeCursorLine guibg=#282c34")
