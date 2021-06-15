@@ -40,9 +40,9 @@ context=focus
 
 # Sincronización
 taskd.server=freecinc.com:53589
-taskd.key=\/home\/aristeo\/.task\/freecinc_55bd72ef.key.pem
-taskd.certificate=\/home\/aristeo\/.task\/freecinc_55bd72ef.cert.pem
-taskd.ca=\/home\/aristeo\/.task\/freecinc_55bd72ef.ca.pem
+taskd.key=~\/.task\/freecinc_55bd72ef.key.pem
+taskd.certificate=~\/.task\/freecinc_55bd72ef.cert.pem
+taskd.ca=~\/.task\/freecinc_55bd72ef.ca.pem
 taskd.credentials=FreeCinc\/freecinc_55bd72ef\/4d410e7e-2bb5-45f4-9130-f3be98def785
 
 # Colores
