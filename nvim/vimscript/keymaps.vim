@@ -173,6 +173,12 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
 " Autocompletado con Ctrl + espacio
 inoremap <silent><expr> <c-space> compe#complete()
 
+" Code Actions
+noremap <silent><leader>ca :Lspsaga code_action<CR>
+
+" Rename
+noremap <silent><leader>rn :Lspsaga rename<CR>
+
 function! s:check_back_space() abort
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]  =~# '\s'
