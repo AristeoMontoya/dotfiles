@@ -2,10 +2,22 @@
 FECHA="$(date +%Y-%m-%d)"
 NOMBRE_ARCHIVO="$HOME/notas/capturas/$FECHA.md"
 
+# Si el archivo no existe, lo creamos
 if [ ! -f $NOMBRE_ARCHIVO ]; then
 	TITULO="$(date +'%A %d de %B de %Y')"
 	echo "# Notas de $TITULO" > $NOMBRE_ARCHIVO
-	echo "- [ ] [[$FECHA]]" >> "$HOME/notas/capturas/capturas.md"
+	echo "- [[$FECHA]]" >> "$HOME/notas/capturas/capturas.md"
+	echo "- [ ] [$FECHA](capturas/$FECHA)" >> "$HOME/notas/index.md"
+else
+	LINK=(grep -E "(- \[[ |X]\] \[$FECHA\]\(.*))" $HOME/notas/index.md)
+
+	if [ $("${LINK[@]}" | wc -l) -gt 0 ]; then
+		# Si el link existe, se actualiza
+		sed -i "s+- \[X\] \[$FECHA\]\(.*\)+- [ ] [$FECHA](capturas/$FECHA)+g" $HOME/notas/index.md
+	else
+		# De lo contrario, se agrega
+		echo "- [ ] [$FECHA](capturas/$FECHA)" >> "$HOME/notas/index.md"
+	fi
 fi
 
 nvim -c "norm Go" \

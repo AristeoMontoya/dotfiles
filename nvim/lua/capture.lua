@@ -50,7 +50,8 @@ function UpdateIndex(index, date)
 	if LinkExists(index, date) then
 		local target = '- \\[X\\] \\[' ..date.. '\\]\\(.*\\)'
 		local replacement = '- [ ] [' ..date.. '](capturas/' ..date.. ')'
-		os.execute('sed -i "s+'..target..'+'..replacement..'+g" '..index)
+		local command = 'sed -i "s+'..target..'+'..replacement..'+g" '..index
+		os.execute(command)
 	else
 		AddPendingCapture(date, os.getenv('HOME'))
 	end
