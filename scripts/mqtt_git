@@ -33,4 +33,4 @@ client.on_message = on_message
 
 client.connect('alarm.huawei.net', 1883)
 
-client.loop_forever()
+client.loop_start()
