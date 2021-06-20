@@ -4,12 +4,15 @@ import os
 import socket
 import subprocess
 import json
+import time
 
 def on_connect(client, userdata, flags, rc):
     print('Connected')
     client.subscribe('notes')
 
 def on_message(client, userdata, msg):
+    # Como no existe un "post-push", tenemos que esperar
+    time.sleep(10)
     message = msg.payload.decode('utf-8')
     message = json.loads(message)
     # Evita hacer un git pull si el host es quien hizo el push
