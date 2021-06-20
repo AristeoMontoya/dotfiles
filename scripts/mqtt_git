@@ -1,0 +1,33 @@
+#!/bin/python
+import paho.mqtt.client as mqtt
+import os
+import socket
+import subprocess
+import json
+
+def on_connect(client, userdata, flags, rc):
+    print('Connected')
+    client.subscribe('notes')
+
+def on_message(client, userdata, msg):
+    message = msg.payload.decode('utf-8')
+    message = json.loads(message)
+    # Evita hacer un git pull si el host es quien hizo el push
+    if Host not in message['host']:
+        subprocess.call(['git', 'pull'])
+
+# Variables que vamos a necesitar
+Host = socket.gethostname()
+home = os.environ.get('HOME')
+
+# A fin de cuentas todo el trabajo lo hacemos en el mismo directorio
+# Mejor cambiamos una sola vez.
+os.chdir(f'{home}/notas')
+
+client = mqtt.Client()
+client.on_connect = on_connect
+client.on_message = on_message
+
+client.connect('alarm.huawei.net', 1883)
+
+client.loop_forever()
