@@ -7,7 +7,6 @@ import json
 import time
 
 def on_connect(client, userdata, flags, rc):
-    print('Connected')
     client.subscribe('notes')
 
 def on_message(client, userdata, msg):
@@ -21,11 +20,11 @@ def on_message(client, userdata, msg):
 
 # Variables que vamos a necesitar
 Host = socket.gethostname()
-home = os.environ.get('HOME')
+notes = os.environ.get('NOTESDIR')
 
 # A fin de cuentas todo el trabajo lo hacemos en el mismo directorio
 # Mejor cambiamos una sola vez.
-os.chdir(f'{home}/notas')
+os.chdir(f'{notes}')
 
 client = mqtt.Client()
 client.on_connect = on_connect
