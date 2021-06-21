@@ -17,7 +17,7 @@ def on_message(client, userdata, msg):
     message = json.loads(message)
     # Evita hacer un git pull si el host es quien hizo el push
     if Host not in message['host']:
-        subprocess.call(['git', 'pull'], stdout=subprocess.DEVNULL)
+        subprocess.call(['git', 'pull', '--quiet'], stdout=subprocess.DEVNULL)
 
 # Variables que vamos a necesitar
 Host = socket.gethostname()
