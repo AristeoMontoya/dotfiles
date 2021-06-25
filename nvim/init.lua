@@ -3,7 +3,7 @@ V = vim
 V.cmd('source ~/.config/nvim/vimscript/generalvscode.vim')
 require('plugins')
 
-if V.api.nvim_eval('!exists("g:vscode")') then
+if V.api.nvim_eval('exists("g:vscode")') then
 	require('globals')
 	V.cmd('source ~/.config/nvim/vimscript/general.vim')
 	require('nv_colorizer')
