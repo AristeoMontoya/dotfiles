@@ -6,8 +6,15 @@ import subprocess
 import json
 import time
 
+
+# El host solo lo necesitamos obtener una vez, no es necesario consultarlo a
+# cada mensaje
+Host = socket.gethostname()
+
+
 def on_connect(client, userdata, flags, rc):
     client.subscribe('notes')
+
 
 def on_message(client, userdata, msg):
     # Como no existe un "post-push", tenemos que esperar
@@ -18,18 +25,33 @@ def on_message(client, userdata, msg):
     if Host not in message['host']:
         subprocess.call(['git', 'pull', '--quiet'], stdout=subprocess.DEVNULL)
 
-# Variables que vamos a necesitar
-Host = socket.gethostname()
-notes = os.environ.get('NOTESDIR')
 
-# A fin de cuentas todo el trabajo lo hacemos en el mismo directorio
-# Mejor cambiamos una sola vez.
-os.chdir(f'{notes}')
+def get_client():
+    client = mqtt.Client()
+    client.on_connect = on_connect
+    client.on_message = on_message
+    return client
 
-client = mqtt.Client()
-client.on_connect = on_connect
-client.on_message = on_message
 
-client.connect('alarm.huawei.net', 1883)
+def listen(client):
+    try:
+        client.connect('alarm.huawei.net', 1883)
+        client.loop_forever()
+    except:
+        # Si no se puede hacer la conexión, el proceso espera 5 minutos
+        time.sleep(300)
+        listen(client)
 
-client.loop_forever()
+
+def main():
+    # Variables que vamos a necesitar
+    notes = os.environ.get('NOTESDIR')
+
+    # A fin de cuentas todo el trabajo lo hacemos en el mismo directorio
+    # Mejor cambiamos una sola vez.
+    os.chdir(f'{notes}')
+    client = get_client()
+    listen(client)
+
+
+main()
