@@ -1,11 +1,12 @@
+require('globals')
 
 vim.cmd "autocmd BufWritePost plugins.lua PackerCompile" -- Auto compile when there are changes in plugins.lua
 
 return require('packer').startup(function(use)
 	-- Surround
 	use {'tpope/vim-surround'}
+
 	-- Movimiento vertical mejorado
-	-- use 'easymotion/vim-easymotion'
 	use {
 		'phaazon/hop.nvim',
 		as = 'hop',
@@ -15,7 +16,7 @@ return require('packer').startup(function(use)
 		end
 	}
 
-	if vim.api.nvim_eval('!exists("g:vscode")') then
+	if VSCODE ~= 1 then
 		-- Packer can manage itself
 		use {'wbthomason/packer.nvim'}
 		-- Explorador de archivos

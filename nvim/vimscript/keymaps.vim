@@ -94,8 +94,8 @@ nmap <leader>ds <Plug>VimspectorContinue
 nmap <leader>dS <Plug>VimspectorStop
 
 " Comentarios
-nnoremap <silent> <space>/ :Commentary<CR>
-vnoremap <silent> <space>/ :Commentary<CR>
+nnoremap <silent> <leader>/ :Commentary<CR>
+vnoremap <silent> <leader>/ :Commentary<CR>
 
 " Sudo aunque no sudo
 cmap w!! w !sudo tee %
