@@ -1,10 +1,9 @@
-V = vim
+require('globals')
 -- Necesarias en caso de usar VSCode
 V.cmd('source ~/.config/nvim/vimscript/generalvscode.vim')
 require('plugins')
 
-if V.api.nvim_eval('exists("g:vscode")') then
-	require('globals')
+if VSCODE ~= 1 then
 	V.cmd('source ~/.config/nvim/vimscript/general.vim')
 	require('nv_colorizer')
 	require('nv_treesitter')
@@ -31,4 +30,6 @@ if V.api.nvim_eval('exists("g:vscode")') then
 	require('lsp.java')
 	require('lsp.js')
 	require('lsp.lua-ls')
+else
+	V.cmd('source ~/.config/nvim/vimscript/vscodemaps.vim')
 end
