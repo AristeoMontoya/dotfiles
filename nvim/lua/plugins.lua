@@ -43,7 +43,7 @@ return require('packer').startup(function(use)
 		-- Debugger
 		use 'puremourning/vimspector'
 		-- Ayuda con accesis directos
-		use 'liuchengxu/vim-which-key'
+		use 'folke/which-key.nvim'
 		-- Parser veloz
 		use 'nvim-treesitter/nvim-treesitter'
 		-- Colores de TreeSitter
@@ -74,5 +74,7 @@ return require('packer').startup(function(use)
     	use 'kabouzeid/nvim-lspinstall'
 		-- Java
 		use 'mfussenegger/nvim-jdtls'
+		-- Org mode
+		use 'kristijanhusak/orgmode.nvim'
 	end
 end)
