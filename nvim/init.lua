@@ -17,7 +17,6 @@ if VSCODE ~= 1 then
 	-- require('nv_orgmode')
 	V.cmd('source ~/.config/nvim/vimscript/nvim-tree.vim')
 	V.cmd('source ~/.config/nvim/vimscript/indentLine.vim')
-	-- V.cmd('source ~/.config/nvim/vimscript/whichkey.vim')
 	V.cmd('source ~/.config/nvim/vimscript/gitgutter.vim')
 	V.cmd('source ~/.config/nvim/vimscript/vimspector.vim')
 	V.cmd('source ~/.config/nvim/vimscript/vimwiki.vim')
