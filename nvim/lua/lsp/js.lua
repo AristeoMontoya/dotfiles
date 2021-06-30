@@ -3,7 +3,6 @@ require'lspconfig'.tsserver.setup {
 	filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
 	on_attach = require'lsp'.tsserver_on_attach,
 	-- This makes sure tsserver is not used for formatting (I prefer prettier)
-	-- on_attach = require'lsp'.common_on_attach,
 	settings = {documentFormatting = false},
 	handlers = {
 		["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
