@@ -32,6 +32,7 @@ if VSCODE ~= 1 then
 	require('lsp.java')
 	require('lsp.js')
 	require('lsp.lua-ls')
+	require('lsp.go')
 else
 	V.cmd('source ~/.config/nvim/vimscript/vscodemaps.vim')
 end
