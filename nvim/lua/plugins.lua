@@ -10,6 +10,8 @@ return require('packer').startup(function(use)
 		'asvetliakov/vim-easymotion',
 		opt = true,
 		cond = function()
+			-- Parece que es necesaria esta función para determinar
+			-- cuando es válido y cuando no usar este plugin.
 			return VSCODE == 1
 		end
 	}
@@ -46,7 +48,12 @@ return require('packer').startup(function(use)
 		-- Marcado de identación con espacios
 		use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
 		-- Vista previa de MarkDown
-		use {'iamcco/markdown-preview.nvim', config = "vim.call('mkdp#util#install')" }
+		use {
+			'iamcco/markdown-preview.nvim',
+			config = "vim.call('mkdp#util#install')",
+			opt = true,
+			ft = {'markdown', 'vimwiki'}
+		}
 		-- Debugger
 		use 'puremourning/vimspector'
 		-- Ayuda con accesis directos
