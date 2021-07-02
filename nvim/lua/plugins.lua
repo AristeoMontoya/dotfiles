@@ -6,17 +6,16 @@ return require('packer').startup(function(use)
 	-- Surround
 	use {'tpope/vim-surround'}
 
-	-- Movimiento vertical mejorado
-	use {
-		'phaazon/hop.nvim',
-		as = 'hop',
-		config = function()
-    		-- you can configure Hop the way you like here; see :h hop-config
-    		require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-		end
-	}
-
 	if VSCODE ~= 1 then
+		-- Movimiento vertical mejorado
+		use {
+			'phaazon/hop.nvim',
+			as = 'hop',
+			config = function()
+    			-- you can configure Hop the way you like here; see :h hop-config
+    			require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+			end
+		}
 		-- Packer can manage itself
 		use {'wbthomason/packer.nvim'}
 		-- Explorador de archivos
@@ -76,5 +75,7 @@ return require('packer').startup(function(use)
 		use 'mfussenegger/nvim-jdtls'
 		-- Org mode
 		use 'kristijanhusak/orgmode.nvim'
+	else
+		use 'asvetliakov/vim-easymotion'
 	end
 end)

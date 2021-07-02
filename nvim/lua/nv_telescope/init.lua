@@ -9,7 +9,6 @@ require('telescope').setup{
 				["<esc>"] = actions.close
 			},
 		},
-		prompt_position = "top",
 		prompt_prefix = "> ",
 		selection_caret = "> ",
 		entry_prefix = "  ",
@@ -17,18 +16,21 @@ require('telescope').setup{
 		selection_strategy = "reset",
 		sorting_strategy = "descending",
 		layout_strategy = "horizontal",
-		layout_defaults = {
-			-- TODO add builtin options.
+		layout_config = {
+			horizontal = {
+				mirror = false,
+				prompt_position = "top",
+				width = 0.75,
+				results_height = 1,
+				results_width = 0.8,
+				preview_cutoff = 120,
+			},
 		},
 		file_sorter =  require'telescope.sorters'.get_fuzzy_file,
 		file_ignore_patterns = {},
 		generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
 		shorten_path = true,
 		winblend = 0,
-		width = 0.75,
-		preview_cutoff = 120,
-		results_height = 1,
-		results_width = 0.8,
 		border = {},
 		borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰'},
 		color_devicons = true,
@@ -40,5 +42,5 @@ require('telescope').setup{
 
 		-- Developer configurations: Not meant for general override
 		buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
-	}
+	},
 }
