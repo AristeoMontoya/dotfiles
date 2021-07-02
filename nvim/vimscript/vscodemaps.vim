@@ -1,11 +1,20 @@
+" Una función que se necesita, porque pos sí
+function! s:switchEditor(...) abort
+    let count = a:1
+    let direction = a:2
+    for i in range(1, count ? count : 1)
+        call VSCodeCall(direction ==# 'next' ? 'workbench.action.nextEditorInGroup' : 'workbench.action.previousEditorInGroup')
+    endfor
+endfunction
+
 " Navegación por tabs
-nnoremap <TAB> tabnext
-nnoremap <S-TAB> tabprevious
+nnoremap <TAB> <Cmd>call <SID>switchEditor(v:count, 'next')<CR>
+nnoremap <S-TAB> <Cmd>call <SID>switchEditor(v:count, 'prev')<CR>
 
 " Cambiar de espacio en el editor
 nnoremap <silent> <C-a> :e#<CR>
 
-"				SPLITS
+"              SPLITS
 " ==================================
 " Mover a split izquierdo
 nnoremap <silent> <C-h> <Cmd>call VSCodeNotify('workbench.action.focusLeftGroup')<CR>
@@ -48,10 +57,6 @@ nmap <silent> <leader>tn :tabedit<CR>
 
 " Cerrar pestaña
 nmap <silent> <leader>tk :tabclose<CR>
-
-" Nvim Hop
-nnoremap <leader><leader>f :HopChar1<CR>
-nnoremap <leader><leader>b :HopChar2<CR>
 
 " Específicas de VSCode
 "" Comandos necesarios
