@@ -3,6 +3,7 @@ require('globals')
 V.cmd('source ~/.config/nvim/vimscript/generalvscode.vim')
 require('plugins')
 
+-- Cargan cuando no está VSCode
 if VSCODE ~= 1 then
 	V.cmd('source ~/.config/nvim/vimscript/general.vim')
 	require('nv_colorizer')
@@ -14,7 +15,7 @@ if VSCODE ~= 1 then
 	require('nv_lspinstall')
 	require('nv_ultisnips')
 	require('nv_whichkey')
-	-- require('nv_orgmode')
+	require('nv_orgmode')
 	V.cmd('source ~/.config/nvim/vimscript/nvim-tree.vim')
 	V.cmd('source ~/.config/nvim/vimscript/indentLine.vim')
 	V.cmd('source ~/.config/nvim/vimscript/gitgutter.vim')
