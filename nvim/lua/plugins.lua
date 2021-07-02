@@ -6,6 +6,14 @@ return require('packer').startup(function(use)
 	-- Surround
 	use {'tpope/vim-surround'}
 
+	use {
+		'asvetliakov/vim-easymotion',
+		opt = true,
+		cond = function()
+			return VSCODE == 1
+		end
+	}
+
 	if VSCODE ~= 1 then
 		-- Movimiento vertical mejorado
 		use {
@@ -59,23 +67,22 @@ return require('packer').startup(function(use)
 			requires = {'kyazdani42/nvim-web-devicons', opt = true}
 		}
 		-- Integración con TaskWarrior
-		use {'tbabej/taskwiki', opt = true, ft = {'markdown'}}
+		use {'tbabej/taskwiki', opt = true, ft = {'markdown', 'vimwiki'}}
 		-- OneDark
-		use 'norcalli/nvim-base16.lua'
+		use {'norcalli/nvim-base16.lua'}
 		-- Tabline
-		use 'akinsho/nvim-bufferline.lua'
+		use {'akinsho/nvim-bufferline.lua'}
 		-- Snippets
-		use 'SirVer/ultisnips'
+		use {'SirVer/ultisnips'}
 		-- LSP
-		use 'neovim/nvim-lspconfig'
-		use 'hrsh7th/nvim-compe'
-    	use 'glepnir/lspsaga.nvim'
-    	use 'kabouzeid/nvim-lspinstall'
+		use {'neovim/nvim-lspconfig'}
+		use {'hrsh7th/nvim-compe'}
+    	use {'glepnir/lspsaga.nvim'}
+    	use {'kabouzeid/nvim-lspinstall'}
 		-- Java
-		use 'mfussenegger/nvim-jdtls'
+		use {'mfussenegger/nvim-jdtls'}
 		-- Org mode
-		use 'kristijanhusak/orgmode.nvim'
-	else
-		use 'asvetliakov/vim-easymotion'
+		use {'kristijanhusak/orgmode.nvim'}
+
 	end
 end)
