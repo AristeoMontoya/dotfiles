@@ -36,7 +36,7 @@ urgency.user.tag.Tramites.coefficient=15.0
 # Contextos
 context.residencias=+Residencias
 context.focus=-Secundario -Musica -Laptop
-context=focus
+context=residencias
 
 # Sincronización
 taskd.server=freecinc.com:53589

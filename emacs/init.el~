@@ -108,18 +108,6 @@
    "t" '(:ignore t :which-key "togles")))
 
 ;; Ahora sí, vim
-(defun vim/evil-hook ()
-  (dolist (mode '(custom-mode
-		  eshell-mode
-		  git-rebase-mode
-		  erc-mode
-		  circe-server-mode
-		  circe-chat-mode
-		  circe-query-mode
-		  sauron-mode
-		  term-mode))
-    (add-to-list 'evil-emacs-state-modes mode)))
-
 (use-package evil
   :init
   (setq evil-want-integration t)
@@ -137,7 +125,6 @@
 
   (evil-set-initial-state 'messages-buffer-mode 'normal)
   (evil-set-initial-state 'dashboard-mode 'normal))
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
