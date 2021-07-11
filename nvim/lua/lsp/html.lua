@@ -4,5 +4,6 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 require'lspconfig'.html.setup {
 	cmd = {"node", DATA_PATH .. "/lspinstall/html/vscode-html/html-language-features/server/dist/node/htmlServerMain.js", "--stdio"},
 	on_attach = require'lsp'.common_on_attach,
+	root_dir = require("lspconfig/util").root_pattern(".git", "."),
 	capabilities = capabilities
 }
