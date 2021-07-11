@@ -33,7 +33,7 @@ if VSCODE ~= 1 then
 	require('lsp.js')
 	require('lsp.lua-ls')
 	require('lsp.go')
-	require('lsp.efm')
+	-- require('lsp.efm')
 	require('lsp.html')
 	require('lsp.vue')
 else
