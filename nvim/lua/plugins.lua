@@ -84,40 +84,43 @@ return require('packer').startup(function(use)
 		-- Tabline
 		use {'akinsho/nvim-bufferline.lua'}
 		-- Snippets
-		use {'SirVer/ultisnips'}
-
-		-- LSP
+		use {
+			'SirVer/ultisnips',
+			opt = true,
+			cond = not CoC_enabled
+		}
+		-- LSn
 		use {
 			'neovim/nvim-lspconfig',
 			opt = true,
-			cond = not CoC_enabled()
+			cond = not CoC_enabled
 		}
 		use {
 			'hrsh7th/nvim-compe',
 			opt = true,
-			cond = not CoC_enabled()
+			cond = not CoC_enabled
 		}
 		use {
 			'glepnir/lspsaga.nvim',
 			opt = true,
-			cond = not CoC_enabled()
+			cond = not CoC_enabled
 		}
 		use {
 			'kabouzeid/nvim-lspinstall',
 			opt = true,
-			cond = not CoC_enabled()
+			cond = not CoC_enabled
 		}
 		use {
 			'mfussenegger/nvim-jdtls',
 			opt = true,
-			cond = not CoC_enabled()
+			cond = not CoC_enabled
 		}
 
 		-- CoC
 		use {
 			'neoclide/coc.nvim',
 			opt = true,
-			cond = CoC_enabled()
+			cond = CoC_enabled
 		}
 		-- Org mode
 		use {'kristijanhusak/orgmode.nvim'}

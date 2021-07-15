@@ -1,3 +1,4 @@
+require('globals')
 require("which-key").setup {
 	plugins = {
 		marks = true, -- shows a list of your marks on ' and `
@@ -55,9 +56,6 @@ vim.api.nvim_set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', {noremap = true
 
 -- telescope
 vim.api.nvim_set_keymap('n', '<Leader>f', ':Telescope find_files<CR>', {noremap = true, silent = true})
-
--- dashboard
-vim.api.nvim_set_keymap('n', '<Leader>;', ':Dashboard<CR>', {noremap = true, silent = true})
 
 -- Comments
 vim.api.nvim_set_keymap("n", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})

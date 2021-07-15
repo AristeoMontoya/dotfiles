@@ -1,3 +1,12 @@
+require('globals')
+
+diagnosticsSource = ''
+if COC then
+	diagnosticsSource = 'coc'
+	else
+	diagnosticsSource = 'nvim_lsp'
+end
+
 require('lualine').setup {
 	options = {
 		theme = 'onedark',
@@ -10,7 +19,7 @@ require('lualine').setup {
 		lualine_b = { 
 			{
 				'branch', icon = ''
-			}, 
+			},
 			{
 				'diff',
 				colored = true,
@@ -18,9 +27,9 @@ require('lualine').setup {
 				color_modified = '#56b6c2',
 				color_removed = '#e06c75'
 			},
-			{ 
+			{
 				'diagnostics',
-				sources = {'nvim_lsp'},
+				sources = { diagnosticsSource },
 				color_error = '#e06c75',
 				color_warn ='#e5c07b',
 				color_info = '#56b6c2',
