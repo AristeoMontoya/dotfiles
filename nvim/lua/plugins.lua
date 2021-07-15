@@ -64,6 +64,7 @@ return require('packer').startup(function(use)
 		use 'folke/which-key.nvim'
 		-- Parser veloz
 		use 'nvim-treesitter/nvim-treesitter'
+		use 'nvim-treesitter/nvim-treesitter-textobjects'
 		-- Colores de TreeSitter
 		use 'nvim-treesitter/playground'
 		-- Integración con git
