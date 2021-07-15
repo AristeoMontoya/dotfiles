@@ -30,6 +30,8 @@ cmd("hi tstitle guifg=#e5c07b")
 cmd("hi tsinclude guifg=#d291e4")
 cmd("hi tsrepeat guifg=#d291e4")
 cmd("hi tserror guibg=None guifg=#e06c75")
+cmd("hi tstag guibg=None guifg=#e06c75")
+cmd("hi htmltstagattribute guibg=None guifg=#e5c07b")
 cmd("hi tscharacter guifg=#98c379")
 cmd("hi tsmethod gui=bold guifg=#61afef")
 
