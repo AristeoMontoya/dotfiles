@@ -2,6 +2,10 @@ require('globals')
 
 vim.cmd "autocmd BufWritePost plugins.lua PackerCompile" -- Auto compile when there are changes in plugins.lua
 
+function CoC_enabled()
+	return COC
+end
+
 return require('packer').startup(function(use)
 	-- Surround
 	use {'tpope/vim-surround'}
@@ -22,8 +26,8 @@ return require('packer').startup(function(use)
 			'phaazon/hop.nvim',
 			as = 'hop',
 			config = function()
-    			-- you can configure Hop the way you like here; see :h hop-config
-    			require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+				-- you can configure Hop the way you like here; see :h hop-config
+				require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
 			end
 		}
 		-- Packer can manage itself
@@ -81,15 +85,41 @@ return require('packer').startup(function(use)
 		use {'akinsho/nvim-bufferline.lua'}
 		-- Snippets
 		use {'SirVer/ultisnips'}
+
 		-- LSP
-		use {'neovim/nvim-lspconfig'}
-		use {'hrsh7th/nvim-compe'}
-    	use {'glepnir/lspsaga.nvim'}
-    	use {'kabouzeid/nvim-lspinstall'}
-		-- Java
-		use {'mfussenegger/nvim-jdtls'}
+		use {
+			'neovim/nvim-lspconfig',
+			opt = true,
+			cond = not CoC_enabled()
+		}
+		use {
+			'hrsh7th/nvim-compe',
+			opt = true,
+			cond = not CoC_enabled()
+		}
+		use {
+			'glepnir/lspsaga.nvim',
+			opt = true,
+			cond = not CoC_enabled()
+		}
+		use {
+			'kabouzeid/nvim-lspinstall',
+			opt = true,
+			cond = not CoC_enabled()
+		}
+		use {
+			'mfussenegger/nvim-jdtls',
+			opt = true,
+			cond = not CoC_enabled()
+		}
+
+		-- CoC
+		use {
+			'neoclide/coc.nvim',
+			opt = true,
+			cond = CoC_enabled()
+		}
 		-- Org mode
 		use {'kristijanhusak/orgmode.nvim'}
-
 	end
 end)

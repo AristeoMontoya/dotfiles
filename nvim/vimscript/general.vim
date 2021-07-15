@@ -5,6 +5,7 @@ endif
 syntax on
 
 set listchars=tab:\▏\ 
+set signcolumn=yes
 set iskeyword+=-
 set list					" Caracter para identación
 set noshowmode				" No mostrar el mensaje de modo actual
