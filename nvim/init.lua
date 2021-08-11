@@ -13,7 +13,7 @@ if VSCODE ~= 1 then
 	require('nv_lualine')
 	require('nv_whichkey')
 	require('nv_orgmode')
-	require('nv_blankline')
+	-- require('nv_blankline')
 	if COC then
 		V.cmd('source ~/.config/nvim/vimscript/coc.vim')
 	else

@@ -50,7 +50,12 @@ return require('packer').startup(function(use)
 			requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
 		}
 		-- Marcado de identación con espacios
-		use {'lukas-reineke/indent-blankline.nvim'}
+		use {
+			'lukas-reineke/indent-blankline.nvim',
+			opt = true,
+			event = 'BufEnter',
+			config = function() require('nv_blankline') end
+		}
 		-- Vista previa de MarkDown
 		use {
 			'iamcco/markdown-preview.nvim',
