@@ -13,6 +13,7 @@ if VSCODE ~= 1 then
 	require('nv_lualine')
 	require('nv_whichkey')
 	require('nv_orgmode')
+	require('nv_blankline')
 	if COC then
 		V.cmd('source ~/.config/nvim/vimscript/coc.vim')
 	else
@@ -35,7 +36,6 @@ if VSCODE ~= 1 then
 		require('nv_ultisnips')
 	end
 	V.cmd('source ~/.config/nvim/vimscript/nvim-tree.vim')
-	V.cmd('source ~/.config/nvim/vimscript/indentLine.vim')
 	V.cmd('source ~/.config/nvim/vimscript/gitgutter.vim')
 	V.cmd('source ~/.config/nvim/vimscript/vimspector.vim')
 	V.cmd('source ~/.config/nvim/vimscript/vimwiki.vim')
