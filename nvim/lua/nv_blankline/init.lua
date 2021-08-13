@@ -1,6 +1,6 @@
 require("indent_blankline").setup {
 	char = "▏",
-	buftype_exclude = { "terminal", "help", "packer" },
+	buftype_exclude = { "terminal", "help", "packer", "man" },
 	use_treesitter = true,
 	show_trailing_blankline_indent = false,
 	show_current_context = true,
