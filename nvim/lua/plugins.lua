@@ -130,5 +130,7 @@ return require('packer').startup(function(use)
 		}
 		-- Org mode
 		use {'kristijanhusak/orgmode.nvim'}
+		-- TODO.txt
+		use { 'vim-scripts/todo-txt.vim' }
 	end
 end)

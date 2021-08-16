@@ -1,6 +1,16 @@
 " Cambiar de espacio en el editor
 nnoremap <silent> <C-a> :e#<CR>
 
+" Centrar saltos en búsqueda
+nnoremap n nzz
+nnoremap N Nzz
+
+" Centrado al combinar líneas
+nnoremap J mzJ`z
+
+" Copiar hasta final de la línea
+nnoremap Y y$
+
 "				SPLITS
 " ==================================
 " Mover a split izquierdo
