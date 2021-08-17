@@ -34,7 +34,7 @@ let g:markdown_folding = 1
 " Definiciones de grupos de VimWiki
 hi def VimwikiHeader1 guifg = #61AFEF
 hi def VimwikiHeader2 guifg = #98C379
-hi def VimwikiHeader3 guifg = #E5C07B
+hi def VimwikiHeader3 guifg = #E48AFF
 hi def VimwikiHeader4 guifg = #E5C07B
 hi def VimwikiHeader5 guifg = #E5C07B
 hi def VimwikiHeader6 guifg = #E5C07B
