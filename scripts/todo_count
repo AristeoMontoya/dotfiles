@@ -1,0 +1,30 @@
+#!/bin/python
+from time import strftime
+
+fecha = strftime('%Y-%m-%d')
+etiquetas = [
+    ('', 'Laptop'),
+    ('', 'Tramites'),
+    ('', 'Tramites'),
+    ('', fecha)
+]
+
+
+def main(etiquetas):
+    archivo = open('/home/aristeo/notas/todo.txt')
+    tareas = archivo.read()
+
+    total = tareas.count('\n')
+    if total == 0:
+        return ''
+
+    resultado = ''
+    for etiqueta in etiquetas:
+        pendientes = tareas.count(etiqueta[1])
+        if pendientes > 0:
+            resultado += f'{etiqueta[0]} {pendientes} / '
+
+    return(f'{resultado} {total}')
+
+
+print(main(etiquetas))
