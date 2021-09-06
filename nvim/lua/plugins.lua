@@ -128,8 +128,6 @@ return require('packer').startup(function(use)
 			opt = true,
 			cond = CoC_enabled
 		}
-		-- Org mode
-		use {'kristijanhusak/orgmode.nvim'}
 		-- TODO.txt
 		use { 'vim-scripts/todo-txt.vim' }
 	end
