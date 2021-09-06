@@ -14,9 +14,10 @@ tags = [
 def count_passed_tasks(text, today):
     """Compares today's date with every date found in the file."""
     passed = 0
-    dates = re.findall("[0-9]{4}-[0-1][0-9]-[0-3][0-9]", text)
+    # Only captures dates with the due tag
+    dates = re.findall("(due):([0-9]{4}-[0-1][0-9]-[0-3][0-9])", text)
     for date in dates:
-        if date < today:
+        if date[1] < today:
             passed += 1
     return passed
 
