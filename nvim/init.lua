@@ -12,7 +12,6 @@ if VSCODE ~= 1 then
 	require('nv_bufferline')
 	require('nv_lualine')
 	require('nv_whichkey')
-	require('nv_orgmode')
 	if COC then
 		V.cmd('source ~/.config/nvim/vimscript/coc.vim')
 	else
