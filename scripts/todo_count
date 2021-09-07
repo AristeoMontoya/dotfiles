@@ -7,17 +7,25 @@ tags = [
     ('', 'Laptop'),
     ('', 'Tramites'),
     ('', 'Tramites'),
-    ('', today)
 ]
 
 
-def count_passed_tasks(text, today):
-    """Compares today's date with every date found in the file."""
-    passed = 0
-    # Only captures dates with the due tag
+def get_due_dates(text):
+    """Finds all due dates in file"""
     dates = re.findall("(due):([0-9]{4}-[0-1][0-9]-[0-3][0-9])", text)
+    return [date[1] for date in dates]
+
+
+def count_todays_tasks(dates, today):
+    """Compares today's date with every date found in the file."""
+    return dates.count(today)
+
+
+def count_passed_tasks(dates, today):
+    """Counts every due date before todays date"""
+    passed = 0
     for date in dates:
-        if date[1] < today:
+        if date < today:
             passed += 1
     return passed
 
@@ -33,9 +41,14 @@ def main(tags):
         return ''
 
     result = ''
-    passed = count_passed_tasks(tasks, today)
+
+    due_dates = get_due_dates(tasks)
+    passed = count_passed_tasks(due_dates, today)
+    due = count_todays_tasks(due_dates, today)
     if passed > 0:
         result = f'!{passed} / '
+    if due > 0:
+        result = f' {due} / '
 
     # Checking for every tag
     for tag in tags:
