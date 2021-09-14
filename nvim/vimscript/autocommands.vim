@@ -11,7 +11,6 @@ function! Html()
 endfunction
 
 function! Markdown()
-	let b:coc_suggest_disable = 1
 	let g:indentLine_setConceal = 0
 	setlocal wrap
 	setlocal linebreak

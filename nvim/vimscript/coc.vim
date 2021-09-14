@@ -1,3 +1,6 @@
+" Desactivar fuentes de autocompletado por archivos
+let g:coc_sources_disable_map = {'vimwiki': ['around']}
+
 "A partir de aquí comienza la configuración de CoC"
 " TextEdit might fail if hidden is not set.
 set hidden
