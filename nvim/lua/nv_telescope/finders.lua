@@ -2,16 +2,16 @@ local M = {}
 
 function M.find_captures()
 	require('telescope.builtin').live_grep {
-	vimgrep_arguments = {
-		'rg',
-		'-g=!capturas.md',
-		'--color=never',
-		'--no-heading',
-		'--with-filename',
-		'--line-number',
-		'--column',
-		'--smart-case'
-	},
+		vimgrep_arguments = {
+			'rg',
+			'-g=!capturas.md',
+			'--color=never',
+			'--no-heading',
+			'--with-filename',
+			'--line-number',
+			'--column',
+			'--smart-case'
+		},
 		prompt_title = "~ capturas ~",
 		shorten_path = false,
 		cwd = "~/notas/capturas",
@@ -20,16 +20,16 @@ end
 
 function M.find_definition()
 	require('telescope.builtin').live_grep {
-	vimgrep_arguments = {
-		'rg',
-		'-g=[G|g]losario.md',
-		'--color=never',
-		'--no-heading',
-		'--with-filename',
-		'--line-number',
-		'--column',
-		'--smart-case'
-	},
+		vimgrep_arguments = {
+			'rg',
+			'-g=[G|g]losario.md',
+			'--color=never',
+			'--no-heading',
+			'--with-filename',
+			'--line-number',
+			'--column',
+			'--smart-case'
+		},
 		prompt_title = "~ Definiciones ~",
 		shorten_path = false,
 		cwd = "~/notas",
@@ -47,6 +47,20 @@ function M.find_nvim_source()
 			preview_width = 0.65,
 		},
 	}
+end
+
+function M.find_notes()
+	require('telescope.builtin').find_files {
+		prompt_title = "~ nvim ~",
+		shorten_path = false,
+		cwd = "~/notas",
+		width = .25,
+		layout_strategy = 'horizontal',
+		layout_config = {
+			preview_width = 0.65,
+		},
+	}
+	return true
 end
 
 function M.edit_zsh()

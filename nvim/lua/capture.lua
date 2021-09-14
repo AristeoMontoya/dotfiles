@@ -12,7 +12,7 @@ end
 
 -- Agrega al índice la captura pendiente de revisión
 function AddPendingCapture(date, home)
-	local entry = '- [ ] [' .. date .. '](capturas/' .. date .. ')\n'
+	local entry = '- [ ] [' .. date .. '](cap-' .. date .. ')\n'
 	local index = io.open(home .. '/notas/index.md', 'a')
 	io.output(index)
 	io.write(entry)
@@ -22,8 +22,8 @@ end
 function AddStamps(date, home, fileName)
 	local entryTitle = os.date('%A %d de %B de %Y')
 	local title = '# Notas de ' .. entryTitle
-	local entry = '- [[' .. date .. ']]\n'
-	local capturesIndex = io.open(home .. '/notas/capturas/capturas.md', 'a')
+	local entry = '- [[cap-' .. date .. ']]\n'
+	local capturesIndex = io.open(home .. '/notas/hub_capturas.md', 'a')
 	local todaysCapture = io.open(fileName, 'w')
 	io.output(capturesIndex)
 	io.write(entry)
@@ -49,7 +49,7 @@ function UpdateIndex(index, date)
 	-- caracteres estoy usando +
 	if LinkExists(index, date) then
 		local target = '- \\[X\\] \\[' ..date.. '\\]\\(.*\\)'
-		local replacement = '- [ ] [' ..date.. '](capturas/' ..date.. ')'
+		local replacement = '- [ ] [' ..date.. '](cap-' ..date.. ')'
 		local command = 'sed -i "s+'..target..'+'..replacement..'+g" '..index
 		os.execute(command)
 	else
@@ -79,7 +79,7 @@ function CreateCapture()
 	local home = os.getenv('HOME')
 	local date = os.date('%Y-%m-%d')
 	local timestamp = os.date('%H:%M')
-	local fileName = home .. '/notas/capturas/' .. date .. '.md'
+	local fileName = home .. '/notas/cap-' .. date .. '.md'
 
 	PrepareCapture(home, date, fileName)
 	StartInsert(fileName, timestamp)

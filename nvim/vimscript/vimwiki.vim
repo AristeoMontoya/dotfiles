@@ -27,8 +27,6 @@ let g:vimwiki_key_mappings = {
             \ 'mouse': 0,
             \ }
 
-let g:taskwiki_markup_syntax = 'markdown'
-let g:taskwiki_disable_concealcursor = 'yes'
 let g:markdown_folding = 1
 
 " Definiciones de grupos de VimWiki

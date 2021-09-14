@@ -161,8 +161,10 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Buscar capturas de notas con Telescope
+nnoremap <leader>ft <cmd>lua require 'nv_telescope.finders'.testing()<CR>
 nnoremap <leader>fc <cmd>lua require 'nv_telescope.finders'.find_captures()<CR>
 nnoremap <leader>fd <cmd>lua require 'nv_telescope.finders'.find_definition()<CR>
+nnoremap <leader>fn <cmd>lua require 'nv_telescope.finders'.find_notes()<CR>
 
 " Nvim Hop
 nnoremap <leader><leader>f :HopChar1<CR>
