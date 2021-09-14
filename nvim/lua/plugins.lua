@@ -83,8 +83,6 @@ return require('packer').startup(function(use)
 			'hoob3rt/lualine.nvim',
 			requires = {'kyazdani42/nvim-web-devicons', opt = true}
 		}
-		-- Integración con TaskWarrior
-		use {'tbabej/taskwiki', opt = true, ft = {'markdown', 'vimwiki'}}
 		-- OneDark
 		use {'norcalli/nvim-base16.lua'}
 		-- Tabline
