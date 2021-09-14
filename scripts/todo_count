@@ -1,6 +1,6 @@
 #!/bin/python
-from time import strftime
 import re
+from time import strftime
 
 today = strftime('%Y-%m-%d')
 tags = [
