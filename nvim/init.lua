@@ -7,6 +7,7 @@ require('plugins')
 if VSCODE ~= 1 then
 	V.cmd('source ~/.config/nvim/vimscript/general.vim')
 	require('nv_colorizer')
+	require('nv_tree')
 	require('nv_treesitter')
 	require('nv_telescope')
 	require('nv_bufferline')
@@ -33,7 +34,6 @@ if VSCODE ~= 1 then
 		require('nv_lspinstall')
 		require('nv_ultisnips')
 	end
-	V.cmd('source ~/.config/nvim/vimscript/nvim-tree.vim')
 	V.cmd('source ~/.config/nvim/vimscript/gitgutter.vim')
 	V.cmd('source ~/.config/nvim/vimscript/vimspector.vim')
 	V.cmd('source ~/.config/nvim/vimscript/vimwiki.vim')

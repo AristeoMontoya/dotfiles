@@ -169,3 +169,6 @@ nnoremap <leader>fn <cmd>lua require 'nv_telescope.finders'.find_notes()<CR>
 " Nvim Hop
 nnoremap <leader><leader>f :HopChar1<CR>
 nnoremap <leader><leader>b :HopChar2<CR>
+
+" NvimTree
+nnoremap <leader>fe :NvimTreeToggle<CR>

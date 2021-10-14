@@ -60,6 +60,28 @@ cmd("hi BufferLineIndicatorSelected guifg=#98c379")
 cmd("hi BufferLineBufferSelected gui=bold guifg=#98c379")
 
 -- NvimTree
-cmd("hi NvimTreeFolderIcon guifg=#61AFEF")
 cmd("hi NvimTreeNormal guibg=#1f2228")
 cmd("hi NvimTreeCursorLine guibg=#282c34")
+cmd("hi NvimTreeRootFolder guifg=#C678DD")
+cmd("hi NvimTreeExecFile guifg=#98c379")
+cmd("hi NvimTreeImageFile guifg=#C678DD")
+cmd("hi NvimTreeSpecialFile guifg=#56B6C2")
+-- LSP
+cmd("hi LspDiagnosticsError guibg=#000000")
+cmd("hi LspDiagnosticsWarning guibg=#000000")
+cmd("hi LspDiagnosticsInformation guibg=#000000")
+cmd("hi LspDiagnosticsHint guibg=#000000")
+-- Íconos
+cmd("hi NvimTreeLicenseIcon guibg=#000000")
+cmd("hi NvimTreeYamlIcon guibg=#000000")
+cmd("hi NvimTreeTomlIcon guibg=#000000")
+cmd("hi NvimTreeFolderIcon guifg=#61AFEF")
+
+-- Colores de git
+cmd("hi NvimTreeGitignoreIcon guifg=#454C59")
+cmd("hi NvimTreeGitDirty guifg=#E06C75")
+cmd("hi NvimTreeGitStaged guifg=#98c379")
+-- cmd("hi NvimTreeGitMerge guibg=#000000")
+cmd("hi NvimTreeGitRenamed guifg=#C678DD")
+cmd("hi NvimTreeGitNew guifg=#C678DD")
+cmd("hi NvimTreeGitDeleted guifg=#E06C75")
