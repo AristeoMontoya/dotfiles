@@ -9,11 +9,11 @@ if [ ! -f $NOMBRE_ARCHIVO ]; then
 	echo "- [[cap-$FECHA]]" >> "$HOME/notas/hub_capturas.md"
 	echo "- [ ] [$FECHA](cap-$FECHA)" >> "$HOME/notas/index.md"
 else
-	LINK=(grep -E "(- \[[ |X]\] \[cap-$FECHA\]\(.*))" $HOME/notas/index.md)
+	LINK=(grep -E "(- \[[ |X]\] \[$FECHA\]\(.*))" $HOME/notas/index.md)
 
 	if [ $("${LINK[@]}" | wc -l) -gt 0 ]; then
 		# Si el link existe, se actualiza
-		sed -i "s+- \[X\] \[cap-$FECHA\]\(.*\)+- [ ] [$FECHA](cap-$FECHA)+g" $HOME/notas/index.md
+		sed -i "s+- \[X\] \[$FECHA\]\(.*\)+- [ ] [$FECHA](cap-$FECHA)+g" $HOME/notas/index.md
 	else
 		# De lo contrario, se agrega
 		echo "- [ ] [$FECHA](cap-$FECHA)" >> "$HOME/notas/index.md"
