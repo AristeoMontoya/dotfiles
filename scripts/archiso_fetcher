@@ -1,0 +1,24 @@
+#!/bin/sh
+# curl -O https://arch.jsc.mx/iso/2022.01.01/archlinux-2022.01.01-x86_64.iso
+url="https://arch.jsc.mx/iso/latest"
+iso_dir=$1
+echo $iso_dir
+
+
+# Verificar cual tenemos descargado
+# Obtener la fecha del descargado
+# Buscar el más actualizado
+
+latest_iso=$(wget -qO - $url | grep -oP '(?<=")archlinux-.*.iso(?=")')
+echo $latest_iso
+if [ -f "$iso_dir/$latest_iso" ]; then
+	echo "Ya se tiene el último iso."
+else
+	rm "archlinux-*"
+	curl -O "$url/$latest_iso"
+fi
+
+# Descargar el iso más nuevo
+# Verificar el MD5 del iso
+# Si no coincide, eliminar ese ISO
+# Si coincide, eliminar el ISO local más viejo
