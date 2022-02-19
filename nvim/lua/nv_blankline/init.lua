@@ -1,5 +1,4 @@
 require("indent_blankline").setup {
-	char = "▏",
 	buftype_exclude = { "terminal", "help", "packer", "man" },
 	filetype_exclude = { "man", "packer" },
 	use_treesitter = true,
