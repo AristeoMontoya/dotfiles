@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Log completo
+git config --global alias.glog 'log --graph --format="%C(bold blue)%h%C(reset) - %C(bold green)(%ah)%C(reset) %s - %C(dim)%an%C(reset) %C(bold yellow)%d%C(reset)"'
