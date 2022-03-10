@@ -1,3 +1,4 @@
+filetype plugin on			" Configuraciones de Vimwiki
 " Usar Markdown para VimWiki
 let g:vimwiki_list = [{'path': '~/notas/', 'syntax': 'markdown', 'ext': '.md'}]
 let wiki = { }
