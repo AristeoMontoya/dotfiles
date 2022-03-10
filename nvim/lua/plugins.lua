@@ -10,6 +10,10 @@ local function CoC_enabled()
 	return COC and isNodeAvailable()
 end
 
+local function isInsideVsCode()
+	return IS_VSCODE
+end
+
 -- For auto install
 local fn = V.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -24,14 +28,10 @@ return require('packer').startup(function(use)
 	use {
 		'asvetliakov/vim-easymotion',
 		opt = true,
-		cond = function()
-			-- Parece que es necesaria esta función para determinar
-			-- cuando es válido y cuando no usar este plugin.
-			return IS_VSCODE == 1
-		end
+		cond = isInsideVsCode
 	}
 
-	if IS_VSCODE ~= 1 then
+	if not isInsideVsCode() then
 		-- Movimiento vertical mejorado
 		use {
 			'phaazon/hop.nvim',
