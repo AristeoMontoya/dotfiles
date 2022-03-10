@@ -2,8 +2,12 @@ require('globals')
 
 vim.cmd "autocmd BufWritePost plugins.lua PackerCompile" -- Auto compile when there are changes in plugins.lua
 
-function CoC_enabled()
-	return COC
+local function isNodeAvailable()
+	return HAS_NODE
+end
+
+local function CoC_enabled()
+	return COC and isNodeAvailable()
 end
 
 return require('packer').startup(function(use)
@@ -91,40 +95,40 @@ return require('packer').startup(function(use)
 		use {
 			'SirVer/ultisnips',
 			opt = true,
-			cond = not CoC_enabled
+			cond = not CoC_enabled and isNodeAvailable
 		}
 		-- LSn
 		use {
 			'neovim/nvim-lspconfig',
 			opt = true,
-			cond = not CoC_enabled
+			cond = not CoC_enabled and isNodeAvailable
 		}
 		use {
 			'hrsh7th/nvim-compe',
 			opt = true,
-			cond = not CoC_enabled
+			cond = not CoC_enabled and isNodeAvailable
 		}
 		use {
 			'glepnir/lspsaga.nvim',
 			opt = true,
-			cond = not CoC_enabled
+			cond = not CoC_enabled and isNodeAvailable
 		}
 		use {
 			'kabouzeid/nvim-lspinstall',
 			opt = true,
-			cond = not CoC_enabled
+			cond = not CoC_enabled and isNodeAvailable
 		}
 		use {
 			'mfussenegger/nvim-jdtls',
 			opt = true,
-			cond = not CoC_enabled
+			cond = not CoC_enabled and isNodeAvailable
 		}
 
 		-- CoC
 		use {
 			'neoclide/coc.nvim',
 			opt = true,
-			cond = CoC_enabled
+			cond = CoC_enabled and isNodeAvailable
 		}
 		-- TODO.txt
 		use { 'vim-scripts/todo-txt.vim' }
