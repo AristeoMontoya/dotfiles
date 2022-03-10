@@ -1,6 +1,6 @@
 require('globals')
 
-diagnosticsSource = ''
+local diagnosticsSource = ''
 if COC then
 	diagnosticsSource = 'coc'
 	else
