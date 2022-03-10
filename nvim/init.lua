@@ -3,19 +3,9 @@ require('globals')
 V.cmd('source ~/.config/nvim/vimscript/generalvscode.vim')
 require('plugins')
 
--- Cargan cuando no está VSCode
-if VSCODE ~= 1 then
+if not IS_VSCODE then
 	V.cmd('source ~/.config/nvim/vimscript/general.vim')
-	require('nv_colorizer')
-	require('nv_tree')
-	require('nv_treesitter')
-	require('nv_telescope')
-	require('nv_bufferline')
-	require('nv_lualine')
-	require('nv_whichkey')
-	if COC then
-		V.cmd('source ~/.config/nvim/vimscript/coc.vim')
-	else
+	if not COC then
 		V.cmd('source ~/.config/nvim/vimscript/lsp_keymaps.vim')
 		-- LSP
 		require('lsp')
@@ -29,10 +19,6 @@ if VSCODE ~= 1 then
 		require('lsp.html')
 		require('lsp.emmet')
 		require('lsp.vue')
-		-- Autocompletado y demás
-		require('nv_compe')
-		require('nv_lspinstall')
-		require('nv_ultisnips')
 	end
 	V.cmd('source ~/.config/nvim/vimscript/gitgutter.vim')
 	V.cmd('source ~/.config/nvim/vimscript/vimspector.vim')

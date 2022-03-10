@@ -20,11 +20,11 @@ return require('packer').startup(function(use)
 		cond = function()
 			-- Parece que es necesaria esta función para determinar
 			-- cuando es válido y cuando no usar este plugin.
-			return VSCODE == 1
+			return IS_VSCODE == 1
 		end
 	}
 
-	if VSCODE ~= 1 then
+	if IS_VSCODE ~= 1 then
 		-- Movimiento vertical mejorado
 		use {
 			'phaazon/hop.nvim',
@@ -37,13 +37,23 @@ return require('packer').startup(function(use)
 		-- Packer can manage itself
 		use {'wbthomason/packer.nvim'}
 		-- Explorador de archivos
-		use {'kyazdani42/nvim-tree.lua'}
+		use {
+			'kyazdani42/nvim-tree.lua',
+			config = function() require('nv_tree') end
+		}
 		-- Vimwiki
-		use {'vimwiki/vimwiki'}
+		use {
+			'vimwiki/vimwiki',
+			config = function() V.cmd('source ~/.config/nvim/vimscript/vimwiki.vim') end
+		}
 		-- Vista previa web
 		use {'turbio/bracey.vim', run = 'npm install --prefix server'}
 		-- Vista previa de colores
-		use {'norcalli/nvim-colorizer.lua'}
+		use {
+			'norcalli/nvim-colorizer.lua',
+			config = function() require('nv_colorizer') end
+		}
+
 		-- Autocompletado
 		-- use {'neoclide/coc.nvim', branch = 'release'}
 		-- Autopares
@@ -51,7 +61,8 @@ return require('packer').startup(function(use)
 		-- Búsqueda difusa
 		use {
 			'nvim-telescope/telescope.nvim',
-			requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+			requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+			config = function() require('nv_telescope') end
 		}
 		-- Marcado de identación con espacios
 		use {
@@ -68,16 +79,28 @@ return require('packer').startup(function(use)
 			ft = {'markdown', 'vimwiki'}
 		}
 		-- Debugger
-		use 'puremourning/vimspector'
+		use {
+			'puremourning/vimspector',
+			config = function() V.cmd('source ~/.config/nvim/vimscript/vimspector.vim') end
+		}
 		-- Ayuda con accesis directos
-		use 'folke/which-key.nvim'
+		use {
+			'folke/which-key.nvim',
+			config = function() require('nv_whichkey') end
+		}
 		-- Parser veloz
-		use 'nvim-treesitter/nvim-treesitter'
+		use {
+			'nvim-treesitter/nvim-treesitter',
+			config = function() require('nv_treesitter') end
+		}
 		use 'nvim-treesitter/nvim-treesitter-textobjects'
 		-- Colores de TreeSitter
 		use 'nvim-treesitter/playground'
 		-- Integración con git
-		use 'airblade/vim-gitgutter'
+		use {
+			'airblade/vim-gitgutter',
+			config = function() V.cmd('source ~/.config/nvim/vimscript/gitgutter.vim') end
+		}
 		-- Comentarios rápidos
 		use 'tpope/vim-commentary'
 		-- Integración con comandos de git
@@ -85,17 +108,22 @@ return require('packer').startup(function(use)
 		-- Línea de status
 		use {
 			'hoob3rt/lualine.nvim',
-			requires = {'kyazdani42/nvim-web-devicons', opt = true}
+			requires = {'kyazdani42/nvim-web-devicons', opt = true},
+			config = function() require('nv_lualine') end
 		}
 		-- OneDark
 		use {'norcalli/nvim-base16.lua'}
 		-- Tabline
-		use {'akinsho/nvim-bufferline.lua'}
+		use {
+			'akinsho/nvim-bufferline.lua',
+			config = function() require('nv_bufferline') end
+		}
 		-- Snippets
 		use {
 			'SirVer/ultisnips',
 			opt = true,
-			cond = not CoC_enabled and isNodeAvailable
+			cond = not CoC_enabled and isNodeAvailable,
+			config = function() require('nv_ultisnips') end
 		}
 		-- LSn
 		use {
@@ -106,7 +134,8 @@ return require('packer').startup(function(use)
 		use {
 			'hrsh7th/nvim-compe',
 			opt = true,
-			cond = not CoC_enabled and isNodeAvailable
+			cond = not CoC_enabled and isNodeAvailable,
+			config = function() require('nv_compe') end
 		}
 		use {
 			'glepnir/lspsaga.nvim',
@@ -116,21 +145,21 @@ return require('packer').startup(function(use)
 		use {
 			'kabouzeid/nvim-lspinstall',
 			opt = true,
-			cond = not CoC_enabled and isNodeAvailable
+			cond = not CoC_enabled and isNodeAvailable,
+			config = function() require('nv_lspinstall') end
 		}
 		use {
 			'mfussenegger/nvim-jdtls',
 			opt = true,
-			cond = not CoC_enabled and isNodeAvailable
+			cond = not CoC_enabled and isNodeAvailable,
 		}
 
 		-- CoC
 		use {
 			'neoclide/coc.nvim',
 			opt = true,
-			cond = CoC_enabled and isNodeAvailable
+			cond = CoC_enabled and isNodeAvailable,
+			config = function() V.cmd('source ' .. CONFIG_PATH .. '/vimscript/coc.vim') end
 		}
-		-- TODO.txt
-		use { 'vim-scripts/todo-txt.vim' }
 	end
 end)
