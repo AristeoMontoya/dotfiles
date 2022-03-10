@@ -1,6 +1,6 @@
 require('globals')
 -- Necesarias en caso de usar VSCode
-V.cmd('source ~/.config/nvim/vimscript/generalvscode.vim')
+require('generalvscode')
 require('plugins')
 
 if not IS_VSCODE then
