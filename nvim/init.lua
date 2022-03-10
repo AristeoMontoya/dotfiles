@@ -20,9 +20,6 @@ if not IS_VSCODE then
 		require('lsp.emmet')
 		require('lsp.vue')
 	end
-	V.cmd('source ~/.config/nvim/vimscript/gitgutter.vim')
-	V.cmd('source ~/.config/nvim/vimscript/vimspector.vim')
-	V.cmd('source ~/.config/nvim/vimscript/vimwiki.vim')
 	V.cmd('source ~/.config/nvim/vimscript/keymaps.vim')
 	V.cmd('source ~/.config/nvim/vimscript/autocommands.vim')
 	require('nv_base16')
