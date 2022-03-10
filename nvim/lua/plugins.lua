@@ -10,6 +10,13 @@ local function CoC_enabled()
 	return COC and isNodeAvailable()
 end
 
+-- For auto install
+local fn = V.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+	Packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
+
 return require('packer').startup(function(use)
 	-- Surround
 	use {'tpope/vim-surround'}
@@ -161,5 +168,9 @@ return require('packer').startup(function(use)
 			cond = CoC_enabled and isNodeAvailable,
 			config = function() V.cmd('source ' .. CONFIG_PATH .. '/vimscript/coc.vim') end
 		}
+
+		if Packer_bootstrap then
+			require('packer').sync()
+		end
 	end
 end)
