@@ -1,17 +1,17 @@
 require('globals')
 
-vim.cmd "autocmd BufWritePost plugins.lua PackerCompile" -- Auto compile when there are changes in plugins.lua
+V.cmd "autocmd BufWritePost plugins.lua PackerCompile" -- Auto compile when there are changes in plugins.lua
 
-local function isNodeAvailable()
-	return HAS_NODE
+function IsCocEnabled()
+	return COC and HAS_NODE
 end
 
-local function CoC_enabled()
-	return COC and isNodeAvailable()
-end
-
-local function isInsideVsCode()
+function IsInsideVsCode()
 	return IS_VSCODE
+end
+
+function ShouldUseLsp()
+	return not COC and HAS_NODE
 end
 
 -- For auto install
@@ -28,10 +28,10 @@ return require('packer').startup(function(use)
 	use {
 		'asvetliakov/vim-easymotion',
 		opt = true,
-		cond = isInsideVsCode
+		cond = IsInsideVsCode
 	}
 
-	if not isInsideVsCode() then
+	if not IsInsideVsCode() then
 		-- Movimiento vertical mejorado
 		use {
 			'phaazon/hop.nvim',
@@ -129,43 +129,43 @@ return require('packer').startup(function(use)
 		use {
 			'SirVer/ultisnips',
 			opt = true,
-			cond = not CoC_enabled and isNodeAvailable,
+			cond = ShouldUseLsp,
 			config = function() require('nv_ultisnips') end
 		}
-		-- LSn
+		-- LSP
 		use {
 			'neovim/nvim-lspconfig',
 			opt = true,
-			cond = not CoC_enabled and isNodeAvailable
+			cond = ShouldUseLsp
 		}
 		use {
-			'hrsh7th/nvim-compe',
+			'williamboman/nvim-lsp-installer',
 			opt = true,
-			cond = not CoC_enabled and isNodeAvailable,
-			config = function() require('nv_compe') end
-		}
-		use {
-			'glepnir/lspsaga.nvim',
-			opt = true,
-			cond = not CoC_enabled and isNodeAvailable
-		}
-		use {
-			'kabouzeid/nvim-lspinstall',
-			opt = true,
-			cond = not CoC_enabled and isNodeAvailable,
+			cond = ShouldUseLsp,
 			config = function() require('nv_lspinstall') end
 		}
 		use {
+			'hrsh7th/nvim-cmp',
+			opt = true,
+			cond = ShouldUseLsp,
+			config = function() require('nv_cmp') end
+		}
+		use { 'hrsh7th/cmp-nvim-lsp' }
+		use { 'hrsh7th/cmp-buffer' }
+		use { 'hrsh7th/cmp-path' }
+		use { 'hrsh7th/cmp-cmdline' }
+		use { "quangnguyen30192/cmp-nvim-ultisnips" }
+		use {
 			'mfussenegger/nvim-jdtls',
 			opt = true,
-			cond = not CoC_enabled and isNodeAvailable,
+			cond = ShouldUseLsp
 		}
 
 		-- CoC
 		use {
 			'neoclide/coc.nvim',
 			opt = true,
-			cond = CoC_enabled and isNodeAvailable,
+			cond = IsCocEnabled,
 			config = function() V.cmd('source ' .. CONFIG_PATH .. '/vimscript/coc.vim') end
 		}
 
