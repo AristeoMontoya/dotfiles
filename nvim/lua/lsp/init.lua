@@ -1,39 +1,45 @@
+require('globals')
 -- TODO figure out why this don't work
-vim.fn.sign_define(
+V.fn.sign_define(
 	"LspDiagnosticsSignError",
 	{texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError"}
 )
-vim.fn.sign_define(
+V.fn.sign_define(
 	"LspDiagnosticsSignWarning",
 	{texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning"}
 )
-vim.fn.sign_define(
+V.fn.sign_define(
 	"LspDiagnosticsSignHint",
 	{texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint"}
 )
-vim.fn.sign_define(
+V.fn.sign_define(
 	"LspDiagnosticsSignInformation",
 	{texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"}
 )
 
-vim.cmd("nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>")
-vim.cmd("nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>")
-vim.cmd("nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>")
-vim.cmd("nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>")
-vim.cmd("nnoremap <silent> K :Lspsaga hover_doc<CR>")
+V.cmd("nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>")
+V.cmd("nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>")
+V.cmd("nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>")
+V.cmd("nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>")
+V.cmd("nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>")
+V.cmd("nnoremap <silent> <leader>ca <cmd>lua vim.lsp.buf.code_action()<CR>")
+V.cmd("nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>")
+V.cmd("nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic_jump_next()<CR>")
+V.cmd("nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic_jump_prev()<CR>")
+V.cmd("nnoremap <silent> <C-space> <cmd>lua vim.lsp.buf.completion()<CR>")
 -- vim.cmd('nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>')
-vim.cmd("nnoremap <silent> <C-p> :Lspsaga diagnostic_jump_prev<CR>")
-vim.cmd("nnoremap <silent> <C-n> :Lspsaga diagnostic_jump_next<CR>")
+-- V.cmd("nnoremap <silent> <C-p> :Lspsaga diagnostic_jump_prev<CR>")
+-- V.cmd("nnoremap <silent> <C-n> :Lspsaga diagnostic_jump_next<CR>")
 -- scroll down hover doc or scroll in definition preview
-vim.cmd("nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>")
+-- V.cmd("nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>")
 -- scroll up hover doc
-vim.cmd("nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>")
-vim.cmd('command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')
+-- V.cmd("nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>")
+V.cmd('command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')
 
 -- Set Default Prefix.
 -- Note: You can set a prefix per lsp server in the lv-globals.lua file
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-	vim.lsp.diagnostic.on_publish_diagnostics, {
+V.lsp.handlers["textDocument/publishDiagnostics"] = V.lsp.with(
+	V.lsp.diagnostic.on_publish_diagnostics, {
 		virtual_text = {
 			prefix = "",
 			spacing = 0,
@@ -44,7 +50,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 
 -- symbols for autocomplete
-vim.lsp.protocol.CompletionItemKind = {
+V.lsp.protocol.CompletionItemKind = {
 	"   (Text) ",
 	"   (Method)",
 	"   (Function)",
@@ -75,7 +81,7 @@ vim.lsp.protocol.CompletionItemKind = {
 local function documentHighlight(client, bufnr)
 	-- Set autocommands conditional on server_capabilities
 	if client.resolved_capabilities.document_highlight then
-		vim.api.nvim_exec(
+		V.api.nvim_exec(
 		[[
 		hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646
 		hi LspReferenceText cterm=bold ctermbg=red guibg=#464646
