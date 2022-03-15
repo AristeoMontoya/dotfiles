@@ -27,7 +27,10 @@ cmp.setup({
 		{ name = 'ultisnips' }, -- For ultisnips users.
 	}, {
 		-- { name = 'buffer' },
-	})
+	}),
+	completion = {
+		completeopt = 'menu,menuone'
+	}
 })
 
 -- Set configuration for specific filetype.
