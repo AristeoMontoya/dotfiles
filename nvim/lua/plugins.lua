@@ -59,7 +59,10 @@ return require('packer').startup(function(use)
 			config = function() require('nv_colorizer') end
 		}
 		-- Autopares
-		use 'jiangmiao/auto-pairs'
+		use {
+			'windwp/nvim-autopairs',
+			config = function() require('nv_autopairs') end
+		}
 		-- Búsqueda difusa
 		use {
 			'nvim-telescope/telescope.nvim',
@@ -88,11 +91,16 @@ return require('packer').startup(function(use)
 		use 'nvim-treesitter/playground'
 		-- Integración con git
 		use {
-			'airblade/vim-gitgutter',
-			config = function() V.cmd('source ~/.config/nvim/vimscript/gitgutter.vim') end
+			'lewis6991/gitsigns.nvim',
+			config = function() require('nv_gitsigns') end,
+			requires = {
+				'nvim-lua/plenary.nvim'
+			},
 		}
 		-- Comentarios rápidos
-		use 'tpope/vim-commentary'
+		use { 'numToStr/Comment.nvim',
+			config = function() require('nv_comment') end
+		}
 		-- Línea de status
 		use {
 			'hoob3rt/lualine.nvim',
