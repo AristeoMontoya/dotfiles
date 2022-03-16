@@ -1,5 +1,5 @@
 require("indent_blankline").setup {
-	buftype_exclude = { "terminal", "help", "packer", "man" },
+	buftype_exclude = { "terminal", "help", "packer", "man", "lsp-installer", "nofile" },
 	filetype_exclude = { "man", "packer" },
 	use_treesitter = true,
 	show_trailing_blankline_indent = false,
@@ -11,4 +11,4 @@ require("indent_blankline").setup {
 }
 
 -- Autocomand porque es cargado bajo demanda
-vim.cmd('autocmd CursorMoved * IndentBlanklineRefresh')
+V.cmd('autocmd CursorMoved * IndentBlanklineRefresh')

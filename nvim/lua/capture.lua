@@ -1,4 +1,4 @@
-V = vim
+require('globals')
 
 function FileExists(fileName)
 	local file = io.open(fileName, 'r')
