@@ -1,12 +1,53 @@
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 
+local kind_icons = {
+	Text = "",
+	Method = "",
+	Function = "",
+	Constructor = "",
+	Field = "",
+	Variable = "",
+	Class = "ﴯ",
+	Interface = "",
+	Module = "",
+	Property = "ﰠ",
+	Unit = "",
+	Value = "",
+	Enum = "",
+	Keyword = "",
+	Snippet = "",
+	Color = "",
+	File = "",
+	Reference = "",
+	Folder = "",
+	EnumMember = "",
+	Constant = "",
+	Struct = "",
+	Event = "",
+	Operator = "",
+	TypeParameter = ""
+}
+
 cmp.setup({
+	formatting = {
+		format = function(entry, vim_item)
+			-- Kind icons
+			vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+			-- Source
+			vim_item.menu = ({
+				buffer = "[Buffer]",
+				nvim_lsp = "[LSP]",
+				ultisnip = "[UltiSnips]",
+			})[entry.source.name]
+			return vim_item
+		end
+	},
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
 			-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-			vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+			V.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 		end,
 	},
 	mapping = {
@@ -36,7 +77,7 @@ cmp.setup({
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
 	sources = cmp.config.sources({
-		{ name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it. 
+		{ name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
 	}, {
 		{ name = 'buffer' },
 	})
