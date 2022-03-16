@@ -17,6 +17,18 @@ require'nvim-treesitter.configs'.setup {
 				ic = "@class.inner",
 			},
 		},
+	},
+	rainbow = {
+		enable = true,
+		colors = {
+			'#69BBFF',
+			'#FFD68A',
+			'#B5E890',
+			'#FF7A85',
+			'#E48AFF',
+			'#66D9E8'
+		},
+		max_file_lines = 1000
 	}
 }
 
