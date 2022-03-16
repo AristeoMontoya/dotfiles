@@ -53,16 +53,11 @@ return require('packer').startup(function(use)
 			'vimwiki/vimwiki',
 			config = function() V.cmd('source ~/.config/nvim/vimscript/vimwiki.vim') end
 		}
-		-- Vista previa web
-		use {'turbio/bracey.vim', run = 'npm install --prefix server'}
 		-- Vista previa de colores
 		use {
 			'norcalli/nvim-colorizer.lua',
 			config = function() require('nv_colorizer') end
 		}
-
-		-- Autocompletado
-		-- use {'neoclide/coc.nvim', branch = 'release'}
 		-- Autopares
 		use 'jiangmiao/auto-pairs'
 		-- Búsqueda difusa
@@ -77,18 +72,6 @@ return require('packer').startup(function(use)
 			opt = true,
 			event = 'BufEnter',
 			config = function() require('nv_blankline') end
-		}
-		-- Vista previa de MarkDown
-		use {
-			'iamcco/markdown-preview.nvim',
-			config = "vim.call('mkdp#util#install')",
-			opt = true,
-			ft = {'markdown', 'vimwiki'}
-		}
-		-- Debugger
-		use {
-			'puremourning/vimspector',
-			config = function() V.cmd('source ~/.config/nvim/vimscript/vimspector.vim') end
 		}
 		-- Ayuda con accesis directos
 		use {
@@ -110,8 +93,6 @@ return require('packer').startup(function(use)
 		}
 		-- Comentarios rápidos
 		use 'tpope/vim-commentary'
-		-- Integración con comandos de git
-		use 'tpope/vim-fugitive'
 		-- Línea de status
 		use {
 			'hoob3rt/lualine.nvim',
@@ -119,7 +100,7 @@ return require('packer').startup(function(use)
 			config = function() require('nv_lualine') end
 		}
 		-- OneDark
-		use {'norcalli/nvim-base16.lua'}
+		use { 'norcalli/nvim-base16.lua' }
 		-- Tabline
 		use {
 			'akinsho/nvim-bufferline.lua',
@@ -134,15 +115,15 @@ return require('packer').startup(function(use)
 		}
 		-- LSP
 		use {
-			'neovim/nvim-lspconfig',
-			opt = true,
-			cond = ShouldUseLsp
-		}
-		use {
 			'williamboman/nvim-lsp-installer',
 			opt = true,
 			cond = ShouldUseLsp,
 			config = function() require('nv_lspinstall') end
+		}
+		use {
+			'neovim/nvim-lspconfig',
+			-- opt = true,
+			-- cond = ShouldUseLsp
 		}
 		use {
 			'hrsh7th/nvim-cmp',
