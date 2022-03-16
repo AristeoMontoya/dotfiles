@@ -17,10 +17,14 @@ cmd("hi Underlined guifg=None")
 cmd("hi Error guifg=None guibg=None")
 
 -- GitGutter
-cmd("hi GitGutterAdd guibg=None")
-cmd("hi GitGutterChange guibg=None")
-cmd("hi GitGutterDelete guibg=None")
-cmd("hi GitGutterChangeDelete guibg=None")
+cmd("hi GitGutterAdd guibg=None guifg=#98c379")
+cmd("hi GitGutterChange guibg=None guifg=#61afef")
+cmd("hi GitGutterDelete guibg=None guifg=#e06c75")
+cmd("hi GitGutterChangeDelete guibg=None guifg=#c678dd")
+cmd("hi GitGutterAddLine guibg=None guifg=#98c379")
+cmd("hi GitGutterChangeLine guibg=None guifg=#61afef")
+cmd("hi GitGutterDeleteLine guibg=None guifg=#e06c75")
+cmd("hi GitGutterChangeDeleteLine guibg=None guifg=#c678dd")
 
 -- TreeSitter
 cmd("hi tskeywordoperator guifg=#d291e4")
@@ -66,11 +70,13 @@ cmd("hi NvimTreeRootFolder guifg=#C678DD")
 cmd("hi NvimTreeExecFile guifg=#98c379")
 cmd("hi NvimTreeImageFile guifg=#C678DD")
 cmd("hi NvimTreeSpecialFile guifg=#56B6C2")
+
 -- LSP
 cmd("hi LspDiagnosticsError guibg=#000000")
 cmd("hi LspDiagnosticsWarning guibg=#000000")
 cmd("hi LspDiagnosticsInformation guibg=#000000")
 cmd("hi LspDiagnosticsHint guibg=#000000")
+
 -- Íconos
 cmd("hi NvimTreeLicenseIcon guibg=#000000")
 cmd("hi NvimTreeYamlIcon guibg=#000000")
@@ -81,7 +87,14 @@ cmd("hi NvimTreeFolderIcon guifg=#61AFEF")
 cmd("hi NvimTreeGitignoreIcon guifg=#454C59")
 cmd("hi NvimTreeGitDirty guifg=#E06C75")
 cmd("hi NvimTreeGitStaged guifg=#98c379")
+
 -- cmd("hi NvimTreeGitMerge guibg=#000000")
 cmd("hi NvimTreeGitRenamed guifg=#C678DD")
 cmd("hi NvimTreeGitNew guifg=#C678DD")
 cmd("hi NvimTreeGitDeleted guifg=#E06C75")
+
+-- lsp
+cmd("highlight! CmpItemAbbrMatch guibg=NONE guifg=#56B6C2")
+cmd("highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#56B6C2")
+cmd("highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080")
+cmd("highlight DiagnosticError guifg=#E06C75")
