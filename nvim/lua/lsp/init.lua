@@ -1,20 +1,20 @@
 require('globals')
 -- TODO figure out why this don't work
 V.fn.sign_define(
-	"LspDiagnosticsSignError",
-	{texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError"}
+	"DiagnosticSignError",
+	{texthl = "DiagnosticSignError", text = "", numhl = "DiagnosticSignError"}
 )
 V.fn.sign_define(
-	"LspDiagnosticsSignWarning",
-	{texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning"}
+	"DiagnosticSignWarning",
+	{texthl = "DiagnosticSignWarning", text = "", numhl = "DiagnosticSignWarning"}
 )
 V.fn.sign_define(
-	"LspDiagnosticsSignHint",
-	{texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint"}
+	"DiagnosticSignHint",
+	{texthl = "DiagnosticSignHint", text = "", numhl = "DiagnosticSignHint"}
 )
 V.fn.sign_define(
-	"LspDiagnosticsSignInformation",
-	{texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"}
+	"DiagnosticSignInformation",
+	{texthl = "DiagnosticSignInformation", text = "", numhl = "DiagnosticSignInformation"}
 )
 
 V.cmd("nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>")
@@ -36,47 +36,17 @@ V.cmd("nnoremap <silent> <C-space> <cmd>lua vim.lsp.buf.completion()<CR>")
 -- V.cmd("nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>")
 V.cmd('command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')
 
--- Set Default Prefix.
--- Note: You can set a prefix per lsp server in the lv-globals.lua file
-V.lsp.handlers["textDocument/publishDiagnostics"] = V.lsp.with(
-	V.lsp.diagnostic.on_publish_diagnostics, {
-		virtual_text = {
-			prefix = "",
-			spacing = 0,
-		},
-		signs = true,
-		underline = true,
-	}
-)
-
--- symbols for autocomplete
-V.lsp.protocol.CompletionItemKind = {
-	"   (Text) ",
-	"   (Method)",
-	"   (Function)",
-	"   (Constructor)",
-	" ﴲ  (Field)",
-	"[] (Variable)",
-	"   (Class)",
-	" ﰮ  (Interface)",
-	"   (Module)",
-	" 襁 (Property)",
-	"   (Unit)",
-	"   (Value)",
-	" 練 (Enum)",
-	"   (Keyword)",
-	"   (Snippet)",
-	"   (Color)",
-	"   (File)",
-	"   (Reference)",
-	"   (Folder)",
-	"   (EnumMember)",
-	" ﲀ  (Constant)",
-	" ﳤ  (Struct)",
-	"   (Event)",
-	"   (Operator)",
-	"   (TypeParameter)"
-}
+V.lsp.handlers['textDocument/publishDiagnostics'] =
+V.lsp.with(V.lsp.diagnostic.on_publish_diagnostics, {
+	underline = true,
+	virtual_text = {
+		prefix = "",
+		spacing = 5,
+		severity_limit = 'Warning'
+	},
+	signs = true,
+	update_in_insert = true
+})
 
 local function documentHighlight(client, bufnr)
 	-- Set autocommands conditional on server_capabilities
