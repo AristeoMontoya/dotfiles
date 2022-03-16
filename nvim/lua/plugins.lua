@@ -89,6 +89,7 @@ return require('packer').startup(function(use)
 		use 'nvim-treesitter/nvim-treesitter-textobjects'
 		-- Colores de TreeSitter
 		use 'nvim-treesitter/playground'
+		use 'p00f/nvim-ts-rainbow'
 		-- Integración con git
 		use {
 			'lewis6991/gitsigns.nvim',
