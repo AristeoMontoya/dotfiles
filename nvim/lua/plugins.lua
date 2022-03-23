@@ -69,6 +69,9 @@ return require('packer').startup(function(use)
 			requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
 			config = function() require('nv_telescope') end
 		}
+		use {
+			'nvim-telescope/telescope-ui-select.nvim',
+		}
 		-- Marcado de identación con espacios
 		use {
 			'lukas-reineke/indent-blankline.nvim',
@@ -145,11 +148,7 @@ return require('packer').startup(function(use)
 		use { 'hrsh7th/cmp-path' }
 		use { 'hrsh7th/cmp-cmdline' }
 		use { "quangnguyen30192/cmp-nvim-ultisnips" }
-		use {
-			'mfussenegger/nvim-jdtls',
-			opt = true,
-			cond = ShouldUseLsp
-		}
+		use { 'mfussenegger/nvim-jdtls' }
 
 		-- CoC
 		use {
