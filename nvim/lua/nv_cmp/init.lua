@@ -66,6 +66,7 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
 		{ name = 'ultisnips' }, -- For ultisnips users.
+		{ name = 'path' }, -- For ultisnips users.
 	}, {
 		-- { name = 'buffer' },
 	}),
@@ -98,3 +99,6 @@ cmp.setup.cmdline(':', {
 		{ name = 'cmdline' }
 	})
 })
+
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
