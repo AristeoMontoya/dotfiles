@@ -5,8 +5,8 @@ V.fn.sign_define(
 	{texthl = "DiagnosticSignError", text = "", numhl = "DiagnosticSignError"}
 )
 V.fn.sign_define(
-	"DiagnosticSignWarning",
-	{texthl = "DiagnosticSignWarning", text = "", numhl = "DiagnosticSignWarning"}
+	"DiagnosticSignWarn",
+	{texthl = "DiagnosticSignWarn", text = "", numhl = "DiagnosticSignWarning"}
 )
 V.fn.sign_define(
 	"DiagnosticSignHint",
