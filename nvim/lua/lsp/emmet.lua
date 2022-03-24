@@ -1,7 +1,7 @@
 local lspconfig = require'lspconfig'
 local configs = require'lspconfig/configs'
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = V.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 if not lspconfig.emmet_ls then
@@ -10,7 +10,7 @@ if not lspconfig.emmet_ls then
 			cmd = {'emmet-ls', '--stdio'};
 			filetypes = {'html', 'css'};
 			root_dir = function(fname)
-				return vim.loop.cwd()
+				return V.loop.cwd()
 			end;
 			settings = {};
 		};
