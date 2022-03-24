@@ -81,10 +81,6 @@ cmp.setup({
 			border = 'rounded'
 		}
 	},
-	experimental = {
-		ghost_text = false,
-		native_menu = false,
-	},
 })
 
 -- Set configuration for specific filetype.
