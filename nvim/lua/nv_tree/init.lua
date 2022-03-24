@@ -1,3 +1,11 @@
+V.g.nvim_tree_special_files = {}
+V.g.nvim_tree_indent_markers = 1
+V.g.nvim_tree_group_empty = 1
+V.g.nvim_tree_git_hl = 1
+V.g.nvim_tree_width_allow_resize = 1
+V.g.nvim_tree_root_folder_modifier = ':t'
+V.g.nvim_tree_highlight_opened_files = 1
+
 -- following options are the default
 require'nvim-tree'.setup {
 	-- disables netrw completely
@@ -25,7 +33,8 @@ require'nvim-tree'.setup {
 	update_cwd          = false,
 	-- show lsp diagnostics in the signcolumn
 	diagnostics = {
-		enable = false,
+		enable = true,
+        show_on_dirs = true,
 		icons = {
 			hint = "",
 			info = "",
@@ -61,6 +70,7 @@ require'nvim-tree'.setup {
 		side = 'left',
 		-- if true the tree will resize itself after opening a file
 		auto_resize = false,
+        signcolumn = "yes",
 		mappings = {
 			-- custom only false will merge the list with the default mappings
 			-- if true, it will only use your list to set the mappings
@@ -68,5 +78,9 @@ require'nvim-tree'.setup {
 			-- list of mappings to set on the tree manually
 			list = {}
 		}
+	},
+
+	git = {
+		ignore = false
 	}
 }
