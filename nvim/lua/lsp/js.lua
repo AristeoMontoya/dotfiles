@@ -6,7 +6,7 @@ require'lspconfig'.tsserver.setup {
 	-- This makes sure tsserver is not used for formatting (I prefer prettier)
 	settings = {documentFormatting = false},
 	handlers = {
-		["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+		["textDocument/publishDiagnostics"] = V.lsp.with(V.lsp.diagnostic.on_publish_diagnostics, {
 			virtual_text = { spacing = 0, prefix = "" },
 			signs = true,
 			underline = true,
