@@ -141,7 +141,8 @@ return require('packer').startup(function(use)
 			'hrsh7th/nvim-cmp',
 			opt = true,
 			cond = ShouldUseLsp,
-			config = function() require('nv_cmp') end
+			config = function() require('nv_cmp') end,
+			branch = 'dev'
 		}
 		use { 'hrsh7th/cmp-nvim-lsp' }
 		use { 'hrsh7th/cmp-buffer' }
