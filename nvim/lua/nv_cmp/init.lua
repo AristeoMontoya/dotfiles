@@ -71,8 +71,20 @@ cmp.setup({
 		-- { name = 'buffer' },
 	}),
 	completion = {
-		completeopt = 'menu,menuone'
-	}
+		completeopt = 'menu,menuone',
+	},
+	window = {
+		completion = {
+			border = 'rounded',
+		},
+		documentation = {
+			border = 'rounded'
+		}
+	},
+	experimental = {
+		ghost_text = false,
+		native_menu = false,
+	},
 })
 
 -- Set configuration for specific filetype.

@@ -26,6 +26,7 @@ set shiftwidth=4			" Tamaño de tabulación
 set nowrap					" Evita que las líneas se divivan si excede el ancho
 set nocompatible			" Configuraciones de VimWiki
 set cmdheight=1
+set pumheight=12
 
 " Función para cambiar espacios por tabulaciones
 function Tabulacion()
