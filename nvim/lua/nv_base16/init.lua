@@ -15,6 +15,7 @@ cmd("hi EndOfBuffer guifg=#282c34")
 cmd("hi Delimiter None")
 cmd("hi Underlined guifg=None")
 cmd("hi Error guifg=None guibg=None")
+cmd("hi vimTSStringSpecial guifg=#c678dd guibg=None")
 
 -- GitGutter
 cmd("hi GitGutterAdd guibg=None guifg=#98c379")
@@ -77,6 +78,9 @@ cmd("hi LspDiagnosticsWarning guibg=#000000")
 cmd("hi LspDiagnosticsInformation guibg=#000000")
 cmd("hi LspDiagnosticsHint guibg=#000000")
 
+-- Illuminate
+cmd("hi illuminatedWord guibg=#313640")
+
 -- Íconos
 cmd("hi NvimTreeLicenseIcon guibg=#000000")
 cmd("hi NvimTreeYamlIcon guibg=#000000")
@@ -94,8 +98,8 @@ cmd("hi NvimTreeGitNew guifg=#C678DD")
 cmd("hi NvimTreeGitDeleted guifg=#E06C75")
 
 -- lsp
-cmd("highlight! CmpItemAbbrMatch guibg=NONE guifg=#56B6C2")
-cmd("highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#56B6C2")
+cmd("highlight! CmpItemAbbrMatch guibg=NONE guifg=#61AFEF")
+cmd("highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#61AFEF")
 cmd("highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080")
 cmd("highlight DiagnosticError guifg=#E06C75")
 cmd("highlight DiagnosticWarn guifg=#e5c07b")

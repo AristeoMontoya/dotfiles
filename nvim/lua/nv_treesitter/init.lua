@@ -4,7 +4,7 @@ require'nvim-treesitter.configs'.setup {
 		enable = true -- false will disable the whole extension
 	},
 	indent = {
-		enable = true
+		enable = false
 	},
 	textobjects = {
 		select = {
@@ -33,7 +33,7 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require"nvim-treesitter.highlight"
-local hlmap = vim.treesitter.highlighter.hl_map
+local hlmap = V.treesitter.highlighter.hl_map
 hlmap.error = nil
 hlmap["punctuation.delimiter"] = "Delimiter"
 hlmap["punctuation.bracket"] = nil

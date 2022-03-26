@@ -22,8 +22,8 @@ V.cmd("nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>")
 V.cmd("nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>")
 V.cmd("nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>")
 V.cmd("nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>")
-V.cmd("nnoremap <silent> <leader>ca <cmd>lua vim.lsp.buf.code_action()<CR>")
-V.cmd("nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>")
+V.cmd("nnoremap <silent> <leader>la <cmd>lua vim.lsp.buf.code_action()<CR>")
+V.cmd("nnoremap <silent> <leader>lr <cmd>lua vim.lsp.buf.rename()<CR>")
 V.cmd("nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic_jump_next()<CR>")
 V.cmd("nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic_jump_prev()<CR>")
 V.cmd("nnoremap <silent> <C-space> <cmd>lua vim.lsp.buf.completion()<CR>")
@@ -53,9 +53,6 @@ local function documentHighlight(client, bufnr)
 	if client.resolved_capabilities.document_highlight then
 		V.api.nvim_exec(
 		[[
-		hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646
-		hi LspReferenceText cterm=bold ctermbg=red guibg=#464646
-		hi LspReferenceWrite cterm=bold ctermbg=red guibg=#464646
 		augroup lsp_document_highlight
 		autocmd! * <buffer>
 		autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
