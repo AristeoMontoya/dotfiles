@@ -89,10 +89,10 @@ return require('packer').startup(function(use)
 			'nvim-treesitter/nvim-treesitter',
 			config = function() require('nv_treesitter') end
 		}
-		use 'nvim-treesitter/nvim-treesitter-textobjects'
+		use { 'nvim-treesitter/nvim-treesitter-textobjects'}
 		-- Colores de TreeSitter
-		use 'nvim-treesitter/playground'
-		use 'p00f/nvim-ts-rainbow'
+		use { 'nvim-treesitter/playground'}
+		use { 'p00f/nvim-ts-rainbow'}
 		-- Integración con git
 		use {
 			'lewis6991/gitsigns.nvim',
@@ -137,11 +137,13 @@ return require('packer').startup(function(use)
 			-- opt = true,
 			-- cond = ShouldUseLsp
 		}
+		-- Autocomplete
 		use {
 			'hrsh7th/nvim-cmp',
 			opt = true,
 			cond = ShouldUseLsp,
-			config = function() require('nv_cmp') end
+			config = function() require('nv_cmp') end,
+			branch = 'dev'
 		}
 		use { 'hrsh7th/cmp-nvim-lsp' }
 		use { 'hrsh7th/cmp-buffer' }
@@ -149,14 +151,19 @@ return require('packer').startup(function(use)
 		use { 'hrsh7th/cmp-cmdline' }
 		use { "quangnguyen30192/cmp-nvim-ultisnips" }
 		use { 'mfussenegger/nvim-jdtls' }
+		-- Pretty diagnostics
+		use { 'folke/trouble.nvim' }
 
-		-- CoC
+		-- Document highlight
 		use {
-			'neoclide/coc.nvim',
-			opt = true,
-			cond = IsCocEnabled,
-			config = function() V.cmd('source ' .. CONFIG_PATH .. '/vimscript/coc.vim') end
+			'RRethy/vim-illuminate',
+			config = function() require('nv_illuminate') end,
 		}
+		-- DAP
+		use { 'mfussenegger/nvim-dap' }
+		use { 'theHamsta/nvim-dap-virtual-text' }
+		use { 'rcarriga/nvim-dap-ui' }
+		use { 'Pocco81/DAPInstall.nvim' }
 
 		if Packer_bootstrap then
 			require('packer').sync()

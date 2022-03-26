@@ -78,9 +78,6 @@ noremap <silent> <tab> :bnext<CR>
 " Alternar buffers en orden inverso
 noremap <silent> <S-tab> :bprevious<CR>
 
-" Qutiar el marcado de coincidencias de búsqueda
-noremap <silent> <leader>n :noh<CR>
-
 " Adios popó
 map <left>	<nop>
 map <up>	<nop>
@@ -93,38 +90,8 @@ imap <up>		<nop>
 imap <down>		<nop>
 imap <right>	<nop>
 
-" DEBUG
-" Breakpoints
-nmap <leader>dd <Plug>VimspectorToggleBreakpoint
-
-" Iniciar/continuar
-nmap <leader>ds <Plug>VimspectorContinue
-
-" Detener
-nmap <leader>dS <Plug>VimspectorStop
-
-" Comentarios
-nnoremap <silent> <leader>/ :Commentary<CR>
-vnoremap <silent> <leader>/ :Commentary<CR>
-
 " Sudo aunque no sudo
 cmap w!! w !sudo tee %
-
-" ==========================
-" 			Git
-" ==========================
-" Git Status
-nmap <silent> <leader>gs :G<CR>
-
-" Git log
-nmap <silent> <leader>gl :GcLog<CR>
-
-" Git blame
-" Blame para modo normal
-nmap <silent> <leader>gb :Git blame<CR>
-
-" Blame para modo visual
-vmap <silent> <leader>gb :Gblame<CR>
 
 " Errores comunes a comandos frecuentes
 :command WQ wq
@@ -146,13 +113,13 @@ nnoremap <silent> <leader>c :Capture<CR>
 
 " Spells
 " Verificar español
-nnoremap <leader>ss :setlocal spell spelllang=es_mx<CR>
+nnoremap <leader>vs :setlocal spell spelllang=es_mx<CR>
 
 " Verificar inglés
-nnoremap <leader>se :setlocal spell spelllang=en_us<CR>
+nnoremap <leader>ve :setlocal spell spelllang=en_us<CR>
 
 " Dejar de verificar
-nnoremap <silent> <leader>sn :setlocal nospell<CR>
+nnoremap <silent> <leader>vn :setlocal nospell<CR>
 
 " Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -161,7 +128,6 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Buscar capturas de notas con Telescope
-nnoremap <leader>ft <cmd>lua require 'nv_telescope.finders'.testing()<CR>
 nnoremap <leader>fc <cmd>lua require 'nv_telescope.finders'.find_captures()<CR>
 nnoremap <leader>fd <cmd>lua require 'nv_telescope.finders'.find_definition()<CR>
 nnoremap <leader>fn <cmd>lua require 'nv_telescope.finders'.find_notes()<CR>
@@ -172,3 +138,6 @@ nnoremap <leader><leader>b :HopChar2<CR>
 
 " NvimTree
 nnoremap <leader>fe :NvimTreeToggle<CR>
+
+" Trouble
+nnoremap <silent> <leader>ld :TroubleToggle<CR>

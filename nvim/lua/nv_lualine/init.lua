@@ -12,11 +12,11 @@ require('lualine').setup {
 		theme = 'onedark',
 		section_separators = { nil },
 		component_separators = {'|'},
-		extension = { 'fugitive' }
+		extension = { 'nvim-tree' }
 	},
 	sections = {
 		lualine_a = { {'mode', upper = true} },
-		lualine_b = { 
+		lualine_b = {
 			{
 				'branch', icon = ''
 			},
