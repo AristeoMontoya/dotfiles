@@ -154,13 +154,8 @@ return require('packer').startup(function(use)
 		-- Pretty diagnostics
 		use { 'folke/trouble.nvim' }
 
-		-- CoC
-		use {
-			'neoclide/coc.nvim',
-			opt = true,
-			cond = IsCocEnabled,
-			config = function() V.cmd('source ' .. CONFIG_PATH .. '/vimscript/coc.vim') end
-		}
+		-- Document highlight
+		use { 'RRethy/vim-illuminate' }
 
 		if Packer_bootstrap then
 			require('packer').sync()
