@@ -3,6 +3,10 @@ require("which-key").setup {
 	plugins = {
 		marks = true, -- shows a list of your marks on ' and `
 		registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+		spelling = {
+			enabled = true,
+			suggestions = 20,
+		},
 		-- the presets plugin, adds help for a bunch of default keybindings in Neovim
 		-- No actual key bindings are created
 		presets = {
@@ -52,31 +56,38 @@ V.g.mapleader = ' '
 V.api.nvim_set_keymap('n', '<Leader>h', ':set hlsearch!<CR>', {noremap = true, silent = true})
 
 -- explorer
-V.api.nvim_set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
+V.api.nvim_set_keymap('n', '<Leader>fe', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
 
 -- telescope
-V.api.nvim_set_keymap('n', '<Leader>f', ':Telescope find_files<CR>', {noremap = true, silent = true})
-
--- Comments
-V.api.nvim_set_keymap("n", "<leader>/", ":Commentary<CR>", {noremap = true, silent = true})
-V.api.nvim_set_keymap("v", "<leader>/", ":Commentary<CR>", {noremap = true, silent = true})
-
--- close buffer
-V.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>", {noremap = true, silent = true})
-
--- open projects
-V.api.nvim_set_keymap('n', '<leader>p', ":lua require'telescope'.extensions.project.project{}<CR>",
-{noremap = true, silent = true})
--- TODO create entire treesitter section
+V.api.nvim_set_keymap('n', '<Leader>ff', ':Telescope find_files<CR>', {noremap = true, silent = true})
 
 local mappings = {
-	["/"] = "Comment",
-	["c"] = "Close Buffer",
-	["e"] = "Explorer",
-	["f"] = "Find File",
-	["h"] = "No Highlight",
-	["p"] = "Projects",
-	d = {
+	["h"] = {"No Highlight"},
+	["c"] = {"Quick capture"},
+	["<oc>"] = {"Open config"},
+	["<rt>"] = {"Swap spaces for tabs"},
+	["<space>"] = {
+		name = "+Hop",
+		b = "Two chars",
+		f = "Find char"
+	},
+	b = {
+		name = "+Buffer",
+		k = "Kill current buffer"
+	},
+	f = {
+		name = "+Find",
+		b = "Buffer",
+		B = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
+		C = {"<cmd>Telescope git_commits<cr>", "Colorscheme"},
+		d = "Definition",
+		e = "Open file explorer",
+		f = "Files",
+		g = "Grep",
+		h = "Help tags",
+		n = "Notes"
+	},
+	--[[ d = {
 		name = "+Diagnostics",
 		t = {"<cmd>TroubleToggle<cr>", "trouble"},
 		w = {"<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "workspace"},
@@ -84,7 +95,7 @@ local mappings = {
 		q = {"<cmd>TroubleToggle quickfix<cr>", "quickfix"},
 		l = {"<cmd>TroubleToggle loclist<cr>", "loclist"},
 		r = {"<cmd>TroubleToggle lsp_references<cr>", "references"},
-	},
+	}, ]]
 	D = {
 		name = "+Debug",
 		b = {"<cmd>DebugToggleBreakpoint<cr>", "Toggle Breakpoint"},
@@ -94,61 +105,53 @@ local mappings = {
 		r = {"<cmd>DebugToggleRepl<cr>", "Toggle Repl"},
 		s = {"<cmd>DebugStart<cr>", "Start"}
 	},
-	g = {
-		name = "+Git",
-		j = {"<cmd>NextHunk<cr>", "Next Hunk"},
-		k = {"<cmd>PrevHunk<cr>", "Prev Hunk"},
-		p = {"<cmd>PreviewHunk<cr>", "Preview Hunk"},
-		r = {"<cmd>ResetHunk<cr>", "Reset Hunk"},
-		R = {"<cmd>ResetBuffer<cr>", "Reset Buffer"},
-		s = {"<cmd>StageHunk<cr>", "Stage Hunk"},
-		u = {"<cmd>UndoStageHunk<cr>", "Undo Stage Hunk"},
-		o = {"<cmd>Telescope git_status<cr>", "Open changed file"},
-		b = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
-		c = {"<cmd>Telescope git_commits<cr>", "Checkout commit"},
-		C = {"<cmd>Telescope git_bcommits<cr>", "Checkout commit(for current file)"},
-	},
 	l = {
 		name = "+LSP",
-		a = {"<cmd>Lspsaga code_action<cr>", "Code Action"},
-		A = {"<cmd>Lspsaga range_code_action<cr>", "Selected Action"},
-		d = {"<cmd>Telescope lsp_document_diagnostics<cr>", "Document Diagnostics"},
-		D = {"<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics"},
-		f = {"<cmd>LspFormatting<cr>", "Format"},
+		a = {"<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action"},
+		d = {"<cmd>TroubleToggle<cr>", "Document Diagnostics"},
 		i = {"<cmd>LspInfo<cr>", "Info"},
-		l = {"<cmd>Lspsaga lsp_finder<cr>", "LSP Finder"},
-		L = {"<cmd>Lspsaga show_line_diagnostics<cr>", "Line Diagnostics"},
-		p = {"<cmd>Lspsaga preview_definition<cr>", "Preview Definition"},
 		q = {"<cmd>Telescope quickfix<cr>", "Quickfix"},
-		r = {"<cmd>Lspsaga rename<cr>", "Rename"},
-		t = {"<cmd>LspTypeDefinition<cr>", "Type Definition"},
+		r = {"<cmd>lua vim.lsp.buf.rename()<cr>", "Rename"},
 		x = {"<cmd>cclose<cr>", "Close Quickfix"},
 		s = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
-		S = {"<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace Symbols"}
 	},
 	s = {
-		name = "+Search",
-		b = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
-		c = {"<cmd>Telescope colorscheme<cr>", "Colorscheme"},
-		d = {"<cmd>Telescope lsp_document_diagnostics<cr>", "Document Diagnostics"},
-		D = {"<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics"},
-		f = {"<cmd>Telescope find_files<cr>", "Find File"},
-		m = {"<cmd>Telescope marks<cr>", "Marks"},
-		M = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
-		r = {"<cmd>Telescope oldfiles<cr>", "Open Recent File"},
-		R = {"<cmd>Telescope registers<cr>", "Registers"},
-		t = {"<cmd>Telescope live_grep<cr>", "Text"}
+		name = "+Splits",
+		h = "Horizontal split",
+		v = "Vertical split",
+		r = "Rotate splits",
+		t = "Move split to tab",
+	},
+	t = {
+		name = "+Tabs",
+		k = "Kill current tab",
+		n = "Open new tab"
+	},
+	w = {
+		name = "+VimWiki",
+		i = "Diary index",
+		s = "Select Wiki",
+		w = "Open Wiki index",
+		t = "Open index in new tab",
+		["<space>"] = {
+			name = "+Diary",
+			i = "Fill diary index",
+			m = "Make tomorrow's note",
+			t = "Make diary note in new tab",
+			w = "Make today's diary note",
+			y = "Make yesterday's note"
+		}
+	},
+	v = {
+		name = "+Spelling",
+		s = "Verify spanish",
+		e = "Verify english",
+		n = "Disable spell checking"
 	},
 	S = {name = "+Session", s = {"<cmd>SessionSave<cr>", "Save Session"}, l = {"<cmd>SessionLoad<cr>", "Load Session"}},
-
-	-- extras
-	z = {
-		name = "+Zen",
-		s = {"<cmd>TZBottom<cr>", "toggle status line"},
-		t = {"<cmd>TZTop<cr>", "toggle tab bar"},
-		z = {"<cmd>TZAtaraxis<cr>", "toggle zen"},
-	}
+	o = "which_key_ignore",
+	r = "which_key_ignore",
 }
 
 local wk = require("which-key")
--- wk.register(mappings, opts)
+wk.register(mappings, opts)

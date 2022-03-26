@@ -155,7 +155,10 @@ return require('packer').startup(function(use)
 		use { 'folke/trouble.nvim' }
 
 		-- Document highlight
-		use { 'RRethy/vim-illuminate' }
+		use { 
+			'RRethy/vim-illuminate',
+			require('nv_illuminate')
+		}
 
 		if Packer_bootstrap then
 			require('packer').sync()
