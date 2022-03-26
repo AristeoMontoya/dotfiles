@@ -155,10 +155,15 @@ return require('packer').startup(function(use)
 		use { 'folke/trouble.nvim' }
 
 		-- Document highlight
-		use { 
+		use {
 			'RRethy/vim-illuminate',
-			require('nv_illuminate')
+			config = function() require('nv_illuminate') end
 		}
+		-- DAP
+		use {'mfussenegger/nvim-dap'}
+		use {'theHamsta/nvim-dap-virtual-text'}
+		use {'rcarriga/nvim-dap-ui'}
+		use {'Pocco81/DAPInstall.nvim'}
 
 		if Packer_bootstrap then
 			require('packer').sync()
