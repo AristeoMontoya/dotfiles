@@ -78,6 +78,9 @@ cmd("hi LspDiagnosticsWarning guibg=#000000")
 cmd("hi LspDiagnosticsInformation guibg=#000000")
 cmd("hi LspDiagnosticsHint guibg=#000000")
 
+-- Illuminate
+cmd("hi illuminatedWord guibg=#454C59")
+
 -- Íconos
 cmd("hi NvimTreeLicenseIcon guibg=#000000")
 cmd("hi NvimTreeYamlIcon guibg=#000000")
