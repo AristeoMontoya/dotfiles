@@ -172,3 +172,6 @@ nnoremap <leader><leader>b :HopChar2<CR>
 
 " NvimTree
 nnoremap <leader>fe :NvimTreeToggle<CR>
+
+" Trouble
+nnoremap <silent> <leader>ld :TroubleToggle<CR>

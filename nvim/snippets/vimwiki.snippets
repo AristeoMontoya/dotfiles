@@ -25,7 +25,7 @@
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 extends markdown
 
-snippet link "Link"
+snippet link Link
 	[${1:texto}](${2:enlace})
 
 snippet idea "Plantilla de idea"
@@ -39,14 +39,14 @@ snippet idea "Plantilla de idea"
 
 	# Notas
 
-snippet reunion "Reunión"
+snippet reunion Reunión
 	# Tareas obtenidas
 
 	# Apuntes de `strftime('%A %d de %B de %Y')`
 
 	# Post-Reunión
 
-snippet 100doc "100 Days of Code"
+snippet 100doc 100 Days of Code
 	# Día ${1:Número} - `strftime('%A %d de %B de %Y')`
 	## Tecnologías
 	- ${2:Tecnologías}
@@ -54,10 +54,10 @@ snippet 100doc "100 Days of Code"
 	## Resumen
 	${3:Resumen del día}
 
-snippet horaActual "Hora actual"
+snippet horaActual Hora actual
 	`strftime('%H:%M')`
 
-snippet diary "Entrada del diario"
+snippet diary Entrada del diario
 	# `strftime('%A %d', strptime('%Y-%m-%d', expand('%:t:r:s?')))`
 	## Tareas para hoy
 
@@ -66,13 +66,13 @@ snippet diary "Entrada del diario"
 	# Notas
 	${VISUAL}
 
-snippet fechaNatural 'Fecha de hoy'
+snippet fechaNatural Fecha de hoy
 	`strftime('%A %d de %B de %Y')`
 
-snippet inlineCode 'Código inline'
+snippet inlineCode Código inline
 	\`${1}\`
 
-snippet codeBlock 'Bloque de código'
+snippet codeBlock Bloque de código
 	\`\`\`${1:lenguaje}
 	${2:Contenido}
 	\`\`\`
