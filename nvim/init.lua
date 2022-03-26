@@ -12,6 +12,7 @@ if not IS_VSCODE then
 	end
 	V.cmd('source ~/.config/nvim/vimscript/keymaps.vim')
 	V.cmd('source ~/.config/nvim/vimscript/autocommands.vim')
+	require('nv_dap')
 	require('nv_base16')
 else
 	V.cmd('source ~/.config/nvim/vimscript/vscodemaps.vim')
