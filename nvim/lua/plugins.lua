@@ -89,10 +89,10 @@ return require('packer').startup(function(use)
 			'nvim-treesitter/nvim-treesitter',
 			config = function() require('nv_treesitter') end
 		}
-		use 'nvim-treesitter/nvim-treesitter-textobjects'
+		use { 'nvim-treesitter/nvim-treesitter-textobjects'}
 		-- Colores de TreeSitter
-		use 'nvim-treesitter/playground'
-		use 'p00f/nvim-ts-rainbow'
+		use { 'nvim-treesitter/playground'}
+		use { 'p00f/nvim-ts-rainbow'}
 		-- Integración con git
 		use {
 			'lewis6991/gitsigns.nvim',
@@ -157,13 +157,13 @@ return require('packer').startup(function(use)
 		-- Document highlight
 		use {
 			'RRethy/vim-illuminate',
-			config = function() require('nv_illuminate') end
+			config = function() require('nv_illuminate') end,
 		}
 		-- DAP
-		use {'mfussenegger/nvim-dap'}
-		use {'theHamsta/nvim-dap-virtual-text'}
-		use {'rcarriga/nvim-dap-ui'}
-		use {'Pocco81/DAPInstall.nvim'}
+		use { 'mfussenegger/nvim-dap' }
+		use { 'theHamsta/nvim-dap-virtual-text' }
+		use { 'rcarriga/nvim-dap-ui' }
+		use { 'Pocco81/DAPInstall.nvim' }
 
 		if Packer_bootstrap then
 			require('packer').sync()

@@ -98,12 +98,15 @@ local mappings = {
 	}, ]]
 	D = {
 		name = "+Debug",
-		b = {"<cmd>DebugToggleBreakpoint<cr>", "Toggle Breakpoint"},
-		c = {"<cmd>DebugContinue<cr>", "Continue"},
-		i = {"<cmd>DebugStepInto<cr>", "Step Into"},
-		o = {"<cmd>DebugStepOver<cr>", "Step Over"},
-		r = {"<cmd>DebugToggleRepl<cr>", "Toggle Repl"},
-		s = {"<cmd>DebugStart<cr>", "Start"}
+    b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
+    c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+    i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
+    o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
+    O = { "<cmd>lua require'dap'.step_out()<cr>", "Out" },
+    r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl" },
+    l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
+    u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
+    x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
 	},
 	l = {
 		name = "+LSP",
