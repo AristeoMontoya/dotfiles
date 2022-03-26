@@ -137,6 +137,7 @@ return require('packer').startup(function(use)
 			-- opt = true,
 			-- cond = ShouldUseLsp
 		}
+		-- Autocomplete
 		use {
 			'hrsh7th/nvim-cmp',
 			opt = true,
@@ -150,6 +151,8 @@ return require('packer').startup(function(use)
 		use { 'hrsh7th/cmp-cmdline' }
 		use { "quangnguyen30192/cmp-nvim-ultisnips" }
 		use { 'mfussenegger/nvim-jdtls' }
+		-- Pretty diagnostics
+		use { 'folke/trouble.nvim' }
 
 		-- CoC
 		use {
