@@ -1,5 +1,3 @@
-window.opacity: 0.85
-
 env:
   TERM: xterm-256color
 
@@ -28,6 +26,7 @@ cursor:
   style: Beam
 
 window:
+  opacity: 0.9
   decorations: Full
   dimensions:
     columns: 75
