@@ -102,4 +102,8 @@ autocmd VimResized * wincmd =
 autocmd BufEnter *.md set scrolloff=2
 autocmd! VimEnter * set cmdheight=1
 autocmd BufLeave *.md set scrolloff=0
-autocmd TermOpen * setlocal nonumber norelativenumber
+
+augroup codelens
+	autocmd!
+	autocmd BufWritePost *.java lua vim.lsp.codelens.refresh() 
+augroup END

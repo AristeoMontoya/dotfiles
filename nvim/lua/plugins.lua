@@ -168,6 +168,12 @@ return require('packer').startup(function(use)
 		}
 		use { 'Pocco81/DAPInstall.nvim' }
 
+		-- Better Terminal
+		use {
+			'akinsho/toggleterm.nvim',
+			config = function () require('nv_toggleterm') end
+		}
+
 		if Packer_bootstrap then
 			require('packer').sync()
 		end
