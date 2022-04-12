@@ -101,24 +101,25 @@ V.cmd "command! -buffer JdtUpdateConfig lua require('jdtls').update_project_conf
 V.cmd "command! -buffer JdtBytecode lua require('jdtls').javap()"
 
 local mappings = {
-  j = {
-    name = "Java",
-    o = { "<Cmd>lua require'jdtls'.organize_imports()<CR>", "Organize Imports" },
-    v = { "<Cmd>lua require('jdtls').extract_variable()<CR>", "Extract Variable" },
-    c = { "<Cmd>lua require('jdtls').extract_constant()<CR>", "Extract Constant" },
-    t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
-    T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
-    u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
-  },
+	j = {
+		name = "Java",
+		o = { "<Cmd>lua require'jdtls'.organize_imports()<CR>", "Organize Imports" },
+		v = { "<Cmd>lua require('jdtls').extract_variable()<CR>", "Extract Variable" },
+		c = { "<Cmd>lua require('jdtls').extract_constant()<CR>", "Extract Constant" },
+		t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
+		T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
+		u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
+		b = { "<Cmd>JdtCompile<CR>", "Build project" },
+	},
 }
 
 local vmappings = {
-  j = {
-    name = "Java",
-    v = { "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", "Extract Variable" },
-    c = { "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>", "Extract Constant" },
-    m = { "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", "Extract Method" },
-  },
+	j = {
+		name = "Java",
+		v = { "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", "Extract Variable" },
+		c = { "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>", "Extract Constant" },
+		m = { "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", "Extract Method" },
+	},
 }
 
 local status_ok, which_key = pcall(require, "which-key")

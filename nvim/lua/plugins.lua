@@ -149,8 +149,10 @@ return require('packer').startup(function(use)
 		use { 'hrsh7th/cmp-buffer' }
 		use { 'hrsh7th/cmp-path' }
 		use { 'hrsh7th/cmp-cmdline' }
+		use { 'hrsh7th/cmp-omni' }
 		use { "quangnguyen30192/cmp-nvim-ultisnips" }
 		use { 'mfussenegger/nvim-jdtls' }
+
 		-- Pretty diagnostics
 		use { 'folke/trouble.nvim' }
 
