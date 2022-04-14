@@ -1,5 +1,4 @@
 V.g.nvim_tree_special_files = {}
-V.g.nvim_tree_indent_markers = 1
 V.g.nvim_tree_group_empty = 1
 V.g.nvim_tree_git_hl = 1
 V.g.nvim_tree_width_allow_resize = 1
@@ -82,4 +81,9 @@ require'nvim-tree'.setup {
 	git = {
 		ignore = false
 	},
+	renderer = {
+		indent_markers = {
+			enable = true,
+		}
+	}
 }
