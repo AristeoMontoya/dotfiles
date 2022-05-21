@@ -132,12 +132,14 @@ nnoremap <leader>fc <cmd>lua require 'nv_telescope.finders'.find_captures()<CR>
 nnoremap <leader>fd <cmd>lua require 'nv_telescope.finders'.find_definition()<CR>
 nnoremap <leader>fn <cmd>lua require 'nv_telescope.finders'.find_notes()<CR>
 
-" Nvim Hop
-nnoremap <leader><leader>f :HopChar1<CR>
-nnoremap <leader><leader>b :HopChar2<CR>
-
 " NvimTree
 nnoremap <leader>fe :NvimTreeToggle<CR>
 
 " Trouble
 nnoremap <silent> <leader>ld :TroubleToggle<CR>
+
+" Pounce
+nmap s <cmd>Pounce<CR>
+nmap S <cmd>PounceRepeat<CR>
+vmap s <cmd>Pounce<CR>
+omap gs <cmd>Pounce<CR>  " 's' is used by vim-surround
