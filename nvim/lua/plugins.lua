@@ -33,13 +33,9 @@ return require('packer').startup(function(use)
 
 	if not IsInsideVsCode() then
 		-- Movimiento vertical mejorado
-		use {
-			'phaazon/hop.nvim',
-			as = 'hop',
-			config = function()
-				-- you can configure Hop the way you like here; see :h hop-config
-				require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-			end
+		use { 
+			'rlane/pounce.nvim',
+			config = function() require('nv_pounce') end
 		}
 		-- Packer can manage itself
 		use {'wbthomason/packer.nvim'}
