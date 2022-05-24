@@ -58,6 +58,7 @@ cmd("hi TabLineSel guifg=#98c379 guibg=#282c34")
 cmd("hi TabLineFill guibg=#353b45")
 
 cmd("hi BufferLineBackground guifg=#abb2bf guibg=#353b45")
+cmd("hi BufferLineNumbers guibg=#353b45")
 cmd("hi BufferLineFill guibg=#353b45")
 cmd("hi BufferLineSeparator guibg=#353b45")
 cmd("hi BufferLineModified guibg=#353b45")
