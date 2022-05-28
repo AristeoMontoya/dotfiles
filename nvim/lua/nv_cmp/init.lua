@@ -1,4 +1,10 @@
 -- Setup nvim-cmp.
+local has_words_before = function()
+  local line, col = unpack(V.api.nvim_win_get_cursor(0))
+  return col ~= 0 and V.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+local lsnip = require("luasnip")
 local cmp = require'cmp'
 
 local kind_icons = {
@@ -38,7 +44,7 @@ cmp.setup({
 			vim_item.menu = ({
 				path = "[Path]",
 				nvim_lsp = "[LSP]",
-				ultisnip = "[UltiSnips]",
+				luasnip = "[Luasnip]",
 			})[entry.source.name]
 			return vim_item
 		end
@@ -46,8 +52,7 @@ cmp.setup({
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
-			-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-			V.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+			require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
 		end,
 	},
 	mapping = {
@@ -62,12 +67,29 @@ cmp.setup({
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
 		}),
-		['<TAB>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if lsnip.expand_or_jumpable() then
+				lsnip.expand_or_jump()
+			elseif has_words_before() and cmp.visible() then
+				cmp.confirm({ select = true })
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif lsnip.jumpable(-1) then
+				lsnip.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
 	},
 	sources = cmp.config.sources({
-		{ name = "omni" },
 		{ name = 'nvim_lsp' },
-		{ name = 'ultisnips' }, -- For ultisnips users.
+		{ name = 'luasnip' }, -- For ultisnips users.
 		{ name = 'path' }, -- For ultisnips users.
 	}, {
 		-- { name = 'buffer' },
