@@ -129,6 +129,7 @@ return require('packer').startup(function(use)
 			'hrsh7th/nvim-cmp',
 			opt = true,
 			cond = ShouldUseLsp,
+			-- Snippet engine
 			{
 				'L3MON4D3/LuaSnip',
 				opt = true,
@@ -137,7 +138,6 @@ return require('packer').startup(function(use)
 					require('nv_luasnip')
 					require('nv_cmp')
 				end,
-				-- Autocomplete
 			}
 		}
 		-- Autocomplete
