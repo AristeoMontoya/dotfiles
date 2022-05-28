@@ -1,6 +1,5 @@
 local ls = require('luasnip')
 local types = require('luasnip.util.types')
-print("Snippet config")
 
 ls.config.setup({
     ext_opts = {
