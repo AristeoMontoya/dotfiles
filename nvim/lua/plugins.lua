@@ -126,16 +126,18 @@ return require('packer').startup(function(use)
 		}
 		-- Snippets and autocomplete
 		use {
-			'L3MON4D3/LuaSnip',
+			'hrsh7th/nvim-cmp',
 			opt = true,
 			cond = ShouldUseLsp,
-			config = function() require('nv_luasnip') end,
-			-- Autocomplete
 			{
-				'hrsh7th/nvim-cmp',
+				'L3MON4D3/LuaSnip',
 				opt = true,
 				cond = ShouldUseLsp,
-				config = function() require('nv_cmp') end,
+				config = function()
+					require('nv_luasnip')
+					require('nv_cmp')
+				end,
+				-- Autocomplete
 			}
 		}
 		-- Autocomplete
