@@ -33,7 +33,7 @@ return require('packer').startup(function(use)
 
 	if not IsInsideVsCode() then
 		-- Movimiento vertical mejorado
-		use { 
+		use {
 			'rlane/pounce.nvim',
 			config = function() require('nv_pounce') end
 		}
@@ -114,13 +114,6 @@ return require('packer').startup(function(use)
 			'akinsho/nvim-bufferline.lua',
 			config = function() require('nv_bufferline') end
 		}
-		-- Snippets
-		use {
-			'SirVer/ultisnips',
-			opt = true,
-			cond = ShouldUseLsp,
-			config = function() require('nv_ultisnips') end
-		}
 		-- LSP
 		use {
 			'williamboman/nvim-lsp-installer',
@@ -130,22 +123,28 @@ return require('packer').startup(function(use)
 		}
 		use {
 			'neovim/nvim-lspconfig',
-			-- opt = true,
-			-- cond = ShouldUseLsp
 		}
-		-- Autocomplete
+		-- Snippets and autocomplete
 		use {
-			'hrsh7th/nvim-cmp',
+			'L3MON4D3/LuaSnip',
 			opt = true,
 			cond = ShouldUseLsp,
-			config = function() require('nv_cmp') end,
+			config = function() require('nv_luasnip') end,
+			-- Autocomplete
+			{
+				'hrsh7th/nvim-cmp',
+				opt = true,
+				cond = ShouldUseLsp,
+				config = function() require('nv_cmp') end,
+			}
 		}
+		-- Autocomplete
 		use { 'hrsh7th/cmp-nvim-lsp' }
 		use { 'hrsh7th/cmp-buffer' }
 		use { 'hrsh7th/cmp-path' }
 		use { 'hrsh7th/cmp-cmdline' }
 		use { 'hrsh7th/cmp-omni' }
-		use { "quangnguyen30192/cmp-nvim-ultisnips" }
+		use { 'saadparwaiz1/cmp_luasnip' }
 		use { 'mfussenegger/nvim-jdtls' }
 
 		-- Pretty diagnostics
