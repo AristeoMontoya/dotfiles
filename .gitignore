@@ -7,3 +7,4 @@ packer_compiled.vim
 nvim/plugin
 nvim/plugin/packer_compiled.vim
 java-debug
+nvim/.config/nvim/plugin/packer_compiled.lua
