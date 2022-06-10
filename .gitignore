@@ -3,7 +3,6 @@ eclipse.jdt.ls
 log_pdf.log
 coc
 nvim/plugin
-packer_compiled.vim
-nvim/plugin
 nvim/plugin/packer_compiled.vim
 java-debug
+nvim/.config/nvim/plugin
