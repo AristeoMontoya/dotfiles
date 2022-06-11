@@ -22,7 +22,6 @@ require'nvim-treesitter.configs'.setup {
 		"go",
 		"c",
 		"scheme",
-		"phpdoc",
 		"http",
 		"hjson",
 		"help",
