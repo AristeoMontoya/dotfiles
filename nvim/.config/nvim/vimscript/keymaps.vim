@@ -145,5 +145,7 @@ vmap s <cmd>Pounce<CR>
 omap gs <cmd>Pounce<CR>  " 's' is used by vim-surround
 
 " Luasnip
-snoremap <silent> <C-n> <cmd>lua require('luasnip').jump(1)<Cr>
-snoremap <silent> <C-p> <cmd>lua require('luasnip').jump(-1)<Cr>
+snoremap <silent> <C-j> <cmd>lua require('luasnip').jump(1)<CR>
+snoremap <silent> <C-k> <cmd>lua require('luasnip').jump(-1)<CR>
+inoremap <silent> <C-j> <cmd>lua require('luasnip').jump(1)<CR>
+inoremap <silent> <C-k> <cmd>lua require('luasnip').jump(-1)<CR>
