@@ -84,7 +84,7 @@ endfunction
 
 " Auto comandos por tipo de archivo
 autocmd FileType text call Txt()
-autocmd FileType html,css call Html()
+autocmd FileType xml,html,css call Html()
 autocmd FileType markdown,vimwiki call Markdown()
 autocmd FileType haskell call Haskell()
 autocmd FileType python,rust call Python()
