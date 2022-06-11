@@ -68,8 +68,8 @@ cmp.setup({
 			c = cmp.mapping.close(),
 		}),
 		["<Tab>"] = cmp.mapping(function(fallback)
-			if lsnip.expand_or_jumpable() then
-				lsnip.expand_or_jump()
+			if lsnip.expand() then
+				lsnip.expand()
 			elseif has_words_before() and cmp.visible() then
 				cmp.confirm({ select = true })
 			else
