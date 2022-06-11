@@ -17,26 +17,11 @@ local ts_utils = require "nvim-treesitter.ts_utils"
 
 local get_node_text = vim.treesitter.get_node_text
 
-local function get_filename()
-	return V.fn.expand('%:t:r')
-end
-
 ls.add_snippets(
-"java", {
-	s("syso", fmt('System.out.println({})', { i(0) })),
-
-	s("psvm", fmt(
+"python", {
+	s("main", fmt(
 	[[
-	public static void main(String[] args) {{
+	if __name__ == '__main__':
 		{}
-	}}
 	]], { i(0) })),
-	
-	s("cbplate", fmt(
-	[[
-	public class {} {{
-		{}
-	}}
-	]], { t(get_filename()), i(0) }
-	))
 })
