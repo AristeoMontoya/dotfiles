@@ -25,6 +25,10 @@ local function current_date()
 	return os.date('%A %d de %B de %Y')
 end
 
+local function timestamp()
+	return os.date('%H:%M')
+end
+
 ls.add_snippets(
 "vimwiki", {
 	s("link", fmt(
@@ -49,12 +53,8 @@ ls.add_snippets(
 
 	s("reunion", fmt(
 	[[
-	# Tareas obtenidas
-
-	# Apuntes de {}
-
-	# Post-Reunión
-	]], { t(current_date()) }
+	# Meeting: {} - {}
+	]], { t(current_date(), t(timestamp())) }
 	)),
 
 	s("100doc", fmt(
@@ -68,7 +68,7 @@ ls.add_snippets(
 	]], { i(1, 'número'), t(current_date()), i(2, 'tecnologías'), i(0) }
 	)),
 
-	s("horaActual", fmt("{}", {t(os.date('%H:%M'))})),
+	s("horaActual", fmt("{}", {t(timestamp())})),
 
 	s("diary", fmt(
 	[[
