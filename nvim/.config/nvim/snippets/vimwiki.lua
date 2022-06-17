@@ -54,7 +54,7 @@ ls.add_snippets(
 	s("reunion", fmt(
 	[[
 	# Meeting: {} - {}
-	]], { t(current_date(), t(timestamp())) }
+	]], { t(current_date()), t(timestamp()) }
 	)),
 
 	s("100doc", fmt(
