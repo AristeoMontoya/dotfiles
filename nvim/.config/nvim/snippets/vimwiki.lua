@@ -8,6 +8,7 @@ local snippet_from_nodes = ls.sn
 local s = ls.s
 local i = ls.insert_node
 local t = ls.text_node
+local f = ls.function_node
 local d = ls.dynamic_node
 local c = ls.choice_node
 local fmt = require("luasnip.extras.fmt").fmt
@@ -68,7 +69,7 @@ ls.add_snippets(
 	]], { i(1, 'número'), t(current_date()), i(2, 'tecnologías'), i(0) }
 	)),
 
-	s("horaActual", fmt("{}", {t(timestamp())})),
+	s("horaActual", fmt("{}", {f(timestamp)})),
 
 	s("diary", fmt(
 	[[
