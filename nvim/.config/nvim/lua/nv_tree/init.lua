@@ -12,13 +12,6 @@ require'nvim-tree'.setup {
 	ignore_ft_on_setup  = {},
 	-- opens the tree when changing/opening a new tab if the tree wasn't previously opened
 	open_on_tab         = false,
-	-- hijacks new directory buffers when they are opened.
-	update_to_buf_dir   = {
-		-- enable the feature
-		enable = true,
-		-- allow to open the tree if it was previously closed
-		auto_open = true,
-	},
 	-- hijack the cursor in the tree to put it at the start of the filename
 	hijack_cursor       = false,
 	-- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
@@ -61,7 +54,6 @@ require'nvim-tree'.setup {
 		-- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
 		side = 'left',
 		-- if true the tree will resize itself after opening a file
-		auto_resize = false,
         signcolumn = "yes",
 		mappings = {
 			-- custom only false will merge the list with the default mappings
@@ -81,6 +73,19 @@ require'nvim-tree'.setup {
 		highlight_opened_files = '3',
 		group_empty = true,
 		highlight_git = true,
-		root_folder_modifier = ':t'
+		root_folder_modifier = ':t',
+    	icons = {
+			glyphs = {
+				git = {
+					unstaged = "",
+					staged = "",
+					unmerged = "",
+					renamed = "",
+					untracked = "",
+					deleted = "",
+					ignored = "",
+				}
+			}
+    	}
 	}
 }
