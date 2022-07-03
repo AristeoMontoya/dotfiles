@@ -28,7 +28,7 @@ require('gitsigns').setup {
 	status_formatter = nil, -- Use default
 	max_file_length = 40000,
 	preview_config = {
-		-- Options passed to nvim_open_win
+		-- Options passed to nV_open_win
 		border = 'single',
 		style = 'minimal',
 		relative = 'cursor',
@@ -38,4 +38,36 @@ require('gitsigns').setup {
 	yadm = {
 		enable = false
 	},
+	on_attach = function(bufnr)
+		local gs = package.loaded.gitsigns
+
+		local function map(mode, l, r, opts)
+			opts = opts or {}
+			opts.buffer = bufnr
+			V.keymap.set(mode, l, r, opts)
+		end
+
+		-- Navigation
+		map('n', ']]', function()
+			if V.wo.diff then return ']]' end
+			V.schedule(function() gs.next_hunk() end)
+			return '<Ignore>'
+		end, {expr=true})
+
+		map('n', '[[', function()
+			if V.wo.diff then return '[[' end
+			V.schedule(function() gs.prev_hunk() end)
+			return '<Ignore>'
+		end, {expr=true})
+
+		-- Actions
+		map({'n', 'v'}, '<leader>gs', ':Gitsigns stage_hunk<CR>')
+		map({'n', 'v'}, '<leader>gr', ':Gitsigns reset_hunk<CR>')
+		map('n', '<leader>gu', gs.undo_stage_hunk)
+		map('n', '<leader>gp', gs.preview_hunk)
+		map('n', '<leader>gd', gs.diffthis)
+
+		-- Text object
+		map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+	end
 }

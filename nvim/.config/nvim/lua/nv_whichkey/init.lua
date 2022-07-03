@@ -66,14 +66,17 @@ local mappings = {
 	["c"] = {"Quick capture"},
 	["<oc>"] = {"Open config"},
 	["<rt>"] = {"Swap spaces for tabs"},
-	["<space>"] = {
-		name = "+Hop",
-		b = "Two chars",
-		f = "Find char"
-	},
 	b = {
 		name = "+Buffer",
 		k = "Kill current buffer"
+	},
+	g = {
+		name = "git",
+		s = 'Stage hunk',
+		u = 'Undo stage hunk',
+		r = 'Reset hunk',
+		p = 'Preview hunk',
+		d = 'Show diff'
 	},
 	f = {
 		name = "+Find",
@@ -87,16 +90,7 @@ local mappings = {
 		h = "Help tags",
 		n = "Notes"
 	},
-	--[[ d = {
-		name = "+Diagnostics",
-		t = {"<cmd>TroubleToggle<cr>", "trouble"},
-		w = {"<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "workspace"},
-		d = {"<cmd>TroubleToggle lsp_document_diagnostics<cr>", "document"},
-		q = {"<cmd>TroubleToggle quickfix<cr>", "quickfix"},
-		l = {"<cmd>TroubleToggle loclist<cr>", "loclist"},
-		r = {"<cmd>TroubleToggle lsp_references<cr>", "references"},
-	}, ]]
-	D = {
+	d = {
 		name = "+Debug",
     b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
     c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
@@ -151,7 +145,11 @@ local mappings = {
 		e = "Verify english",
 		n = "Disable spell checking"
 	},
-	S = {name = "+Session", s = {"<cmd>SessionSave<cr>", "Save Session"}, l = {"<cmd>SessionLoad<cr>", "Load Session"}},
+	S = {
+		name = "+Session",
+		s = {"<cmd>SessionSave<cr>", "Save Session"},
+		l = {"<cmd>SessionLoad<cr>", "Load Session"}
+	},
 	o = "which_key_ignore",
 	r = "which_key_ignore",
 }
