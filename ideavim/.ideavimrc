@@ -1,0 +1,95 @@
+" Usar portapapeles del sistema
+set clipboard+=unnamed
+
+" Plugins
+set surround
+set commentary
+set easymotion
+set argtextobj
+set textobj-entire
+set NERDTree
+
+" Defaults
+set iskeyword+=-
+set splitright
+set splitbelow
+set incsearch
+set scrollof=5
+
+" Leader
+let mapleader=" "
+
+" Cambiar de espacio en el editor
+nnoremap <silent> <C-a> :e#<CR>
+
+" Centrar saltos de búsqueda
+nnoremap n nzz
+nnoremap N Nzz
+
+" Centrado al combinar líneas
+nnoremap J mzJ`z
+
+" Copiar hasta el final de la línea
+nnoremap Y y$
+
+" ------
+" SPLITS
+" ------
+
+" Mover a split izquierdo
+nnoremap <silent> <C-h> <C-w>h
+
+" Mover a split derecho
+nnoremap <silent> <C-l> <C-w>l
+
+" Mover a split de abajo
+nnoremap <silent> <C-j> <C-w>j
+
+" Mover a split de arriba
+nnoremap <silent> <C-k> <C-w>k
+
+" Reducir split vertical
+nnoremap <A-h> :vertial resize -5<CR>
+
+" Agrandar split vertical
+nnoremap <A-l> :vertial resize +5<CR>
+
+" Reducir split horizontal
+nnoremap <A-j> :resize -5<CR>
+
+" Agrandar split horizontal
+nnoremap <A-k> :resize +5<CR>
+
+" Crear split horizontal
+nnoremap <silent> <leader>sh :split<CR>
+
+" Crear split vertical
+nnoremap <silent> <leader>sv :vs<CR>
+
+" Rotar splits
+nnoremap <silent> <leader>sr <C-W>R
+
+" Mover split a pestaña
+nnoremap <silent> <leader>st <C-W>T
+
+" -------
+" ACTIONS
+" -------
+
+" Refactor
+nnoremap <silent> <leader>rn :action RenameElement<CR>
+
+" Find file
+nnoremap <silent> <leader>ff :action GotoFile<CR>
+
+" Find text
+nnoremap <silent> <leader>fg :action FindInPath<CR>
+
+" Reformat code
+nnoremap <silent> <leader>af :action ReformatCode<CR>
+
+" Easy motion
+map <leader><leader>f <Plug>(easymotion-s)
+
+" Nerd-tree
+map <leader>fe :NERDTreeToggle<CR>
