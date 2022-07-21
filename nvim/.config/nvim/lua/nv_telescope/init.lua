@@ -27,7 +27,7 @@ require('telescope').setup{
 			},
 		},
 		path_display = {
-			"shorten",
+			"truncate",
 		},
 		file_sorter =  require'telescope.sorters'.get_fuzzy_file,
 		file_ignore_patterns = {},
