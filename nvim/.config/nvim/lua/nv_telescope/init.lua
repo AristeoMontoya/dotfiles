@@ -15,15 +15,15 @@ require('telescope').setup{
 		initial_mode = "insert",
 		selection_strategy = "reset",
 		sorting_strategy = "descending",
-		layout_strategy = "horizontal",
+		layout_strategy = "vertical",
 		layout_config = {
-			horizontal = {
+			vertical = {
 				mirror = false,
 				prompt_position = "top",
 				width = 0.75,
-				results_height = 1,
+				results_height = 20,
 				results_width = 0.8,
-				preview_cutoff = 120,
+				preview_cutoff = 40
 			},
 		},
 		path_display = {
