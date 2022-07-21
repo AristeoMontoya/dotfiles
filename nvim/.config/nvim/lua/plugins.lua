@@ -123,6 +123,7 @@ return require('packer').startup(function(use)
 		}
 		use {
 			'neovim/nvim-lspconfig',
+			config = function() require('nv_lspconfig') end
 		}
 		-- Snippets and autocomplete
 		use {
