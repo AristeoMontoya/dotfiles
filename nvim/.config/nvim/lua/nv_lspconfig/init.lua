@@ -15,7 +15,7 @@ lspconfig.sumneko_lua.setup {
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
-                library = {[V.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true}
+                library = {[V.fn.expand('$VIMRUNTIME/lua')] = true, [V.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true}
             }
         }
     }
