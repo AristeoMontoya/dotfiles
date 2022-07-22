@@ -102,7 +102,7 @@ cmap w!! w !sudo tee %
 :command Qa qa
 
 " Abrir configuraciones
-:command Config call OpenConfig()
+:command Config luafile ~/.config/nvim/lua/openconfig.lua
 
 nnoremap <silent> <leader>oc :Config<CR>
 
