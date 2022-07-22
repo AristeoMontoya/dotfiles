@@ -111,6 +111,7 @@ local mappings = {
 		r = {"<cmd>lua vim.lsp.buf.rename()<cr>", "Rename"},
 		x = {"<cmd>cclose<cr>", "Close Quickfix"},
 		s = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
+		l = {"<cmd>lua vim.diagnostic.open_float()<CR>", "Float diagnostic"},
 	},
 	s = {
 		name = "+Splits",

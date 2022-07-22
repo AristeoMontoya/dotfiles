@@ -27,13 +27,7 @@ V.cmd("nnoremap <silent> <leader>lr <cmd>lua vim.lsp.buf.rename()<CR>")
 V.cmd("nnoremap <silent> <A-n> <cmd>lua vim.lsp.diagnostic_jump_next()<CR>")
 V.cmd("nnoremap <silent> <A-p> <cmd>lua vim.lsp.diagnostic_jump_prev()<CR>")
 V.cmd("nnoremap <silent> <C-space> <cmd>lua vim.lsp.buf.completion()<CR>")
--- vim.cmd('nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>')
--- V.cmd("nnoremap <silent> <C-p> :Lspsaga diagnostic_jump_prev<CR>")
--- V.cmd("nnoremap <silent> <C-n> :Lspsaga diagnostic_jump_next<CR>")
--- scroll down hover doc or scroll in definition preview
--- V.cmd("nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>")
--- scroll up hover doc
--- V.cmd("nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>")
+V.cmd("nnoremap <silent> <leader>ll <cmd>lua vim.diagnostic.open_float()<CR>")
 V.cmd('command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')
 
 V.lsp.handlers['textDocument/publishDiagnostics'] =
