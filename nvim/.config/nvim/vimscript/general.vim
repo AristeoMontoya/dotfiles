@@ -34,11 +34,6 @@ function Tabulacion()
 	set noexpandtab|retab!
 endfunction
 
-function OpenConfig()
-	tabedit $CONFIGVIM/init.lua
-	tcd $CONFIGVIM
-endfunction
-
 function! SynStack()
 	if !exists("*synstack")
 		return
