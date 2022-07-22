@@ -43,5 +43,17 @@ ls.add_snippets(
 			i(1, V.fn.substitute(snip.env.TM_FILENAME, "\\..*$", "", "g")),
 		})
 	end, { 1 }), i(0) }
+	)),
+
+	s("interplate", fmt(
+	[[
+	public interface {} {{
+		{}
+	}}
+	]], { d(1, function(_, snip)
+		return sn(nil, {
+			i(1, V.fn.substitute(snip.env.TM_FILENAME, "\\..*$", "", "g")),
+		})
+	end, { 1 }), i(0) }
 	))
 })
