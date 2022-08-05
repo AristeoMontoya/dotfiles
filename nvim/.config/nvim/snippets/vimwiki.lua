@@ -16,7 +16,7 @@ local fmt = require("luasnip.extras.fmt").fmt
 local ts_locals = require "nvim-treesitter.locals"
 local ts_utils = require "nvim-treesitter.ts_utils"
 
-local get_node_text = vim.treesitter.get_node_text
+local get_node_text = V.treesitter.get_node_text
 
 local function get_filename()
 	return V.fn.expand('%:t:r')
@@ -55,7 +55,7 @@ ls.add_snippets(
 	s("reunion", fmt(
 	[[
 	# Meeting: {} - {}
-	]], { t(current_date()), t(timestamp()) }
+	]], { f(current_date), f(timestamp) }
 	)),
 
 	s("100doc", fmt(
