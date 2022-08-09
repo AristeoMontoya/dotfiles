@@ -22,7 +22,7 @@ local kind_icons = {
 	Value = "",
 	Enum = "",
 	Keyword = "",
-	Snippet = "",
+	Snippet = "",
 	Color = "",
 	File = "",
 	Reference = "",
@@ -44,7 +44,7 @@ cmp.setup({
 			vim_item.menu = ({
 				path = "[Path]",
 				nvim_lsp = "[LSP]",
-				luasnip = "[Luasnip]",
+				luasnip = "[Snip]",
 			})[entry.source.name]
 			return vim_item
 		end
