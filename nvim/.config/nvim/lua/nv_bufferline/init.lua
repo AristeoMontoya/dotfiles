@@ -3,7 +3,7 @@ require('bufferline').setup {
 		view = "multiwindow",
 		numbers = "ordinal",
 		number = "none", -- buffer_id at index 1, ordinal at index 2
-		indicator_icon = '▎',
+		icon = '▎',
 		modified_icon = '●',
 		left_trunc_marker = '',
 		right_trunc_marker = '',
