@@ -10,7 +10,7 @@ require('bufferline').setup {
 		max_name_length = 18,
 		max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
 		tab_size = 18,
-		diagnostics = false,
+		diagnostics = "nvim_lsp",
 		offsets = {{filetype = "NvimTree", text = "", text_align = "left" }},
 		show_buffer_icons = true, -- disable filetype icons for buffers
 		show_buffer_close_icons = false,
@@ -22,5 +22,49 @@ require('bufferline').setup {
 		-- [focused and unfocused]. eg: { '|', '|' }
 		enforce_regular_tabs = true,
 		always_show_bufferline = false,
-	}
+	},
+    highlights = {
+        fill = {
+            bg = '#353b45',
+        },
+        background = {
+            fg = '#abb2bf',
+            bg = '#353b45'
+        },
+        buffer_selected = {
+            fg = '#98c379',
+        },
+        numbers = {
+            bg = '#353b45',
+        },
+        hint = {
+            fg = '#abb2bf',
+            sp = '#c678dd',
+            bg = '#353b45',
+        },
+        info = {
+            fg = '#abb2bf',
+            sp = '#c678dd',
+            bg = '#353b45',
+        },
+        warning = {
+            fg = '#E5C07B',
+            sp = '#c678dd',
+            bg = '#353b45',
+        },
+        error = {
+            fg = '#e06c75',
+            sp = '#c678dd',
+            bg = '#353b45',
+        },
+        modified = {
+            bg = '#353b45'
+        },
+        separator = {
+            bg = '#353b45'
+        },
+        indicator_selected = {
+            fg = '#98c379',
+        },
+    }
 }
