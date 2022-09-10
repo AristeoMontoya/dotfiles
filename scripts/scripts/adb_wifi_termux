@@ -1,0 +1,14 @@
+#!/bin/sh
+echo "Fetching device IP"
+IP=$(ifconfig 2>/dev/null | grep -Po '(?<=inet )(?!127)(\d{1,3}\.?){4}')
+echo "Device IP: ${IP}"
+echo "Type sync port: "
+read SYNC_PORT
+
+adb pair "${IP}:${SYNC_PORT}"
+
+echo "Type connection port: "
+read CONNECTION_PORT
+
+adb connect "${IP}:${CONNECTION_PORT}"
+adb tcpip 5555
