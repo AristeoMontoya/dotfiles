@@ -92,3 +92,9 @@ cmd("highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#61AFEF")
 cmd("highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080")
 cmd("highlight DiagnosticError guifg=#E06C75")
 cmd("highlight DiagnosticWarn guifg=#e5c07b")
+
+-- Pounce
+cmd("highlight PounceMatch guibg=#66D9E8 guifg=#2c323c")
+cmd("highlight PounceAccept guibg=#61AFEF")
+cmd("highlight PounceAcceptBest guibg=#C678DD")
+cmd("highlight PounceGap guibg=#abb2bf")
