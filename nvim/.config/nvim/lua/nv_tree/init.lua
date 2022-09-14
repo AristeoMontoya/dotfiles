@@ -75,6 +75,13 @@ require'nvim-tree'.setup {
 		highlight_git = true,
 		root_folder_modifier = ':t',
     	icons = {
+        	webdev_colors = true,
+			show = {
+				file = true,
+				folder = true,
+				folder_arrow = true,
+				git = true,
+			},
 			glyphs = {
 				git = {
 					unstaged = "",

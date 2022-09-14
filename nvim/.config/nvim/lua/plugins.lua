@@ -42,7 +42,8 @@ return require('packer').startup(function(use)
 		-- Explorador de archivos
 		use {
 			'kyazdani42/nvim-tree.lua',
-			config = function() require('nv_tree') end
+			requires = {'kyazdani42/nvim-web-devicons'},
+			config = function() require('nv_tree') end,
 		}
 		-- Vimwiki
 		use {
@@ -104,7 +105,7 @@ return require('packer').startup(function(use)
 		-- Línea de status
 		use {
 			'hoob3rt/lualine.nvim',
-			requires = {'kyazdani42/nvim-web-devicons', opt = true},
+			requires = {'kyazdani42/nvim-web-devicons'},
 			config = function() require('nv_lualine') end
 		}
 		-- OneDark
