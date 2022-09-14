@@ -15,7 +15,7 @@ local fmt = require("luasnip.extras.fmt").fmt
 local ts_locals = require "nvim-treesitter.locals"
 local ts_utils = require "nvim-treesitter.ts_utils"
 
-local get_node_text = vim.treesitter.get_node_text
+local get_node_text = V.treesitter.get_node_text
 
 ls.add_snippets(
 "python", {
