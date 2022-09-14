@@ -101,3 +101,6 @@ cmd("highlight PounceMatch guibg=#66D9E8 guifg=#2c323c")
 cmd("highlight PounceAccept guibg=#61AFEF guifg=#2c323c")
 cmd("highlight PounceAcceptBest guibg=#C678DD guifg=#2c323c")
 cmd("highlight PounceGap guibg=#abb2bf")
+
+-- whichkey
+cmd("highlight WhichKeySeparator guifg=#61AFEF")
