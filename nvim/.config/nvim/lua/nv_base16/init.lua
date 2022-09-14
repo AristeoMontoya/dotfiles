@@ -69,6 +69,9 @@ cmd("hi LspDiagnosticsHint guibg=#000000")
 
 -- Illuminate
 cmd("hi illuminatedWord guibg=#313640")
+cmd("hi illuminatedWordRead guibg=#313640 gui=none")
+cmd("hi illuminatedWordWrite guibg=#313640 gui=none")
+cmd("hi illuminatedWordText guibg=#313640 gui=none")
 
 -- Íconos
 cmd("hi NvimTreeLicenseIcon guibg=#000000")
