@@ -95,6 +95,6 @@ cmd("highlight DiagnosticWarn guifg=#e5c07b")
 
 -- Pounce
 cmd("highlight PounceMatch guibg=#66D9E8 guifg=#2c323c")
-cmd("highlight PounceAccept guibg=#61AFEF")
-cmd("highlight PounceAcceptBest guibg=#C678DD")
+cmd("highlight PounceAccept guibg=#61AFEF guifg=#2c323c")
+cmd("highlight PounceAcceptBest guibg=#C678DD guifg=#2c323c")
 cmd("highlight PounceGap guibg=#abb2bf")
