@@ -30,7 +30,9 @@ require('telescope').setup{
 			"truncate",
 		},
 		file_sorter =  require'telescope.sorters'.get_fuzzy_file,
-		file_ignore_patterns = {},
+		file_ignore_patterns = {
+			"*.class"
+		},
 		generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
 		winblend = 0,
 		border = {},
