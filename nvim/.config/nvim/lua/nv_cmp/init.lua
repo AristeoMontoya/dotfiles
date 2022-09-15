@@ -105,6 +105,10 @@ cmp.setup({
 			border = 'rounded'
 		}
 	},
+	enabled = function()
+		return V.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
+			or require("cmp_dap").is_dap_buffer()
+	end,
 })
 
 -- Set configuration for specific filetype.
@@ -130,6 +134,12 @@ cmp.setup.cmdline(':', {
 	}, {
 		{ name = 'cmdline' }
 	})
+})
+
+cmp.setup.filetype({ "dap-repl", "dapui_watches" }, {
+	sources = {
+		{ name = "dap" },
+	},
 })
 
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
