@@ -34,8 +34,9 @@ return require('packer').startup(function(use)
 	if not IsInsideVsCode() then
 		-- Movimiento vertical mejorado
 		use {
-			'rlane/pounce.nvim',
-			config = function() require('nv_pounce') end
+			'https://gitlab.com/madyanov/svart.nvim',
+			as = 'svart.nvim',
+			config = function () require('nv_svart') end
 		}
 		-- Packer can manage itself
 		use {'wbthomason/packer.nvim'}

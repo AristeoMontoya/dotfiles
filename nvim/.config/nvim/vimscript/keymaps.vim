@@ -138,10 +138,10 @@ nnoremap <leader>fe :NvimTreeToggle<CR>
 " Trouble
 nnoremap <silent> <leader>ld :TroubleToggle<CR>
 
-" Pounce
-nmap s <cmd>Pounce<CR>
-nmap S <cmd>PounceRepeat<CR>
-omap gs <cmd>Pounce<CR>  " 's' is used by vim-surround
+" Svart
+nmap s <cmd>Svart<CR>
+nmap S <cmd>SvartRegex<CR>
+omap gs <cmd>SvartRepeat<CR>  " 's' is used by vim-surround
 
 " Luasnip
 snoremap <silent> <C-j> <cmd>lua require('luasnip').jump(1)<CR>

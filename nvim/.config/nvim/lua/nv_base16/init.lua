@@ -96,11 +96,9 @@ cmd("highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
 cmd("highlight DiagnosticError guifg=#E06C75")
 cmd("highlight DiagnosticWarn guifg=#e5c07b")
 
--- Pounce
-cmd("highlight PounceMatch guibg=#66D9E8 guifg=#2c323c")
-cmd("highlight PounceAccept guibg=#61AFEF guifg=#2c323c")
-cmd("highlight PounceAcceptBest guibg=#C678DD guifg=#2c323c")
-cmd("highlight PounceGap guibg=#abb2bf")
+-- Svart
+cmd("highlight SvartMatch guibg=#66D9E8 guifg=#2c323c")
+cmd("highlight SvartLabel guibg=#C678DD guifg=#2c323c")
 
 -- whichkey
 cmd("highlight WhichKeySeparator guifg=#61AFEF")
