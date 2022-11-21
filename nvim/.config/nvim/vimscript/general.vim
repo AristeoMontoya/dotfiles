@@ -25,7 +25,7 @@ set tabstop=4				" Tamaño de tabulación
 set shiftwidth=4			" Tamaño de tabulación
 set nowrap					" Evita que las líneas se divivan si excede el ancho
 set nocompatible			" Configuraciones de VimWiki
-set cmdheight=1
+set cmdheight=0
 set pumheight=12
 set laststatus=3
 
