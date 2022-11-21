@@ -74,9 +74,3 @@ require'nvim-treesitter.configs'.setup {
 		max_file_lines = 1000
 	}
 }
-
-require"nvim-treesitter.highlight"
-local hlmap = V.treesitter.highlighter.hl_map
-hlmap.error = nil
-hlmap["punctuation.delimiter"] = "Delimiter"
-hlmap["punctuation.bracket"] = nil
