@@ -100,7 +100,6 @@ autocmd VimResized * wincmd =
 
 " Mantener dos líneas extra verticales. Más fácil escribir.
 autocmd BufEnter *.md set scrolloff=2
-autocmd! VimEnter * set cmdheight=1
 autocmd BufLeave *.md set scrolloff=0
 
 augroup codelens
