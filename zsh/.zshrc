@@ -14,6 +14,12 @@ zle_highlight=('paste:none')
 # beeping is annoying
 unsetopt BEEP
 
+# Base16
+BASE16_SHELL="$ZDOTDIR/plugins/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        source "$BASE16_SHELL/profile_helper.sh"
+        
 
 # completions
 autoload -Uz compinit
@@ -44,6 +50,7 @@ zsh_add_file "zsh-prompt"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
+zsh_add_plugin "chriskempson/base16-shell"
 zsh_add_completion "esc/conda-zsh-completion" false
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins
 # More completions https://github.com/zsh-users/zsh-completions
