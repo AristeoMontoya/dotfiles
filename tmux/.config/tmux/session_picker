@@ -2,7 +2,7 @@
 existing_sessions=`tmux list-sessions | awk -F ':' '{print $1}'`
 scripts=`ls ~/.config/tmux/session-scripts`
 session_options=`printf "$scripts\n$existing_sessions" | sort -u`
-session=`printf "$session_options" | fzf`
+session=`printf "$session_options" | fzf --header="pick a session"`
 
 if [ ! -z $session ]; then
 	if ! tmux has-session -t "$session"; then
