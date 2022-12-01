@@ -1,12 +1,25 @@
 #!/bin/sh
-existing_sessions=`tmux list-sessions | awk -F ':' '{print $1}'`
+existing_sessions=`tmux list-sessions | awk -F ':' '{print $1 "*"}'` # '*' to distinguish between existing sessions
 scripts=`ls ~/.config/tmux/session-scripts`
-session_options=`printf "$scripts\n$existing_sessions" | sort -u`
-session=`printf "$session_options" | fzf --header="pick a session"`
 
-if [ ! -z $session ]; then
+# Iterating trough every script name to make sure a session with that name doesn't exist yet
+while IFS= read -r line; do
+    if [[ "$existing_sessions" == *"$line"* ]]; then # If the session name already exists, we delete that script from the list
+    	scripts=`echo "$scripts" | sed "/$line/d"`
+    fi
+done <<< "$scripts"
+
+if [ -z "$scripts" ]; then
+	session_options=`printf "$existing_sessions" | sort` # If 'scripts' is empty we only use existing sessions.
+else
+	session_options=`printf "$scripts\n$existing_sessions" | sort` # If not, we use existing sessions and unexisting sessions.
+fi
+
+session=`printf "$session_options" | fzf --header="pick a session" | awk -F "*" '{print $1}'` # We get a selection and remove the asterisk
+
+if [ ! -z "$session" ]; then
 	if ! tmux has-session -t "$session"; then
-		~/.config/tmux/session-scripts/$session
+		~/.config/tmux/session-scripts/"$session"
 	fi
 	if [ "$TMUX" ]; then
 		tmux switch -t "$session"
