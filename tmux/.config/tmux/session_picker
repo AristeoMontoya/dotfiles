@@ -1,0 +1,16 @@
+#!/bin/sh
+existing_sessions=`tmux list-sessions | awk -F ':' '{print $1}'`
+scripts=`ls ~/.config/tmux/session-scripts`
+session_options=`printf "$scripts\n$existing_sessions" | sort -u`
+session=`printf "$session_options" | fzf`
+
+if [ ! -z $session ]; then
+	if ! tmux has-session -t "$session"; then
+		~/.config/tmux/session-scripts/$session
+	fi
+	if [ "$TMUX" ]; then
+		tmux switch -t "$session"
+	else
+		tmux attach -t "$session"
+	fi
+fi
