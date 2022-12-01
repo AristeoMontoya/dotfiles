@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 existing_sessions=`tmux list-sessions | awk -F ':' '{print $1 "*"}'` # '*' to distinguish between existing sessions
 scripts=`ls ~/.config/tmux/session-scripts`
 
