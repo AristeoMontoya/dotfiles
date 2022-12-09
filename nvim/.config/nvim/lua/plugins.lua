@@ -168,7 +168,7 @@ return require('packer').startup(function(use)
 			'rcarriga/nvim-dap-ui',
 			config = function() require('nv_dapui') end,
 		}
-		use { 'Pocco81/DAPInstall.nvim' }
+		use { "jayp0521/mason-nvim-dap.nvim" }
 
 		-- Better Terminal
 		use {

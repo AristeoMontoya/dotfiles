@@ -1,4 +1,5 @@
 local lspconfig = require("lspconfig")
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 lspconfig.sumneko_lua.setup {
 	settings = {
@@ -20,3 +21,51 @@ lspconfig.sumneko_lua.setup {
         }
     }
 }
+
+lspconfig["pyright"].setup({
+	capabilities = capabilities
+})
+
+lspconfig["dockerls"].setup({
+	capabilities = capabilities
+})
+
+lspconfig["bashls"].setup({
+	capabilities = capabilities
+})
+
+lspconfig["cssls"].setup({
+	capabilities = capabilities
+})
+
+lspconfig["emmet_ls"].setup({
+	capabilities = capabilities
+})
+
+lspconfig["gradle_ls"].setup({
+	capabilities = capabilities
+})
+
+lspconfig["groovyls"].setup({
+	capabilities = capabilities
+})
+
+lspconfig["html"].setup({
+	capabilities = capabilities
+})
+
+lspconfig["jsonls"].setup({
+	capabilities = capabilities
+})
+
+lspconfig["tsserver"].setup({
+	capabilities = capabilities
+})
+
+lspconfig["vimls"].setup({
+	capabilities = capabilities
+})
+
+lspconfig["lemminx"].setup({
+	capabilities = capabilities
+})
