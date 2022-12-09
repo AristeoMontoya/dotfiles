@@ -1,7 +1,7 @@
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-lspconfig.sumneko_lua.setup {
+lspconfig["sumneko_lua"].setup ({
 	settings = {
         Lua = {
             runtime = {
@@ -20,7 +20,7 @@ lspconfig.sumneko_lua.setup {
             }
         }
     }
-}
+})
 
 lspconfig["pyright"].setup({
 	capabilities = capabilities
@@ -59,7 +59,8 @@ lspconfig["jsonls"].setup({
 })
 
 lspconfig["tsserver"].setup({
-	capabilities = capabilities
+	capabilities = capabilities,
+	root_dir = require("lspconfig/util").root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git", "."),
 })
 
 lspconfig["vimls"].setup({
