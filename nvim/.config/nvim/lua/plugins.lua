@@ -118,11 +118,11 @@ return require('packer').startup(function(use)
 		}
 		-- LSP
 		use {
-			'williamboman/nvim-lsp-installer',
-			opt = true,
-			cond = ShouldUseLsp,
-			config = function() require('nv_lspinstall') end
+			'williamboman/mason.nvim'
 		}
+
+		use {'williamboman/mason-lspconfig.nvim'}
+
 		use {
 			'neovim/nvim-lspconfig',
 			config = function() require('nv_lspconfig') end
