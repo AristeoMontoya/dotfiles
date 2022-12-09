@@ -1,2 +1,2 @@
 #!/bin/sh
-tmux new -s dotfiles -c ~/Documentos/dotfiles/ -d
+tmux new -s dotfiles -c ~/dotfiles/ -d
