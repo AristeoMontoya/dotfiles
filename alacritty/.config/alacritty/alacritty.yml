@@ -20,13 +20,12 @@ font:
   italic:
      family: JetBrainsMono NF
 
-  size: 9
+  size: 7
 
 cursor:
   style: Beam
 
 window:
-  opacity: 0.9
   decorations: Full
   dimensions:
     columns: 75

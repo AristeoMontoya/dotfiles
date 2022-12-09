@@ -68,4 +68,6 @@ function lsp_config.tsserver_on_attach(client, bufnr)
 	client.resolved_capabilities.document_formatting = false
 end
 
+require("lsp.mason")
+
 return lsp_config
