@@ -20,7 +20,7 @@ font:
   italic:
      family: JetBrainsMono NF
 
-  size: 7
+  size: 10
 
 cursor:
   style: Beam
