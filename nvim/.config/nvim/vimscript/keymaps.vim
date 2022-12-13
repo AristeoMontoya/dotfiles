@@ -5,6 +5,10 @@ nnoremap <silent> <C-a> :e#<CR>
 nnoremap n nzz
 nnoremap N Nzz
 
+" Centrar el movimiento de página
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
 " Centrado al combinar líneas
 nnoremap J mzJ`z
 
