@@ -10,7 +10,6 @@ if not IS_VSCODE then
 		-- LSP
 		require('lsp')
 	end
-	V.cmd('source ~/.config/nvim/vimscript/keymaps.vim')
 	V.cmd('source ~/.config/nvim/vimscript/autocommands.vim')
 	require('settings.keymaps')
 	require('nv_dap')
