@@ -2,7 +2,6 @@ local ls = require "luasnip"
 
 require("luasnip.session.snippet_collection").clear_snippets "go"
 
--- local snippet = ls.s
 local snippet_from_nodes = ls.sn
 
 local s = ls.s
@@ -10,6 +9,7 @@ local i = ls.insert_node
 local t = ls.text_node
 local d = ls.dynamic_node
 local c = ls.choice_node
+local f = ls.function_node
 local sn = ls.snippet_node
 local fmt = require("luasnip.extras.fmt").fmt
 
@@ -18,13 +18,16 @@ local ts_utils = require "nvim-treesitter.ts_utils"
 
 local get_node_text = V.treesitter.get_node_text
 
-local function get_filename()
-	return V.fn.expand('%:t:r')
+local filename = function()
+	return f(function(_args, snip)
+		local name = vim.split(snip.snippet.env.TM_FILENAME, ".", true)
+		return name[1] or ""
+	end)
 end
 
 ls.add_snippets(
 "java", {
-	s("syso", fmt('System.out.println({})', { i(0) })),
+	s("sout", fmt('System.out.println({});', { i(0) })),
 
 	s("psvm", fmt(
 	[[
@@ -35,25 +38,41 @@ ls.add_snippets(
 
 	s("cbplate", fmt(
 	[[
-	public class {} {{
+	{}class {} {{
 		{}
 	}}
-	]], { d(1, function(_, snip)
-		return sn(nil, {
-			i(1, V.fn.substitute(snip.env.TM_FILENAME, "\\..*$", "", "g")),
-		})
-	end, { 1 }), i(0) }
+	]], {
+		c(1, {
+			t("public "),
+			t("private "),
+			t("protected "),
+			t()
+		}),
+		c(2, {
+			filename(),
+			i()
+		}),
+		i(0)
+	}
 	)),
 
 	s("interplate", fmt(
 	[[
-	public interface {} {{
+	{}interface {} {{
 		{}
 	}}
-	]], { d(1, function(_, snip)
-		return sn(nil, {
-			i(1, V.fn.substitute(snip.env.TM_FILENAME, "\\..*$", "", "g")),
-		})
-	end, { 1 }), i(0) }
+	]], {
+		c(1, {
+			t("public "),
+			t("private "),
+			t("protected "),
+			t()
+		}),
+		c(2, {
+			filename(),
+			i()
+		}),
+		i(0)
+	}
 	))
 })
