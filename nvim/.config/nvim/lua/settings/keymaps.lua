@@ -91,8 +91,8 @@ map('n', 's', ':Svart<CR>', defaults)
 map('n', 'S', ':SvartRegex<CR>', defaults)
 map('n', 'gs', ':SvartRepeat<CR>', defaults)
 
--- Luasnip
-map('s', '<C-j>', '<cmd>lua require("luasnip").jump(1)<CR>', defaults)
-map('s', '<C-k>', '<cmd>lua require("luasnip").jump(-1)<CR>', defaults)
-map('i', '<C-j>', '<cmd>lua require("luasnip").jump(1)<CR>', defaults)
-map('i', '<C-k>', '<cmd>lua require("luasnip").jump(-1)<CR>', defaults)
+-- Luasnip choice nodes
+map("i", "<C-n>", "<Plug>luasnip-next-choice", defaults)
+map("s", "<C-n>", "<Plug>luasnip-next-choice", defaults)
+map("i", "<C-p>", "<Plug>luasnip-prev-choice", defaults)
+map("s", "<C-p>", "<Plug>luasnip-prev-choice", defaults)
