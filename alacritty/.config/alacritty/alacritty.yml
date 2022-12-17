@@ -28,7 +28,7 @@ cursor:
 window:
   decorations: Full
   dimensions:
-    columns: 75
+    columns: 70
     lines: 25
 
 # Colores de terminal
