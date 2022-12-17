@@ -22,6 +22,6 @@ if [[ $STATE == "BAT" ]]; then
 	echo "Discharging. Set governor to conservative."
 	cpupower frequency-set -g conservative
 elif [[ $STATE == "AC" ]]; then
-	echo "Charging. Set governor to ondemand."
-	cpupower frequency-set -g ondemand 
+	echo "Charging. Set governor to schedutil."
+	cpupower frequency-set -g schedutil 
 fi
