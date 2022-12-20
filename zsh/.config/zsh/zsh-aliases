@@ -39,7 +39,12 @@ alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
 # For when keys break
 alias archlinx-fix-keys="sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys"
 
-alias ls='ls --color=auto'
+if ! command -v exa &> /dev/null
+then
+	alias ls='ls --color=auto'
+else
+	alias ls='exa --icons'
+fi
 
 alias du='du -had 1'
 alias siepyt='cd ~/Documentos/Escuela/Semestre\ 10/Ingeniería\ web/siepyt'
