@@ -37,6 +37,7 @@ endfunction
 
 function! Java()
 	setlocal colorcolumn=100
+	setlocal expandtab
 endfunction
 
 " Función para arreglar la identación de PHP
