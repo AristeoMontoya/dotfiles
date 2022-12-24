@@ -38,6 +38,19 @@ return require('packer').startup(function(use)
 			as = 'svart.nvim',
 			config = function () require('nv_svart') end
 		}
+
+		-- Tmux integration
+		use {
+			'numToStr/Navigator.nvim',
+			config = function()
+				require('Navigator').setup()
+				vim.keymap.set({'n', 't'}, '<C-h>', '<CMD>NavigatorLeft<CR>')
+				vim.keymap.set({'n', 't'}, '<C-l>', '<CMD>NavigatorRight<CR>')
+				vim.keymap.set({'n', 't'}, '<C-k>', '<CMD>NavigatorUp<CR>')
+				vim.keymap.set({'n', 't'}, '<C-j>', '<CMD>NavigatorDown<CR>')
+				vim.keymap.set({'n', 't'}, '<C-p>', '<CMD>NavigatorPrevious<CR>')
+			end
+		}
 		-- Packer can manage itself
 		use {'wbthomason/packer.nvim'}
 		-- Explorador de archivos
@@ -122,11 +135,19 @@ return require('packer').startup(function(use)
 		}
 
 		use {'williamboman/mason-lspconfig.nvim'}
+		use {'jay-babu/mason-null-ls.nvim'}
 
 		use {
 			'neovim/nvim-lspconfig',
 			config = function() require('nv_lspconfig') end
 		}
+
+		-- Formating
+		use {
+			'jose-elias-alvarez/null-ls.nvim',
+			config = function() require("nv_nullls") end
+		}
+
 		-- Snippets and autocomplete
 		use {
 			'hrsh7th/nvim-cmp',

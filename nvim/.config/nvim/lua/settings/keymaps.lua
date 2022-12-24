@@ -29,10 +29,10 @@ map('n', '<C-k>', '<C-w>k', defaults)
 map('n', '<C-l>', '<C-w>l', defaults)
 
 -- Split resize
-map('n', '<A-h>', ':vertical resize -5<CR>', defaults)
-map('n', '<A-j>', ':resize -5<CR>', defaults)
-map('n', '<A-k>', ':resize +5<CR>', defaults)
-map('n', '<A-l>', ':vertical resize +5<CR>', defaults)
+-- map('n', '<A-h>', ':vertical resize -5<CR>', defaults)
+-- map('n', '<A-j>', ':resize -5<CR>', defaults)
+-- map('n', '<A-k>', ':resize +5<CR>', defaults)
+-- map('n', '<A-l>', ':vertical resize +5<CR>', defaults)
 
 -- Split creation
 map('n', '<leader>sh', ':split<CR>', defaults)
@@ -96,3 +96,6 @@ map("i", "<C-n>", "<Plug>luasnip-next-choice", defaults)
 map("s", "<C-n>", "<Plug>luasnip-next-choice", defaults)
 map("i", "<C-p>", "<Plug>luasnip-prev-choice", defaults)
 map("s", "<C-p>", "<Plug>luasnip-prev-choice", defaults)
+
+-- format
+map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", defaults)
