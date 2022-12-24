@@ -8,6 +8,7 @@ set easymotion
 set argtextobj
 set textobj-entire
 set NERDTree
+set paragraph-motion
 
 " Defaults
 set iskeyword+=-
@@ -77,7 +78,7 @@ nnoremap <silent> <leader>st <C-W>T
 " -------
 
 " Refactor
-nnoremap <silent> <leader>rn :action RenameElement<CR>
+nnoremap <silent> <leader>lr :action RenameElement<CR>
 
 " Find file
 nnoremap <silent> <leader>ff :action GotoFile<CR>
@@ -86,10 +87,10 @@ nnoremap <silent> <leader>ff :action GotoFile<CR>
 nnoremap <silent> <leader>fg :action FindInPath<CR>
 
 " Reformat code
-nnoremap <silent> <leader>af :action ReformatCode<CR>
+nnoremap <silent> <leader>lf :action ReformatCode<CR>
 
 " Easy motion
-map <leader><leader>f <Plug>(easymotion-s)
+map s <Plug>(easymotion-s)
 
 " Nerd-tree
 map <leader>fe :NERDTreeToggle<CR>
