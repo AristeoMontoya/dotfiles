@@ -94,3 +94,9 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Add bookmarks
+if [ -d "$HOME/.bookmarks" ]; then
+	export CDPATH=".:$HOME/.bookmarks:/"
+	alias goto="cd -P"
+fi

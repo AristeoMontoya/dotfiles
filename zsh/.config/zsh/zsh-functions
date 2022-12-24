@@ -35,3 +35,16 @@ function mach_java_mode() {
     export SDKMAN_DIR="$HOME/.sdkman"
     [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 }
+
+function bookmark() {
+	BOOKDIR="$HOME/.bookmarks"
+	printf "Enter bookmark name: "
+	read NAME
+	if [ -z "$NAME" ]
+	then
+		echo "Canceled"
+	else
+		ln -s "$(pwd)" "$BOOKDIR/$NAME"
+		echo "Bookmarked!"
+	fi
+}
