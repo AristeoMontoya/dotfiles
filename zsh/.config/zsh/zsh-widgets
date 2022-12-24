@@ -8,8 +8,7 @@ fzf-bookmarks() {
 			--height 50% --layout reverse --info inline)
 		if [ ! -z $PICKED ]
 		then
-			BUFFER="cd $PICKED"
-			zle accept-line
+			builtin cd -P "$PICKED"
 		fi
 	fi
 	zle reset-prompt
