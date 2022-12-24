@@ -48,21 +48,3 @@ function bookmark() {
 		echo "Bookmarked!"
 	fi
 }
-
-fzf-bookmarks() {
-	BOOKMARKS=$(/bin/ls "$HOME/.bookmarks")
-	if [ -z "$BOOKMARKS" ]
-	then
-		echo "No bookmarks found"
-	else
-		PICKED=$(echo $BOOKMARKS | fzf --header="Pick a bookmark" --height 50% --layout reverse --info inline)
-		if [ ! -z $PICKED ]
-		then
-			BUFFER="cd $PICKED"
-			zle accept-line
-		fi
-	fi
-	zle reset-prompt
-}
-
-zle -N fzf-bookmarks
