@@ -38,28 +38,28 @@ nnoremap Y y$
 " ------
 
 " Mover a split izquierdo
-nnoremap <silent> <C-h> <C-w>h
+nnoremap <silent> <A-h> <C-w>h
 
 " Mover a split derecho
-nnoremap <silent> <C-l> <C-w>l
+nnoremap <silent> <A-l> <C-w>l
 
 " Mover a split de abajo
-nnoremap <silent> <C-j> <C-w>j
+nnoremap <silent> <A-j> <C-w>j
 
 " Mover a split de arriba
-nnoremap <silent> <C-k> <C-w>k
+nnoremap <silent> <A-k> <C-w>k
 
 " Reducir split vertical
-nnoremap <A-h> :vertial resize -5<CR>
+nnoremap <C-A-h> :vertial resize -5<CR>
 
 " Agrandar split vertical
-nnoremap <A-l> :vertial resize +5<CR>
+nnoremap <C-A-l> :vertial resize +5<CR>
 
 " Reducir split horizontal
-nnoremap <A-j> :resize -5<CR>
+nnoremap <C-A-j> :resize -5<CR>
 
 " Agrandar split horizontal
-nnoremap <A-k> :resize +5<CR>
+nnoremap <C-A-k> :resize +5<CR>
 
 " Crear split horizontal
 nnoremap <silent> <leader>sh :split<CR>
