@@ -24,17 +24,17 @@ map('n', 'J', 'mzJ`z', defaults)
 map('n', 'Y', 'y$', defaults)
 
 -- Split movements
-setmap({'n', 't'}, '<C-h>', '<CMD>NavigatorLeft<CR>')
-setmap({'n', 't'}, '<C-l>', '<CMD>NavigatorRight<CR>')
-setmap({'n', 't'}, '<C-k>', '<CMD>NavigatorUp<CR>')
-setmap({'n', 't'}, '<C-j>', '<CMD>NavigatorDown<CR>')
-setmap({'n', 't'}, '<C-p>', '<CMD>NavigatorPrevious<CR>')
+setmap({'n', 't'}, '<A-h>', '<CMD>NavigatorLeft<CR>')
+setmap({'n', 't'}, '<A-l>', '<CMD>NavigatorRight<CR>')
+setmap({'n', 't'}, '<A-k>', '<CMD>NavigatorUp<CR>')
+setmap({'n', 't'}, '<A-j>', '<CMD>NavigatorDown<CR>')
+setmap({'n', 't'}, '<A-p>', '<CMD>NavigatorPrevious<CR>')
 
 -- Split resize
-map('n', '<A-h>', ':vertical resize -5<CR>', defaults)
-map('n', '<A-j>', ':resize -5<CR>', defaults)
-map('n', '<A-k>', ':resize +5<CR>', defaults)
-map('n', '<A-l>', ':vertical resize +5<CR>', defaults)
+map('n', '<C-A-h>', ':vertical resize -5<CR>', defaults)
+map('n', '<C-A-j>', ':resize -5<CR>', defaults)
+map('n', '<C-A-k>', ':resize +5<CR>', defaults)
+map('n', '<C-A-l>', ':vertical resize +5<CR>', defaults)
 
 -- Split creation
 map('n', '<leader>sh', ':split<CR>', defaults)

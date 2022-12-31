@@ -68,7 +68,6 @@ bindkey "^j" down-line-or-beginning-search # Down
 bindkey -r "^u"
 bindkey -r "^d"
 bindkey '^p' fzf-bookmarks
-bindkey '^o' clear-screen
 
 # FZF 
 # TODO update for mac
