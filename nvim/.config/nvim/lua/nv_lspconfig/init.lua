@@ -70,3 +70,10 @@ lspconfig["vimls"].setup({
 lspconfig["lemminx"].setup({
 	capabilities = capabilities
 })
+
+lspconfig["ccls"].setup({
+	capabilities = capabilities,
+	cmd = { "ccls" },
+	filetypes = { "cpp", "c" },
+	root_dir = require("lspconfig/util").root_pattern("compile_commands.json", ".ccls", ".git"),
+})
