@@ -15,7 +15,7 @@ else
 	session_options=`printf "$scripts\n$existing_sessions" | sort` # If not, we use existing sessions and unexisting sessions.
 fi
 
-session=`printf "$session_options" | fzf --header="pick a session" | awk -F "*" '{print $1}'` # We get a selection and remove the asterisk
+session=`printf "$session_options" | fzf --header="pick a session" --preview='tmux capture-pane -ep -t {}' | awk -F "*" '{print $1}'` # We get a selection and remove the asterisk
 
 if [ ! -z "$session" ]; then
 	if ! tmux has-session -t "$session"; then
