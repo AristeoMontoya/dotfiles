@@ -114,6 +114,7 @@ local mappings = {
 		x = {"<cmd>cclose<cr>", "Close Quickfix"},
 		s = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
 		l = {"<cmd>lua vim.diagnostic.open_float()<CR>", "Float diagnostic"},
+		f = {"<cmd>lua vim.lsp.buf.format{ async = true }<cr>", "Format buffer"},
 	},
 	s = {
 		name = "+Splits",
