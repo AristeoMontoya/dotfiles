@@ -93,6 +93,8 @@ local mappings = {
 	d = {
 		name = "+Debug",
     b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
+    e = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", "Conditional" },
+    p = { "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>", "Logpoint" },
     c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
     i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
     o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
@@ -112,6 +114,7 @@ local mappings = {
 		x = {"<cmd>cclose<cr>", "Close Quickfix"},
 		s = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
 		l = {"<cmd>lua vim.diagnostic.open_float()<CR>", "Float diagnostic"},
+		f = {"<cmd>lua vim.lsp.buf.format{ async = true }<cr>", "Format buffer"},
 	},
 	s = {
 		name = "+Splits",
