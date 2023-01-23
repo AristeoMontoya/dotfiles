@@ -30,6 +30,8 @@ mason_dap.setup_handlers({
 })
 
 V.fn.sign_define('DapBreakpoint', {text="", texthl='DiagnosticSignError', linehl='', numhl=''})
+V.fn.sign_define('DapBreakpointCondition', {text="", texthl='DiagnosticSignError', linehl='', numhl=''})
+V.fn.sign_define('DapLogPoint', {text="", texthl='DiagnosticSignError', linehl='', numhl=''})
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
