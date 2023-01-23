@@ -99,3 +99,8 @@ if [ -d "$HOME/.bookmarks" ]; then
 	export CDPATH=".:$HOME/.bookmarks:/"
 	alias goto="cd -P"
 fi
+
+# tmux over ssh
+if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
+	tmux attach || tmux new-session -s ssh_tmux
+fi
