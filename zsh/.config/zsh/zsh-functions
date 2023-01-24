@@ -40,6 +40,10 @@ function bookmark() {
 	BOOKDIR="$HOME/.bookmarks"
 	printf "Enter bookmark name: "
 	read NAME
+	if [ ! -d "$BOOKDIR" ]
+	then
+		mkdir "$BOOKDIR"
+	fi
 	if [ -z "$NAME" ]
 	then
 		echo "Canceled"
