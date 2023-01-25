@@ -1,6 +1,3 @@
-// const fsRoot = '/storage/emulated/0'
-// const directory = 'Download/'
-
 const fsRoot = local('fsroot')
 const directory = local('relativedestination')
 
