@@ -1,0 +1,8 @@
+#!/bin/sh
+PATH_TO_ARCHIVE=$1
+ARCHIVE_DESTINATION=$2
+ARCHIVE_PASSWORD=$3
+
+echo $1
+echo $2
+echo $3
