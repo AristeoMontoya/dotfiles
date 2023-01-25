@@ -20,6 +20,7 @@ BASE16_SHELL="$ZDOTDIR/plugins/base16-shell/"
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         source "$BASE16_SHELL/profile_helper.sh"
         
+base16_onedark
 
 # completions
 autoload -Uz compinit
