@@ -7,15 +7,22 @@ function getFilesFromDir(dir) {
   return files
 }
 
-function sortFiles(files) {
-  var sortedFiles = { }
-  for (const file of files) {
-    const separatedString = file.split('.')
-    const extension = separatedString[separatedString.length - 1].toLowerCase()
+function isFile(path) {
+  const isFile = shell(`[[ -d "${path}" ]] || echo "true"`, false, 10)
+  return isFile === "true"
+}
 
-    sortedFiles[extension] = sortedFiles[extension] || {}
-    sortedFiles[extension]['files'] = sortedFiles[extension]['files'] || []
-    sortedFiles[extension]['files'].push(file)
+function sortFiles(files) {
+  var sortedFiles = {}
+  for (const file of files) {
+    if (isFile(file)) {
+      const separatedString = file.split('.')
+      const extension = separatedString[separatedString.length - 1].toLowerCase()
+
+      sortedFiles[extension] = sortedFiles[extension] || {}
+      sortedFiles[extension]['files'] = sortedFiles[extension]['files'] || []
+      sortedFiles[extension]['files'].push(file)
+    }
   }
   return sortedFiles
 }
