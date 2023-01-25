@@ -87,6 +87,7 @@ autoload edit-command-line; zle -N edit-command-line
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="brave"
+export GPG_TTY=$(tty)
 
 # For QT Themes
 export QT_QPA_PLATFORMTHEME=qt5ct
