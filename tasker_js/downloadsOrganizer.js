@@ -8,8 +8,8 @@ function getFilesFromDir(dir) {
 }
 
 function isFile(path) {
-  const isFile = shell(`[[ -d "${path}" ]] || echo "true"`, false, 10)
-  return isFile === "true"
+  var isFile = shell(`[[ -d ${path} ]] && echo "false"`, false, 10)
+  return isFile ==! "false"
 }
 
 function sortFiles(files) {
