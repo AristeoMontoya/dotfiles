@@ -97,7 +97,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # Add bookmarks
 if [ -d "$HOME/.bookmarks" ]; then
-	export CDPATH=".:$HOME/.bookmarks:/"
+	export CDPATH=".:$HOME/.bookmarks"
 	alias goto="cd -P"
 fi
 
