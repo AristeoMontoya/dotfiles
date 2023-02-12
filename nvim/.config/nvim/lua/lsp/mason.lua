@@ -21,7 +21,7 @@ mason_lspconfig.setup({
 		"html",
 		"jsonls",
 		"tsserver",
-		"sumneko_lua",
+		"lua_ls",
 		"pyright",
 		"vimls",
 		"lemminx"
