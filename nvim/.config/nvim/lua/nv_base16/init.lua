@@ -1,6 +1,8 @@
 local cmd = V.cmd
-local base16 = require "base16"
-base16(base16.themes["onedark"], true)
+local status, base16 = pcall(require, "base16")
+if status then
+	base16(base16.themes["onedark"], true)
+end
 
 -- Neovim
 cmd("hi LineNr guibg=NONE")
