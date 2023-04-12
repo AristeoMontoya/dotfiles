@@ -14,19 +14,18 @@ if not mason_dap_status then
 end
 
 mason_dap.setup({
+	handlers = {
+		function(source_name)
+			-- all sources with no handler get passed here
+			-- Keep original functionality of `automatic_setup = true`
+			require('mason-nvim-dap.automatic_setup')(source_name)
+		end,
+	},
 	ensure_installed = {
 		"python",
 		"bash"
 	},
 	automatic_setup = true
-})
-
-mason_dap.setup_handlers({
-	function(source_name)
-		-- all sources with no handler get passed here
-		-- Keep original functionality of `automatic_setup = true`
-		require('mason-nvim-dap.automatic_setup')(source_name)
-	end,
 })
 
 V.fn.sign_define('DapBreakpoint', {text="", texthl='DiagnosticSignError', linehl='', numhl=''})
