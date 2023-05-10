@@ -22,33 +22,13 @@ lspconfig["lua_ls"].setup({
 	},
 })
 
--- lspconfig["pyright"].setup({
--- 	capabilities = capabilities,
--- 	settings = {
--- 		venvPath = '/home/aristeo/.venv/',
--- 		pyright = {
--- 			venvPath = '/home/aristeo/.venv/',
--- 		},
---
--- 		python = {
--- 			venvPath = '/home/aristeo/.venv/',
--- 		}
--- 	},
--- })
-
 lspconfig["pyright"].setup({
 	capabilities = capabilities,
 	settings = {
-		-- venvPath = "/home/aristeo/.venv",
-		-- venvPath = V.fn.expand("$VIRTUAL_ENV"),
 		pyright = {
 			autoImportCompletion = true,
-			-- venvPath = V.fn.expand("$VIRTUAL_ENV"),
-			-- venvPath = "/home/aristeo/.venv",
 		},
 		python = {
-			-- venvPath = "/home/aristeo/.venv",
-			-- venvPath = V.fn.expand("$VIRTUAL_ENV"),
 			analysis = {
 				autoSearchPaths = true,
 				diagnosticMode = "openFilesOnly",
