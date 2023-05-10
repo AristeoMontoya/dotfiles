@@ -48,6 +48,11 @@ else
 	alias ls='exa --icons'
 fi
 
+if command -v fd &> /dev/null
+then
+	alias vopen='fd --type f --hidden --exclude .git |  fzf-tmux -p --preview="bat --theme=base16 --style=plain --color=always --line-range=:100 {}" --header="Pick a file" --layout reverse --info inline | xargs -r nvim'
+fi
+
 alias du='du -had 1'
 alias siepyt='cd ~/Documentos/Escuela/Semestre\ 10/Ingeniería\ web/siepyt'
 alias viminit='nvim --cmd "chdir ~/.config/nvim" ~/.config/nvim/init.lua'
