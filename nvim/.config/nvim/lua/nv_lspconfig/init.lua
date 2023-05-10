@@ -1,61 +1,94 @@
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-lspconfig["lua_ls"].setup ({
+lspconfig["lua_ls"].setup({
 	settings = {
-        Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT',
-                -- Setup your lua path
-                path = V.split(package.path, ';')
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = {'vim'}
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = {[V.fn.expand('$VIMRUNTIME/lua')] = true, [V.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true}
-            }
-        }
-    }
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = "LuaJIT",
+				-- Setup your lua path
+				path = V.split(package.path, ";"),
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { "vim" },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = { [V.fn.expand("$VIMRUNTIME/lua")] = true,[V.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true },
+			},
+		},
+	},
 })
 
+-- lspconfig["pyright"].setup({
+-- 	capabilities = capabilities,
+-- 	settings = {
+-- 		venvPath = '/home/aristeo/.venv/',
+-- 		pyright = {
+-- 			venvPath = '/home/aristeo/.venv/',
+-- 		},
+--
+-- 		python = {
+-- 			venvPath = '/home/aristeo/.venv/',
+-- 		}
+-- 	},
+-- })
+
 lspconfig["pyright"].setup({
-	capabilities = capabilities
+	capabilities = capabilities,
+	settings = {
+		-- venvPath = "/home/aristeo/.venv",
+		-- venvPath = V.fn.expand("$VIRTUAL_ENV"),
+		pyright = {
+			autoImportCompletion = true,
+			-- venvPath = V.fn.expand("$VIRTUAL_ENV"),
+			-- venvPath = "/home/aristeo/.venv",
+		},
+		python = {
+			-- venvPath = "/home/aristeo/.venv",
+			-- venvPath = V.fn.expand("$VIRTUAL_ENV"),
+			analysis = {
+				autoSearchPaths = true,
+				diagnosticMode = "openFilesOnly",
+				useLibraryCodeForTypes = true,
+				typeCheckingMode = "off",
+			},
+		},
+	},
 })
 
 lspconfig["dockerls"].setup({
-	capabilities = capabilities
+	capabilities = capabilities,
 })
 
 lspconfig["bashls"].setup({
-	capabilities = capabilities
+	capabilities = capabilities,
 })
 
 lspconfig["cssls"].setup({
-	capabilities = capabilities
+	capabilities = capabilities,
 })
 
 lspconfig["emmet_ls"].setup({
-	capabilities = capabilities
+	capabilities = capabilities,
 })
 
 lspconfig["gradle_ls"].setup({
-	capabilities = capabilities
+	capabilities = capabilities,
 })
 
 lspconfig["groovyls"].setup({
-	capabilities = capabilities
+	capabilities = capabilities,
 })
 
 lspconfig["html"].setup({
-	capabilities = capabilities
+	capabilities = capabilities,
 })
 
 lspconfig["jsonls"].setup({
-	capabilities = capabilities
+	capabilities = capabilities,
 })
 
 lspconfig["tsserver"].setup({
@@ -64,11 +97,11 @@ lspconfig["tsserver"].setup({
 })
 
 lspconfig["vimls"].setup({
-	capabilities = capabilities
+	capabilities = capabilities,
 })
 
 lspconfig["lemminx"].setup({
-	capabilities = capabilities
+	capabilities = capabilities,
 })
 
 lspconfig["ccls"].setup({
