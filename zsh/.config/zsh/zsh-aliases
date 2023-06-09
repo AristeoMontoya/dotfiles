@@ -15,6 +15,7 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias diff='diff --color=auto'
 alias tree='tree -C'
+alias ip='ip -c'
 
 # confirm before overwriting something
 alias history="history 100"
