@@ -51,7 +51,7 @@ fi
 
 if command -v fd &> /dev/null
 then
-	alias vopen='fd --type f --hidden --exclude .git |  fzf-tmux -p --preview="bat --theme=base16 --style=plain --color=always --line-range=:100 {}" --header="Pick a file" --layout reverse --info inline | xargs -r nvim'
+	alias vopen='fd --type f --hidden --exclude .git |  fzf-tmux -p 90% --preview="bat --theme=base16 --style=plain --color=always --line-range=:100 {}" --header="Pick a file" --layout reverse --info inline | xargs -r nvim'
 fi
 
 alias du='du -had 1'
