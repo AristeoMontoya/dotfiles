@@ -7,3 +7,4 @@ nvim/plugin/packer_compiled.vim
 java-debug
 nvim/.config/nvim/plugin
 nvim/.config/nvim/after
+tmux/.config/tmux/session-scripts/env/*
