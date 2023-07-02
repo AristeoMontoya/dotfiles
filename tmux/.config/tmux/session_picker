@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 existing_sessions=`tmux list-sessions | awk -F ':' '{print $1 "*"}'` # '*' to distinguish between existing sessions
 session_dir='~/.config/tmux/session-scripts/'
-scripts=`find ~/.config/tmux/session-scripts/ -type f -exec realpath --relative-to ~/.config/tmux/session-scripts/ {} \;`
+scripts=`find ~/.config/tmux/session-scripts/ -type f \( ! -iname ".gitkeep" \) -exec realpath --relative-to ~/.config/tmux/session-scripts/ {} \;`
 
 # Iterating trough every script name to make sure a session with that name doesn't exist yet
 while IFS= read -r line; do
