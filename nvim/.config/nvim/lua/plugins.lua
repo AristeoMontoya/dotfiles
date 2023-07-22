@@ -139,6 +139,15 @@ return require('packer').startup(function(use)
 			config = function() require('user/lspconfig') end
 		}
 
+		-- pretty LSP
+		use {
+			'nvimdev/lspsaga.nvim',
+			after = 'nvim-lspconfig',
+			config = function()
+				require('user.lspsaga')
+			end
+		}
+
 		-- Formating
 		use {
 			'jose-elias-alvarez/null-ls.nvim',
