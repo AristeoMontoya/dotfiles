@@ -36,7 +36,7 @@ return require('packer').startup(function(use)
 		use {
 			'https://gitlab.com/madyanov/svart.nvim',
 			as = 'svart.nvim',
-			config = function () require('nv_svart') end
+			config = function () require('user/svart') end
 		}
 
 		-- Tmux integration
@@ -54,7 +54,7 @@ return require('packer').startup(function(use)
 		use {
 			'kyazdani42/nvim-tree.lua',
 			requires = {'kyazdani42/nvim-web-devicons'},
-			config = function() require('nv_tree') end,
+			config = function() require('user/tree') end,
 		}
 		-- Vimwiki
 		use {
@@ -64,18 +64,18 @@ return require('packer').startup(function(use)
 		-- Vista previa de colores
 		use {
 			'norcalli/nvim-colorizer.lua',
-			config = function() require('nv_colorizer') end
+			config = function() require('user/colorizer') end
 		}
 		-- Autopares
 		use {
 			'windwp/nvim-autopairs',
-			config = function() require('nv_autopairs') end
+			config = function() require('user/autopairs') end
 		}
 		-- Búsqueda difusa
 		use {
 			'nvim-telescope/telescope.nvim',
 			requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
-			config = function() require('nv_telescope') end
+			config = function() require('user/telescope') end
 		}
 		use {
 			'nvim-telescope/telescope-ui-select.nvim',
@@ -85,17 +85,17 @@ return require('packer').startup(function(use)
 			'lukas-reineke/indent-blankline.nvim',
 			opt = true,
 			event = 'BufEnter',
-			config = function() require('nv_blankline') end
+			config = function() require('user/blankline') end
 		}
 		-- Ayuda con accesis directos
 		use {
 			'folke/which-key.nvim',
-			config = function() require('nv_whichkey') end
+			config = function() require('user.whichkey') end
 		}
 		-- Parser veloz
 		use {
 			'nvim-treesitter/nvim-treesitter',
-			config = function() require('nv_treesitter') end
+			config = function() require('user/treesitter') end
 		}
 		use { 'nvim-treesitter/nvim-treesitter-textobjects'}
 		-- Colores de TreeSitter
@@ -104,27 +104,27 @@ return require('packer').startup(function(use)
 		-- Integración con git
 		use {
 			'lewis6991/gitsigns.nvim',
-			config = function() require('nv_gitsigns') end,
+			config = function() require('user/gitsigns') end,
 			requires = {
 				'nvim-lua/plenary.nvim'
 			},
 		}
 		-- Comentarios rápidos
 		use { 'numToStr/Comment.nvim',
-			config = function() require('nv_comment') end
+			config = function() require('user.comment') end
 		}
 		-- Línea de status
 		use {
 			'hoob3rt/lualine.nvim',
 			requires = {'kyazdani42/nvim-web-devicons'},
-			config = function() require('nv_lualine') end
+			config = function() require('user/lualine') end
 		}
 		-- OneDark
 		use { 'norcalli/nvim-base16.lua' }
 		-- Tabline
 		use {
 			'akinsho/nvim-bufferline.lua',
-			config = function() require('nv_bufferline') end
+			config = function() require('user/bufferline') end
 		}
 		-- LSP
 		use {
@@ -136,13 +136,13 @@ return require('packer').startup(function(use)
 
 		use {
 			'neovim/nvim-lspconfig',
-			config = function() require('nv_lspconfig') end
+			config = function() require('user/lspconfig') end
 		}
 
 		-- Formating
 		use {
 			'jose-elias-alvarez/null-ls.nvim',
-			config = function() require("nv_nullls") end
+			config = function() require("user/nullls") end
 		}
 
 		-- Snippets and autocomplete
@@ -156,8 +156,8 @@ return require('packer').startup(function(use)
 				opt = true,
 				cond = ShouldUseLsp,
 				config = function()
-					require('nv_luasnip')
-					require('nv_cmp')
+					require('user/luasnip')
+					require('user/cmp')
 				end,
 			}
 		}
@@ -177,21 +177,21 @@ return require('packer').startup(function(use)
 		-- Document highlight
 		use {
 			'RRethy/vim-illuminate',
-			config = function() require('nv_illuminate') end,
+			config = function() require('user/illuminate') end,
 		}
 		-- DAP
 		use { 'mfussenegger/nvim-dap' }
 		use { 'theHamsta/nvim-dap-virtual-text' }
 		use {
 			'rcarriga/nvim-dap-ui',
-			config = function() require('nv_dapui') end,
+			config = function() require('user/dapui') end,
 		}
 		use { "jayp0521/mason-nvim-dap.nvim" }
 
 		-- Better Terminal
 		use {
 			'akinsho/toggleterm.nvim',
-			config = function () require('nv_toggleterm') end
+			config = function () require('user/toggleterm') end
 		}
 
 		if Packer_bootstrap then
