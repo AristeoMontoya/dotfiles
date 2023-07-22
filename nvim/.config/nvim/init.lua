@@ -12,8 +12,8 @@ if not IS_VSCODE then
 	end
 	V.cmd('source ~/.config/nvim/vimscript/autocommands.vim')
 	require('settings.keymaps')
-	require('nv_dap')
-	require('nv_base16')
+	require('user.dap')
+	require('user.base16')
 else
 	V.cmd('source ~/.config/nvim/vimscript/vscodemaps.vim')
 end
