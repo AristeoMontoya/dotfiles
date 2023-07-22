@@ -71,9 +71,24 @@ lspconfig["jsonls"].setup({
 	capabilities = capabilities,
 })
 
+lspconfig["angularls"].setup({
+	capabilities = capabilities,
+	root_dir = require("lspconfig/util").root_pattern("angular.json"),
+})
+
 lspconfig["tsserver"].setup({
 	capabilities = capabilities,
-	root_dir = require("lspconfig/util").root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git", "."),
+	javascript = {
+		referencesCodeLens = {
+			enabled = true
+		}
+	},
+	typescript = {
+		referencesCodeLens = {
+			enabled = true
+		}
+	},
+	root_dir = require("lspconfig/util").root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
 })
 
 lspconfig["vimls"].setup({
