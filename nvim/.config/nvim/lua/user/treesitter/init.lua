@@ -31,6 +31,7 @@ require'nvim-treesitter.configs'.setup {
 		"query",
 		"regex",
 		"markdown",
+		"markdown_inline",
 		"dockerfile",
 		"rust",
 		"dot",
