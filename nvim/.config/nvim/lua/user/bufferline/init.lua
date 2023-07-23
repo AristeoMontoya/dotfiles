@@ -61,7 +61,8 @@ require('bufferline').setup {
             bg = '#353b45'
         },
         separator = {
-            bg = '#353b45'
+            bg = '#353b45',
+            fg = '#353b45'
         },
         indicator_selected = {
             fg = '#98c379',
