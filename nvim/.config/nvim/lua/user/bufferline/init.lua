@@ -16,11 +16,12 @@ require('bufferline').setup {
 		show_buffer_close_icons = false,
 		show_close_icon = false,
 		show_tab_indicators = true,
+		show_duplicate_prefix = true,
 		separator_style = "thin",
 		persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
 		-- can also be a table containing 2 custom separators
 		-- [focused and unfocused]. eg: { '|', '|' }
-		enforce_regular_tabs = true,
+		enforce_regular_tabs = false,
 		always_show_bufferline = false,
 	},
     highlights = {
@@ -67,5 +68,11 @@ require('bufferline').setup {
         indicator_selected = {
             fg = '#98c379',
         },
+        duplicate = {
+            bg = '#353b45'
+        },
+        duplicate_visible = {
+            bg = '#353b45'
+        }
     }
 }
