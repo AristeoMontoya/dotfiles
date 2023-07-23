@@ -17,7 +17,7 @@ V.fn.sign_define(
 	{texthl = "DiagnosticSignInformation", text = "", numhl = "DiagnosticSignInformation"}
 )
 
-V.cmd("nnoremap <silent> pd <cmd>Lspsaga peek_definition<CR>")
+V.cmd("nnoremap <silent> gp <cmd>Lspsaga peek_definition<CR>")
 V.cmd("nnoremap <silent> gd <cmd>Lspsaga goto_definition<CR>")
 V.cmd("nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>")
 V.cmd("nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>")
