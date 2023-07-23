@@ -17,17 +17,18 @@ V.fn.sign_define(
 	{texthl = "DiagnosticSignInformation", text = "", numhl = "DiagnosticSignInformation"}
 )
 
-V.cmd("nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>")
+V.cmd("nnoremap <silent> pd <cmd>Lspsaga peek_definition<CR>")
+V.cmd("nnoremap <silent> gd <cmd>Lspsaga goto_definition<CR>")
 V.cmd("nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>")
 V.cmd("nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>")
 V.cmd("nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>")
 V.cmd("nnoremap <silent> K <cmd>Lspsaga hover_doc<CR>")
 V.cmd("nnoremap <silent> <leader>la <cmd>lua vim.lsp.buf.code_action()<CR>")
-V.cmd("nnoremap <silent> <leader>lr <cmd>lua vim.lsp.buf.rename()<CR>")
-V.cmd("nnoremap <silent> <A-n> <cmd>lua vim.lsp.diagnostic_jump_next()<CR>")
-V.cmd("nnoremap <silent> <A-p> <cmd>lua vim.lsp.diagnostic_jump_prev()<CR>")
+V.cmd("nnoremap <silent> <leader>lr <cmd>Lspsaga rename<CR>")
+V.cmd("nnoremap <silent> <A-n> <cmd>Lspsaga diagnostic_jump_next<CR>")
+V.cmd("nnoremap <silent> <A-p> <cmd>Lspsaga diagnostic_jump_prev<CR>")
 V.cmd("nnoremap <silent> <C-space> <cmd>lua vim.lsp.buf.completion()<CR>")
-V.cmd("nnoremap <silent> <leader>ll <cmd>lua vim.diagnostic.open_float()<CR>")
+V.cmd("nnoremap <silent> <leader>ll <cmd>Lspsaga show_line_diagnostics<CR>")
 V.cmd('command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')
 
 V.lsp.handlers['textDocument/publishDiagnostics'] =
