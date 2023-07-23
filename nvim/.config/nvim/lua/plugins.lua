@@ -181,7 +181,12 @@ return require('packer').startup(function(use)
 		use { 'mfussenegger/nvim-jdtls' }
 
 		-- Pretty diagnostics
-		use { 'folke/trouble.nvim' }
+		use {
+			'folke/trouble.nvim',
+			config = function ()
+				require('user.trouble')
+			end
+		}
 
 		-- Document highlight
 		use {
