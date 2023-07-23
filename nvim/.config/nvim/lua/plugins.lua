@@ -41,15 +41,6 @@ return require('packer').startup(function(use)
 
 		-- Tmux integration
 		use {
-			'numToStr/Navigator.nvim',
-			config = function()
-				require('Navigator').setup({
-					disable_on_zoom = true
-				})
-			end
-		}
-
-		use {
 			'mrjones2014/smart-splits.nvim',
 			config = function ()
 				require('user.smart_splits')
