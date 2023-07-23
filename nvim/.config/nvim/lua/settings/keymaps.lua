@@ -24,17 +24,24 @@ map('n', 'J', 'mzJ`z', defaults)
 map('n', 'Y', 'y$', defaults)
 
 -- Split movements
-setmap({'n', 't'}, '<A-h>', '<CMD>NavigatorLeft<CR>')
-setmap({'n', 't'}, '<A-l>', '<CMD>NavigatorRight<CR>')
-setmap({'n', 't'}, '<A-k>', '<CMD>NavigatorUp<CR>')
-setmap({'n', 't'}, '<A-j>', '<CMD>NavigatorDown<CR>')
-setmap({'n', 't'}, '<A-p>', '<CMD>NavigatorPrevious<CR>')
+setmap('n', '<A-h>', require('smart-splits').move_cursor_left)
+setmap('n', '<A-j>', require('smart-splits').move_cursor_down)
+setmap('n', '<A-k>', require('smart-splits').move_cursor_up)
+setmap('n', '<A-l>', require('smart-splits').move_cursor_right)
 
 -- Split resize
-map('n', '<C-A-h>', ':vertical resize -5<CR>', defaults)
-map('n', '<C-A-j>', ':resize -5<CR>', defaults)
-map('n', '<C-A-k>', ':resize +5<CR>', defaults)
-map('n', '<C-A-l>', ':vertical resize +5<CR>', defaults)
+setmap('n', '<C-A-h>', require('smart-splits').resize_left)
+setmap('n', '<C-A-j>', require('smart-splits').resize_down)
+setmap('n', '<C-A-k>', require('smart-splits').resize_up)
+setmap('n', '<C-A-l>', require('smart-splits').resize_right)
+
+-- moving between splits
+-- swapping buffers between windows
+setmap('n', '<leader><leader>h', require('smart-splits').swap_buf_left)
+setmap('n', '<leader><leader>j', require('smart-splits').swap_buf_down)
+setmap('n', '<leader><leader>k', require('smart-splits').swap_buf_up)
+setmap('n', '<leader><leader>l', require('smart-splits').swap_buf_right)
+
 
 -- Split creation
 map('n', '<leader>sh', ':split<CR>', defaults)

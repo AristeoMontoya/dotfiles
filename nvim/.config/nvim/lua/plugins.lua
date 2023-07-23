@@ -48,6 +48,13 @@ return require('packer').startup(function(use)
 				})
 			end
 		}
+
+		use {
+			'mrjones2014/smart-splits.nvim',
+			config = function ()
+				require('user.smart_splits')
+			end
+		}
 		-- Packer can manage itself
 		use {'wbthomason/packer.nvim'}
 		-- Explorador de archivos
