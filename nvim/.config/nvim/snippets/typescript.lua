@@ -31,10 +31,11 @@ ls.add_snippets("typescript", {
 	s({
 		trig = "it%s(.*)",
 		regTrig = true,
+		name = 'add test case'
 	},
 		fmt(
 		[[
-		it('{}', function() => {{
+		it('{}', () => {{
 			{}
 		}});
 		]], {
