@@ -70,7 +70,7 @@ cmp.setup({
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.confirm({ select = true })
-			elseif lsnip.expand_or_jumpable() then
+			elseif lsnip.expand_or_locally_jumpable() then
 				lsnip.expand_or_jump()
 			elseif has_words_before() then
 				cmp.complete()
