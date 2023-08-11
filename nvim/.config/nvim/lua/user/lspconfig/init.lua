@@ -73,7 +73,7 @@ lspconfig["jsonls"].setup({
 
 lspconfig["angularls"].setup({
 	capabilities = capabilities,
-	root_dir = require("lspconfig/util").root_pattern("angular.json"),
+	root_dir = require("lspconfig/util").root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git")
 })
 
 lspconfig["tsserver"].setup({
