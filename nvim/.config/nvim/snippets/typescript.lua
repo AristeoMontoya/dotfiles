@@ -20,6 +20,12 @@ local ts_utils = require("nvim-treesitter.ts_utils")
 
 local get_node_text = V.treesitter.get_node_text
 
+local is_spec = function()
+	local name = vim.fn.fnamemodify(vim.fn.expand("%"), ":t")
+	local match = string.find(name, "spec")
+	return match ~= nil
+end
+
 local filename = function()
 	return f(function(_args, snip)
 		local name = vim.split(snip.snippet.env.TM_FILENAME, ".", true)
@@ -33,22 +39,19 @@ ls.add_snippets("typescript", {
 		regTrig = true,
 		name = 'add test case'
 	},
-		fmt(
-		[[
-		it('{}', () => {{
-			{}
-		}});
-		]], {
-			f(function(_, snip)
-				return snip.captures[1]
-			end),
-			i(0)
-		}),
-	 {
-		show_condition = conds.make_condition(function()
-			local name = vim.fn.fnamemodify(vim.fn.expand("%"), ":t")
-			local match = string.find(name, "spec")
-			return match ~= nil
+	fmt(
+	[[
+	it('{}', () => {{
+		{}
+	}});
+	]], {
+		f(function(_, snip)
+			return snip.captures[1]
 		end),
+		i(0)
+	}),
+	{
+		condition = is_spec * conds_expanded.line_end,
+		show_condition = conds.make_condition(is_spec),
 	}),
 })
