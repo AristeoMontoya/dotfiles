@@ -51,7 +51,7 @@ ls.add_snippets("typescript", {
 		i(0)
 	}),
 	{
-		condition = is_spec * conds_expanded.line_end,
+		condition = is_spec * conds_expand.line_end,
 		show_condition = conds.make_condition(is_spec),
 	}),
 })
