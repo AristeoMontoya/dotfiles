@@ -72,7 +72,10 @@ require('bufferline').setup {
             bg = '#353b45'
         },
         duplicate_visible = {
-            bg = '#353b45'
+            bg = '#282C34'
+        },
+        duplicate_selected = {
+            bg = '#282C34'
         }
     }
 }
