@@ -1,17 +1,7 @@
-require('globals')
-
 V.cmd "autocmd BufWritePost plugins.lua PackerCompile" -- Auto compile when there are changes in plugins.lua
-
-function IsCocEnabled()
-	return COC and HAS_NODE
-end
 
 function IsInsideVsCode()
 	return IS_VSCODE
-end
-
-function ShouldUseLsp()
-	return not COC and HAS_NODE
 end
 
 -- For auto install
@@ -156,12 +146,10 @@ return require('packer').startup(function(use)
 		use {
 			'hrsh7th/nvim-cmp',
 			opt = true,
-			cond = ShouldUseLsp,
 			-- Snippet engine
 			{
 				'L3MON4D3/LuaSnip',
 				opt = true,
-				cond = ShouldUseLsp,
 				config = function()
 					require('user/luasnip')
 					require('user/cmp')
