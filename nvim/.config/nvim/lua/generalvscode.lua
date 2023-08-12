@@ -1,4 +1,3 @@
-require('globals')
 local opt = V.opt
 
 opt.clipboard = 'unnamedplus'
