@@ -1,54 +1,67 @@
-require'nvim-treesitter.configs'.setup {
-	ensure_installed = {
-		"vim",
-		"php",
-		"java",
-		"kotlin",
-		"json",
-		"css",
-		"scss",
-		"toml",
-		"lua",
-		"make",
-		"vue",
-		"jsonc",
-		"yaml",
-		"html",
-		"tsx",
-		"dart",
-		"org",
-		"rst",
-		"c_sharp",
-		"go",
-		"c",
-		"scheme",
-		"http",
-		"hjson",
-		"help",
-		"jsdoc",
-		"embedded_template",
-		"python",
-		"query",
-		"regex",
-		"markdown",
-		"markdown_inline",
-		"dockerfile",
-		"rust",
-		"dot",
-		"eex",
-		"bibtex",
-		"javascript",
-		"bash",
-		"cmake",
-		"cpp",
-		"typescript",
-		"json5",
-	}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+local overrides_ok, overrides = pcall(require, "user.treesitter.overrides")
+local filter_ok, filter = pcall(require, "utils.filter_tables")
+
+local defaults = {
+	"vim",
+	"php",
+	"java",
+	"kotlin",
+	"json",
+	"css",
+	"scss",
+	"toml",
+	"lua",
+	"make",
+	"vue",
+	"jsonc",
+	"yaml",
+	"html",
+	"tsx",
+	"dart",
+	"org",
+	"rst",
+	"c_sharp",
+	"go",
+	"c",
+	"scheme",
+	"http",
+	"hjson",
+	"help",
+	"jsdoc",
+	"embedded_template",
+	"python",
+	"query",
+	"regex",
+	"markdown",
+	"markdown_inline",
+	"dockerfile",
+	"rust",
+	"dot",
+	"eex",
+	"bibtex",
+	"javascript",
+	"bash",
+	"cmake",
+	"cpp",
+	"typescript",
+	"json5",
+}
+
+local ensure_installed = {}
+
+if overrides_ok and filter_ok then
+	ensure_installed = filter(defaults, overrides.ignored)
+else
+	ensure_installed = defaults
+end
+
+require("nvim-treesitter.configs").setup({
+	ensure_installed = ensure_installed,           -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 	highlight = {
-		enable = true -- false will disable the whole extension
+		enable = true, -- false will disable the whole extension
 	},
 	indent = {
-		enable = false
+		enable = false,
 	},
 	textobjects = {
 		select = {
@@ -65,13 +78,13 @@ require'nvim-treesitter.configs'.setup {
 	rainbow = {
 		enable = true,
 		colors = {
-			'#69BBFF',
-			'#FFD68A',
-			'#B5E890',
-			'#FF7A85',
-			'#E48AFF',
-			'#66D9E8'
+			"#69BBFF",
+			"#FFD68A",
+			"#B5E890",
+			"#FF7A85",
+			"#E48AFF",
+			"#66D9E8",
 		},
-		max_file_lines = 1000
-	}
-}
+		max_file_lines = 1000,
+	},
+})
