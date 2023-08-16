@@ -149,7 +149,6 @@ return require('packer').startup(function(use)
 			-- Snippet engine
 			{
 				'L3MON4D3/LuaSnip',
-				opt = true,
 				config = function()
 					require('user/luasnip')
 					require('user/cmp')
