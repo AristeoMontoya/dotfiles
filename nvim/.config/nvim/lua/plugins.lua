@@ -41,6 +41,7 @@ return require('packer').startup(function(use)
 		-- Explorador de archivos
 		use {
 			'kyazdani42/nvim-tree.lua',
+			commit = 'ce3495bd4c9a7d8e8a64fac9cc3c252dac19a994',
 			requires = {'kyazdani42/nvim-web-devicons'},
 			config = function() require('user/tree') end,
 		}

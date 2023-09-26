@@ -62,6 +62,7 @@ cmd("hi NvimTreeRootFolder guifg=#C678DD")
 cmd("hi NvimTreeExecFile guifg=#98c379")
 cmd("hi NvimTreeImageFile guifg=#C678DD")
 cmd("hi NvimTreeSpecialFile guifg=#56B6C2")
+cmd("hi NvimTreeOpenedFile gui=bold guifg=#CFD7E6")
 
 -- LSP
 cmd("hi LspDiagnosticsError guibg=#000000")
