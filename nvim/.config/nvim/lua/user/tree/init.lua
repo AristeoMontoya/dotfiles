@@ -49,7 +49,7 @@ require("nvim-tree").setup({
 		width = {
 			min = 30,
 			max = -1,
-			padding = 1
+			-- padding = 1
 		},
 		-- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
 		side = "left",
@@ -63,7 +63,7 @@ require("nvim-tree").setup({
 		indent_markers = {
 			enable = true,
 		},
-		highlight_opened_files = "3",
+		highlight_opened_files = "name",
 		group_empty = true,
 		highlight_git = true,
 		root_folder_modifier = ":t",
