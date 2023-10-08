@@ -72,8 +72,6 @@ return require('packer').startup(function(use)
 		-- Marcado de identación con espacios
 		use {
 			'lukas-reineke/indent-blankline.nvim',
-			opt = true,
-			event = 'BufEnter',
 			config = function() require('user/blankline') end
 		}
 		-- Ayuda con accesis directos
