@@ -12,7 +12,7 @@ require("ibl").setup {
 			"man",
 			"packer"
 		},
-		buftype = {
+		buftypes = {
 			"terminal",
 			"help",
 			"packer",
