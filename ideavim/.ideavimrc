@@ -37,6 +37,10 @@ nnoremap Y y$
 " SPLITS
 " ------
 
+sethandler <A-h> n:vim
+sethandler <C-j> n-i:vim
+sethandler <C-k> n-i:vim
+
 " Mover a split izquierdo
 nnoremap <silent> <A-h> <C-w>h
 
@@ -94,3 +98,10 @@ map s <Plug>(easymotion-s)
 
 " Nerd-tree
 map <leader>fe :NERDTreeToggle<CR>
+
+" Code navigation
+nnoremap gi :action GotoImplementation<CR>
+
+" UI Navigation
+inoremap <c-k> <up>
+inoremap <c-j> <down>
