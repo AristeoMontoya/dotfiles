@@ -1,4 +1,3 @@
-#!/bin/python
 '''Conversión de PDF a imágenes'''
 from datetime import datetime
 import os
