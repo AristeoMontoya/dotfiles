@@ -60,6 +60,13 @@ function! JS()
 	setlocal expandtab
 endfunction
 
+function! Lua()
+	setlocal shiftwidth=2
+	setlocal colorcolumn=80
+	setlocal nolist
+	setlocal expandtab
+endfunction
+
 " Función para abrir terminal debajo de la ventana
 function! AbrirTerminal()
 	botright split
@@ -92,6 +99,7 @@ autocmd FileType python,rust call Python()
 autocmd FileType javascript call JS()
 autocmd FileType vue call JS()
 autocmd FileType java call Java()
+autocmd FileType lua call Lua()
 autocmd FileType dap-repl lua require('dap.ext.autocompl').attach()
 " Cambiar Perl por Prolog
 autocmd BufRead *.pl set filetype=prolog
