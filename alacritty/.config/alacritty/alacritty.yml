@@ -12,13 +12,13 @@ hide_cursor_when_typing: on
 
 font:
   normal:
-     family: JetBrainsMonoNL Nerd Font Mono
+     family: JetBrainsMono NFM
 
   bold:
-     family: JetBrainsMonoNL Nerd Font Mono
+     family: JetBrainsMono NFM
 
   italic:
-     family: JetBrainsMonoNL Nerd Font Mono
+     family: JetBrainsMono NFM
 
   size: 10
 
