@@ -11,7 +11,6 @@ if not IS_VSCODE then
 	require('lsp')
 	V.cmd('source ~/.config/nvim/vimscript/autocommands.vim')
 	require('settings.keymaps')
-	require('settings.signcolumn')
 	require('user.dap')
 	require('user.base16')
 else
