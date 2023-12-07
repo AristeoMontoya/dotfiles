@@ -55,16 +55,6 @@ then
 fi
 
 alias du='du -had 1'
-alias siepyt='cd ~/Documentos/Escuela/Semestre\ 10/Ingeniería\ web/siepyt'
-alias viminit='nvim --cmd "chdir ~/.config/nvim" ~/.config/nvim/init.lua'
-alias notas='nvim -c "chdir ~/notas" ~/notas/index.md'
 alias scrcpyd='devour scrcpy'
-alias escuela='cd /home/aristeo/Documentos/Escuela'
-alias proyectos='cd /home/aristeo/Documentos/Proyectos\ secundarios'
-alias cursos='cd /home/aristeo/Documentos/Cursos'
-alias documentos='cd /home/aristeo/Documentos'
-alias dotfiles='cd /home/aristeo/Documentos/dotfiles'
-alias descargas='cd /home/aristeo/Downloads'
-alias capture='/home/aristeo/scripts/capture'
 alias clip='xclip -sel clip'
 alias svim='sudo -E -s nvim'
