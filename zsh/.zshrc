@@ -41,6 +41,11 @@ autoload -Uz colors && colors
 # Useful Functions
 source "$ZDOTDIR/zsh-functions"
 
+# Source env specific files
+for file in $ZDOTDIR/env/*; do
+	source $file
+done
+
 # Normal files to source
 zsh_add_file "zsh-exports"
 zsh_add_file "zsh-vim-mode"
