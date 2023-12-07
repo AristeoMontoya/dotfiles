@@ -192,6 +192,11 @@ return require('packer').startup(function(use)
 			config = function () require('user/toggleterm') end
 		}
 
+		use {
+			'luukvbaal/statuscol.nvim',
+			config = function() require('user/statuscol') end,
+		}
+
 		if Packer_bootstrap then
 			require('packer').sync()
 		end
