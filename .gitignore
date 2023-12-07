@@ -11,3 +11,5 @@ tmux/.config/tmux/session-scripts/env/*
 !tmux/.config/tmux/session-scripts/env/.gitkeep
 nvim/.config/nvim/lua/user/treesitter/overrides.lua
 nvim/.config/nvim/lua/lsp/overrides.lua
+zsh/.config/zsh/env/*
+!zsh/.config/zsh/env/.gitkeep
