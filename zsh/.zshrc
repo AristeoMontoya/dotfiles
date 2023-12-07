@@ -42,9 +42,11 @@ autoload -Uz colors && colors
 source "$ZDOTDIR/zsh-functions"
 
 # Source env specific files
+setopt nullglob
 for file in $ZDOTDIR/env/*; do
 	source $file
 done
+unsetopt nullglob
 
 # Normal files to source
 zsh_add_file "zsh-exports"
