@@ -23,7 +23,6 @@ return {
 	"scheme",
 	"http",
 	"hjson",
-	"help",
 	"jsdoc",
 	"embedded_template",
 	"python",
