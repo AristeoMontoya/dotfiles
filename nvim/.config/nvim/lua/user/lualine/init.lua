@@ -1,51 +1,49 @@
-require('globals')
+require("globals")
 
-local diagnosticsSource = ''
-
-require('lualine').setup {
+require("lualine").setup({
 	options = {
-		theme = 'onedark',
+		theme = "onedark",
 		section_separators = { nil },
-		component_separators = {'|'},
-		extension = { 'nvim-tree' }
+		component_separators = { "|" },
+		extension = { "nvim-tree" },
 	},
 	sections = {
-		lualine_a = { {'mode', upper = true} },
+		lualine_a = { { "mode", upper = true } },
 		lualine_b = {
 			{
-				'branch', icon = ''
+				"branch",
+				icon = "",
 			},
 			{
-				'diff',
+				"diff",
 				colored = true,
-				color_added = '#98c379',
-				color_modified = '#56b6c2',
-				color_removed = '#e06c75'
+				color_added = "#98c379",
+				color_modified = "#56b6c2",
+				color_removed = "#e06c75",
 			},
 			{
-				'diagnostics',
-				sources = { diagnosticsSource },
-				color_error = '#e06c75',
-				color_warn ='#e5c07b',
-				color_info = '#56b6c2',
-			}
+				"diagnostics",
+				error = "e06c75",
+				warn = "#e5c07b",
+				info = "56b6c2"
+			},
 		},
-		lualine_c = { {'filename', file_status = true} },
-		lualine_x = { 'encoding', 'filetype' },
-		lualine_y = { 'progress' },
-		lualine_z = { 'location' },
+		lualine_c = { { "filename", file_status = true } },
+		lualine_x = { "encoding", "filetype" },
+		lualine_y = { "progress" },
+		lualine_z = { "location" },
 	},
 	inactive_sections = {
 		lualine_a = {},
 		lualine_b = {
-			{'branch', icon = ''},
+			{ "branch", icon = "" },
 			{
-				'diff',
+				"diff",
 				colored = false,
-			}
+			},
 		},
-		lualine_c = {'filename'},
-		lualine_x = {'location'},
-		lualine_y = { },
-	}
-}
+		lualine_c = { "filename" },
+		lualine_x = { "location" },
+		lualine_y = {},
+	},
+})
