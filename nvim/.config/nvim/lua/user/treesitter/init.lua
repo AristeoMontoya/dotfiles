@@ -11,7 +11,7 @@ else
 end
 
 require("nvim-treesitter.configs").setup({
-	ensure_installed = ensure_installed,           -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+	ensure_installed = ensure_installed, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 	highlight = {
 		enable = true, -- false will disable the whole extension
 	},
@@ -27,6 +27,15 @@ require("nvim-treesitter.configs").setup({
 				["if"] = "@function.inner",
 				ac = "@class.outer",
 				ic = "@class.inner",
+			},
+		},
+		lsp_interop = {
+			enable = true,
+			border = "none",
+			floating_preview_opts = {},
+			peek_definition_code = {
+				["<leader>df"] = "@function.outer",
+				["<leader>dF"] = "@class.outer",
 			},
 		},
 	},

@@ -1,11 +1,6 @@
 require('globals')
 
 local diagnosticsSource = ''
-if COC then
-	diagnosticsSource = 'coc'
-	else
-	diagnosticsSource = 'nvim_lsp'
-end
 
 require('lualine').setup {
 	options = {

@@ -74,10 +74,6 @@ map('i', '<right>', '<nop>', {})
 map('i', '<up>', '<nop>', {})
 map('i', '<down>', '<nop>', {})
 
--- NEED TO REDO MY CAPTURES
--- :command Capture luafile ~/.config/nvim/lua/capture.lua
--- nnoremap <silent> <leader>c :Capture<CR>
-
 -- Spells
 map('n', '<leader>vs', ':setlocal spell spelllang=es_mx<CR>', {noremap = true})
 map('n', '<leader>ve', ':setlocal spell spelllang=en_us<CR>', {noremap = true})
