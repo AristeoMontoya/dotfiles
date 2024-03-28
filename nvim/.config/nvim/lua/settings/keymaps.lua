@@ -1,100 +1,110 @@
 local map = V.api.nvim_set_keymap
+
 local setmap = V.keymap.set
 
 local defaults = {
 	noremap = true,
-	silent = true
+	silent = true,
 }
 
+local function is_text_buffer(pressed_key)
+  local buf_type = vim.api.nvim_buf_get_option(vim.api.nvim_get_current_buf(), "buftype")
+  if buf_type == "nofile" or buf_type == "acwrite" or buf_type == "prompt" then
+    return pressed_key
+  end
+end
+
 -- Go to previous file
-map('n', '<C-a', ':e#<CR>', defaults)
+map("n", "<C-a", ":e#<CR>", defaults)
 
 -- Center buffer after next occurrence
-map('n', 'n', 'nzz', defaults)
-map('n', 'N', 'Nzz', defaults)
+map("n", "n", "nzz", defaults)
+map("n", "N", "Nzz", defaults)
 
 -- Center buffer after page movement
-map('n', '<C-d>', '<C-d>zz', defaults)
-map('n', '<C-u>', '<C-u>zz', defaults)
+map("n", "<C-d>", "<C-d>zz", defaults)
+map("n", "<C-u>", "<C-u>zz", defaults)
 
 -- Center after joining lines
-map('n', 'J', 'mzJ`z', defaults)
+map("n", "J", "mzJ`z", defaults)
 
 -- Copy to the end of line
-map('n', 'Y', 'y$', defaults)
+map("n", "Y", "y$", defaults)
 
 -- Split movements
-setmap('n', '<A-h>', require('smart-splits').move_cursor_left)
-setmap('n', '<A-j>', require('smart-splits').move_cursor_down)
-setmap('n', '<A-k>', require('smart-splits').move_cursor_up)
-setmap('n', '<A-l>', require('smart-splits').move_cursor_right)
+setmap("n", "<A-h>", require("smart-splits").move_cursor_left)
+setmap("n", "<A-j>", require("smart-splits").move_cursor_down)
+setmap("n", "<A-k>", require("smart-splits").move_cursor_up)
+setmap("n", "<A-l>", require("smart-splits").move_cursor_right)
 
 -- Split resize
-setmap('n', '<C-A-h>', require('smart-splits').resize_left)
-setmap('n', '<C-A-j>', require('smart-splits').resize_down)
-setmap('n', '<C-A-k>', require('smart-splits').resize_up)
-setmap('n', '<C-A-l>', require('smart-splits').resize_right)
+setmap("n", "<C-A-h>", require("smart-splits").resize_left)
+setmap("n", "<C-A-j>", require("smart-splits").resize_down)
+setmap("n", "<C-A-k>", require("smart-splits").resize_up)
+setmap("n", "<C-A-l>", require("smart-splits").resize_right)
 
 -- moving between splits
 -- swapping buffers between windows
-setmap('n', '<leader><leader>h', require('smart-splits').swap_buf_left)
-setmap('n', '<leader><leader>j', require('smart-splits').swap_buf_down)
-setmap('n', '<leader><leader>k', require('smart-splits').swap_buf_up)
-setmap('n', '<leader><leader>l', require('smart-splits').swap_buf_right)
-
+setmap("n", "<leader><leader>h", require("smart-splits").swap_buf_left)
+setmap("n", "<leader><leader>j", require("smart-splits").swap_buf_down)
+setmap("n", "<leader><leader>k", require("smart-splits").swap_buf_up)
+setmap("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
 
 -- Split creation
-map('n', '<leader>sh', ':split<CR>', defaults)
-map('n', '<leader>sv', ':vs<CR>', defaults)
+map("n", "<leader>sh", ":split<CR>", defaults)
+map("n", "<leader>sv", ":vs<CR>", defaults)
 
 -- Split rotation
-map('n', '<leader>sr', '<C-W>R', defaults)
+map("n", "<leader>sr", "<C-W>R", defaults)
 
 -- Split to tab
-map('n', '<leader>st', '<C-W>T', defaults)
+map("n", "<leader>st", "<C-W>T", defaults)
 
 -- Save buffer
-map('n', '<C-s>', ':w<CR>', defaults)
+map("n", "<C-s>", ":w<CR>", defaults)
 
 -- Close buffer
-map('n', '<leader>bk', ':bd<CR>', defaults)
+map("n", "<leader>bk", ":bd<CR>", defaults)
 
 -- Alternate buffer
-map('n', '<tab>', ':bnext<CR>', defaults)
-map('n', '<S-tab>', ':bprevious<CR>', defaults)
+map("n", "<tab>", ":bnext<CR>", defaults)
+map("n", "<S-tab>", ":bprevious<CR>", defaults)
 
 -- Disable arrow keys
-map('n', '<left>', '<nop>', {})
-map('n', '<right>', '<nop>', {})
-map('n', '<up>', '<nop>', {})
-map('n', '<down>', '<nop>', {})
+map("n", "<left>", "<nop>", {})
+map("n", "<right>", "<nop>", {})
+map("n", "<up>", "<nop>", {})
+map("n", "<down>", "<nop>", {})
 
-map('i', '<left>', '<nop>', {})
-map('i', '<right>', '<nop>', {})
-map('i', '<up>', '<nop>', {})
-map('i', '<down>', '<nop>', {})
+-- Disable arrow keys for insert mode
+-- except for prompts
+-- There's probably a better way to do this but I'm feeling sleepy at the moment
+setmap('i', '<left>', function() return is_text_buffer('<left>') end, {expr = true})
+setmap('i', '<right>', function() return is_text_buffer('<right>') end, {expr = true})
+setmap('i', '<up>', function() return is_text_buffer('<up>') end, {expr = true})
+setmap('i', '<down>', function() return is_text_buffer('<down>') end, {expr = true})
 
 -- Spells
-map('n', '<leader>vs', ':setlocal spell spelllang=es_mx<CR>', {noremap = true})
-map('n', '<leader>ve', ':setlocal spell spelllang=en_us<CR>', {noremap = true})
-map('n', '<leader>vn', ':setlocal nospell<CR>', defaults)
+map("n", "<leader>vs", ":setlocal spell spelllang=es_mx<CR>", { noremap = true })
+map("n", "<leader>ve", ":setlocal spell spelllang=en_us<CR>", { noremap = true })
+map("n", "<leader>vn", ":setlocal nospell<CR>", defaults)
 
 -- Telescope
-map('n', '<leader>ff', ':Telescope find_files<CR>', defaults)
-map('n', '<leader>fg', ':Telescope live_grep<CR>', defaults)
-map('n', '<leader>fb', ':Telescope buffers<CR>', defaults)
-map('n', '<leader>fh', ':Telescope help_tags<CR>', defaults)
+map("n", "<leader>ff", ":Telescope find_files<CR>", defaults)
+map("n", "<leader>fg", ":Telescope live_grep<CR>", defaults)
+map("n", "<leader>fb", ":Telescope buffers<CR>", defaults)
+map("n", "<leader>fh", ":Telescope help_tags<CR>", defaults)
 
 -- NvimTree
-map('n', '<leader>fe', ':NvimTreeToggle<CR>', defaults)
+map("n", "<leader>fe", ":NvimTreeToggle<CR>", defaults)
 
 -- Trouble
-map('n', '<leader>ld', ':TroubleToggle<CR>', defaults)
+map("n", "<leader>ld", ":TroubleToggle<CR>", defaults)
 
 -- Svart
-map('n', 's', ':Svart<CR>', defaults)
-map('n', 'S', ':SvartRegex<CR>', defaults)
-map('n', 'gs', ':SvartRepeat<CR>', defaults)
+map("n", "s", ":Svart<CR>", defaults)
+map("n", "S", ":SvartRegex<CR>", defaults)
+map("n", "gs", ":SvartRepeat<CR>", defaults)
 
 -- Luasnip choice nodes
 map("i", "<C-n>", "<Plug>luasnip-next-choice", defaults)
