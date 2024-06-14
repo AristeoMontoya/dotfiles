@@ -103,5 +103,5 @@ map <leader>fe :NERDTreeToggle<CR>
 nnoremap gi :action GotoImplementation<CR>
 
 " UI Navigation
-inoremap <c-k> <up>
-inoremap <c-j> <down>
+inoremap <c-k> :action EditorDown<CR>
+inoremap <c-j> :action EditorUp<CR>

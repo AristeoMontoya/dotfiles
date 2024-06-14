@@ -70,6 +70,9 @@ map("n", "<leader>bk", ":bd<CR>", defaults)
 map("n", "<tab>", ":bnext<CR>", defaults)
 map("n", "<S-tab>", ":bprevious<CR>", defaults)
 
+-- Jump to previous buffer
+map("n", "<C-a>", "<C-^>", defaults)
+
 -- Disable arrow keys
 map("n", "<left>", "<nop>", {})
 map("n", "<right>", "<nop>", {})
