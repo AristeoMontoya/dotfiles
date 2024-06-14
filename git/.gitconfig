@@ -1,0 +1,24 @@
+[user]
+	name = Aristeo Montoya
+
+[core]
+	editor = nvim
+	pager = delta
+
+[init]
+	defaultBranch = master
+
+[interactive]
+	diffFilter = delta --color-only
+
+[detla]
+	navigate = true
+
+[merge]
+	conflictstyle = diff3
+
+[diff]
+	colorMoved = default
+
+[include]
+	path = ~/.gitconfig-local # Intended to be used on different hosts

@@ -10,3 +10,10 @@ export PATH=$HOME/.local/share/go/bin:$PATH
 export GOPATH=$HOME/.local/share/go
 export PATH="$PATH:./node_modules/.bin"
 export PATH="/home/aristeo/.dotnet/tools:$PATH"
+export BAT_THEME=base16
+
+if command -v fd &> /dev/null
+then
+	export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+fi
+
