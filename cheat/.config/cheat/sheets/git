@@ -15,6 +15,9 @@ git filter-branch --index-filter 'git rm --cached --ignore-unmatch .obsidian/wor
 
 # Stash
 ## List stashes
+git stash list
+
+## Show stash summary
 git stash show
 
 ## Remove stash
