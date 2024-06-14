@@ -1,3 +1,6 @@
+---
+syntax: sh
+---
 # Use shell from a container
 docker exec -it <container> /bin/bash
 

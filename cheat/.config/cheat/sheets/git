@@ -1,3 +1,6 @@
+---
+syntax: sh
+---
 # Pull rebase
 git pull --rebase origin <branch>
 
