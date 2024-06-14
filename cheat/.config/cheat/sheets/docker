@@ -1,0 +1,11 @@
+# Use shell from a container
+docker exec -it <container> /bin/bash
+
+# Prevent container from starting automatically
+docker update --restart=no <contenedor>
+
+# Restart a container
+docker restart <contenedor>
+
+# View image layers
+docker image inspect <image>

@@ -1,0 +1,51 @@
+# Pull rebase
+git pull --rebase origin <branch>
+
+# Rollback a file to a specific commit
+git checkout <commit> -- path/to/file
+
+# Remove file from staging
+git reset HEAD <file>
+
+# Remove file from git history in current branch
+git filter-branch --index-filter 'git rm --cached --ignore-unmatch .obsidian/workspace .obsidian/graph.json' -- --all
+
+# Stash
+## List stashes
+git stash show
+
+## Remove stash
+git stash drop <stash>
+
+## Create branch form last stash
+git stash branch <branch>
+
+## Create branch from specific stash
+git stash branch <branch> stash@{<stash>}
+
+# Tags
+## List tags
+git tag -l
+
+## List tags with annotations
+git tag -n
+
+## Create a new annotated tag
+git tag -a <tag-name> -m 'annotation'
+
+# Signing
+## Signing a commit
+git commit -S -m <message>
+
+## Auto sign every commit
+git config --global commit.gpgsign true
+
+## Setting a gpg key
+git config --global user.signingkey <key id>
+
+## Setting a ssh key
+### Configure to use ssh keys
+git config --global gpg.format ssh
+
+### Pick which ssh key to use
+git config --global user.signingkey <path-to-pub-key>
