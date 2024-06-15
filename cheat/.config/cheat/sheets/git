@@ -1,5 +1,5 @@
 ---
-syntax: sh
+syntax: bash
 ---
 # Pull rebase
 git pull --rebase origin <branch>
@@ -12,6 +12,9 @@ git reset HEAD <file>
 
 # Remove file from git history in current branch
 git filter-branch --index-filter 'git rm --cached --ignore-unmatch .obsidian/workspace .obsidian/graph.json' -- --all
+
+# Remove commits from branch
+git rebase -i <commit> # Pick one commit prior to the target
 
 # Stash
 ## List stashes
