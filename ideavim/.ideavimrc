@@ -93,6 +93,9 @@ nnoremap <silent> <leader>fg :action FindInPath<CR>
 " Reformat code
 nnoremap <silent> <leader>lf :action ReformatCode<CR>
 
+" List class members
+nnoremap <silent> <leader>ls :action GotoSymbol<CR>
+
 " Easy motion
 map s <Plug>(easymotion-s)
 
