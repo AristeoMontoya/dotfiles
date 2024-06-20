@@ -94,7 +94,7 @@ nnoremap <silent> <leader>fg :action FindInPath<CR>
 nnoremap <silent> <leader>lf :action ReformatCode<CR>
 
 " List class members
-nnoremap <silent> <leader>ls :action GotoSymbol<CR>
+nnoremap <silent> <leader>ls :action FileStructurePopup<CR>
 
 " Easy motion
 map s <Plug>(easymotion-s)
@@ -106,5 +106,5 @@ map <leader>fe :NERDTreeToggle<CR>
 nnoremap gi :action GotoImplementation<CR>
 
 " UI Navigation
-inoremap <c-k> :action EditorDown<CR>
-inoremap <c-j> :action EditorUp<CR>
+inoremap <c-j> :action EditorDown<CR>
+inoremap <c-k> :action EditorUp<CR>
