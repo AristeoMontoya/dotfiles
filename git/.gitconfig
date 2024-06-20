@@ -11,8 +11,10 @@
 [interactive]
 	diffFilter = delta --color-only
 
-[detla]
+[delta]
+	true-color = always
 	navigate = true
+	line-numbers = true
 
 [merge]
 	conflictstyle = diff3
