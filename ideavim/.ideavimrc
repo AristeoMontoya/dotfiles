@@ -9,6 +9,7 @@ set argtextobj
 set textobj-entire
 set NERDTree
 set paragraph-motion
+set ideajoin
 
 " Defaults
 set iskeyword+=-
@@ -106,5 +107,9 @@ map <leader>fe :NERDTreeToggle<CR>
 nnoremap gi :action GotoImplementation<CR>
 
 " UI Navigation
-inoremap <c-j> :action EditorDown<CR>
-inoremap <c-k> :action EditorUp<CR>
+"" Under linux this doesn't work
+"" I have to manually set the id to handle this keymap
+"" under keymap > Editor actions > Up / Down
+"" In MacOS this works out of the box.
+inoremap <C-j> :action EditorDown<CR>
+inoremap <C-k> :action EditorUp<CR>
