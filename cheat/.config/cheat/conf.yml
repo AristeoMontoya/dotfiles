@@ -20,3 +20,7 @@ cheatpaths:
     path: ~/.config/cheat/sheets
     tags: [ personal ]
     readonly: false
+  - name: local
+    path: ~/.config/cheat/local
+    tags: [ local ]
+    readonly: false
