@@ -11,7 +11,7 @@ git checkout <commit> -- path/to/file
 git reset HEAD <file>
 
 # Remove file from git history in current branch
-git filter-branch --index-filter 'git rm --cached --ignore-unmatch .obsidian/workspace .obsidian/graph.json' -- --all
+git filter-branch --index-filter 'git rm -rf --cached --ignore-unmatch path_to_file' HEAD
 
 # Remove commits from branch
 git rebase -i <commit> # Pick one commit prior to the target
