@@ -1,0 +1,9 @@
+function sdk() {
+	unfunction "$0"
+
+	export SDKMAN_DIR="$HOME/.sdkman"
+	[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+	$0 "$0"
+}
+

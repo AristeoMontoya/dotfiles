@@ -1,6 +1,5 @@
-# export ZDOTDIR=$HOME/.config/zsh
-# source "$HOME/.config/zsh/.zshrc"
 #!/bin/sh
+zmodload zsh/zprof
 export ZDOTDIR=$HOME/.config/zsh
 HISTFILE=~/.zsh_history
 setopt appendhistory
@@ -23,12 +22,16 @@ BASE16_SHELL="$ZDOTDIR/plugins/base16-shell/"
 
 # completions
 autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
+
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 # zstyle ':completion::complete:lsof:*' menu yes select
 zmodload zsh/complist
-# compinit
-_comp_options+=(globdots)		# Include hidden files.
+_comp_options+=(globdots)   # Include hidden files.
 
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
@@ -54,6 +57,7 @@ zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-prompt"
 zsh_add_file "zsh-widgets"
+zsh_add_file "zsh-lazy-load"
 
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
@@ -83,8 +87,6 @@ bindkey '^p' fzf-bookmarks
 [ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
-compinit
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
@@ -99,9 +101,6 @@ export GPG_TTY=$(tty)
 # For QT Themes
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
 # Add bookmarks
 if [ -d "$HOME/.bookmarks" ]; then
 	export CDPATH=".:$HOME/.bookmarks"
@@ -112,3 +111,4 @@ fi
 if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
 	tmux attach || tmux new-session -s ssh_tmux
 fi
+zprof
