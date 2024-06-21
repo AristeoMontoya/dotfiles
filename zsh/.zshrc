@@ -1,5 +1,5 @@
 #!/bin/sh
-zmodload zsh/zprof
+# zmodload zsh/zprof
 export ZDOTDIR=$HOME/.config/zsh
 HISTFILE=~/.zsh_history
 setopt appendhistory
@@ -111,4 +111,4 @@ fi
 if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
 	tmux attach || tmux new-session -s ssh_tmux
 fi
-zprof
+# zprof
