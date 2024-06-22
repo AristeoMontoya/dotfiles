@@ -51,19 +51,14 @@ for file in $ZDOTDIR/env/*; do
 done
 unsetopt nullglob
 
-# Normal files to source
+# Source withouth checking, should be a bit faster.
 zsh_add_file "zsh-exports"
 zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-prompt"
 zsh_add_file "zsh-widgets"
 zsh_add_file "zsh-lazy-load"
-
-# Checking this way sohuld be faster
-# https://www.topbug.net/blog/2016/10/11/speed-test-check-the-existence-of-a-command-in-bash-and-zsh/
-if [[ $commands[fzf] && $commands[fd] ]]; then
-	zsh_add_file "zsh-fzf"
-fi
+zsh_add_file "zsh-fzf"
 
 # Plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
