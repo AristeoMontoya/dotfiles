@@ -1,6 +1,4 @@
 #!/bin/sh
-alias j='z'
-alias f='zi'
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 
 # get fastest mirrors
@@ -42,15 +40,13 @@ alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
 # For when keys break
 alias archlinx-fix-keys="sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys"
 
-if ! command -v eza &> /dev/null
-then
-	alias ls='ls --color=auto'
-else
+if [ $commands[eza] ]; then
 	alias ls='eza --icons=always'
+else
+	alias ls='ls --color=auto'
 fi
 
-if command -v fd &> /dev/null
-then
+if [ $commands[fd] ]; then
 	alias vopen='fd --type f --hidden --exclude .git |  fzf-tmux -p 90% --preview="bat --theme=base16 --style=plain --color=always --line-range=:100 {}" --header="Pick a file" --layout reverse --info inline | xargs -r nvim'
 fi
 

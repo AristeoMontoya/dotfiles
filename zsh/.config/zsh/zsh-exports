@@ -11,7 +11,10 @@ export GOPATH=$HOME/.local/share/go
 export PATH="$PATH:./node_modules/.bin"
 export BAT_THEME=base16
 
-if command -v fd &> /dev/null
-then
-	export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-fi
+export EDITOR="nvim"
+export TERMINAL="alacritty"
+export BROWSER="brave"
+export GPG_TTY=$(tty)
+
+# For QT Themes
+export QT_QPA_PLATFORMTHEME=qt5ct
