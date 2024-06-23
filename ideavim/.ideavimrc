@@ -10,12 +10,17 @@ set textobj-entire
 set NERDTree
 set paragraph-motion
 set ideajoin
+set which-key
 
 " Defaults
 set iskeyword+=-
 set splitright
 set splitbelow
 set incsearch
+set showmatch
+set hlsearch
+set smartcase
+set notimeout " prevents whichkey from closing
 set scrollof=5
 
 " Leader
@@ -81,18 +86,23 @@ nnoremap <silent> <leader>st <C-W>T
 " -------
 " ACTIONS
 " -------
+"" Editor
+nnoremap <silent> <leader>h :noh<CR>
 
-" Refactor
+"" Refactor
 nnoremap <silent> <leader>lr :action RenameElement<CR>
 
+" Reformat code
+nnoremap <silent> <leader>lf :action ReformatCode<CR>
+
+vnoremap <silent> <leader>le :action ExtractMethod<CR>
+
+"" Navigation
 " Find file
 nnoremap <silent> <leader>ff :action GotoFile<CR>
 
 " Find text
 nnoremap <silent> <leader>fg :action FindInPath<CR>
-
-" Reformat code
-nnoremap <silent> <leader>lf :action ReformatCode<CR>
 
 " List class members
 nnoremap <silent> <leader>ls :action FileStructurePopup<CR>
@@ -113,3 +123,4 @@ nnoremap gi :action GotoImplementation<CR>
 "" In MacOS this works out of the box.
 inoremap <C-j> :action EditorDown<CR>
 inoremap <C-k> :action EditorUp<CR>
+nnoremap <silent> <leader>la :action ShowIntentionActions<CR>
