@@ -6,7 +6,7 @@ shell:
   args:
     - -l
     - -c
-    - "tmux attach || exec tmux new-session -s scratch -n notas 'nvim -c \"chdir ~/notas\" -c \"edit index.md\"' \\; neww"
+    - "tmux attach || exec tmux new-session"
 
 hide_cursor_when_typing: on
 
