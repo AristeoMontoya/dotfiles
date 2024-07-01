@@ -41,8 +41,7 @@ family = "JetBrainsMono NFM"
 family = "JetBrainsMono NFM"
 
 [shell]
-# args = ["-l", "-c", '''tmux attach || exec tmux new-session -s scratch -n notas 'nvim -c "chdir ~/notas" -c "edit index.md"' \; neww''']
-args = ["-l", "-c", '''tmux attach || exec tmux new-session -n notas 'nvim -c "chdir ~/notas" -c "edit index.md"' \; neww''']
+args = ["-l", "-c", '''tmux attach || exec tmux''']
 program = "zsh"
 
 [window]
