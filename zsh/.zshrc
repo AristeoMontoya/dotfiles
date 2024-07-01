@@ -92,6 +92,6 @@ fi
 
 # tmux over ssh
 if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
-	tmux attach || tmux new-session -s ssh_tmux
+	tmux attach || tmux new-session
 fi
 # zprof
