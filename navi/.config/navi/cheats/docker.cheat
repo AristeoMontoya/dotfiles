@@ -1,0 +1,16 @@
+% docker
+
+# Use shell from a container
+docker exec -it <container> /bin/bash
+
+# Prevent container from starting automatically
+docker update --restart=no <container>
+
+# Restart a container
+docker restart <container>
+
+# View image layers
+docker image inspect <image>
+
+$ container: docker ps --format '{{.Names}}'
+$ image: docker image ls --format '{{.Repository}}'
