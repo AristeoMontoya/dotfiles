@@ -1,4 +1,7 @@
-% docker
+% docker, containers
+
+# Build docker image
+docker buildx build .
 
 # Use shell from a container
 docker exec -it <container> /bin/bash
@@ -6,11 +9,17 @@ docker exec -it <container> /bin/bash
 # Prevent container from starting automatically
 docker update --restart=no <container>
 
+# List local images
+docker images
+
 # Restart a container
 docker restart <container>
 
 # View image layers
-docker image inspect <image>
+docker image inspect <image_id> | jq
+
+# Inspect image layers with skopeo
+skopeo inspect --raw docker://<image_and_tag> | jq
 
 # Remove unused images
 docker image prune
@@ -19,7 +28,12 @@ docker image prune
 docker stop <container>
 
 # Remove image
-docker rmi <image>
+docker rmi <image_id>
+
+# Pull docker image
+docker pull <image_to_pull>
 
 $ container: docker ps --- --headers 1 --column 1
-$ image: docker images --- --headers 1 --column 3
+$ image_id: docker images --- --headers 1 --column 3
+$ image_name: docker images --- --headers 1 --column 1 --column 2
+$ image_and_tag: docker image list --format "table {{.ID}}\t{{.Repository}}:{{.Tag}}\t{{.Size}}" --- --headers 1 --column 2

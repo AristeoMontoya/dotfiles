@@ -7,8 +7,12 @@ tar xf <tar_file>
 tar xzf <tar_gz_file>
 
 # Create zip file
-zip <output>.zip <files>
+zip -r <output>.zip <files>
+
+# create a zip with compression level
+zip -r -<compression_level> <output>.zip <files>
 
 $ tar_file: ls *.tar
 $ tar_gz_file: ls *.tar.gz
 $ files: find . -mindepth 1 -maxdepth 2 -print --- --multi --expand
+$ compression_level: echo "1 2 3 4 5 6 7 8 9" | tr ' ' '\n'
