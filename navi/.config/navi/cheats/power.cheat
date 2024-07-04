@@ -1,0 +1,4 @@
+% power
+
+# Generate a summary of the most power consuming processes
+sudo powertop --html=<report_name>

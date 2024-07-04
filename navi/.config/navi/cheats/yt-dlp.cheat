@@ -5,4 +5,4 @@ yt-dlp -a <file> # one url per line
 # Extract audio as mpr
 yt-dlp -x --audio-format mp3 <video url>
 
-$ file: find . -maxdepth 2
+$ file: find . -maxdepth 2 -mindepth 1

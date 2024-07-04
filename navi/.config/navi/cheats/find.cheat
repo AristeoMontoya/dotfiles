@@ -1,0 +1,10 @@
+% find
+
+# Find using regex
+find <directory> -regextype egrep -regex "<regex>"
+
+# Find by name
+find <directory> -name "<name>"
+
+$ regex_type: echo "-regextype egrep"
+$ search_type: echo "<regex_type> --regex;-name" | tr ';' '\n'

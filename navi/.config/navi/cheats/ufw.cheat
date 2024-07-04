@@ -1,0 +1,21 @@
+% ufw, firewall
+
+# Allow firewall port
+sudo ufw allow <port>
+
+# Allow firewall port with comments
+sudo ufw allow <port> comment "<comment>"
+
+# Show rules
+sudo ufw show added
+
+# Show currently enabled rules
+sudo ufw status numbered
+
+# Show pre-configured apps
+sudo ufw app list
+
+# Remove a rule
+sudo ufw delete <rule_number>
+
+$ rule_number: sudo ufw status numbered | tail -n +2 --- --headers 2

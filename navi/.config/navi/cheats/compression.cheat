@@ -1,0 +1,14 @@
+% compresion
+
+# Extract the files from a tar
+tar xf <tar_file>
+
+# Extract targz
+tar xzf <tar_gz_file>
+
+# Create zip file
+zip <output>.zip <files>
+
+$ tar_file: ls *.tar
+$ tar_gz_file: ls *.tar.gz
+$ files: find . -mindepth 1 -maxdepth 2 -print --- --multi --expand
