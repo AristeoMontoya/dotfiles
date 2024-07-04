@@ -1,13 +1,19 @@
-% git, code
+% git
+
+$ branch: git branch | awk '{print $NF}'
+$ remote_branch: git branch -r | awk '{print $NF}'
+$ commit: git log --oneline
+$ file: find . -regex '.*' --- --multi
+$ stash: git stash list --- --delimiter ':' --column 1
 
 # Change branch
 git checkout <branch>
 
 # Pull rebase
-git pull --rebase origin <branch>
+git pull --rebase origin <remote_branch>
 
 # Rollback a file to a specific commit
-git checkout <commit> -- path/to/file
+git checkout <commit> -- <file>
 
 # Remove file from staging
 git reset HEAD <file>
@@ -18,23 +24,27 @@ git filter-branch --index-filter 'git rm -rf --cached --ignore-unmatch path_to_f
 # Remove commits from branch
 git rebase -i <commit> # Pick one commit prior to the target
 
-# Stash
-## List stashes
+% git, stash
+@ git
+
+# List stashes
 git stash list
 
-## Show stash summary
-git stash show
+# Show stash summary
+git stash show <stash>
 
-## Remove stash
+# Remove stash
 git stash drop <stash>
 
-## Create branch form last stash
+# Create branch form last stash
 git stash branch <branch>
 
-## Create branch from specific stash
-git stash branch <branch> stash@{<stash>}
+# Create branch from specific stash
+git stash branch <new_branch> <stash>
 
-# Tags
+% git, tags
+@ git
+
 ## List tags
 git tag -l
 
@@ -44,7 +54,9 @@ git tag -n
 ## Create a new annotated tag
 git tag -a <tag-name> -m 'annotation'
 
-# Signing
+% git, signing
+@ git
+
 ## Signing a commit
 git commit -S -m <message>
 
@@ -60,5 +72,3 @@ git config --global gpg.format ssh
 
 ### Pick which ssh key to use
 git config --global user.signingkey <path-to-pub-key>
-
-$ branch: git branch | awk '{print $NF}'
