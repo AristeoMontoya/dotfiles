@@ -30,8 +30,15 @@ systemctl list-unit-files --type=service --state=enabled
 # List disabled services
 systemctl list-unit-files --type=service --state=disabled
 
+# Show logs from last boot
+journalctl -b-1
+
+# Show logs from a service
+journalctl -u <service> <boot>
+
 $ service_inactive: systemctl list-units --type=service --state=inactive | awk '{print $1}' | grep .service | sed 's/.service$//'
 $ service_active: systemctl list-units --type=service --state=active | awk '{print $1}' | grep .service | sed 's/.service$//'
 $ service_enabled: systemctl list-unit-files --type=service --state=enabled | awk '{print $1}' | grep .service | sed 's/.service$//'
 $ service_disabled: systemctl list-unit-files --type=service --state=disabled | awk '{print $1}' | grep .service | sed 's/.service$//'
 $ service: systemctl list-units --type=service --all | awk '{print $1}' | grep .service | sed 's/.service$//'
+$ boot: echo "current all" | tr ' ' '\n' --- --map "grep -q current && echo '-b'"
