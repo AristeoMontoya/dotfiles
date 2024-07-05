@@ -1,0 +1,22 @@
+% linux
+
+# List system gorups
+awk -F: '{print $1}' /etc/group 
+
+# List system users
+awk -F: '{ print $1}' /etc/passwd
+
+# Add user to group
+sudo usermod -aG <system_groups> <system_users>
+
+# align output as table
+column -t -s $'\t'
+
+$ system_users: awk -F: '{print $1}' /etc/passwd
+$ system_groups: awk -F: '{print $1}' /etc/group
+
+% systemd
+@ linux
+
+# Show logs from last boot
+journalctl -b-1
