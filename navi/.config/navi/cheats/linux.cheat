@@ -7,10 +7,11 @@ awk -F: '{print $1}' /etc/group
 awk -F: '{ print $1}' /etc/passwd
 
 # Add user to group
-sudo usermod -aG <system_groups> <system_users>
+sudo usermod -aG <multiple_groups> <system_users>
 
 # align output as table
 column -t -s $'\t'
 
 $ system_users: awk -F: '{print $1}' /etc/passwd
 $ system_groups: awk -F: '{print $1}' /etc/group
+$ multiple_groups: awk -F: '{print $1}' /etc/group --- --multi --expand  --map "echo $(cat -) | tr ' ' ','"

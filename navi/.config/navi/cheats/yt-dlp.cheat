@@ -2,7 +2,10 @@
 # Download a file
 yt-dlp -a <file> # one url per line
 
-# Extract audio as mpr
+# Extract audio as mp3
 yt-dlp -x --audio-format mp3 <video url>
+
+# Download a file as mp3
+yt-dlp -x --audio-format mp3 -a <file>
 
 $ file: find . -maxdepth 2 -mindepth 1
