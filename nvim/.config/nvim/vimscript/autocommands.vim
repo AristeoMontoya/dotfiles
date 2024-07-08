@@ -61,20 +61,10 @@ function! JS()
 endfunction
 
 function! Lua()
-	setlocal shiftwidth=2
+	setlocal shiftwidth=3
 	setlocal colorcolumn=80
 	setlocal nolist
 	setlocal expandtab
-endfunction
-
-" Función para abrir terminal debajo de la ventana
-function! AbrirTerminal()
-	botright split
-	terminal
-	res 8
-	setlocal nonumber
-	setlocal norelativenumber
-	startinsert
 endfunction
 
 function Direcciones()
