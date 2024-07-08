@@ -1,6 +1,8 @@
 return {
-	"williamboman/mason-lspconfig.nvim",
-	-- event = "InsertEnter",
+	"williamboman/mason.nvim",
+	dependencies = {
+		"williamboman/mason-lspconfig.nvim",
+	},
 	config = function()
 		local lspconfig = require("lspconfig")
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()

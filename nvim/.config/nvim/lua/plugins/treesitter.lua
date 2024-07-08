@@ -46,7 +46,6 @@ default_parsers = {
 return {
 	"nvim-treesitter/nvim-treesitter",
 	event = { "BufReadPre", "BufNewFile" },
-	-- build = ":TSUpdate",
 	config = function()
 		local overrides_ok, overrides = pcall(require, "user.treesitter.overrides")
 		local filter_ok, filter = pcall(require, "utils.filter_tables")
@@ -109,8 +108,8 @@ return {
 					node_incremental = "<C-space>",
 					scope_incremental = false,
 					node_decremental = "<bs>",
-				}
-			}
+				},
+			},
 		})
 	end,
 }

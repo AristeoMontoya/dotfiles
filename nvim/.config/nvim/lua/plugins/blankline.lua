@@ -13,7 +13,7 @@ return {
 		exclude = {
 			filetypes = {
 				"man",
-				"packer"
+				"packer",
 			},
 			buftypes = {
 				"terminal",
@@ -21,8 +21,8 @@ return {
 				"packer",
 				"man",
 				"lsp-installer",
-				"nofile"
-			}
-		}
-	}
+				"nofile",
+			},
+		},
+	},
 }
