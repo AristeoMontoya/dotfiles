@@ -15,3 +15,4 @@ zsh/.config/zsh/env/*
 !zsh/.config/zsh/env/.gitkeep
 cheat/.config/cheat/local/*
 !cheat/.config/cheat/local/.gitkeep
+nvim/.config/nvim/lazy-lock.json
