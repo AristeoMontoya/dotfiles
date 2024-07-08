@@ -1,11 +1,12 @@
 require('globals')
+V.cmd('source ~/.config/nvim/vimscript/general.vim')
 -- Necesarias en caso de usar VSCode
 -- require('generalvscode')
 -- require('plugins')
 require('lazy-plugins')
 
 if not IS_VSCODE then
-	V.cmd('source ~/.config/nvim/vimscript/general.vim')
+	-- V.cmd('source ~/.config/nvim/vimscript/general.vim')
 	-- V.cmd('source ~/.config/nvim/vimscript/lsp_keymaps.vim')
 	--
 	-- LSP
