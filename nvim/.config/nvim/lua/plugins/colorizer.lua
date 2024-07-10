@@ -1,6 +1,6 @@
 return {
 	"norcalli/nvim-colorizer.lua",
-	-- event = "InsertEnter",
+	event = "InsertEnter",
 	opts = {
 		"*",
 		"!vimwiki",

@@ -2,7 +2,7 @@ return {
 	"folke/which-key.nvim",
 	-- event = "InsertEnter",
 	config = function()
-		require("globals")
+		require("settings.constants")
 		require("which-key").setup({
 			plugins = {
 				marks = true, -- shows a list of your marks on ' and `

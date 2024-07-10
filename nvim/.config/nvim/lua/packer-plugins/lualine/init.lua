@@ -1,4 +1,4 @@
-require("globals")
+require("settings.constants")
 
 require("lualine").setup({
 	options = {
@@ -25,7 +25,7 @@ require("lualine").setup({
 				"diagnostics",
 				error = "e06c75",
 				warn = "#e5c07b",
-				info = "56b6c2"
+				info = "56b6c2",
 			},
 		},
 		lualine_c = { { "filename", file_status = true } },

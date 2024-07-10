@@ -1,4 +1,4 @@
-require("globals")
+require("settings.constants")
 require("settings.general")
 require("lazy-plugins")
 V.cmd("source ~/.config/nvim/vimscript/autocommands.vim")

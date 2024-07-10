@@ -1,5 +1,8 @@
 return {
 	"rcarriga/cmp-dap",
+	dependencies = {
+		"jay-babu/mason-nvim-dap.nvim",
+	},
 	-- event = "InsertEnter",
 	config = function()
 		local dap_status_ok, dap = pcall(require, "dap")

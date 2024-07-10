@@ -8,10 +8,10 @@ local defaults = {
 }
 
 local function is_text_buffer(pressed_key)
-  local buf_type = vim.api.nvim_buf_get_option(vim.api.nvim_get_current_buf(), "buftype")
-  if buf_type == "nofile" or buf_type == "acwrite" or buf_type == "prompt" then
-    return pressed_key
-  end
+	local buf_type = vim.api.nvim_buf_get_option(vim.api.nvim_get_current_buf(), "buftype")
+	if buf_type == "nofile" or buf_type == "acwrite" or buf_type == "prompt" then
+		return pressed_key
+	end
 end
 
 -- Go to previous file
@@ -82,10 +82,18 @@ map("n", "<down>", "<nop>", {})
 -- Disable arrow keys for insert mode
 -- except for prompts
 -- There's probably a better way to do this but I'm feeling sleepy at the moment
-setmap('i', '<left>', function() return is_text_buffer('<left>') end, {expr = true})
-setmap('i', '<right>', function() return is_text_buffer('<right>') end, {expr = true})
-setmap('i', '<up>', function() return is_text_buffer('<up>') end, {expr = true})
-setmap('i', '<down>', function() return is_text_buffer('<down>') end, {expr = true})
+setmap("i", "<left>", function()
+	return is_text_buffer("<left>")
+end, { expr = true })
+setmap("i", "<right>", function()
+	return is_text_buffer("<right>")
+end, { expr = true })
+setmap("i", "<up>", function()
+	return is_text_buffer("<up>")
+end, { expr = true })
+setmap("i", "<down>", function()
+	return is_text_buffer("<down>")
+end, { expr = true })
 
 -- Spells
 map("n", "<leader>vs", ":setlocal spell spelllang=es_mx<CR>", { noremap = true })
@@ -116,4 +124,4 @@ map("i", "<C-p>", "<Plug>luasnip-prev-choice", defaults)
 map("s", "<C-p>", "<Plug>luasnip-prev-choice", defaults)
 
 -- format
-map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", defaults)
+-- map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", defaults)

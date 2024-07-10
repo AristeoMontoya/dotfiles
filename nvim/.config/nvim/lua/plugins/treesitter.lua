@@ -1,48 +1,3 @@
-default_parsers = {
-	"vim",
-	"php",
-	"java",
-	"kotlin",
-	"json",
-	"css",
-	"scss",
-	"toml",
-	"lua",
-	"make",
-	"vue",
-	"jsonc",
-	"yaml",
-	"html",
-	"tsx",
-	"dart",
-	"org",
-	"rst",
-	"c_sharp",
-	"go",
-	"c",
-	"scheme",
-	"http",
-	"hjson",
-	"jsdoc",
-	"embedded_template",
-	"python",
-	"query",
-	"regex",
-	"markdown",
-	"markdown_inline",
-	"dockerfile",
-	"rust",
-	"dot",
-	"eex",
-	"bibtex",
-	"javascript",
-	"bash",
-	"cmake",
-	"cpp",
-	"typescript",
-	"json5",
-}
-
 return {
 	"nvim-treesitter/nvim-treesitter",
 	event = { "BufReadPre", "BufNewFile" },
@@ -50,8 +5,7 @@ return {
 		local overrides_ok, overrides = pcall(require, "user.treesitter.overrides")
 		local filter_ok, filter = pcall(require, "utils.filter_tables")
 
-		-- local defaults = require("user.treesitter.default_parsers")
-		local defaults = default_parsers
+		local defaults = require("defaults.treesitter.default_parsers")
 		local ensure_installed = {}
 
 		if overrides_ok and filter_ok then

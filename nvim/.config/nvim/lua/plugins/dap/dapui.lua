@@ -1,6 +1,9 @@
 return {
 	"rcarriga/nvim-dap-ui",
-	dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+	dependencies = {
+		"mfussenegger/nvim-dap",
+		"nvim-neotest/nvim-nio",
+	},
 	opts = {
 		controls = {
 			element = "repl",

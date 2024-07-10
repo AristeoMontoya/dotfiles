@@ -36,7 +36,7 @@ return {
 			delay = 500,
 			ignore_whitespace = false,
 		},
-		current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
+		current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> • <summary>",
 		sign_priority = 6,
 		update_debounce = 100,
 		status_formatter = nil, -- Use default
@@ -50,7 +50,7 @@ return {
 			col = 1,
 		},
 		on_attach = function(bufnr)
-			local gs = package.loaded.gitsigns
+			local gs = require("gitsigns")
 
 			local function map(mode, l, r, opts)
 				opts = opts or {}
@@ -61,23 +61,19 @@ return {
 			-- Navigation
 			map("n", "]]", function()
 				if V.wo.diff then
-					return "]]"
+					vim.cmd.normal({ "]]", bang = true })
+				else
+					gs.nav_hunk("next")
 				end
-				V.schedule(function()
-					gs.next_hunk()
-				end)
-				return "<Ignore>"
-			end, { expr = true })
+			end)
 
 			map("n", "[[", function()
 				if V.wo.diff then
-					return "[["
+					vim.cmd.normal({ "[[", bang = true })
+				else
+					gs.nav_hunk("prev")
 				end
-				V.schedule(function()
-					gs.prev_hunk()
-				end)
-				return "<Ignore>"
-			end, { expr = true })
+			end)
 
 			-- Actions
 			map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>")
