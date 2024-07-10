@@ -1,5 +1,5 @@
 return {
-	"https://gitlab.com/madyanov/svart.nvim",
+	"m6vrm/svart.nvim",
 	-- event = "InsertEnter",
 	config = function()
 		local svart = require("svart")

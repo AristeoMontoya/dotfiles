@@ -95,6 +95,10 @@ setmap("i", "<down>", function()
 	return is_text_buffer("<down>")
 end, { expr = true })
 
+-- Keep visual mode during indenting
+map("v", "<", "<gv", defaults)
+map("v", ">", ">gv", defaults)
+
 -- Spells
 map("n", "<leader>vs", ":setlocal spell spelllang=es_mx<CR>", { noremap = true })
 map("n", "<leader>ve", ":setlocal spell spelllang=en_us<CR>", { noremap = true })
@@ -122,6 +126,3 @@ map("i", "<C-n>", "<Plug>luasnip-next-choice", defaults)
 map("s", "<C-n>", "<Plug>luasnip-next-choice", defaults)
 map("i", "<C-p>", "<Plug>luasnip-prev-choice", defaults)
 map("s", "<C-p>", "<Plug>luasnip-prev-choice", defaults)
-
--- format
--- map("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", defaults)
