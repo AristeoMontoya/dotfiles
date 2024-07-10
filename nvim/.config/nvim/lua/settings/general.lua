@@ -3,14 +3,13 @@ local g = V.g
 
 g.mapleader = " "
 
-opt.listchars = { tab = "%▏%" }
+opt.listchars = { tab = "▏  " }
 opt.signcolumn = "yes"
 opt.clipboard:append("unnamedplus")
 
 opt.termguicolors = true
 opt.mouse = "a"
 opt.syntax = "on"
-opt.listchars = { tab = " ▏ " }
 opt.signcolumn = "yes"
 opt.iskeyword:append({ "-" })
 opt.list = true
