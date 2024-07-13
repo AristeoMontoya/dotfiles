@@ -78,6 +78,14 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
+		-- Not handled by Mason
+		lspconfig["ccls"].setup({
+			capabilities = capabilities,
+			cmd = { "ccls" },
+			filetypes = { "cpp", "c" },
+			root_dir = require("lspconfig/util").root_pattern("compile_commands.json", ".ccls", ".git"),
+		})
+
 		mason_lspconfig.setup_handlers({
 			-- default handler for installed servers
 			function(server_name)
@@ -85,26 +93,27 @@ return {
 					capabilities = capabilities,
 				})
 			end,
-			["svelte"] = function()
-				-- configure svelte server
-				lspconfig["svelte"].setup({
+			["vimls"] = function()
+				lspconfig["vimls"].setup({
 					capabilities = capabilities,
-					on_attach = function(client, bufnr)
-						vim.api.nvim_create_autocmd("BufWritePost", {
-							pattern = { "*.js", "*.ts" },
-							callback = function(ctx)
-								-- Here use ctx.match instead of ctx.file
-								client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-							end,
-						})
-					end,
 				})
 			end,
-			["graphql"] = function()
-				-- configure graphql language server
-				lspconfig["graphql"].setup({
+			["pyright"] = function()
+				lspconfig["pyright"].setup({
 					capabilities = capabilities,
-					filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
+					settings = {
+						pyright = {
+							autoImportCompletion = true,
+						},
+						python = {
+							analysis = {
+								autoSearchPaths = true,
+								diagnosticMode = "openFilesOnly",
+								useLibraryCodeForTypes = true,
+								typeCheckingMode = "off",
+							},
+						},
+					},
 				})
 			end,
 			["emmet_ls"] = function()
@@ -129,6 +138,12 @@ return {
 					capabilities = capabilities,
 					settings = {
 						Lua = {
+							runtime = {
+								-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+								version = "LuaJIT",
+								-- Setup your lua path
+								path = vim.split(package.path, ";"),
+							},
 							-- make the language server recognize "vim" global
 							diagnostics = {
 								globals = { "vim" },
@@ -136,10 +151,49 @@ return {
 							completion = {
 								callSnippet = "Replace",
 							},
+							workspace = {
+								-- Make the server aware of Neovim runtime files
+								library = {
+									[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+									[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+								},
+							},
 						},
 					},
 				})
 			end,
+			["tsserver"] = function()
+				lspconfig["tsserver"].setup({
+					capabilities = capabilities,
+					javascript = {
+						referencesCodeLens = {
+							enabled = true,
+						},
+					},
+					typescript = {
+						referencesCodeLens = {
+							enabled = true,
+						},
+					},
+					root_dir = require("lspconfig/util").root_pattern(
+						"package.json",
+						"tsconfig.json",
+						"jsconfig.json",
+						".git"
+					),
+				})
+			end,
+			["angularls"] = function()
+				lspconfig["angularls"].setup({
+					capabilities = capabilities,
+					root_dir = require("lspconfig/util").root_pattern(
+						"package.json",
+						"tsconfig.json",
+						"jsconfig.json",
+						".git"
+					),
+				})
+			end
 		})
 	end,
 }

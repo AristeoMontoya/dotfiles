@@ -16,6 +16,10 @@ return {
 			max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
 			tab_size = 18,
 			diagnostics = "nvim_lsp",
+			diagnostics_indicator = function(count, level, _, _)
+				local icon = level:match("error") and " " or " "
+				return " " .. icon .. count
+			end,
 			offsets = { { filetype = "NvimTree", text = "", text_align = "left" } },
 			show_buffer_icons = true, -- disable filetype icons for buffers
 			show_buffer_close_icons = false,
@@ -37,8 +41,14 @@ return {
 				fg = "#abb2bf",
 				bg = "#353b45",
 			},
+			buffer_visible = {
+				bg = "none",
+			},
 			buffer_selected = {
 				fg = "#98c379",
+				bg = "none",
+				bold = true,
+				italic = true,
 			},
 			numbers = {
 				bg = "#353b45",
@@ -68,19 +78,168 @@ return {
 			},
 			separator = {
 				bg = "#353b45",
-				fg = "#353b45",
+				fg = "#98c379",
+			},
+			indicator_visible = {
+				fg = "#98c379",
+				bg = "none",
 			},
 			indicator_selected = {
 				fg = "#98c379",
+				bg = "none"
 			},
 			duplicate = {
 				bg = "#353b45",
+				italic = true,
 			},
 			duplicate_visible = {
 				bg = "#282C34",
 			},
 			duplicate_selected = {
 				bg = "#282C34",
+			},
+			numbers_visible = {
+				-- fg = "<colour-value-here>",
+				bg = "none",
+			},
+			numbers_selected = {
+				-- fg = "<colour-value-here>",
+				bg = "none",
+				bold = true,
+				italic = true,
+			},
+			diagnostic = {
+				-- fg = "<colour-value-here>",
+				bg = "#00ff00",
+			},
+			diagnostic_visible = {
+				-- fg = "<colour-value-here>",
+				bg = "#353b45",
+			},
+			diagnostic_selected = {
+				-- fg = "<colour-value-here>",
+				bg = "none",
+				bold = true,
+				italic = true,
+			},
+			hint_visible = {
+				-- fg = "<colour-value-here>",
+				bg = "none",
+			},
+			hint_selected = {
+				-- fg = "#353b45",
+				bg = "none",
+				bold = true,
+				italic = true,
+			},
+			hint_diagnostic = {
+				fg = "#a6daff",
+				bg = "#353b45",
+			},
+			hint_diagnostic_visible = {
+				bg = "none",
+			},
+			hint_diagnostic_selected = {
+				bg = "none",
+				bold = true,
+				italic = true,
+			},
+			info_visible = {
+				bg = "none",
+			},
+			info_selected = {
+				bg = "none",
+				bold = true,
+				italic = true,
+			},
+			info_diagnostic = {
+				fg = "#56B6C2",
+				bg = "#353b45",
+			},
+			info_diagnostic_visible = {
+				fg = "#56B6C2",
+				bg = "none",
+			},
+			info_diagnostic_selected = {
+				bg = "none",
+				bold = true,
+				italic = true,
+			},
+			warning_visible = {
+				bg = "none",
+			},
+			warning_selected = {
+				bg = "none",
+				bold = true,
+				italic = true,
+			},
+			warning_diagnostic = {
+				fg = "#E5C07B",
+				bg = "#353b45",
+			},
+			warning_diagnostic_visible = {
+				fg = "#E5C07B",
+				bg = "none",
+			},
+			warning_diagnostic_selected = {
+				bg = "none",
+				bold = true,
+				italic = true,
+			},
+			error_visible = {
+				fg = "#E06C75",
+				bg = "none",
+			},
+			error_selected = {
+				bg = "none",
+				bold = true,
+				italic = true,
+			},
+			error_diagnostic = {
+				fg = "#E06C75",
+				bg = "#353b45",
+			},
+			error_diagnostic_visible = {
+				fg = "#E06C75",
+				bg = "none",
+			},
+			error_diagnostic_selected = {
+				bg = "none",
+				bold = true,
+				italic = true,
+			},
+			modified_visible = {
+				bg = "#353b45",
+			},
+			modified_selected = {
+				bg = "none",
+			},
+			separator_selected = {
+				bg = "none",
+			},
+			separator_visible = {
+				bg = "#353b45",
+			},
+			pick_selected = {
+				bg = "none",
+				bold = true,
+				italic = true,
+			},
+			pick_visible = {
+				bg = "none",
+				bold = true,
+				italic = true,
+			},
+			pick = {
+				bg = "#353b45",
+				bold = true,
+				italic = true,
+			},
+			offset_separator = {
+				bg = "#353b45",
+			},
+			trunc_marker = {
+				bg = "red",
 			},
 		},
 	},

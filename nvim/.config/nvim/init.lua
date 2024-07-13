@@ -1,5 +1,5 @@
 require("settings.constants")
-require("settings.general")
+require("settings.general") 
 require("lazy-plugins")
 V.cmd("source ~/.config/nvim/vimscript/autocommands.vim")
 require("settings.keymaps")

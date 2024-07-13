@@ -60,6 +60,7 @@ return {
 
 		-- NvimTree
 		cmd("hi NvimTreeNormal guibg=#1f2228")
+		cmd("hi NvimTreeNormalFloat guibg=#1e2127")
 		cmd("hi NvimTreeCursorLine guibg=#282c34")
 		cmd("hi NvimTreeRootFolder guifg=#C678DD")
 		cmd("hi NvimTreeExecFile guifg=#98c379")
