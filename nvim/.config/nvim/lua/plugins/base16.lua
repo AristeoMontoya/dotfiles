@@ -21,6 +21,9 @@ return {
 		cmd("hi Underlined guifg=None")
 		cmd("hi Error guifg=None guibg=None")
 		cmd("hi vimTSStringSpecial guifg=#c678dd guibg=None")
+		cmd("highlight WinBar guibg=#454C59")
+		cmd("highlight WinBarNC guibg=#454C59")
+		cmd("highlight NormalFloat guibg=none")
 
 		-- GitGutter
 		cmd("hi GitGutterAdd guibg=None guifg=#98c379")
@@ -69,10 +72,10 @@ return {
 		cmd("hi NvimTreeOpenedFile gui=bold guifg=#CFD7E6")
 
 		-- LSP
-		cmd("hi LspDiagnosticsError guibg=#000000")
-		cmd("hi LspDiagnosticsWarning guibg=#000000")
-		cmd("hi LspDiagnosticsInformation guibg=#000000")
-		cmd("hi LspDiagnosticsHint guibg=#000000")
+		-- cmd("hi LspDiagnosticsError guibg=#000000")
+		-- cmd("hi LspDiagnosticsWarning guibg=#000000")
+		-- cmd("hi LspDiagnosticsInformation guibg=#000000")
+		-- cmd("hi LspDiagnosticsHint guibg=#000000")
 
 		-- Illuminate
 		cmd("hi illuminatedWord guibg=#313640")
@@ -81,9 +84,9 @@ return {
 		cmd("hi illuminatedWordText guibg=#313640 gui=none")
 
 		-- Íconos
-		cmd("hi NvimTreeLicenseIcon guibg=#000000")
-		cmd("hi NvimTreeYamlIcon guibg=#000000")
-		cmd("hi NvimTreeTomlIcon guibg=#000000")
+		cmd("hi NvimTreeLicenseIcon guibg=none")
+		cmd("hi NvimTreeYamlIcon guibg=none")
+		cmd("hi NvimTreeTomlIcon guibg=none")
 		cmd("hi NvimTreeFolderIcon guifg=#61AFEF")
 
 		-- Colores de git
@@ -91,7 +94,6 @@ return {
 		cmd("hi NvimTreeGitDirty guifg=#E06C75")
 		cmd("hi NvimTreeGitStaged guifg=#98c379")
 
-		-- cmd("hi NvimTreeGitMerge guibg=#000000")
 		cmd("hi NvimTreeGitRenamed guifg=#C678DD")
 		cmd("hi NvimTreeGitNew guifg=#C678DD")
 		cmd("hi NvimTreeGitDeleted guifg=#E06C75")
@@ -106,6 +108,29 @@ return {
 		-- Svart
 		cmd("highlight SvartMatch guibg=#66D9E8 guifg=#2c323c")
 		cmd("highlight SvartLabel guibg=#C678DD guifg=#2c323c")
+
+		-- dapui
+		-- NC variants are used when not in focus
+		cmd("highlight DapUIStopNC guibg=none")
+		cmd("highlight DapUINormalNC guibg=none")
+		cmd("highlight DapUIFloatNormal guibg=none")
+		cmd("highlight DapUIUnavailableNC guifg=#424242 guibg=none")
+		cmd("highlight DapUIUnavailable guifg=#424242 guibg=none")
+		cmd("highlight DapUIPlayPauseNC guifg=#a9ff68 guibg=#454C59")
+		cmd("highlight DapUIPlayPause guifg=#a9ff68 guibg=#454C59")
+		cmd("highlight DapUIRestartNC guifg=#a9ff68 guibg=#454C59")
+		cmd("highlight DapUIRestart guifg=#a9ff68 guibg=#454C59")
+		cmd("highlight DapUIStopNC guifg=#f70067 guibg=#454C59")
+		cmd("highlight DapUIStop guifg=#f70067 guibg=#454C59")
+		cmd("highlight DapUIStepOverNC guifg=#00f1f5 guibg=#454C59")
+		cmd("highlight DapUIStepOver guifg=#00f1f5 guibg=#454C59")
+		cmd("highlight DapUIStepIntoNC guifg=#00f1f5 guibg=#454C59")
+		cmd("highlight DapUIStepInto guifg=#00f1f5 guibg=#454C59")
+		cmd("highlight DapUIStepBackNC guifg=#00f1f5 guibg=#454C59")
+		cmd("highlight DapUIStepBack guifg=#00f1f5 guibg=#454C59")
+		cmd("highlight DapUIStepOutNC guifg=#00f1f5 guibg=#454C59")
+		cmd("highlight DapUIStepOut guifg=#00f1f5 guibg=#454C59")
+		cmd("highlight DapStoppedLine guibg=#424242")
 
 		-- whichkey
 		cmd("highlight WhichKeySeparator guifg=#61AFEF")

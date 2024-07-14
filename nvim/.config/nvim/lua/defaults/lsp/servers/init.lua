@@ -4,7 +4,6 @@ return {
 	"dockerls",
 	"emmet_ls",
 	"gradle_ls",
-	"groovyls",
 	"html",
 	"jsonls",
 	"tsserver",
@@ -13,4 +12,3 @@ return {
 	"vimls",
 	"lemminx",
 }
-

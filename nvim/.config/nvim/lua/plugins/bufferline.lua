@@ -239,7 +239,8 @@ return {
 				bg = "#353b45",
 			},
 			trunc_marker = {
-				bg = "red",
+				fg = "#61AFEF",
+				bg = "#353b45",
 			},
 		},
 	},

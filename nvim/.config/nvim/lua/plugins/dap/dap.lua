@@ -35,12 +35,23 @@ return {
 			automatic_setup = true,
 		})
 
-		V.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
-		V.fn.sign_define(
+		vim.fn.sign_define(
+			"DapBreakpoint",
+			{ text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" }
+		)
+
+		vim.fn.sign_define(
 			"DapBreakpointCondition",
 			{ text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" }
 		)
-		V.fn.sign_define("DapLogPoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+		vim.fn.sign_define(
+			"DapLogPoint",
+			{ text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" }
+		)
+		vim.fn.sign_define(
+			"DapStopped",
+			{ text = "→", texthl = "DiagnosticVirtualTextHint", linehl = "DapStoppedLine", numhl = "" }
+		)
 
 		dap.listeners.after.event_initialized["dapui_config"] = function()
 			dapui.open()
