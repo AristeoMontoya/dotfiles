@@ -5,6 +5,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/lazydev.nvim", opts = {} },
+		-- { "nvim-java/nvim-java", opts = {} },
 	},
 	config = function()
 		-- import lspconfig plugin
@@ -43,7 +44,7 @@ return {
 				keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
 
 				opts.desc = "See available code actions"
-				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+				keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
 				opts.desc = "Smart rename"
 				keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts) -- smart rename
@@ -90,6 +91,20 @@ return {
 			cmd = { "ccls" },
 			filetypes = { "cpp", "c" },
 			root_dir = require("lspconfig/util").root_pattern("compile_commands.json", ".ccls", ".git"),
+		})
+
+		lspconfig["jdtls"].setup({
+			handlers = {
+				-- By assigning an empty function, you can remove the notifications
+				-- printed to the cmd
+				["$/progress"] = function(_, result, ctx) end,
+			},
+			jdk = {
+				auto_install = false
+			},
+			java_test = {
+				enable = false
+			}
 		})
 
 		mason_lspconfig.setup_handlers({
