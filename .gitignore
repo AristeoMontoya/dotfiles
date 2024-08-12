@@ -19,3 +19,4 @@ navi/.config/navi/local/*
 !navi/.config/navi/local/.gitkeep
 tmux/.config/tmux/plugins
 nvim/.config/nvim/lazy-lock.json
+zsh/.config/iterm2
