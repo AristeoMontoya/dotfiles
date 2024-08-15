@@ -23,7 +23,7 @@ return {
 		cmd("hi vimTSStringSpecial guifg=#c678dd guibg=None")
 		cmd("highlight WinBar guibg=#454C59")
 		cmd("highlight WinBarNC guibg=#454C59")
-		cmd("highlight NormalFloat guibg=none")
+		cmd("highlight NormalFloat guibg=#1f2228")
 
 		-- GitGutter
 		cmd("hi GitGutterAdd guibg=None guifg=#98c379")

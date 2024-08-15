@@ -59,7 +59,7 @@ return {
 			end
 
 			-- Navigation
-			map("n", "]]", function()
+			map("n", "]h", function()
 				if V.wo.diff then
 					vim.cmd.normal({ "]]", bang = true })
 				else
@@ -67,7 +67,7 @@ return {
 				end
 			end)
 
-			map("n", "[[", function()
+			map("n", "[h", function()
 				if V.wo.diff then
 					vim.cmd.normal({ "[[", bang = true })
 				else
