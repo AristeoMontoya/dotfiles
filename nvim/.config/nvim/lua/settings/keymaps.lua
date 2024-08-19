@@ -9,22 +9,25 @@ local function is_text_buffer(pressed_key)
 	end
 end
 
+-- General keymaps
+map("n", "<leader>h", ":noh<CR>", { noremap = true, silent = true, desc = "Remove buffer highlighting" })
+
 -- Go to previous file
-map("n", "<C-a", ":e#<CR>", {noremap = true, silent = true, desc = "Return to previous file"})
+map("n", "<C-a>", ":e#<CR>", { noremap = true, silent = true, desc = "Return to previous file" })
 
 -- Center buffer after next occurrence
-map("n", "n", "nzz", {noremap = true, silent = true, desc = "Go to next occurrence"})
-map("n", "N", "Nzz", {noremap = true, silent = true, desc = "Go to previous occurrence"})
+map("n", "n", "nzz", { noremap = true, silent = true, desc = "Go to next occurrence" })
+map("n", "N", "Nzz", { noremap = true, silent = true, desc = "Go to previous occurrence" })
 
 -- Center buffer after page movement
-map("n", "<C-d>", "<C-d>zz", {noremap = true, silent = true, desc = "Page down"})
-map("n", "<C-u>", "<C-u>zz", {noremap = true, silent = true, desc = "Page up"})
+map("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true, desc = "Page down" })
+map("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true, desc = "Page up" })
 
 -- Center after joining lines
-map("n", "J", "mzJ`z", {noremap = true, silent = true, desc = "Join lines"})
+map("n", "J", "mzJ`z", { noremap = true, silent = true, desc = "Join lines" })
 
 -- Copy to the end of line
-map("n", "Y", "y$", {noremap = true, silent = true, desc = "Copy until end of line"})
+map("n", "Y", "y$", { noremap = true, silent = true, desc = "Copy until end of line" })
 
 -- Split movements
 setmap("n", "<A-h>", require("smart-splits").move_cursor_left)
@@ -46,27 +49,27 @@ setmap("n", "<leader><leader>k", require("smart-splits").swap_buf_up)
 setmap("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
 
 -- Split creation
-map("n", "<leader>sh", ":split<CR>", {noremap = true, silent = true, desc = "Horizontal split"})
-map("n", "<leader>sv", ":vs<CR>", {noremap = true, silent = true, desc = "Vertical split"})
+map("n", "<leader>sh", ":split<CR>", { noremap = true, silent = true, desc = "Horizontal split" })
+map("n", "<leader>sv", ":vs<CR>", { noremap = true, silent = true, desc = "Vertical split" })
 
 -- Split rotation
-map("n", "<leader>sr", "<C-W>R", {noremap = true, silent = true, desc = "Rotate splits"})
+map("n", "<leader>sr", "<C-W>R", { noremap = true, silent = true, desc = "Rotate splits" })
 
 -- Split to tab
-map("n", "<leader>st", "<C-W>T", {noremap = true, silent = true, desc = "Split into tabs"})
+map("n", "<leader>st", "<C-W>T", { noremap = true, silent = true, desc = "Split into tabs" })
 
 -- Save buffer
-map("n", "<C-s>", ":w<CR>", {noremap = true, silent = true, desc = "Save buffer"})
+map("n", "<C-s>", ":w<CR>", { noremap = true, silent = true, desc = "Save buffer" })
 
 -- Close buffer
-map("n", "<leader>bk", ":bd<CR>", {noremap = true, silent = true, desc = "Close buffer"})
+map("n", "<leader>bk", ":bd<CR>", { noremap = true, silent = true, desc = "Close buffer" })
 
 -- Alternate buffer
-map("n", "<tab>", ":bnext<CR>", {noremap = true, silent = true, desc = "Go to next buffer"})
-map("n", "<S-tab>", ":bprevious<CR>", {noremap = true, silent = true, desc = "Go to previous buffer"})
+map("n", "<tab>", ":bnext<CR>", { noremap = true, silent = true, desc = "Go to next buffer" })
+map("n", "<S-tab>", ":bprevious<CR>", { noremap = true, silent = true, desc = "Go to previous buffer" })
 
 -- Jump to previous buffer
-map("n", "<C-a>", "<C-^>", {noremap = true, silent = true, desc = "Go to last buffer"})
+map("n", "<C-a>", "<C-^>", { noremap = true, silent = true, desc = "Go to last buffer" })
 
 -- Disable arrow keys
 map("n", "<left>", "<nop>", {})
@@ -91,33 +94,43 @@ setmap("i", "<down>", function()
 end, { expr = true })
 
 -- Keep visual mode during indenting
-map("v", "<", "<gv", {noremap = true, silent = true, desc = "Decrease indentations"})
-map("v", ">", ">gv", {noremap = true, silent = true, desc = "Increase indentation"})
+map("v", "<", "<gv", { noremap = true, silent = true, desc = "Decrease indentations" })
+map("v", ">", ">gv", { noremap = true, silent = true, desc = "Increase indentation" })
 
 -- Spells
-map("n", "<leader>vs", ":setlocal spell spelllang=es_mx<CR>", { noremap = true, desc = "Enable spellcheck for spanish"})
-map("n", "<leader>ve", ":setlocal spell spelllang=en_us<CR>", { noremap = true, desc = "Enable spellcheck for english"})
-map("n", "<leader>vn", ":setlocal nospell<CR>", {noremap = true, silent = true, desc = "Disable spellcheck"})
+map(
+	"n",
+	"<leader>vs",
+	":setlocal spell spelllang=es_mx<CR>",
+	{ noremap = true, desc = "Enable spellcheck for spanish" }
+)
+map(
+	"n",
+	"<leader>ve",
+	":setlocal spell spelllang=en_us<CR>",
+	{ noremap = true, desc = "Enable spellcheck for english" }
+)
+map("n", "<leader>vn", ":setlocal nospell<CR>", { noremap = true, silent = true, desc = "Disable spellcheck" })
 
 -- Telescope
-map("n", "<leader>ff", ":Telescope find_files<CR>", {noremap = true, silent = true, desc = "Find files"})
-map("n", "<leader>fg", ":Telescope live_grep<CR>", {noremap = true, silent = true, desc = "Find grep"})
-map("n", "<leader>fb", ":Telescope buffers<CR>", {noremap = true, silent = true, desc = "Find buffers"})
-map("n", "<leader>fh", ":Telescope help_tags<CR>", {noremap = true, silent = true, desc = "Find help"})
+map("n", "<leader>ff", ":Telescope find_files<CR>", { noremap = true, silent = true, desc = "Find files" })
+map("n", "<leader>fg", ":Telescope live_grep<CR>", { noremap = true, silent = true, desc = "Find grep" })
+map("n", "<leader>fb", ":Telescope buffers<CR>", { noremap = true, silent = true, desc = "Find buffers" })
+map("n", "<leader>fh", ":Telescope help_tags<CR>", { noremap = true, silent = true, desc = "Find help" })
 
 -- NvimTree
-map("n", "<leader>fe", ":NvimTreeToggle<CR>", {noremap = true, silent = true, desc = "Open file tree"})
+map("n", "<leader>fe", ":NvimTreeToggle<CR>", { noremap = true, silent = true, desc = "Open file tree" })
 
 -- Trouble
-map("n", "<leader>ld", ":TroubleToggle<CR>", {noremap = true, silent = true, desc = "Open diagnostics"})
+map("n", "<leader>ld", ":TroubleToggle<CR>", { noremap = true, silent = true, desc = "Open diagnostics" })
 
 -- Svart
-map("n", "s", ":Svart<CR>", {noremap = true, silent = true, desc = "Jump to search"})
-map("n", "S", ":SvartRegex<CR>", {noremap = true, silent = true, desc = "Jump to RegEx"})
-map("n", "gs", ":SvartRepeat<CR>", {noremap = true, silent = true, desc = "Repeat last jump"})
+map("n", "s", ":Svart<CR>", { noremap = true, silent = true, desc = "Jump to search" })
+map("n", "S", ":SvartRegex<CR>", { noremap = true, silent = true, desc = "Jump to RegEx" })
+map("n", "gs", ":SvartRepeat<CR>", { noremap = true, silent = true, desc = "Repeat last jump" })
 
 -- Luasnip choice nodes
-map("i", "<C-n>", "<Plug>luasnip-next-choice", {noremap = true, silent = true, desc = "Go to next Luasnip node"})
-map("s", "<C-n>", "<Plug>luasnip-next-choice", {noremap = true, silent = true, desc = "Go to next Luasnip node"})
-map("i", "<C-p>", "<Plug>luasnip-prev-choice", {noremap = true, silent = true, desc = "Go to last Luasnip node"})
-map("s", "<C-p>", "<Plug>luasnip-prev-choice", {noremap = true, silent = true, desc = "Go to last Luasnip node"})
+map("i", "<C-n>", "<Plug>luasnip-next-choice", { noremap = true, silent = true, desc = "Go to next Luasnip node" })
+map("s", "<C-n>", "<Plug>luasnip-next-choice", { noremap = true, silent = true, desc = "Go to next Luasnip node" })
+map("i", "<C-p>", "<Plug>luasnip-prev-choice", { noremap = true, silent = true, desc = "Go to last Luasnip node" })
+map("s", "<C-p>", "<Plug>luasnip-prev-choice", { noremap = true, silent = true, desc = "Go to last Luasnip node" })
