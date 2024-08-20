@@ -18,3 +18,5 @@ export GPG_TTY=$(tty)
 
 # For QT Themes
 export QT_QPA_PLATFORMTHEME=qt5ct
+
+export STARSHIP_CONFIG=~/.config/starship/starship.toml

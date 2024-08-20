@@ -1,0 +1,68 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$username\
+$hostname\
+$localip\
+$kubernetes\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$docker_context\
+$package\
+$cmake\
+$cobol\
+$helm\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$php\
+$gcloud\
+$openstack\
+$direnv\
+$env_var\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$jobs\
+$battery\
+$time\
+$status\
+$container\
+$shell\
+$fill\
+$aws\
+$python\
+$java\
+$line_break\
+$character"""
+
+# Inserts a blank line between shell prompts
+add_newline = true
+fill.symbol = " "
+
+[character]
+success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+error_symbol = "[➜](bold red)"
+
+[git_branch]
+symbol = " "
+format = "on [$symbol$branch(:$remote_branch)]($style) "
+
+[python]
+symbol = " "
+format = "[${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style)"
+
+[java]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[directory]
+truncation_symbol = "…/"

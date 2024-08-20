@@ -55,7 +55,6 @@ unsetopt nullglob
 zsh_add_file "zsh-exports"
 zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-aliases"
-zsh_add_file "zsh-prompt"
 zsh_add_file "zsh-widgets"
 zsh_add_file "zsh-lazy-load"
 zsh_add_file "zsh-fzf"
@@ -94,4 +93,11 @@ fi
 if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
 	tmux attach || tmux new-session
 fi
+
+if [ $commands[starship] ]; then
+	eval "$(starship init zsh)"
+else
+	zsh_add_file "zsh-prompt"
+fi
+
 # zprof
