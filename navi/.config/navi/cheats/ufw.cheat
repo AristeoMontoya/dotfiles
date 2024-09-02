@@ -6,6 +6,9 @@ sudo ufw allow <port>
 # Allow firewall port with comments
 sudo ufw allow <port> comment "<comment>"
 
+# Allow firewall port with comments from ip range
+sudo ufw allow from <ip> to any port <port>
+
 # Show rules
 sudo ufw show added
 

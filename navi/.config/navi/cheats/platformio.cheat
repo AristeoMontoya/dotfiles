@@ -1,0 +1,24 @@
+% pio,platformio
+# Initialize a vim project
+pio project init --ide vim --board <board>
+
+# Search a library
+pio pkg search <query>
+
+# Install a library
+pio pkg install <library>
+
+# search boards
+pio boards <query>
+
+# Add board to project
+pio init --board <board>
+
+# List connected devices
+pio device list
+
+# Connect to serial monitor
+pio device monitor
+
+$board: pio boards --json-output | jq '.[].id'
+$platform: pio boards | grep -Po "(?<=Platform: ).*"
