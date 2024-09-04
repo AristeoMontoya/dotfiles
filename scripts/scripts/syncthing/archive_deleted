@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+
+versionspath=~/archive
+
+folderpath="$1"
+syncpath=$(basename "$folderpath")
+filepath="$2"
+
+# First ensure the dir where we need to store the file exists
+outpath=$(dirname "$versionspath/$syncpath/$filepath")
+mkdir -p "$outpath"
+
+# Then move the file there
+mv -f "$folderpath/$filepath" "$versionspath/$syncpath/$filepath"
