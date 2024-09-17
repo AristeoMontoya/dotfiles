@@ -6,7 +6,7 @@ return {
 	"gradle_ls",
 	"html",
 	"jsonls",
-	"tsserver",
+	"ts_ls",
 	"lua_ls",
 	"pyright",
 	"vimls",
