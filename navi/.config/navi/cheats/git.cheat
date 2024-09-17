@@ -24,6 +24,12 @@ git filter-branch --index-filter 'git rm -rf --cached --ignore-unmatch path_to_f
 # Remove commits from branch
 git rebase -i <commit> # Pick one commit prior to the target
 
+# Ignore future changes for a file
+git update-index --skip-worktree <file>
+
+# Ignore future changes for a file
+git update-index --no-skip-worktree <file>
+
 % git, stash
 @ git
 
