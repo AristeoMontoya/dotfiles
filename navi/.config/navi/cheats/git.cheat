@@ -3,7 +3,7 @@
 $ branch: git branch | awk '{print $NF}'
 $ remote_branch: git branch -r | awk '{print $NF}'
 $ commit: git log --oneline
-$ file: find . -regex '.*' --- --multi
+$ file: find . -regex '.*' --- --multi --expand
 $ stash: git stash list --- --delimiter ':' --column 1
 
 # Change branch
