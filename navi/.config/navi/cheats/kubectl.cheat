@@ -1,0 +1,16 @@
+% kubernetes
+
+# Get available namespaces
+kubectl get namespaces
+
+# Get deployments for namespace
+kubectl get deployments -n <namespace>
+
+# Edit deployment for namespace
+kubect edit deployments/<deployments> -n <namespace>
+
+# Recycle pods from a namespace
+kubectl rollout restart deployment <deployments> -n <namespace>
+
+$ namespace: kubectl get namespaces --- --header 1 --column 1
+$ deployments: kubectl get deployments -n <namespace> --no-headers --- --multi --column 1 --expand

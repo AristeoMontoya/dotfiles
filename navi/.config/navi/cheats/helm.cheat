@@ -1,0 +1,6 @@
+% helm,kubernetes
+
+# List history for a namespace
+helm history <namespace> -n <namespace>
+
+$ namespace: kubectl get namespaces --- --headers 1 --column 1
