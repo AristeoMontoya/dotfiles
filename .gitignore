@@ -20,3 +20,9 @@ navi/.config/navi/local/*
 tmux/.config/tmux/plugins
 nvim/.config/nvim/lazy-lock.json
 zsh/.config/iterm2
+
+nvim/.config/nvim/lua/user/overrides/treesitter/init.lua
+nvim/.config/nvim/lua/user/overrides/lsp/init.lua
+nvim/.config/nvim/lua/user/overrides/linters/init.lua
+nvim/.config/nvim/lua/user/overrides/formatters/init.lua
+nvim/.config/nvim/lua/user/overrides/dap/init.lua
