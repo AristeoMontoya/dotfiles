@@ -5,14 +5,14 @@ return {
 	},
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		local overrides_ok, overrides = pcall(require, "user.treesitter.overrides")
+		local overrides_ok, overrides = pcall(require, "user.overrides.treesitter")
 		local filter_ok, filter = pcall(require, "utils.filter_tables")
 
 		local defaults = require("defaults.treesitter.default_parsers")
 		local ensure_installed = {}
 
 		if overrides_ok and filter_ok then
-			ensure_installed = filter(defaults, overrides.ignored)
+			ensure_installed = filter(defaults, overrides)
 		else
 			ensure_installed = defaults
 		end

@@ -12,12 +12,46 @@ return {
 		local mason_lspconfig = require("mason-lspconfig")
 		local mason_tool_installer = require("mason-tool-installer")
 
-		-- Load pre-defined servers
-		local lsp_servers = require("defaults.lsp.servers")
+		-- Load pre-defined servers, linters, formatters and debuggers
+		local default_servers = require("defaults.lsp.servers")
 		local linters = require("defaults.lsp.linters")
 		local formatters = require("defaults.lsp.formatters")
 		local debuggers = require("defaults.dap")
-		local linters_debuggers_and_formatters = vim.tbl_deep_extend("keep", linters, formatters, debuggers)
+
+		-- Load user defined overrides
+		-- Some devices are not compatible with my defaults.
+		local lsp_overrides_ok, lsp_overrides = pcall(require, "user.overrides.lsp")
+		local linters_overrides_ok, linters_overrides = pcall(require, "user.overrides.linters")
+		local formatters_overrides_ok, formatters_overrides = pcall(require, "user.overrides.formatters")
+		local debuggers_overrides_ok, debuggers_overrides = pcall(require, "user.overrides.dap")
+		local filter_ok, filter = pcall(require, "utils.filter_tables")
+
+		local ensure_lsp_installed = {}
+		local ensure_installed_tools = {}
+
+		if filter_ok then
+			if lsp_overrides_ok then
+				ensure_lsp_installed = filter(default_servers, lsp_overrides)
+			else
+				ensure_lsp_installed = default_servers
+			end
+
+			if linters_overrides_ok then
+				linters = filter(linters, linters_overrides)
+			end
+
+			if formatters_overrides_ok then
+				formatters = filter(formatters, formatters_overrides)
+			end
+
+			if debuggers_overrides_ok then
+				debuggers = filter(debuggers, debuggers_overrides)
+			end
+		end
+
+		for _, tool in pairs({linters, formatters, debuggers}) do
+			vim.list_extend(ensure_installed_tools, tool)
+		end
 
 		-- enable mason and configure icons
 		-- Mason complains if the setup method isn't called
@@ -34,11 +68,11 @@ return {
 
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
-			ensure_installed = lsp_servers,
+			ensure_installed = ensure_lsp_installed,
 		})
 
 		mason_tool_installer.setup({
-			ensure_installed = linters_debuggers_and_formatters,
+			ensure_installed = ensure_installed_tools,
 		})
 	end,
 }
