@@ -40,6 +40,9 @@ return {
 		opts.desc = "Run to cursor"
 		keymap.set("n", "<leader>dr", "<cmd>lua require'dap'.run_to_cursor()<cr>", opts)
 
+		opts.desc = "Jump cursor to execution point"
+		keymap.set("n", "<leader>dR", "<cmd>lua require'dap'.focus_frame()<cr>", opts)
+
 		opts.desc = "Run last"
 		keymap.set("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 
@@ -48,6 +51,9 @@ return {
 
 		opts.desc = "DAP exit"
 		keymap.set("n", "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>", opts)
+
+		opts.desc = "Evaluate expression under cursor"
+		keymap.set("n", "<leader>dE", "<cmd>lua require'dapui'.eval()<cr>", opts)
 
 		return {
 			controls = {
