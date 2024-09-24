@@ -12,42 +12,42 @@ return {
 		local opts = { silent = true }
 
 		opts.desc = "Toggle breakpoint"
-		keymap.set("n", "Db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
+		keymap.set("n", "db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
 
 		opts.desc = "Set conditional breakpoint"
-		keymap.set("n", "De", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", opts)
+		keymap.set("n", "de", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", opts)
 
 		opts.desc = "Set logpoint"
 		keymap.set(
 			"n",
-			"Dp",
+			"dp",
 			"<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>",
 			opts
 		)
 
 		opts.desc = "Step continue"
-		keymap.set("n", "<leader>Dc", "<cmd>lua require'dap'.continue()<cr>", opts)
+		keymap.set("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
 
 		opts.desc = "Step into"
-		keymap.set("n", "<leader>Di", "<cmd>lua require'dap'.step_into()<cr>", opts)
+		keymap.set("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
 
 		opts.desc = "Step over"
-		keymap.set("n", "<leader>Do", "<cmd>lua require'dap'.step_over()<cr>", opts)
+		keymap.set("n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", opts)
 
 		opts.desc = "Step out"
-		keymap.set("n", "<leader>DO", "<cmd>lua require'dap'.step_out()<cr>", opts)
+		keymap.set("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", opts)
 
-		opts.desc = "Toggle repl"
-		keymap.set("n", "<leader>Dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
+		opts.desc = "Run to cursor"
+		keymap.set("n", "<leader>dr", "<cmd>lua require'dap'.run_to_cursor()<cr>", opts)
 
 		opts.desc = "Run last"
-		keymap.set("n", "<leader>Dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
+		keymap.set("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 
-		opts.desc = "Toggle DAP UI"
-		keymap.set("n", "<leader>Du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
+		opts.desc = "Toggle DAP Ui"
+		keymap.set("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 
 		opts.desc = "DAP exit"
-		keymap.set("n", "<leader>Dx", "<cmd>lua require'dap'.terminate()<cr>", opts)
+		keymap.set("n", "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
 		return {
 			controls = {

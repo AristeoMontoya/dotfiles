@@ -26,6 +26,9 @@ require("lazy").setup({
 		{
 			import = "plugins.dap",
 		},
+		{
+			import = "plugins.ui"
+		}
 	},
 	checker = {
 		enabled = true,

@@ -105,9 +105,9 @@ return {
 		cmd("highlight DiagnosticError guifg=#E06C75")
 		cmd("highlight DiagnosticWarn guifg=#e5c07b")
 
-		-- Svart
-		cmd("highlight SvartMatch guibg=#66D9E8 guifg=#2c323c")
-		cmd("highlight SvartLabel guibg=#C678DD guifg=#2c323c")
+		-- Flash
+		cmd("highlight FlashMatch guibg=#66D9E8 guifg=#2c323c")
+		cmd("highlight FlashLabel guibg=#C678DD guifg=#2c323c")
 
 		-- dapui
 		-- NC variants are used when not in focus
