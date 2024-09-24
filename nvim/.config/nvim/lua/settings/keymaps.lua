@@ -10,6 +10,7 @@ local function is_text_buffer(pressed_key)
 end
 
 -- General keymaps
+map("n", " ", "<nop>", { noremap = true, silent = true, desc = "Disable space for normal mode" })
 map("n", "<leader>h", ":noh<CR>", { noremap = true, silent = true, desc = "Remove buffer highlighting" })
 
 -- Go to previous file
