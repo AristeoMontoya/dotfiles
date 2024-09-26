@@ -34,7 +34,7 @@ git update-index --no-skip-worktree <file>
 git submodule add <submodule_name>
 
 # Initialize submodules
-submodule update --init --recursive
+git submodule update --init --recursive
 
 % git, stash
 @ git
