@@ -30,6 +30,12 @@ git update-index --skip-worktree <file>
 # Ignore future changes for a file
 git update-index --no-skip-worktree <file>
 
+# Add a git submodule
+git submodule add <submodule_name>
+
+# Initialize submodules
+submodule update --init --recursive
+
 % git, stash
 @ git
 
