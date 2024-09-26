@@ -6,7 +6,7 @@ pio project init --ide vim --board <board>
 pio pkg search <query>
 
 # Install a library
-pio pkg install <library>
+pio pkg install -l <library>
 
 # search boards
 pio boards <query>
@@ -22,3 +22,4 @@ pio device monitor
 
 $board: pio boards --json-output | jq '.[].id'
 $platform: pio boards | grep -Po "(?<=Platform: ).*"
+$library: pio pkg search <query> | awk -v RS= 'NR > 1 {printf("%s\t", $1)} NR > 1 {for (i=2 ; i<=NF ; i++) printf "%s%s", $i, (i < NF ? OFS : ORS)}' --- --column 1 --delimiter '\t'
