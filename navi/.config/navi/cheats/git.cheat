@@ -5,6 +5,7 @@ $ remote_branch: git branch -r | awk '{print $NF}'
 $ commit: git log --oneline
 $ file: find . -regex '.*' --- --multi --expand
 $ stash: git stash list --- --delimiter ':' --column 1
+$ tag: git tag -l
 
 # Change branch
 git checkout <branch>
@@ -65,6 +66,9 @@ git tag -n
 
 ## Create a new annotated tag
 git tag -a <tag-name> -m "<annotation>"
+
+## Push tag to remote
+git push origin tag <tag>
 
 % git, signing
 @ git
