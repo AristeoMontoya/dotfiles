@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Get existing sessions with a space and asterisk at the end
-existing_sessions=$(tmux list-sessions | awk -F ':' '{print $1 " *"}')
+# Get existing sessions with an asterisk at the start
+existing_sessions=$(tmux list-sessions | awk -F ':' '{print "*"$1}')
 session_dir="$HOME/.config/tmux/session-scripts/"
 
 # Determine the correct realpath command based on OS
@@ -25,31 +25,44 @@ else
     session_options=$(printf "%s\n%s" "$scripts" "$existing_sessions" | sort)
 fi
 
-# Add a kill session option
-session_options+="\nKill Session"
+# Add a kill session option and paint it red
+session_options+="\n\033[31mKill Current Session\033[0m"
 
 # Color existing sessions blue
-session_options=$(echo -e "$session_options" | awk '/ \*$/ {printf "\033[1;34m%s\033[0m\n", $0; next} {print}')
+session_options=$(echo -e "$session_options" | awk '/^\*/ {printf "\033[1;34m%s\033[0m\n", $0; next} {print}')
 
 # Prompt for session selection
-session=$(printf "%s" "$session_options" | fzf --ansi --header="Pick a session or 'Kill Session'" | awk '{print $1}') # Get the first field
+session=$(printf "%s" "$session_options" | fzf --ansi --header="Pick a session or 'Kill Current Session'" | awk '{print $1}') # Get the first field
 
 # Debugging: Print the selected session name
 echo "Selected option: '$session'"
 
 # Handle session switching or attachment
 if [[ "$session" == "Kill" ]]; then
-    # Confirm kill action
-    read -p "Are you sure you want to kill the session? (y/n): " confirm
-    if [[ "$confirm" == [yY] ]]; then
-        tmux kill-session -t "$session_name"
-        echo "Session '$session_name' killed."
+    # Kill the current session
+    current_session=$(tmux display-message -p '#S')
+    if tmux has-session -t "$current_session" 2>/dev/null; then
+        tmux kill-session -t "$current_session"
+        echo "Session '$current_session' killed."
+    else
+        echo "No such session: '$current_session'."
     fi
 elif [ -n "$session" ]; then
-    session_name="${session##*/}"
+    # Keep the full path for running the script
+    script_path="$session_dir/$session" # Construct the full script path
+
+    # Extract the session name for tmux
+    session_name="${session##*/}"  # Get the session name without the asterisk or path
+    session_name="${session_name//env\//}" # Remove "env/" prefix for display
+
     if ! tmux has-session -t "$session_name" 2>/dev/null; then
-        "$session_dir/$session"
+        if [ -f "$script_path" ]; then
+            "$script_path" # Run the script if it exists
+        else
+            echo "Can't find session script: '$script_path'."
+        fi
     fi
+    
     if [ -n "$TMUX" ]; then
         tmux switch -t "$session_name"
     else
