@@ -18,15 +18,8 @@ while IFS= read -r line; do
     fi
 done <<< "$scripts"
 
-# Prepare session options
-if [ -z "$scripts" ]; then
-    session_options=$(printf "%s" "$existing_sessions" | sort)
-else
-    session_options=$(printf "%s\n%s" "$scripts" "$existing_sessions" | sort)
-fi
-
-# Add a kill session option and paint it red
-session_options+="\n\033[31mKill Current Session\033[0m"
+# Prepare session options with existing sessions first, scripts in the middle, and the kill option last
+session_options=$(printf "%s\n%s\n\033[31mKill Current Session\033[0m" "$existing_sessions" "$scripts")
 
 # Color existing sessions blue
 session_options=$(echo -e "$session_options" | awk '/^\*/ {printf "\033[1;34m%s\033[0m\n", $0; next} {print}')
