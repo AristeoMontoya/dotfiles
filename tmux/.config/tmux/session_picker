@@ -19,30 +19,37 @@ while IFS= read -r line; do
 done <<< "$scripts"
 
 # Prepare session options with existing sessions first, scripts in the middle, and the kill option last
-session_options=$(printf "%s\n%s\n\033[31mKill Current Session\033[0m" "$existing_sessions" "$scripts")
+session_options=$(printf "%s\n%s\n\033[31mKill Session\033[0m" "$existing_sessions" "$scripts")
 
 # Color existing sessions blue
 session_options=$(echo -e "$session_options" | awk '/^\*/ {printf "\033[1;34m%s\033[0m\n", $0; next} {print}')
 
 # Prompt for session selection
-session=$(printf "%s" "$session_options" | fzf --ansi --header="Pick a session or 'Kill Current Session'" | awk '{print $1}') # Get the first field
+session=$(printf "%s" "$session_options" | fzf --ansi --header="Pick a session or 'Kill Session'")
 
 # Debugging: Print the selected session name
 echo "Selected option: '$session'"
 
 # Handle session switching or attachment
-if [[ "$session" == "Kill" ]]; then
-    # Kill the current session
-    current_session=$(tmux display-message -p '#S')
-    # Prompt for confirmation
-    printf "Kill session \033[33m$current_session\033[0m? (y/n): "
-    read -r confirm
-    if [[ "$confirm" == [yY] ]]; then
-        if tmux has-session -t "$current_session" 2>/dev/null; then
-            tmux kill-session -t "$current_session"
-            echo "Session '$current_session' killed."
-        else
-            echo "No such session: '$current_session'."
+if [[ "$session" == "Kill Session" ]]; then
+    # Prompt for sessions to kill
+    sessions_to_kill=$(printf "%s" "$existing_sessions" | fzf --multi --header="Select sessions to kill")
+    
+    if [ -n "$sessions_to_kill" ]; then
+        # Prepare a confirmation message
+        session_names=$(echo "$sessions_to_kill" | awk '{print $1}' | sed 's/^\*//') # Remove asterisks for display
+        session_names_list=$(echo "$session_names" | tr '\n' ', ' | sed 's/, $//; s/,/, /g' | sed 's/, $//')
+
+        printf "Kill session(s): \033[33m%s\033[0m? (y/n): " "$session_names_list"
+        
+        read -r confirm
+        if [[ "$confirm" == [yY] ]]; then
+            # Kill selected sessions
+            while IFS= read -r line; do
+                session_name="${line//\* /}"  # Remove the asterisk and space
+                tmux kill-session -t "$session_name"
+                echo "Session '$session_name' killed."
+            done <<< "$sessions_to_kill"
         fi
     fi
 elif [ -n "$session" ]; then
