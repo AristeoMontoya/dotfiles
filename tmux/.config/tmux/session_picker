@@ -41,11 +41,16 @@ echo "Selected option: '$session'"
 if [[ "$session" == "Kill" ]]; then
     # Kill the current session
     current_session=$(tmux display-message -p '#S')
-    if tmux has-session -t "$current_session" 2>/dev/null; then
-        tmux kill-session -t "$current_session"
-        echo "Session '$current_session' killed."
-    else
-        echo "No such session: '$current_session'."
+    # Prompt for confirmation
+    printf "Kill session \033[33m$current_session\033[0m? (y/n): "
+    read -r confirm
+    if [[ "$confirm" == [yY] ]]; then
+        if tmux has-session -t "$current_session" 2>/dev/null; then
+            tmux kill-session -t "$current_session"
+            echo "Session '$current_session' killed."
+        else
+            echo "No such session: '$current_session'."
+        fi
     fi
 elif [ -n "$session" ]; then
     # Keep the full path for running the script
