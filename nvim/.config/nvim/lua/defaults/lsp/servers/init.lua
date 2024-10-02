@@ -10,5 +10,6 @@ return {
 	"lua_ls",
 	"pyright",
 	"vimls",
-	"lemminx"
+	"lemminx",
+	"gopls"
 }
