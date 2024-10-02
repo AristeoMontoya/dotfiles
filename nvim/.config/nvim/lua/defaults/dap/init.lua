@@ -1,4 +1,5 @@
 return {
 	"debugpy",
-	"js-debug-adapter"
+	"js-debug-adapter",
+	"go-debug-adapter",
 }
