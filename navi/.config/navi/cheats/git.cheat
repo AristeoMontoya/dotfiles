@@ -55,6 +55,9 @@ git stash branch <branch>
 # Create branch from specific stash
 git stash branch <new_branch> <stash>
 
+# Create an annotated stash
+git stash push -m "<stash_name>"
+
 # Apply a stash
 git stash apply <stash>
 
