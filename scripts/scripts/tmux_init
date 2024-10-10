@@ -1,0 +1,2 @@
+#!/usr/bin/sh
+/bin/tmux new-session -s scratch -d
