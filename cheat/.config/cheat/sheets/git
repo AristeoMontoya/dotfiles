@@ -32,6 +32,9 @@ git stash branch <branch>
 ## Create branch from specific stash
 git stash branch <branch> stash@{<stash>}
 
+## Create an annotated stash
+git stash push -m "<message>"
+
 # Tags
 ## List tags
 git tag -l

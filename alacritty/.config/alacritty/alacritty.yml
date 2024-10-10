@@ -56,3 +56,6 @@ colors:
     magenta: "0xE48AFF"
     cyan: "0x66D9E8"
     white: "0xCFD7E6"
+
+key_bindings:
+  - { key: ñ, mods: Alt, chars: "\x1bñ" }

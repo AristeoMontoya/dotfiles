@@ -40,13 +40,8 @@ family = "JetBrainsMono NFM"
 [font.normal]
 family = "JetBrainsMono NFM"
 
-[[keyboard.bindings]]
-chars = "\u001Bñ"
-key = "ñ"
-mods = "Alt"
-
 [shell]
-args = ["-l", "-c", "tmux attach || exec tmux"]
+args = ["-l", "-c", '''tmux attach || exec tmux''']
 program = "zsh"
 
 [window]

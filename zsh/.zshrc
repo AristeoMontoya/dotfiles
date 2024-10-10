@@ -79,6 +79,7 @@ bindkey "^j" down-line-or-beginning-search # Down
 bindkey -r "^u"
 bindkey -r "^d"
 bindkey '^p' fzf-bookmarks
+bindkey '^[ñ' '^[l'  # Map Ctrl-ñ to Ctrl-l
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
