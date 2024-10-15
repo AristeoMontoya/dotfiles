@@ -19,6 +19,9 @@ git checkout <commit> -- <file>
 # Remove file from staging
 git reset HEAD <file>
 
+# List modified files between branches
+git diff --name-status <branch1> <branch2>
+
 # Remove file from git history in current branch
 git filter-branch --index-filter 'git rm -rf --cached --ignore-unmatch <file>' HEAD
 
