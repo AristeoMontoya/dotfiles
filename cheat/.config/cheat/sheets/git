@@ -61,3 +61,7 @@ git config --global gpg.format ssh
 
 ### Pick which ssh key to use
 git config --global user.signingkey <path-to-pub-key>
+
+# Diffs
+## List modified files between branches
+git diff --name-status <branch> <branch>
