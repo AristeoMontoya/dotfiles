@@ -3,7 +3,8 @@ local map = V.api.nvim_set_keymap
 local setmap = V.keymap.set
 
 local function is_text_buffer(pressed_key)
-	local buf_type = vim.api.nvim_buf_get_option(vim.api.nvim_get_current_buf(), "buftype")
+	local buf_type = vim.api.nvim_get_option_value("buftype", { buf = vim.api.nvim_get_current_buf() })
+
 	if buf_type == "nofile" or buf_type == "acwrite" or buf_type == "prompt" then
 		return pressed_key
 	end
