@@ -5,7 +5,6 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/lazydev.nvim", opts = {} },
-		-- { "nvim-java/nvim-java", opts = {} },
 	},
 	config = function()
 		-- import lspconfig plugin
@@ -103,11 +102,11 @@ return {
 				["$/progress"] = function(_, result, ctx) end,
 			},
 			jdk = {
-				auto_install = false
+				auto_install = false,
 			},
 			java_test = {
-				enable = false
-			}
+				enable = false,
+			},
 		})
 
 		mason_lspconfig.setup_handlers({
