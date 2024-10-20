@@ -15,7 +15,17 @@ return {
 		keymap.set("n", "db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
 
 		opts.desc = "Set conditional breakpoint"
-		keymap.set("n", "de", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", opts)
+		-- keymap.set("n", "de", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", opts)
+
+		keymap.set("n", "de", function()
+			vim.ui.input({ prompt = "Breakpoint condition: ", completion = "nvim_lsp"}, function(input)
+				if input then
+					require("dap").set_breakpoint(input)
+				else
+					vim.api.nvim_notify("No input provided", vim.log.levels.WARN, {})
+				end
+			end)
+		end, opts)
 
 		opts.desc = "Set logpoint"
 		keymap.set(
