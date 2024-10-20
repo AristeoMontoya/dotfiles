@@ -157,6 +157,6 @@ return {
 			},
 		})
 
-		cmp:confirm({commit_character = nil or '(' or '.'})
+		cmp:confirm({ commit_character = nil or "(" or "." })
 	end,
 }
