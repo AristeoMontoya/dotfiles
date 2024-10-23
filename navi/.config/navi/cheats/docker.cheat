@@ -18,6 +18,9 @@ docker images
 # Restart a container
 docker restart <multiple_containers>
 
+# Remove a container
+docker rm <all_containers>
+
 # View image layers
 docker image inspect <image_id> | jq
 
@@ -47,6 +50,7 @@ docker volume rm <multiple_volumes>
 
 $ container: docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Status}}" --- --headers 1 --column 1
 $ multiple_containers: docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Status}}" --- --headers 1 --column 1 --multi --expand
+$ all_containers: docker container ls -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}" --- --headers 1 --column 1 --multi --expand
 $ image_id: docker images --- --headers 1 --column 3
 $ image_name: docker images --- --headers 1 --column 1 --column 2
 $ image_and_tag: docker image list --format "table {{.ID}}\t{{.Repository}}:{{.Tag}}\t{{.Size}}" --- --headers 1 --column 2
