@@ -45,7 +45,7 @@ chars = "\u001Bñ"
 key = "ñ"
 mods = "Alt"
 
-[shell]
+[terminal.shell]
 args = ["-l", "-c", "tmux attach || exec tmux"]
 program = "zsh"
 
