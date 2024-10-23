@@ -30,7 +30,6 @@ $custom\
 $sudo\
 $cmd_duration\
 $jobs\
-$battery\
 $time\
 $status\
 $container\
@@ -38,6 +37,7 @@ $shell\
 $package\
 $fill\
 $python\
+$golang\
 $java\
 $lua\
 $aws\
@@ -83,3 +83,11 @@ format = "[$symbol($version )]($style)"
 [lua]
 symbol = " "
 format = "[$symbol($version )]($style)"
+
+[golang]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[battery]
+[[battery.display]]
+threshold = 30
