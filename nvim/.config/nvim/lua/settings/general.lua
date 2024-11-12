@@ -18,8 +18,6 @@ opt.splitright = true
 opt.splitbelow = true
 opt.cursorline = true
 
-opt.smartindent = true
-opt.autoindent = true
 opt.number = true
 opt.relativenumber = true
 opt.swapfile = false
@@ -37,3 +35,5 @@ opt.pumheight = 12
 opt.laststatus = 3
 opt.ignorecase = true
 opt.smartcase = true
+opt.smartindent = true
+opt.autoindent = true
