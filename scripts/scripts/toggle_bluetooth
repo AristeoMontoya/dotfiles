@@ -1,0 +1,41 @@
+#!/bin/sh
+action=$1
+state_file=$2
+
+ENABLED_STATE="enabled"
+DISABLED_STATE="disabled"
+
+if [[ -z $action ]]; then
+	echo "No action provided"
+	exit 1
+fi
+
+if [[ -z $state_file ]]; then
+	echo "No state file provided"
+	exit 1
+fi
+
+is_bluetooth_enabled=$(rfkill list bluetooth | grep -i "Soft blocked" | awk '{print $3}' | grep -q "no" && echo true || echo false)
+previous_state="$(cat ${state_file})"
+
+echo "is bluetooth enabled: ${is_bluetooth_enabled}"
+
+if [ "$action" == "sleep" ]; then
+    echo "Going to sleep"
+    if [ "$is_bluetooth_enabled" == "true" ]; then
+        echo "${ENABLED_STATE}" > "${state_file}"
+        echo "Disabling Bluetooth"
+        rfkill block bluetooth
+    else
+    	echo "${DISABLED_STATE}" > "${state_file}"
+    fi
+elif [ "$action" == "restore" ]; then
+    echo "Resuming"
+    if [ "$previous_state" == "$ENABLED_STATE" ]; then
+    	echo "Enabling bluetooth"
+    	rfkill unblock bluetooth
+    fi
+else
+    echo "Unknown action. Failing."
+    exit 1
+fi
