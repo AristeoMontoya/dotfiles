@@ -25,6 +25,10 @@ map("n", "N", "Nzz", { noremap = true, silent = true, desc = "Go to previous occ
 map("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true, desc = "Page down" })
 map("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true, desc = "Page up" })
 
+-- pin buffer
+map("n", "<leader>bp", ":BufferLineTogglePin<CR>", { noremap = true, silent = true, desc = "Toggle buffer pinning" })
+map("n", "<leader>bs", ":BufferLinePick<CR>", { noremap = true, silent = true, desc = "Jump to a different buffer" })
+
 -- Center after joining lines
 map("n", "J", "mzJ`z", { noremap = true, silent = true, desc = "Join lines" })
 
