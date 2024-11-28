@@ -1,7 +1,8 @@
 return {
 	"lewis6991/gitsigns.nvim",
+	commit = "5f808b5",
 	dependencies = {
-		"nvim-lua/plenary.nvim",
+		{ "nvim-lua/plenary.nvim", commit = "2d9b0617" },
 	},
 	-- event = "InsertEnter",
 	opts = {

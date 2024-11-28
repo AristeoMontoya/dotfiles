@@ -1,5 +1,6 @@
 return {
 	"lukas-reineke/indent-blankline.nvim",
+	commit = "7871a88",
 	main = "ibl",
 	opts = {
 		scope = {

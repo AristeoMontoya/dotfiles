@@ -1,7 +1,8 @@
 return {
 	"akinsho/bufferline.nvim",
+	commit = "5cc447c",
 	dependencies = {
-		"nvim-tree/nvim-web-devicons",
+		{ "nvim-tree/nvim-web-devicons", commit = "edbe0a6" },
 	},
 	opts = {
 		options = {

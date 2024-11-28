@@ -1,5 +1,6 @@
 return {
 	"folke/noice.nvim",
+	commit = "c6f6fb1",
 	event = "VeryLazy",
 	opts = {
 		-- add any options here
