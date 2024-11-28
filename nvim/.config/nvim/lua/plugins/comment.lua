@@ -1,6 +1,6 @@
 return {
 	"numToStr/Comment.nvim",
-	commit = "e30b7f2",
+	commit = require("settings.versions").Comment,
 	-- event = "InsertEnter",
 	opts = {
 		---Add a space b/w comment and the line

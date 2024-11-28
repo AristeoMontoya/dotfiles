@@ -1,6 +1,6 @@
 return {
 	"stevearc/dressing.nvim",
-	commit = "fc78a3c",
+	commit = require("settings.versions").dressing,
 	event = "VeryLazy",
 	opts = {
 		input = {

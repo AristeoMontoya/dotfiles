@@ -1,6 +1,6 @@
 return {
 	"L3MON4D3/LuaSnip",
-	commit = "0f7bbce",
+	commit = require("settings.versions").LuaSnip,
 	-- event = "InsertEnter",
 	config = function()
 		local ls = require("luasnip")

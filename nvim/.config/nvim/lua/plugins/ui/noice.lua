@@ -1,7 +1,13 @@
+local versions = require("settings.versions")
 return {
 	"folke/noice.nvim",
-	commit = "c6f6fb1",
+	commit = versions.noice,
 	event = "VeryLazy",
+	dependencies = {
+		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+		"MunifTanjim/nui.nvim",
+		commit = versions.nui
+	},
 	opts = {
 		-- add any options here
 		lsp = {
@@ -65,9 +71,5 @@ return {
 		presets = {
 			lsp_doc_border = true,
 		},
-	},
-	dependencies = {
-		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-		"MunifTanjim/nui.nvim",
 	},
 }

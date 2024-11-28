@@ -1,8 +1,9 @@
+local versions = require("settings.versions")
 return {
 	"lewis6991/gitsigns.nvim",
-	commit = "5f808b5",
+	commit = versions.gitsigns,
 	dependencies = {
-		{ "nvim-lua/plenary.nvim", commit = "2d9b0617" },
+		{ "nvim-lua/plenary.nvim", commit = versions.plenary },
 	},
 	-- event = "InsertEnter",
 	opts = {

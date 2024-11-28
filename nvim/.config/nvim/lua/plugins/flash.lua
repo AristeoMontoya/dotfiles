@@ -1,6 +1,6 @@
 return {
 	"folke/flash.nvim",
-	commit = "34c7be1",
+	commit = require("settings.versions").flash,
 	event = "VeryLazy",
 	---@type Flash.Config
 	opts = {

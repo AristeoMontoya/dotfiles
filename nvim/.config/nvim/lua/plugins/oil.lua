@@ -1,6 +1,6 @@
 return {
 	"stevearc/oil.nvim",
-	commit = "3c2de37",
+	commit = require("settings.versions").oil,
 	opts = function()
 		local keymap = vim.keymap
 

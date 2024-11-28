@@ -1,9 +1,10 @@
+local versions = require("settings.versions")
 return {
 	"williamboman/mason.nvim",
-	commit = "e2f7f90",
+	commit = versions.mason,
 	dependencies = {
-		{ "williamboman/mason-lspconfig.nvim", commit = "43894ad" },
-		{ "WhoIsSethDaniel/mason-tool-installer.nvim", commit = "c5e07b8" },
+		{ "williamboman/mason-lspconfig.nvim", commit = versions.mason_lspconfig },
+		{ "WhoIsSethDaniel/mason-tool-installer.nvim", commit = versions.mason_tool_installer },
 	},
 	opts = function()
 		-- import mason
@@ -50,7 +51,7 @@ return {
 			end
 		end
 
-		for _, tool in pairs({linters, formatters, debuggers}) do
+		for _, tool in pairs({ linters, formatters, debuggers }) do
 			vim.list_extend(ensure_installed_tools, tool)
 		end
 

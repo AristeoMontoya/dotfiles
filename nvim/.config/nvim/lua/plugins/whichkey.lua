@@ -1,6 +1,6 @@
 return {
 	"folke/which-key.nvim",
-	commit = "b9684c6",
+	commit = require("settings.versions").which_key,
 	event = "VeryLazy",
 	opts = {
 		plugins = {
