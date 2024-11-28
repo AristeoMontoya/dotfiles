@@ -1,11 +1,12 @@
+local versions = require("settings.versions")
 return {
 	"nvim-telescope/telescope.nvim",
-	commit = "85922dd",
+	commit = versions.telescope,
 	-- event = "InsertEnter",
 	dependencies = {
-		{ "nvim-lua/popup.nvim", commit = "b7404d3" },
-		{ "nvim-lua/plenary.nvim", commit = "2d9b0617" },
-		{ "nvim-telescope/telescope-ui-select.nvim", commit = "6e51d7d" },
+		{ "nvim-lua/popup.nvim", commit = versions.popup },
+		{ "nvim-lua/plenary.nvim", commit = versions.plenary },
+		{ "nvim-telescope/telescope-ui-select.nvim", commit = versions.telescope_ui_select },
 	},
 	config = function()
 		local actions = require("telescope.actions")

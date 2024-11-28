@@ -1,10 +1,11 @@
+local versions = require("settings.versions")
 return {
 	"rcarriga/nvim-dap-ui",
-	commit = "ffa8983",
+	commit = versions.nvim_dap_ui,
 	dependencies = {
-		{ "mfussenegger/nvim-dap", commit = "d0ac996" },
-		{ "nvim-neotest/nvim-nio", commit = "a428f30" },
-		{ "theHamsta/nvim-dap-virtual-text", commit = "76d80c3" },
+		{ "mfussenegger/nvim-dap", commit = versions.nvim_dap },
+		{ "nvim-neotest/nvim-nio", commit = versions.nvim_nio },
+		{ "theHamsta/nvim-dap-virtual-text", commit = versions.nvim_dap_virtual_text },
 	},
 	opts = function()
 		require("nvim-dap-virtual-text").setup()
@@ -19,7 +20,7 @@ return {
 		-- keymap.set("n", "de", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", opts)
 
 		keymap.set("n", "de", function()
-			vim.ui.input({ prompt = "Breakpoint condition: ", completion = "nvim_lsp"}, function(input)
+			vim.ui.input({ prompt = "Breakpoint condition: ", completion = "nvim_lsp" }, function(input)
 				if input then
 					require("dap").set_breakpoint(input)
 				else

@@ -1,6 +1,6 @@
 return {
 	"folke/trouble.nvim",
-	commit = "46cf952",
+	commit = require("settings.versions").trouble,
 	-- event = "InsertEnter",
 	opts = {
 		position = "bottom", -- position of the list can be: bottom, top, left, right

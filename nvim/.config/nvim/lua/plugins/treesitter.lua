@@ -1,8 +1,9 @@
+local versions = require("settings.versions")
 return {
 	"nvim-treesitter/nvim-treesitter",
-	commit = "8d4fdc5e",
+	commit = versions.nvim_treesitter,
 	dependencies = {
-		{ "nvim-treesitter/nvim-treesitter-textobjects", commit = "ad8f0a4"},
+		{ "nvim-treesitter/nvim-treesitter-textobjects", commit = versions.nvim_treesitter_textobjects },
 	},
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()

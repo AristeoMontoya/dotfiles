@@ -1,6 +1,6 @@
 return {
 	"kylechui/nvim-surround",
-	commit = "dca2e99",
+	commit = require("settings.versions").nvim_surround,
 	event = "VeryLazy",
 	opts = {},
 }

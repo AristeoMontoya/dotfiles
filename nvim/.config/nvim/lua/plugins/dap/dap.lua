@@ -1,8 +1,12 @@
+local versions = require("settings.versions")
 return {
 	"rcarriga/cmp-dap",
-	commit = "ea92773",
+	commit = versions.cmp_dap,
 	dependencies = {
-		{ "jay-babu/mason-nvim-dap.nvim", commit = "8b9363d" },
+		{
+			"jay-babu/mason-nvim-dap.nvim",
+			commit = versions.mason_nvim_dap,
+		},
 	},
 	-- event = "InsertEnter",
 	config = function()
@@ -36,19 +40,13 @@ return {
 			automatic_setup = true,
 		})
 
-		vim.fn.sign_define(
-			"DapBreakpoint",
-			{ text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" }
-		)
+		vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
 
 		vim.fn.sign_define(
 			"DapBreakpointCondition",
 			{ text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" }
 		)
-		vim.fn.sign_define(
-			"DapLogPoint",
-			{ text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" }
-		)
+		vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
 		vim.fn.sign_define(
 			"DapStopped",
 			{ text = "→", texthl = "DiagnosticVirtualTextHint", linehl = "DapStoppedLine", numhl = "" }

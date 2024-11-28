@@ -1,8 +1,9 @@
+local versions = require("settings.versions")
 return {
 	"akinsho/bufferline.nvim",
-	commit = "5cc447c",
+	commit = versions.bufferline,
 	dependencies = {
-		{ "nvim-tree/nvim-web-devicons", commit = "edbe0a6" },
+		{ "nvim-tree/nvim-web-devicons", commit = versions.nvim_web_devicons},
 	},
 	opts = {
 		options = {

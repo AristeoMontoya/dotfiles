@@ -1,11 +1,12 @@
+local versions = require("settings.versions")
 return {
 	"neovim/nvim-lspconfig",
-	commit = "4ae9796",
+	commit = versions.nvim_lspconfig,
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		{ "hrsh7th/cmp-nvim-lsp", commit = "39e2eda" },
-		{ "antosha417/nvim-lsp-file-operations", config = true, commit = "9744b73" },
-		{ "folke/lazydev.nvim", opts = {}, commit = "f59bd14" },
+		{ "hrsh7th/cmp-nvim-lsp", commit = versions.cmp_nvim_lsp },
+		{ "antosha417/nvim-lsp-file-operations", config = true, commit = versions.nvim_lsp_file_operations },
+		{ "folke/lazydev.nvim", opts = {}, commit = versions.lazydev },
 	},
 	config = function()
 		-- import lspconfig plugin

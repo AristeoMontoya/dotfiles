@@ -1,15 +1,16 @@
+local versions = require("settings.versions")
 return {
 	"hrsh7th/nvim-cmp",
-	commit = "ed31156",
+	commit = versions.nvim_cmp,
 	dependencies = {
-		{ "hrsh7th/cmp-nvim-lsp", commit = "39e2eda" },
-		{ "hrsh7th/cmp-buffer", commit = "3022dbc" },
-		{ "hrsh7th/cmp-path", commit = "91ff86c" },
-		{ "hrsh7th/cmp-cmdline", commit = "d250c63" },
-		{ "hrsh7th/cmp-omni", commit = "4ef610b" },
-		{ "rcarriga/cmp-dap", commit = "ea92773" },
-		{ "L3MON4D3/LuaSnip", commit = "0f7bbce" },
-		{ "saadparwaiz1/cmp_luasnip", commit = "98d9cb5" },
+		{ "hrsh7th/cmp-nvim-lsp", commit = versions.cmp_nvim_lsp },
+		{ "hrsh7th/cmp-buffer", commit = versions.cmp_buffer },
+		{ "hrsh7th/cmp-path", commit = versions.cmp_path },
+		{ "hrsh7th/cmp-cmdline", commit = versions.cmp_cmdline },
+		{ "hrsh7th/cmp-omni", commit = versions.cmp_omni },
+		{ "rcarriga/cmp-dap", commit = versions.cmp_dap },
+		{ "L3MON4D3/LuaSnip", commit = versions.LuaSnip },
+		{ "saadparwaiz1/cmp_luasnip", commit = versions.cmp_luasnip },
 	},
 	config = function()
 		-- Setup nvim-cmp.

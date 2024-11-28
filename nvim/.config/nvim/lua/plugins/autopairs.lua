@@ -1,6 +1,6 @@
 return {
 	"windwp/nvim-autopairs",
-	commit = "b464658",
+	commit = require("settings.versions").nvim_autopairs,
 	event = "InsertEnter",
 	config = function()
 		local autopairs = require("nvim-autopairs")

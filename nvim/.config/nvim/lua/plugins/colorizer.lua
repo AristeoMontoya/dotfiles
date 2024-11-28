@@ -1,6 +1,6 @@
 return {
 	"norcalli/nvim-colorizer.lua",
-	commit = "a065833",
+	commit = require("settings.versions").nvim_colorizer,
 	event = "InsertEnter",
 	opts = {
 		"*",
