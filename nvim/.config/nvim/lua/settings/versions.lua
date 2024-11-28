@@ -1,6 +1,5 @@
 return {
 	mason_lspconfig = "43894ad",
-	oil = "3c2de37",
 	bufferline = "5cc447c",
 	cmp_buffer = "3022dbc",
 	cmp_cmdline = "d250c63",
@@ -36,7 +35,6 @@ return {
 	nvim_lspconfig = "4ae9796",
 	nvim_nio = "a428f30",
 	nvim_surround = "dca2e99",
-	nvim_tree = "ca7c4c3",
 	nvim_treesitter = "8d4fdc5e",
 	nvim_treesitter_textobjects = "ad8f0a4",
 	nvim_web_devicons = "edbe0a6",
@@ -49,4 +47,5 @@ return {
 	trouble = "46cf952",
 	vim_illuminate = "5eeb795",
 	which_key = "b9684c6",
+	mini_files = "6abe854"
 }
