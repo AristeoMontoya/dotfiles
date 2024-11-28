@@ -46,7 +46,6 @@ return {
 				theme = "onedark",
 				section_separators = { nil },
 				component_separators = { "|" },
-				extension = { "nvim-tree" },
 			},
 			sections = {
 				lualine_a = { { "mode", upper = true } },
@@ -73,7 +72,14 @@ return {
 						fmt = show_macro_recording,
 					},
 				},
-				lualine_c = { { "filename", file_status = true } },
+				lualine_c = {
+					{
+						"filename",
+						file_status = true,
+						path = 4,
+						shorting_target = 40,
+					},
+				},
 				lualine_x = { "encoding", "filetype" },
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
@@ -87,7 +93,14 @@ return {
 						colored = true,
 					},
 				},
-				lualine_c = { "filename" },
+				lualine_c = {
+					{
+						"filename",
+						file_status = true,
+						path = 4,
+						shorting_target = 40,
+					},
+				},
 				lualine_x = { "location" },
 				lualine_y = {},
 			},
