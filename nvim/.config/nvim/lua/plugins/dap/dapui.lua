@@ -1,9 +1,10 @@
 return {
 	"rcarriga/nvim-dap-ui",
+	commit = "ffa8983",
 	dependencies = {
-		"mfussenegger/nvim-dap",
-		"nvim-neotest/nvim-nio",
-		"theHamsta/nvim-dap-virtual-text",
+		{ "mfussenegger/nvim-dap", commit = "d0ac996" },
+		{ "nvim-neotest/nvim-nio", commit = "a428f30" },
+		{ "theHamsta/nvim-dap-virtual-text", commit = "76d80c3" },
 	},
 	opts = function()
 		require("nvim-dap-virtual-text").setup()

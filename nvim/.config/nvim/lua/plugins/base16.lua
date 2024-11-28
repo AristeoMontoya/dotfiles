@@ -1,5 +1,6 @@
 return {
 	"norcalli/nvim-base16.lua",
+	commit = "b336f40",
 	config = function()
 		local cmd = V.cmd
 		local status, base16 = pcall(require, "base16")

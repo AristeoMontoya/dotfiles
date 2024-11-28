@@ -1,10 +1,11 @@
 return {
 	"nvim-telescope/telescope.nvim",
+	commit = "85922dd",
 	-- event = "InsertEnter",
 	dependencies = {
-		"nvim-lua/popup.nvim",
-		"nvim-lua/plenary.nvim",
-		"nvim-telescope/telescope-ui-select.nvim",
+		{ "nvim-lua/popup.nvim", commit = "b7404d3" },
+		{ "nvim-lua/plenary.nvim", commit = "2d9b0617" },
+		{ "nvim-telescope/telescope-ui-select.nvim", commit = "6e51d7d" },
 	},
 	config = function()
 		local actions = require("telescope.actions")

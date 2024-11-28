@@ -1,7 +1,8 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	commit = "8d4fdc5e",
 	dependencies = {
-		"nvim-treesitter/nvim-treesitter-textobjects",
+		{ "nvim-treesitter/nvim-treesitter-textobjects", commit = "ad8f0a4"},
 	},
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()

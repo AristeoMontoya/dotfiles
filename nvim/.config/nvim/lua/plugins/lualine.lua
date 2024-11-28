@@ -1,5 +1,6 @@
 return {
 	"hoob3rt/lualine.nvim",
+	commit = "2a5bae9",
 	-- event = "InsertEnter",
 	opts = function()
 		local function show_macro_recording()

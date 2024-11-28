@@ -1,5 +1,6 @@
 return {
 	"mrjones2014/smart-splits.nvim",
+	commit = "d8b0e77",
 	-- event = "InsertEnter",
 	opts = {
 		-- Ignored filetypes (only while resizing)

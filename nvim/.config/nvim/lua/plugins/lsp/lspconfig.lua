@@ -1,10 +1,11 @@
 return {
 	"neovim/nvim-lspconfig",
+	commit = "4ae9796",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
-		{ "antosha417/nvim-lsp-file-operations", config = true },
-		{ "folke/lazydev.nvim", opts = {} },
+		{ "hrsh7th/cmp-nvim-lsp", commit = "39e2eda" },
+		{ "antosha417/nvim-lsp-file-operations", config = true, commit = "9744b73" },
+		{ "folke/lazydev.nvim", opts = {}, commit = "f59bd14" },
 	},
 	config = function()
 		-- import lspconfig plugin
@@ -88,26 +89,26 @@ return {
 		end
 
 		-- Not handled by Mason
-		lspconfig["ccls"].setup({
-			capabilities = capabilities,
-			cmd = { "ccls" },
-			filetypes = { "cpp", "c" },
-			root_dir = require("lspconfig/util").root_pattern("compile_commands.json", ".ccls", ".git"),
-		})
+		-- lspconfig["ccls"].setup({
+		-- 	capabilities = capabilities,
+		-- 	cmd = { "ccls" },
+		-- 	filetypes = { "cpp", "c" },
+		-- 	root_dir = require("lspconfig/util").root_pattern("compile_commands.json", ".ccls", ".git"),
+		-- })
 
-		lspconfig["jdtls"].setup({
-			handlers = {
-				-- By assigning an empty function, you can remove the notifications
-				-- printed to the cmd
-				["$/progress"] = function(_, result, ctx) end,
-			},
-			jdk = {
-				auto_install = false,
-			},
-			java_test = {
-				enable = false,
-			},
-		})
+		-- lspconfig["jdtls"].setup({
+		-- 	handlers = {
+		-- 		-- By assigning an empty function, you can remove the notifications
+		-- 		-- printed to the cmd
+		-- 		["$/progress"] = function(_, result, ctx) end,
+		-- 	},
+		-- 	jdk = {
+		-- 		auto_install = false,
+		-- 	},
+		-- 	java_test = {
+		-- 		enable = false,
+		-- 	},
+		-- })
 
 		mason_lspconfig.setup_handlers({
 			-- default handler for installed servers

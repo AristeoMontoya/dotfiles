@@ -1,7 +1,8 @@
 return {
 	"rcarriga/cmp-dap",
+	commit = "ea92773",
 	dependencies = {
-		"jay-babu/mason-nvim-dap.nvim",
+		{ "jay-babu/mason-nvim-dap.nvim", commit = "8b9363d" },
 	},
 	-- event = "InsertEnter",
 	config = function()

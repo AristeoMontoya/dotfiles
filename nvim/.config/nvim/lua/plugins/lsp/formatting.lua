@@ -1,5 +1,6 @@
 return {
 	"stevearc/conform.nvim",
+	commit = "a203480",
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local conform = require("conform")

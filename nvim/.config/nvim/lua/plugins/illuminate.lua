@@ -1,5 +1,6 @@
 return {
 	"RRethy/vim-illuminate",
+	commit = "5eeb795",
 	-- event = "InsertEnter",
 	config = function()
 		require("illuminate").configure({
