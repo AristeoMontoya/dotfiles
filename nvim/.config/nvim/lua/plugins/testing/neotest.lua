@@ -1,6 +1,7 @@
 local versions = require("settings.versions")
 return {
 	"nvim-neotest/neotest",
+	lazy = true,
 	dependencies = {
 		{
 			"fredrikaverpil/neotest-golang",
