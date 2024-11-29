@@ -47,5 +47,8 @@ return {
 	trouble = "46cf952",
 	vim_illuminate = "5eeb795",
 	which_key = "b9684c6",
-	mini_files = "6abe854"
+	mini_files = "6abe854",
+	neotest = "6d3d22c",
+	neotest_golang = "cdb0eb0",
+	neotest_dap_go = "6aa8816"
 }
