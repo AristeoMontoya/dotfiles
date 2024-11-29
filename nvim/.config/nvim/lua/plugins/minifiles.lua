@@ -66,7 +66,7 @@ return {
 				-- Width of non-focused window
 				width_nofocus = 15,
 				-- Width of preview window
-				width_preview = 25,
+				width_preview = 50,
 			},
 		}
 	end,
