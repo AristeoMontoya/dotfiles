@@ -11,10 +11,18 @@ return {
 			end
 		end
 
+		local show_file_in_explorer = function()
+			local _ = MiniFiles.close() or MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
+			vim.schedule(function()
+				MiniFiles.reveal_cwd()
+			end)
+		end
+
+		keymap.set("n", "<leader>fe", minifiles_toggle, { silent = true, noremap = true, desc = "Show file explorer" })
 		keymap.set(
 			"n",
-			"<leader>fe",
-			minifiles_toggle,
+			"<leader>fE",
+			show_file_in_explorer,
 			{ silent = true, noremap = true, desc = "Show file explorer" }
 		)
 
