@@ -14,7 +14,8 @@ return {
 	},
 	keys = {
 		{ "<leader>tr", "<cmd>Neotest run<CR>", desc = "Run nearest test" },
-		{ "<leader>ts", "<cmd>Neotest summary<CR>", desc = "Show test summary" },
+		{ "<leader>ts", "<cmd>lua require('neotest').run.stop()<CR>", desc = "Stop nearest test" },
+		{ "<leader>tS", "<cmd>Neotest summary<CR>", desc = "Show test summary" },
 		{ "<leader>tt", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", desc = "Run test file" },
 		{ "<leader>td", "<cmd>lua require('neotest').run.run({strategy = 'dap'})<CR>", desc = "Debug nearest test" },
 	},
