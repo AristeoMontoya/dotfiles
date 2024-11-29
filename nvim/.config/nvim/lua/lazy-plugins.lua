@@ -28,6 +28,9 @@ require("lazy").setup({
 		},
 		{
 			import = "plugins.ui"
+		},
+		{
+			import = "plugins.testing"
 		}
 	},
 	checker = {
