@@ -1,7 +1,8 @@
 return {
 	"stevearc/conform.nvim",
 	commit = require("settings.versions").conform,
-	lazy = true,
+	event = { "BufWritePre" },
+	cmd = { "ConformInfo" },
 	keys = {
 		{
 			"<leader>lf",
