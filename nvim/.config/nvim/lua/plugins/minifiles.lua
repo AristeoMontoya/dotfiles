@@ -1,4 +1,3 @@
-local versions = require("settings.versions")
 return {
 	"echasnovski/mini.files",
 	commit = require("settings.versions").mini_files,
