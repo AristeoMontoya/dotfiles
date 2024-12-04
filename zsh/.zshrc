@@ -86,7 +86,6 @@ autoload edit-command-line; zle -N edit-command-line
 
 # Add bookmarks
 if [ -d "$HOME/.bookmarks" ]; then
-	export CDPATH=".:$HOME/.bookmarks"
 	alias goto="cd -P"
 fi
 
