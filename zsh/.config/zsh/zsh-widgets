@@ -8,7 +8,7 @@ fzf-bookmarks() {
 			--height 50% --layout reverse --info inline)
 		if [ ! -z $PICKED ]
 		then
-			builtin cd -P "$PICKED"
+			builtin cd -P "$HOME/.bookmarks/$PICKED"
 		fi
 	fi
 	zle reset-prompt
