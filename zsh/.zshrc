@@ -86,7 +86,7 @@ autoload edit-command-line; zle -N edit-command-line
 
 # Add bookmarks
 if [ -d "$HOME/.bookmarks" ]; then
-	alias goto="cd -P"
+	alias goto="cd -P $HOME/.bookmarks/"
 fi
 
 # tmux over ssh
