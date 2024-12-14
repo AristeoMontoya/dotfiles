@@ -6,12 +6,16 @@ $ commit: git log --oneline
 $ file: find . -regex '.*' --- --multi --expand
 $ stash: git stash list --- --delimiter ':' --column 1
 $ tag: git tag -l
-$ unstaged_files: git status --untracked-files=no -s --porcelain | awk '{print $NF}' | xargs -I % realpath -s --relative-to="$(pwd)" "$(git rev-parse --show-toplevel)/%" --- --multi --expand
+$ repo_root: git rev-parse --show-toplevel
+$ unstaged_files: git status --untracked-files=no -s --porcelain | awk '{print $NF}' | xargs -I % realpath -s --relative-to="$(pwd)" "<repo_root>/%" --- --multi --expand
 $ changed_files: git status --untracked-files=all -s --porcelain | awk '{print $NF}' --- --multi
-$ staged_files: git diff --cached --name-only | xargs -I % realpath -s --relative-to="$(pwd)" "$(git rev-parse --show-toplevel)/%" --- --multi --expand
+$ staged_files: git diff --cached --name-only | xargs -I % realpath -s --relative-to="$(pwd)" "<repo_root>/%" --- --multi --expand
 
 # Change branch
 git checkout <branch>
+
+# Go to repo root
+cd <repo_root>
 
 # Pull rebase
 git pull --rebase origin <remote_branch>
