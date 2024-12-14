@@ -3,5 +3,5 @@
 # Search regex in a file
 grep <regex> <filename>
 
-# Search recursively in current directory
+# Search recursively in current directory.
 grep -rnI <regex> *
