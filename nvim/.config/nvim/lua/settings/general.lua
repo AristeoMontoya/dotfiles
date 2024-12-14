@@ -1,3 +1,5 @@
+require("settings.clipboard")
+
 local opt = V.opt
 local g = V.g
 
@@ -5,27 +7,6 @@ g.mapleader = " "
 
 opt.listchars = { tab = "▏  " }
 opt.signcolumn = "yes"
-
-local function paste()
-	return {
-		vim.fn.split(vim.fn.getreg(""), "\n"),
-		vim.fn.getregtype(""),
-	}
-end
-
-vim.g.clipboard = {
-	name = "OSC 52",
-	copy = {
-		["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-		["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-	},
-	paste = {
-		["+"] = paste,
-		["*"] = paste,
-	},
-}
-
-opt.clipboard:append({ "unnamed", "unnamedplus" })
 
 opt.termguicolors = true
 opt.mouse = "a"
