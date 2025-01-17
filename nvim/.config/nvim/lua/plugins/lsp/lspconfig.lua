@@ -11,6 +11,7 @@ return {
 	config = function()
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
+		local configs = require("lspconfig.configs")
 
 		-- import mason_lspconfig plugin
 		local mason_lspconfig = require("mason-lspconfig")
@@ -89,13 +90,30 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
+		configs.ccls = {
+			default_config = {
+				cmd = { "ccls" },
+				filetypes = { "cpp", "c" },
+				root_dir = function(fname)
+					return require("lspconfig/util").root_pattern("compile_commands.json", ".ccls")(fname)
+						or vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1])
+				end,
+				single_file_support = false,
+			},
+		}
 		-- Not handled by Mason
-		-- lspconfig["ccls"].setup({
-		-- 	capabilities = capabilities,
-		-- 	cmd = { "ccls" },
-		-- 	filetypes = { "cpp", "c" },
-		-- 	root_dir = require("lspconfig/util").root_pattern("compile_commands.json", ".ccls", ".git"),
-		-- })
+		lspconfig["ccls"].setup({
+			capabilities = capabilities,
+			init_options = {
+				compilationDatabaseDirectory = "build",
+				index = {
+					threads = 2,
+				},
+				clang = {
+					excludeArgs = { "-frounding-math" },
+				},
+			},
+		})
 
 		-- lspconfig["jdtls"].setup({
 		-- 	handlers = {
