@@ -17,8 +17,6 @@ return {
 		keymap.set("n", "db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
 
 		opts.desc = "Set conditional breakpoint"
-		-- keymap.set("n", "de", "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", opts)
-
 		keymap.set("n", "de", function()
 			vim.ui.input({ prompt = "Breakpoint condition: ", completion = "nvim_lsp" }, function(input)
 				if input then
@@ -38,7 +36,12 @@ return {
 		)
 
 		opts.desc = "Step continue"
-		keymap.set("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
+		keymap.set("n", "<leader>dc", function ()
+			if vim.fn.filereadable(".vscode/launch.json") then
+				require("dap.ext.vscode").load_launchjs(nil, nil)
+			end
+			require("dap").continue()
+		end, opts)
 
 		opts.desc = "Step into"
 		keymap.set("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
