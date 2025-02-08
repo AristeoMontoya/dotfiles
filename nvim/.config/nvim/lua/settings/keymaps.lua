@@ -1,5 +1,8 @@
+-- Keymaps coonfiguration
+-- Intended to work without any plugin installed.
+-- Plugin related keymaps should be defined within
+-- the plugin spec.
 local map = V.api.nvim_set_keymap
-
 local setmap = V.keymap.set
 
 local function is_text_buffer(pressed_key)
@@ -107,20 +110,3 @@ map(
 	{ noremap = true, desc = "Enable spellcheck for english" }
 )
 map("n", "<leader>vn", ":setlocal nospell<CR>", { noremap = true, silent = true, desc = "Disable spellcheck" })
-
--- Telescope
-map("n", "<leader>ff", ":Telescope find_files<CR>", { noremap = true, silent = true, desc = "Find files" })
-map("n", "<leader>fg", ":Telescope live_grep<CR>", { noremap = true, silent = true, desc = "Find grep" })
-map("n", "<leader>fb", ":Telescope buffers<CR>", { noremap = true, silent = true, desc = "Find buffers" })
-map("n", "<leader>fh", ":Telescope help_tags<CR>", { noremap = true, silent = true, desc = "Find help" })
-
--- Svart
-map("n", "s", ":Svart<CR>", { noremap = true, silent = true, desc = "Jump to search" })
-map("n", "S", ":SvartRegex<CR>", { noremap = true, silent = true, desc = "Jump to RegEx" })
-map("n", "gs", ":SvartRepeat<CR>", { noremap = true, silent = true, desc = "Repeat last jump" })
-
--- Luasnip choice nodes
-map("i", "<C-n>", "<Plug>luasnip-next-choice", { noremap = true, silent = true, desc = "Go to next Luasnip node" })
-map("s", "<C-n>", "<Plug>luasnip-next-choice", { noremap = true, silent = true, desc = "Go to next Luasnip node" })
-map("i", "<C-p>", "<Plug>luasnip-prev-choice", { noremap = true, silent = true, desc = "Go to last Luasnip node" })
-map("s", "<C-p>", "<Plug>luasnip-prev-choice", { noremap = true, silent = true, desc = "Go to last Luasnip node" })

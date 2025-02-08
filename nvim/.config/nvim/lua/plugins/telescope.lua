@@ -10,6 +10,21 @@ return {
 	},
 	config = function()
 		local actions = require("telescope.actions")
+		local map = vim.keymap.set
+		local opts = { noremap = true, silent = true }
+
+		-- Telescope
+		opts.desc = "Find files"
+		map("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+
+		opts.desc = "Find grep"
+		map("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
+
+		opts.desc = "Find buffers"
+		map("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+
+		opts.desc = "Find help"
+		map("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
 
 		require("telescope").setup({
 			defaults = {
