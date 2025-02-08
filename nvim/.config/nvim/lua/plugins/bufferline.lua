@@ -10,6 +10,23 @@ return {
 		-- So I made this a function and I was able to require
 		-- bufferline.groups that way.
 		local buffgroups = require("bufferline.groups")
+
+		local opts = { silent = true, noremap = true }
+		local map = vim.keymap.set
+
+		-- pin buffer
+		opts.desc = "Toggle buffer pinning"
+		map("n", "<leader>bp", ":BufferLineTogglePin<CR>", opts)
+
+		opts.desc = "Jump to a different buffer"
+		map("n", "<leader>bs", ":BufferLinePick<CR>", opts)
+
+		opts.desc = "Go to next buffer"
+		map("n", "<tab>", "<cmd>BufferLineCycleNext<CR>", opts)
+
+		opts.desc = "Go to previous buffer"
+		map("n", "<S-tab>", "<cmd>BufferLineCyclePrev<CR>", opts)
+
 		return {
 			options = {
 				groups = {
