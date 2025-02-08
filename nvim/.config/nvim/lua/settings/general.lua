@@ -1,6 +1,7 @@
 require("settings.clipboard")
 
 local opt = V.opt
+local gopt = V.opt_global
 local g = V.g
 
 g.mapleader = " "
@@ -38,3 +39,5 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.smartindent = true
 opt.autoindent = true
+
+gopt.scrolloff = 3
