@@ -2,8 +2,7 @@
 -- Intended to work without any plugin installed.
 -- Plugin related keymaps should be defined within
 -- the plugin spec.
-local map = V.api.nvim_set_keymap
-local setmap = V.keymap.set
+local map = V.keymap.set
 
 local function is_text_buffer(pressed_key)
 	local buf_type = vim.api.nvim_get_option_value("buftype", { buf = vim.api.nvim_get_current_buf() })
@@ -36,16 +35,16 @@ map("n", "Y", "y$", { noremap = true, silent = true, desc = "Copy until end of l
 
 -- Split movements
 -- Need to replace this keymaps with vanilla nvim ones
-setmap("n", "<A-h>", "<C-w>h")
-setmap("n", "<A-j>", "<C-w>j")
-setmap("n", "<A-k>", "<C-w>k")
-setmap("n", "<A-l>", "<C-w>l")
+map("n", "<A-h>", "<C-w>h")
+map("n", "<A-j>", "<C-w>j")
+map("n", "<A-k>", "<C-w>k")
+map("n", "<A-l>", "<C-w>l")
 
 -- -- Split resize
-setmap("n", "<C-A-h>", "<cmd>resize -3<CR>")
-setmap("n", "<C-A-j>", "<cmd>vertical resize -3<CR>")
-setmap("n", "<C-A-k>", "<cmd>resize 3<CR>")
-setmap("n", "<C-A-l>", "<cmd>vertical resize 3<CR>")
+map("n", "<C-A-h>", "<cmd>resize -3<CR>")
+map("n", "<C-A-j>", "<cmd>vertical resize -3<CR>")
+map("n", "<C-A-k>", "<cmd>resize 3<CR>")
+map("n", "<C-A-l>", "<cmd>vertical resize 3<CR>")
 
 -- Split creation
 map("n", "<leader>sh", ":split<CR>", { noremap = true, silent = true, desc = "Horizontal split" })
@@ -79,16 +78,16 @@ map("n", "<down>", "<nop>", {})
 -- Disable arrow keys for insert mode
 -- except for prompts
 -- There's probably a better way to do this but I'm feeling sleepy at the moment
-setmap("i", "<left>", function()
+map("i", "<left>", function()
 	return is_text_buffer("<left>")
 end, { expr = true })
-setmap("i", "<right>", function()
+map("i", "<right>", function()
 	return is_text_buffer("<right>")
 end, { expr = true })
-setmap("i", "<up>", function()
+map("i", "<up>", function()
 	return is_text_buffer("<up>")
 end, { expr = true })
-setmap("i", "<down>", function()
+map("i", "<down>", function()
 	return is_text_buffer("<down>")
 end, { expr = true })
 
