@@ -124,9 +124,6 @@ map("n", "<leader>fg", ":Telescope live_grep<CR>", { noremap = true, silent = tr
 map("n", "<leader>fb", ":Telescope buffers<CR>", { noremap = true, silent = true, desc = "Find buffers" })
 map("n", "<leader>fh", ":Telescope help_tags<CR>", { noremap = true, silent = true, desc = "Find help" })
 
--- Trouble
-map("n", "<leader>ld", ":TroubleToggle<CR>", { noremap = true, silent = true, desc = "Open diagnostics" })
-
 -- Svart
 map("n", "s", ":Svart<CR>", { noremap = true, silent = true, desc = "Jump to search" })
 map("n", "S", ":SvartRegex<CR>", { noremap = true, silent = true, desc = "Jump to RegEx" })
