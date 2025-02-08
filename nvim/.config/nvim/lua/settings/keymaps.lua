@@ -25,10 +25,6 @@ map("n", "N", "Nzz", { noremap = true, silent = true, desc = "Go to previous occ
 map("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true, desc = "Page down" })
 map("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true, desc = "Page up" })
 
--- pin buffer
-map("n", "<leader>bp", ":BufferLineTogglePin<CR>", { noremap = true, silent = true, desc = "Toggle buffer pinning" })
-map("n", "<leader>bs", ":BufferLinePick<CR>", { noremap = true, silent = true, desc = "Jump to a different buffer" })
-
 -- Center after joining lines
 map("n", "J", "mzJ`z", { noremap = true, silent = true, desc = "Join lines" })
 
@@ -36,23 +32,17 @@ map("n", "J", "mzJ`z", { noremap = true, silent = true, desc = "Join lines" })
 map("n", "Y", "y$", { noremap = true, silent = true, desc = "Copy until end of line" })
 
 -- Split movements
-setmap("n", "<A-h>", require("smart-splits").move_cursor_left)
-setmap("n", "<A-j>", require("smart-splits").move_cursor_down)
-setmap("n", "<A-k>", require("smart-splits").move_cursor_up)
-setmap("n", "<A-l>", require("smart-splits").move_cursor_right)
+-- Need to replace this keymaps with vanilla nvim ones
+setmap("n", "<A-h>", "<C-w>h")
+setmap("n", "<A-j>", "<C-w>j")
+setmap("n", "<A-k>", "<C-w>k")
+setmap("n", "<A-l>", "<C-w>l")
 
--- Split resize
-setmap("n", "<C-A-h>", require("smart-splits").resize_left)
-setmap("n", "<C-A-j>", require("smart-splits").resize_down)
-setmap("n", "<C-A-k>", require("smart-splits").resize_up)
-setmap("n", "<C-A-l>", require("smart-splits").resize_right)
-
--- moving between splits
--- swapping buffers between windows
-setmap("n", "<leader><leader>h", require("smart-splits").swap_buf_left)
-setmap("n", "<leader><leader>j", require("smart-splits").swap_buf_down)
-setmap("n", "<leader><leader>k", require("smart-splits").swap_buf_up)
-setmap("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
+-- -- Split resize
+setmap("n", "<C-A-h>", "<cmd>resize -3<CR>")
+setmap("n", "<C-A-j>", "<cmd>vertical resize -3<CR>")
+setmap("n", "<C-A-k>", "<cmd>resize 3<CR>")
+setmap("n", "<C-A-l>", "<cmd>vertical resize 3<CR>")
 
 -- Split creation
 map("n", "<leader>sh", ":split<CR>", { noremap = true, silent = true, desc = "Horizontal split" })
@@ -71,8 +61,8 @@ map("n", "<C-s>", ":w<CR>", { noremap = true, silent = true, desc = "Save buffer
 map("n", "<leader>bk", ":bd<CR>", { noremap = true, silent = true, desc = "Close buffer" })
 
 -- Alternate buffer
-map("n", "<tab>", ":bnext<CR>", { noremap = true, silent = true, desc = "Go to next buffer" })
-map("n", "<S-tab>", ":bprevious<CR>", { noremap = true, silent = true, desc = "Go to previous buffer" })
+map("n", "<tab>", ":bnext<CR>", { noremap = false, silent = true, desc = "Go to next buffer" })
+map("n", "<S-tab>", ":bprevious<CR>", { noremap = false, silent = true, desc = "Go to previous buffer" })
 
 -- Jump to previous buffer
 map("n", "<C-a>", "<C-^>", { noremap = true, silent = true, desc = "Go to last buffer" })
