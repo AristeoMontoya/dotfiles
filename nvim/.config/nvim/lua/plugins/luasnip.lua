@@ -5,6 +5,20 @@ return {
 	config = function()
 		local ls = require("luasnip")
 		local types = require("luasnip.util.types")
+		local map = vim.keymap.set
+		local opts = { noremap = true, silent = true }
+
+		opts.desc = "Go to next Luasnip node"
+		map("i", "<C-n>", "<Plug>luasnip-next-choice", opts)
+
+		opts.desc = "Go to next Luasnip node"
+		map("s", "<C-n>", "<Plug>luasnip-next-choice", opts)
+
+		opts.desc = "Go to last Luasnip node"
+		map("i", "<C-p>", "<Plug>luasnip-prev-choice", opts)
+
+		opts.desc = "Go to last Luasnip node"
+		map("s", "<C-p>", "<Plug>luasnip-prev-choice", opts)
 
 		ls.config.setup({
 			ext_opts = {
