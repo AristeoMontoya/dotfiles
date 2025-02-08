@@ -234,6 +234,54 @@ return {
 			{ silent = true, noremap = true, desc = "Show file explorer" }
 		)
 
+		-- Setting up local keymaps
+		-- Need to define an autocmd for that
+		-- These ones only work when mini.files is open
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "MiniFilesBufferCreate",
+			callback = function(args)
+				local buffer_id = args.data.buf_id
+
+				keymap.set("n", "<leader>y", function()
+					local entry = MiniFiles.get_fs_entry()
+					if entry then
+						local cwd = vim.fn.expand(vim.fn.getcwd())
+						local relative_path = entry.path:gsub("^" .. cwd, ".")
+
+						-- Copying to clipboard
+						vim.fn.setreg("+", relative_path)
+						vim.notify("Path copied to clipboard", vim.log.levels.INFO)
+					else
+						vim.notify("Nothing to copy", vim.log.levels.WARN)
+					end
+				end, {
+					buffer = buffer_id,
+					noremap = true,
+					silent = true,
+					desc = "Copy filepath relative to current working directory",
+				})
+
+				keymap.set("n", "<leader>Y", function()
+					local entry = MiniFiles.get_fs_entry()
+					if entry then
+						local cwd = vim.fn.expand(vim.fn.getcwd() .. ":p")
+						local path = entry.path:gsub("^" .. cwd, ".")
+
+						-- Copying to clipboard
+						vim.fn.setreg("+", path)
+						vim.notify("Path copied to clipboard", vim.log.levels.INFO)
+					else
+						vim.notify("Nothing to copy", vim.log.levels.WARN)
+					end
+				end, {
+					buffer = buffer_id,
+					noremap = true,
+					silent = true,
+					desc = "Copy absolute filepath",
+				})
+			end,
+		})
+
 		return {
 			-- Customization of shown content
 			content = {
