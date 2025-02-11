@@ -37,9 +37,9 @@ return {
 
 		opts.desc = "Step continue"
 		keymap.set("n", "<leader>dc", function ()
-			if vim.fn.filereadable(".vscode/launch.json") then
-				require("dap.ext.vscode").load_launchjs(nil, nil)
-			end
+			-- if vim.fn.filereadable(".vscode/launch.json") then
+			-- 	require("dap.ext.vscode").load_launchjs(nil, nil)
+			-- end
 			require("dap").continue()
 		end, opts)
 
