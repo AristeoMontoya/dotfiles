@@ -7,9 +7,14 @@ return {
 			"jay-babu/mason-nvim-dap.nvim",
 			commit = versions.mason_nvim_dap,
 		},
+		{
+			"leoluz/nvim-dap-go",
+			commit = versions.neotest_dap_go,
+		},
 	},
 	-- event = "InsertEnter",
 	config = function()
+		require("dap-go").setup()
 		local dap_status_ok, dap = pcall(require, "dap")
 		if not dap_status_ok then
 			return
@@ -27,15 +32,11 @@ return {
 
 		mason_dap.setup({
 			handlers = {
-				function(source_name)
+				function(config)
 					-- all sources with no handler get passed here
-					-- Keep original functionality of `automatic_setup = true`
-					require("mason-nvim-dap.automatic_setup")(source_name)
+					-- Keep original functionality
+					require("mason-nvim-dap").default_setup(config)
 				end,
-			},
-			ensure_installed = {
-				"python",
-				"bash",
 			},
 			automatic_setup = true,
 		})

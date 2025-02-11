@@ -22,6 +22,7 @@ return {
 	commit = versions.neotest,
 	opts = function()
 		local neotest_golang = require("neotest-golang")
+		require('dap-go').setup()
 
 		return {
 			adapters = {
