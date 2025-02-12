@@ -94,7 +94,9 @@ if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
 	tmux attach || tmux new-session
 fi
 
-if [ $commands[starship] ]; then
+# Starship can be disabled by setting "DISABLE_STARSHIP" to any value
+# The proper way to do this would be in one of the env specific files
+if [[ $commands[starship] ]] && [[ -z "${DISABLE_STARSHIP+1}" ]]; then
 	eval "$(starship init zsh)"
 else
 	zsh_add_file "zsh-prompt"
