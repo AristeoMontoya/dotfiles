@@ -8,34 +8,32 @@ return {
 			base16(base16.themes["onedark"], true)
 		end
 
-		-- Neovim
-		cmd("hi LineNr guibg=NONE")
-		cmd("hi SignColumn guibg=NONE")
-		cmd("hi VertSplit guibg=NONE guifg=#3e4451")
-		cmd("hi CursorLine guibg=#2c323c")
-		cmd("hi CursorLineNr gui=None guifg=#abb2bf guibg=#2c323c")
-		cmd("hi DiffAdd guifg=#81A1C1 guibg = none")
-		cmd("hi DiffChange guifg =#3A3E44 guibg = none")
-		cmd("hi DiffModified guifg = #81A1C1 guibg = none")
-		cmd("hi EndOfBuffer guifg=#282c34")
-		cmd("hi Delimiter None")
-		cmd("hi Underlined guifg=None")
-		cmd("hi Error guifg=None guibg=None")
-		cmd("hi vimTSStringSpecial guifg=#c678dd guibg=None")
-		cmd("highlight WinBar guibg=#454C59")
-		cmd("highlight WinBarNC guibg=#454C59")
-		cmd("highlight NormalFloat guibg=#1f2228")
+		local hl_status, register_highlights = pcall(require, "utils.register_highlights")
+		if not hl_status then
+			return
+		end
 
-		-- GitGutter
-		cmd("hi GitGutterAdd guibg=None guifg=#98c379")
-		cmd("hi GitGutterChange guibg=None guifg=#61afef")
-		cmd("hi GitGutterDelete guibg=None guifg=#e06c75")
-		cmd("hi GitGutterChangeDelete guibg=None guifg=#c678dd")
-		cmd("hi GitGutterAddLine guibg=None guifg=#98c379")
-		cmd("hi GitGutterChangeLine guibg=None guifg=#61afef")
-		cmd("hi GitGutterDeleteLine guibg=None guifg=#e06c75")
-		cmd("hi GitGutterChangeDeleteLine guibg=None guifg=#c678dd")
-
+		register_highlights({
+			-- neovim
+			{ group = "LineNr", value = { bg = nil } },
+			{ group = "SignColumn", value = { bg = nil } },
+			{ group = "VertSplit", value = { bg = nil, fg="#3e4451" } },
+			{ group = "CursorLine", value = { bg = "#2c323c" } },
+			{ group = "CursorLineNr", value = {  fg = "#abb2bf", bg = "#2c323c" } },
+			{ group = "DiffAdd", value = { fg = "#81A1C1", bg = nil } },
+			{ group = "DiffChange", value = { fg = "#3A3E44", bg = nil } },
+			{ group = "DiffModified", value = { fg = "#81A1C1", bg = nil } },
+			{ group = "EndOfBuffer", value = { fg = "#282c34" } },
+			{ group = "Delimiter", value = {} },
+			{ group = "Underlined", value = { fg = nil } },
+			{ group = "Error", value = { fg = nil, bg = nil } },
+			{ group = "vimTSStringSpecial", value = { fg = "#c678dd", bg = nil } },
+			{ group = "WinBar", value = { bg = "#454C59" } },
+			{ group = "WinBarNC", value = { bg = "#454C59" } },
+			{ group = "NormalFloat", value = { bg = "#1f2228" } },
+			-- search
+			{ group = "Search", value = { bg = "#424242" } },
+		})
 		-- TreeSitter
 		cmd("hi tskeywordoperator guifg=#d291e4")
 		cmd("hi tstypebuiltin guifg=#c678dd")
@@ -48,9 +46,6 @@ return {
 		cmd("hi htmltstagattribute guibg=None guifg=#e5c07b")
 		cmd("hi tscharacter guifg=#98c379")
 		cmd("hi tsmethod gui=bold guifg=#61afef")
-
-		-- CoC
-		cmd("hi pmenusel guibg=#98c379")
 
 		-- Lualine
 		cmd("hi lualine_y_diff_added_normal guifg=#98c379")
