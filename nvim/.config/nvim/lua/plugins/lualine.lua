@@ -3,6 +3,20 @@ return {
 	commit = require("settings.versions").lualine,
 	-- event = "InsertEnter",
 	opts = function()
+		local hl_status, set_highlights = pcall(require, "utils.register_highlights")
+		if not hl_status then
+			return
+		end
+
+		set_highlights({
+			{ group = "lualine_y_diff_added_normal", value = { fg = "#98c379" } },
+			{ group = "lualine_y_diff_added_inactive", value = { fg = "#98c379" } },
+			{ group = "lualine_y_diff_modified_normal", value = { fg = "#56b6c2" } },
+			{ group = "lualine_y_diff_modified_inactive", value = { fg = "#56b6c2" } },
+			{ group = "lualine_y_diff_removed_normal", value = { fg = "#e06c75" } },
+			{ group = "lualine_y_diff_removed_inactive", value = { fg = "#e06c75" } },
+		})
+
 		local function show_macro_recording()
 			local recording_register = vim.fn.reg_recording()
 			if recording_register == "" then

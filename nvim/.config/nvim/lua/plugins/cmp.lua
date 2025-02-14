@@ -19,6 +19,21 @@ return {
 			return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 		end
 
+		local hl_status, set_highlights = pcall(require, "utils.register_highlights")
+		if not hl_status then
+			return
+		end
+
+		-- All of them should be forced
+		set_highlights({
+			{ group = "CmpItemAbbrMatch", value = { bg = nil, fg = "#61AFEF", force = true } },
+			{ group = "CmpItemAbbrMatchFuzzy", value = { bg = nil, fg = "#61AFEF", force = true } },
+			{
+				group = "CmpItemAbbrDeprecated",
+				value = { bg = nil, strikethrough = true, fg = "#808080", force = true },
+			},
+		})
+
 		local lsnip = require("luasnip")
 		local cmp = require("cmp")
 

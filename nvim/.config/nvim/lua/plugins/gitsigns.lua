@@ -7,12 +7,12 @@ return {
 	},
 	-- event = "InsertEnter",
 	opts = function()
-		local hl_status, register_highlights = pcall(require, "utils.register_highlights")
+		local hl_status, set_highlights = pcall(require, "utils.register_highlights")
 		if not hl_status then
 			return
 		end
 
-		register_highlights({
+		set_highlights({
 			{ group = "GitGutterAdd", value = { bg = nil, fg = "#98c379" } },
 			{ group = "GitGutterChange", value = { bg = nil, fg = "#61afef" } },
 			{ group = "GitGutterDelete", value = { bg = nil, fg = "#e06c75" } },

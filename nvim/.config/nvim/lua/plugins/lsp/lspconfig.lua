@@ -21,6 +21,16 @@ return {
 
 		local keymap = vim.keymap -- for conciseness
 
+		local hl_status, set_highlights = pcall(require, "utils.register_highlights")
+		if not hl_status then
+			return
+		end
+
+		set_highlights({
+			{ group = "DiagnosticError", value = { fg = "#E06C75" } },
+			{ group = "DiagnosticWarn", value = { fg = "#e5c07b" } },
+		})
+
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
