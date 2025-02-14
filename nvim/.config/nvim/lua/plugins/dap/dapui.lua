@@ -36,7 +36,7 @@ return {
 		)
 
 		opts.desc = "Step continue"
-		keymap.set("n", "<leader>dc", function ()
+		keymap.set("n", "<leader>dc", function()
 			-- if vim.fn.filereadable(".vscode/launch.json") then
 			-- 	require("dap.ext.vscode").load_launchjs(nil, nil)
 			-- end
@@ -69,6 +69,34 @@ return {
 
 		opts.desc = "Evaluate expression under cursor"
 		keymap.set("n", "<leader>dE", "<cmd>lua require'dapui'.eval()<cr>", opts)
+
+		local hl_status, set_highlights = pcall(require, "utils.register_highlights")
+		if not hl_status then
+			return
+		end
+
+		set_highlights({
+			{ group = "DapUIStopNC", value = { bg = nil } },
+			{ group = "DapUINormalNC", value = { bg = nil } },
+			{ group = "DapUIFloatNormal", value = { bg = nil } },
+			{ group = "DapUIUnavailableNC", value = { fg = "#424242", bg = nil } },
+			{ group = "DapUIUnavailable", value = { fg = "#424242", bg = nil } },
+			{ group = "DapUIPlayPauseNC", value = { fg = "#a9ff68", bg = "#454C59" } },
+			{ group = "DapUIPlayPause", value = { fg = "#a9ff68", bg = "#454C59" } },
+			{ group = "DapUIRestartNC", value = { fg = "#a9ff68", bg = "#454C59" } },
+			{ group = "DapUIRestart", value = { fg = "#a9ff68", bg = "#454C59" } },
+			{ group = "DapUIStopNC", value = { fg = "#f70067", bg = "#454C59" } },
+			{ group = "DapUIStop", value = { fg = "#f70067", bg = "#454C59" } },
+			{ group = "DapUIStepOverNC", value = { fg = "#00f1f5", bg = "#454C59" } },
+			{ group = "DapUIStepOver", value = { fg = "#00f1f5", bg = "#454C59" } },
+			{ group = "DapUIStepIntoNC", value = { fg = "#00f1f5", bg = "#454C59" } },
+			{ group = "DapUIStepInto", value = { fg = "#00f1f5", bg = "#454C59" } },
+			{ group = "DapUIStepBackNC", value = { fg = "#00f1f5", bg = "#454C59" } },
+			{ group = "DapUIStepBack", value = { fg = "#00f1f5", bg = "#454C59" } },
+			{ group = "DapUIStepOutNC", value = { fg = "#00f1f5", bg = "#454C59" } },
+			{ group = "DapUIStepOut", value = { fg = "#00f1f5", bg = "#454C59" } },
+			{ group = "DapStoppedLine", value = { bg = "#424242" } },
+		})
 
 		return {
 			controls = {
