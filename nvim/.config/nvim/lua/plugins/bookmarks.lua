@@ -80,6 +80,20 @@ return {
 			desc = "Open bookmarks lists",
 		},
 		{
+			"<leader>mc",
+			function()
+				vim.cmd("BookmarksDesc")
+			end,
+			desc = "Open bookmarks lists",
+		},
+		{
+			"<leader>mi",
+			function()
+				vim.cmd("BookmarksInfoCurrentBookmark")
+			end,
+			desc = "Open bookmarks lists",
+		},
+		{
 			"<leader>fm",
 			function()
 				vim.cmd("BookmarksGoto")
