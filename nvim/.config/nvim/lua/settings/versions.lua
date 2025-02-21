@@ -37,6 +37,7 @@ return {
 	nvim_surround = "dca2e99",
 	nvim_treesitter = "8d4fdc5e",
 	nvim_treesitter_textobjects = "ad8f0a4",
+	nvim_treesitter_context = "198720b",
 	nvim_web_devicons = "edbe0a6",
 	plenary = "2d9b0617",
 	popup = "b7404d3",
@@ -50,5 +51,8 @@ return {
 	mini_files = "6abe854",
 	neotest = "6d3d22c",
 	neotest_golang = "cdb0eb0",
-	neotest_dap_go = "6aa8816"
+	neotest_dap_go = "6aa8816",
+	bookmarks = "2e15f91",
+	sqlite_lua = "b487fcc",
+	project = "8c6bad7"
 }
