@@ -7,6 +7,7 @@ return {
 		{ "hrsh7th/cmp-nvim-lsp", commit = versions.cmp_nvim_lsp },
 		{ "antosha417/nvim-lsp-file-operations", config = true, commit = versions.nvim_lsp_file_operations },
 		{ "folke/lazydev.nvim", opts = {}, commit = versions.lazydev },
+		{ "rmagatti/goto-preview", config = true, commit = versions.goto_preview },
 	},
 	config = function()
 		-- import lspconfig plugin
@@ -41,31 +42,48 @@ return {
 
 				-- set keybinds
 				opts.desc = "Show LSP references"
-				keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+				keymap.set("n", "gR", function()
+					vim.cmd("Telescope lsp_references")
+				end, opts) -- show definition, references
 
 				opts.desc = "Go to declaration"
 				keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
 
 				opts.desc = "Show LSP definitions"
-				keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+				keymap.set("n", "gd", function()
+					vim.cmd("Telescope lsp_definitions")
+				end, opts) -- show lsp definitions
+
+				opts.desc = "Preview LSP definitions"
+				keymap.set("n", "gp", function()
+					require("goto-preview").goto_preview_definition()
+				end, opts) -- show lsp definitions
 
 				opts.desc = "Show LSP implementations"
-				keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+				keymap.set("n", "gi", function()
+					vim.cmd("Telescope lsp_implementations")
+				end, opts) -- show lsp implementations
 
 				opts.desc = "Show LSP type definitions"
-				keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+				keymap.set("n", "gt", function()
+					vim.cmd("Telescope lsp_type_definitions")
+				end, opts) -- show lsp type definitions
 
 				opts.desc = "See available code actions"
 				keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
 				opts.desc = "List file symbols"
-				keymap.set({ "n", "v" }, "<leader>ls", "<cmd>Telescop lsp_document_symbols<CR>", opts) -- see available code actions, in visual mode will apply to selection
+				keymap.set({ "n", "v" }, "<leader>ls", function()
+					vim.cmd("Telescop lsp_document_symbols")
+				end, opts) -- see available code actions, in visual mode will apply to selection
 
 				opts.desc = "Smart rename"
 				keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts) -- smart rename
 
 				opts.desc = "Find diagnostics for current buffer"
-				keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+				keymap.set("n", "<leader>fd", function()
+					vim.cmd("Telescope diagnostics bufnr=0")
+				end, opts) -- show  diagnostics for file
 
 				opts.desc = "Show line diagnostics"
 				keymap.set("n", "<leader>ll", vim.diagnostic.open_float, opts) -- show diagnostics for line
@@ -80,7 +98,9 @@ return {
 				keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
 				opts.desc = "Restart LSP"
-				keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+				keymap.set("n", "<leader>rs", function()
+					vim.cmd("LspRestart")
+				end, opts) -- mapping to restart lsp if necessary
 			end,
 		})
 
