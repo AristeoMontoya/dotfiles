@@ -30,6 +30,7 @@ return {
 	nvim_colorizer = "a065833",
 	nvim_dap = "d0ac996",
 	nvim_dap_ui = "ffa8983",
+	nvim_dap_view = "7a60da5",
 	nvim_dap_virtual_text = "76d80c3",
 	nvim_lint = "6b46370",
 	nvim_lsp_file_operations = "9744b73",
@@ -55,5 +56,5 @@ return {
 	neotest_dap_go = "6aa8816",
 	bookmarks = "2e15f91",
 	sqlite_lua = "b487fcc",
-	project = "8c6bad7"
+	project = "8c6bad7",
 }
