@@ -59,7 +59,8 @@ elif [ -n "$session" ]; then
 
     if ! tmux has-session -t "$session_name" 2>/dev/null; then
         if [ -f "$script_path" ]; then
-            "$script_path" # Run the script if it exists
+            # Run script and get reported session name
+            session_name=$($script_path)
         else
             echo "Can't find session script: '$script_path'."
         fi

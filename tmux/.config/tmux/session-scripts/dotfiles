@@ -1,2 +1,3 @@
 #!/bin/sh
 tmux new -s dotfiles -c ~/dotfiles/ -d
+echo "dotfiles" 
