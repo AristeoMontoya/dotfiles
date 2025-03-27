@@ -50,6 +50,7 @@ return {
 						["<esc>"] = actions.close,
 						["<CR>"] = select_one_or_multi,
 						["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+						["<C-c>"] = actions.delete_buffer
 					},
 				},
 				prompt_prefix = "> ",
@@ -90,13 +91,6 @@ return {
 				-- Developer configurations: Not meant for general override
 				buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 			},
-			-- extensions = {
-			-- 	["ui-select"] = {
-			-- 		require("telescope.themes").get_dropdown({
-			-- 			-- even more opts
-			-- 		}),
-			-- 	},
-			-- },
 		})
 
 		require("telescope").load_extension("ui-select")
