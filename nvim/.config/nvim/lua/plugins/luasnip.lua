@@ -35,6 +35,6 @@ return {
 			},
 		})
 
-		require("luasnip.loaders.from_lua").load({ paths = CONFIG_PATH .. "/snippets" })
+		require("luasnip.loaders.from_lua").lazy_load({ paths = CONFIG_PATH .. "/snippets" })
 	end,
 }
