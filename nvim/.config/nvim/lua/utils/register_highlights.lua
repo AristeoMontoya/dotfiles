@@ -12,6 +12,10 @@ return function (highligths)
 			highlight.id = 0
 		end
 		if highlight.value == nil then
+			vim.notify(
+				"Group " .. highlight.group .. " doesnt have a definition",
+				vim.log.levels.WARN
+			)
 			highlight.value = {}
 		end
 		vim.api.nvim_set_hl(

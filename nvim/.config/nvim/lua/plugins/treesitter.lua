@@ -26,17 +26,17 @@ return {
 		end
 
 		set_highlights({
-			{ group = "tskeywordoperator", values = { fg = "#d291e4" } },
-			{ group = "tstypebuiltin", values = { fg = "#c678dd" } },
-			{ group = "tsparameter", values = { fg = "#56b6c2" } },
-			{ group = "tstitle", values = { fg = "#e5c07b" } },
-			{ group = "tsinclude", values = { fg = "#d291e4" } },
-			{ group = "tsrepeat", values = { fg = "#d291e4" } },
-			{ group = "tserror", values = { bg = nil, fg = "#e06c75" } },
-			{ group = "tstag", values = { bg = nil, "fg=#e06c75" } },
-			{ group = "htmltstagattribute", values = { bg = nil, fg = "#e5c07b" } },
-			{ group = "tscharacter", values = { fg = "#98c379" } },
-			{ group = "tsmethod", values = { fg = "#61afef", bold = true } }, -- This was bolded
+			{ group = "tskeywordoperator", value = { fg = "#d291e4" } },
+			{ group = "tstypebuiltin", value = { fg = "#c678dd" } },
+			{ group = "tsparameter", value = { fg = "#56b6c2" } },
+			{ group = "tstitle", value = { fg = "#e5c07b" } },
+			{ group = "tsinclude", value = { fg = "#d291e4" } },
+			{ group = "tsrepeat", value = { fg = "#d291e4" } },
+			{ group = "tserror", value = { bg = nil, fg = "#e06c75" } },
+			{ group = "tstag", value = { bg = nil, fg = "#e06c75" } },
+			{ group = "htmltstagattribute", value = { bg = nil, fg = "#e5c07b" } },
+			{ group = "tscharacter", value = { fg = "#98c379" } },
+			{ group = "tsmethod", value = { fg = "#61afef", bold = true } }, -- This was bolded
 		})
 
 		require("nvim-treesitter.configs").setup({
