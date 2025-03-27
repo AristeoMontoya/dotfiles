@@ -54,7 +54,7 @@ return {
 	neotest = "6d3d22c",
 	neotest_golang = "cdb0eb0",
 	neotest_dap_go = "6aa8816",
-	bookmarks = "2e15f91",
+	bookmarks = "a447706",
 	sqlite_lua = "b487fcc",
 	project = "8c6bad7",
 }

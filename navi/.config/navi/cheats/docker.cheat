@@ -7,7 +7,7 @@ docker-compose up <use_daemon>
 docker buildx build .
 
 # Use shell from a container
-docker exec -it <container> /bin/bash
+docker exec -it <container> /bin/sh
 
 # Prevent container from starting automatically
 docker update --restart=no <container>

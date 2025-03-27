@@ -1,2 +1,13 @@
 #!/bin/sh
+# This is an example session script
+# Session name can be independent from file name,
+# however when the filename and session name are different
+# the session picker will not be able to de-dup sessions.
+#
+# This could be useful like for example a directory picker
+#
+# Session setup should be handled by each script
 tmux new -s dotfiles -c ~/dotfiles/ -d
+
+# In the end the script should return a session name
+echo "dotfiles" 
