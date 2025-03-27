@@ -26,6 +26,21 @@ return {
 		opts.desc = "Find help"
 		map("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
 
+		local select_one_or_multi = function(prompt_bufnr)
+			local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+			local multi = picker:get_multi_selection()
+			if not vim.tbl_isempty(multi) then
+				require("telescope.actions").close(prompt_bufnr)
+				for _, j in pairs(multi) do
+					if j.path ~= nil then
+						vim.cmd(string.format("%s %s", "edit", j.path))
+					end
+				end
+			else
+				require("telescope.actions").select_default(prompt_bufnr)
+			end
+		end
+
 		require("telescope").setup({
 			defaults = {
 				mappings = {
@@ -33,6 +48,8 @@ return {
 						["<C-j>"] = actions.move_selection_next,
 						["<C-k>"] = actions.move_selection_previous,
 						["<esc>"] = actions.close,
+						["<CR>"] = select_one_or_multi,
+						["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
 					},
 				},
 				prompt_prefix = "> ",
