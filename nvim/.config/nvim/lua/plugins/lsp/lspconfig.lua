@@ -109,16 +109,28 @@ return {
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		local signs = {
-			Error = "",
-			Warn = "",
-			Hint = "",
-			Info = "",
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.HINT] = "",
+			[vim.diagnostic.severity.INFO] = "",
 		}
+		vim.diagnostic.config({
+			signs = {
+				text = signs,
+				linehl = {
+					[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+				},
+			},
+			underline = true,
+			virtual_lines = {
+				current_line = true,
+			},
+		})
 
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
+		-- for type, icon in pairs(signs) do
+		-- 	local hl = "DiagnosticSign" .. type
+		-- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+		-- end
 
 		configs.ccls = {
 			default_config = {

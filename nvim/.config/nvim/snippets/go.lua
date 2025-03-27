@@ -60,6 +60,10 @@ local function get_maps()
     ]]
 
 	local parser = vim.treesitter.get_parser(0, "go")
+	if not parser then
+		return {} -- Return an empty table if Treesitter is not available
+	end
+
 	local tree = parser:parse()[1]
 	local query = vim.treesitter.query.parse("go", map_query)
 
@@ -67,7 +71,8 @@ local function get_maps()
 	for id, node, _ in query:iter_captures(tree:root(), 0, 0, -1) do
 		table.insert(maps, vim.treesitter.get_node_text(node, 0))
 	end
-	return maps
+
+	return maps or {} -- Ensure it always returns a table
 end
 
 ls.add_snippets("go", {
@@ -82,12 +87,21 @@ ls.add_snippets("go", {
 			{
 				i(1),
 				c(2, { t("ok"), i(2, "custom_ok") }),
-				c(
-					3,
-					vim.tbl_map(function(map)
-						return t(map)
-					end, get_maps())
-				),
+				d(3, function()
+					local maps = get_maps()
+					if #maps == 0 then
+						return sn(nil, { i(1, "map") }) -- Fallback insert node if no maps are found
+					end
+
+					return sn(nil, {
+						c(
+							1,
+							vim.tbl_map(function(map)
+								return t(map)
+							end, maps)
+						),
+					})
+				end, {}),
 				i(4),
 				rep(2),
 				i(0),
