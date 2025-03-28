@@ -29,7 +29,9 @@ return {
 
 		set_highlights({
 			{ group = "DiagnosticError", value = { fg = "#E06C75" } },
+			{ group = "DiagnosticErrorLine", value = { bg = "#433943" } },
 			{ group = "DiagnosticWarn", value = { fg = "#e5c07b" } },
+			{ group = "DiagnosticWarnLine", value = { bg = "#434444" } },
 		})
 
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -118,7 +120,8 @@ return {
 			signs = {
 				text = signs,
 				linehl = {
-					[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+					[vim.diagnostic.severity.ERROR] = "DiagnosticErrorLine",
+					[vim.diagnostic.severity.WARN] = "DiagnosticWarnLine",
 				},
 			},
 			underline = true,
