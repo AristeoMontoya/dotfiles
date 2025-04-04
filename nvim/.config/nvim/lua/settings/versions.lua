@@ -1,7 +1,7 @@
 return {
 	mason_lspconfig = "43894ad",
 	goto_preview = "4751e70",
-	bufferline = "5cc447c",
+	bufferline = "655133c",
 	cmp_buffer = "3022dbc",
 	cmp_cmdline = "d250c63",
 	cmp_dap = "ea92773",

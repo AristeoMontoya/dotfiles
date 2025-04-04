@@ -75,7 +75,7 @@ return {
 				},
 				buffer_selected = {
 					fg = "#98c379",
-					bg = "none",
+					bg = "#282C34",
 					bold = true,
 					italic = true,
 				},
@@ -115,7 +115,7 @@ return {
 				},
 				indicator_selected = {
 					fg = "#98c379",
-					bg = "none",
+					bg = "#282C34",
 				},
 				duplicate = {
 					bg = "#353b45",
@@ -133,7 +133,7 @@ return {
 				},
 				numbers_selected = {
 					-- fg = "<colour-value-here>",
-					bg = "none",
+					bg = "#282C34",
 					bold = true,
 					italic = true,
 				},
@@ -147,7 +147,7 @@ return {
 				},
 				diagnostic_selected = {
 					-- fg = "<colour-value-here>",
-					bg = "none",
+					bg = "#282C34",
 					bold = true,
 					italic = true,
 				},
@@ -157,7 +157,7 @@ return {
 				},
 				hint_selected = {
 					-- fg = "#353b45",
-					bg = "none",
+					bg = "#282C34",
 					bold = true,
 					italic = true,
 				},
@@ -169,7 +169,7 @@ return {
 					bg = "none",
 				},
 				hint_diagnostic_selected = {
-					bg = "none",
+					bg = "#282C34",
 					bold = true,
 					italic = true,
 				},
@@ -177,7 +177,7 @@ return {
 					bg = "none",
 				},
 				info_selected = {
-					bg = "none",
+					bg = "#282C34",
 					bold = true,
 					italic = true,
 				},
@@ -190,7 +190,7 @@ return {
 					bg = "none",
 				},
 				info_diagnostic_selected = {
-					bg = "none",
+					bg = "#282C34",
 					bold = true,
 					italic = true,
 				},
@@ -198,7 +198,7 @@ return {
 					bg = "none",
 				},
 				warning_selected = {
-					bg = "none",
+					bg = "#282C34",
 					bold = true,
 					italic = true,
 				},
@@ -211,7 +211,7 @@ return {
 					bg = "none",
 				},
 				warning_diagnostic_selected = {
-					bg = "none",
+					bg = "#282C34",
 					bold = true,
 					italic = true,
 				},
@@ -220,7 +220,7 @@ return {
 					bg = "none",
 				},
 				error_selected = {
-					bg = "none",
+					bg = "#282C34",
 					bold = true,
 					italic = true,
 				},
@@ -233,7 +233,7 @@ return {
 					bg = "none",
 				},
 				error_diagnostic_selected = {
-					bg = "none",
+					bg = "#282C34",
 					bold = true,
 					italic = true,
 				},
@@ -241,16 +241,16 @@ return {
 					bg = "#353b45",
 				},
 				modified_selected = {
-					bg = "none",
+					bg = "#282C34",
 				},
 				separator_selected = {
-					bg = "none",
+					bg = "#282C34",
 				},
 				separator_visible = {
 					bg = "#353b45",
 				},
 				pick_selected = {
-					bg = "none",
+					bg = "#282C34",
 					bold = true,
 					italic = true,
 				},
