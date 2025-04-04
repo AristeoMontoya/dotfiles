@@ -108,4 +108,17 @@ ls.add_snippets("go", {
 			}
 		)
 	),
+	s(
+		"impl",
+		fmt(
+			[[
+			// Run code action "Declare missing methods" on this
+			var _ {} = {}{{}}
+			]],
+			{
+				i(1, "Interface"),
+				i(0, "Struct"),
+			}
+		)
+	),
 })
