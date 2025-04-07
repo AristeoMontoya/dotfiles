@@ -75,9 +75,48 @@ local function get_maps()
 	return maps or {} -- Ensure it always returns a table
 end
 
+local function is_in_function()
+	local current_node = ts_utils.get_node_at_cursor()
+	if not current_node then
+		return false
+	end
+	local expr = current_node
+
+	while expr do
+		if expr:type() == "function_declaration" or expr:type() == "method_declaration" then
+			return true
+		end
+		expr = expr:parent()
+	end
+	return false
+end
+
+local function is_in_test_file()
+	local filename = vim.fn.expand("%:p")
+	return vim.endswith(filename, "_test.go")
+end
+
+local function is_in_test_function()
+	return is_in_test_file() and is_in_function()
+end
+
+local in_test_file = {
+	show_condition = is_in_test_file,
+	condition = is_in_test_file,
+}
+
+local in_test_func = {
+	show_condition = is_in_test_function,
+	condition = is_in_test_function,
+}
+
 ls.add_snippets("go", {
 	s(
-		"ifmap",
+		{
+			trig = "ifmap",
+			name = "if map contains",
+			dscr = "inline checks if a map contains a value",
+		},
 		fmt(
 			[[
         if {}, {} := {}[{}]; {} {{
@@ -109,7 +148,10 @@ ls.add_snippets("go", {
 		)
 	),
 	s(
-		"impl",
+		{
+			trig = "impl",
+			name = "Implement interface",
+		},
 		fmt(
 			[[
 			// Run code action "Declare missing methods" on this
@@ -120,5 +162,24 @@ ls.add_snippets("go", {
 				i(0, "Struct"),
 			}
 		)
+	),
+	s(
+		{ trig = "paratest", dscr = "Paramaetric tests" },
+		fmt(
+			[[
+			testCases := map[string]struct {{
+				{}
+			}} {{
+			// Test cases here
+			}}
+			for name, tc := range testCases {{
+				t.Run(name, func(t *testing.T) {{
+					{}
+				}})
+			}}
+			]],
+			{ ls.i(1), ls.i(2) }
+		),
+		in_test_func
 	),
 })
