@@ -211,16 +211,15 @@ return {
 		})
 
 		local keymap = vim.keymap
-		local MiniFiles = require("mini.files")
 
 		local minifiles_toggle = function()
 			if not MiniFiles.close() then
-				MiniFiles.open()
+				MiniFiles.open(MiniFiles.get_latest_path())
 			end
 		end
 
 		local show_file_in_explorer = function()
-			local _ = MiniFiles.close() or MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
+			local _ = MiniFiles.close() or MiniFiles.open(vim.api.nvim_buf_get_name(0))
 			vim.schedule(function()
 				MiniFiles.reveal_cwd()
 			end)
@@ -250,7 +249,7 @@ return {
 
 						-- Copying to clipboard
 						vim.fn.setreg("+", relative_path)
-						vim.notify("Path copied to clipboard", vim.log.levels.INFO)
+						vim.notify("Relative path copied to clipboard", vim.log.levels.INFO)
 					else
 						vim.notify("Nothing to copy", vim.log.levels.WARN)
 					end
@@ -269,7 +268,7 @@ return {
 
 						-- Copying to clipboard
 						vim.fn.setreg("+", path)
-						vim.notify("Path copied to clipboard", vim.log.levels.INFO)
+						vim.notify("Absolute path copied to clipboard", vim.log.levels.INFO)
 					else
 						vim.notify("Nothing to copy", vim.log.levels.WARN)
 					end
