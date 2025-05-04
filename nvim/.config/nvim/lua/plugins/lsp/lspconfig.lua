@@ -45,7 +45,7 @@ return {
 				-- set keybinds
 				opts.desc = "Show LSP references"
 				keymap.set("n", "gR", function()
-					vim.cmd("Telescope lsp_references")
+					require("telescope.builtin").lsp_references({ reuse_win = true })
 				end, opts) -- show definition, references
 
 				opts.desc = "Go to declaration"
@@ -53,7 +53,7 @@ return {
 
 				opts.desc = "Show LSP definitions"
 				keymap.set("n", "gd", function()
-					vim.cmd("Telescope lsp_definitions")
+					require("telescope.builtin").lsp_definitions({ reuse_win = true })
 				end, opts) -- show lsp definitions
 
 				opts.desc = "Preview LSP definitions"
@@ -63,12 +63,12 @@ return {
 
 				opts.desc = "Show LSP implementations"
 				keymap.set("n", "gi", function()
-					vim.cmd("Telescope lsp_implementations")
+					require("telescope.builtin").lsp_implementations({ reuse_win = true })
 				end, opts) -- show lsp implementations
 
 				opts.desc = "Show LSP type definitions"
 				keymap.set("n", "gt", function()
-					vim.cmd("Telescope lsp_type_definitions")
+					require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
 				end, opts) -- show lsp type definitions
 
 				opts.desc = "See available code actions"
@@ -76,7 +76,7 @@ return {
 
 				opts.desc = "List file symbols"
 				keymap.set({ "n", "v" }, "<leader>ls", function()
-					vim.cmd("Telescop lsp_document_symbols")
+					vim.cmd("Telescope lsp_document_symbols")
 				end, opts) -- see available code actions, in visual mode will apply to selection
 
 				opts.desc = "Smart rename"
