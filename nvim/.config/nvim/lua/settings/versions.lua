@@ -52,7 +52,7 @@ return {
 	mini_files = "6abe854",
 	neotest = "6d3d22c",
 	neotest_golang = "cdb0eb0",
-	neotest_dap_go = "6aa8816",
+	neotest_dap_go = "8763ced",
 	bookmarks = "a447706",
 	sqlite_lua = "b487fcc",
 	project = "8c6bad7"
