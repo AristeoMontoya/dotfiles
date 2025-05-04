@@ -42,8 +42,10 @@ return {
 		})
 
 		vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
-		vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DiagnosticSignInfo", linehl = "", numhl = "" })
-
+		vim.fn.sign_define(
+			"DapBreakpointRejected",
+			{ text = "", texthl = "DiagnosticSignInfo", linehl = "", numhl = "" }
+		)
 
 		vim.fn.sign_define(
 			"DapBreakpointCondition",
@@ -55,14 +57,34 @@ return {
 			{ text = "→", texthl = "DiagnosticVirtualTextHint", linehl = "DapStoppedLine", numhl = "" }
 		)
 
+		dap.defaults.fallback.switchbuf = "usevisible,usetab,uselast"
+		dap.defaults.fallback.exception_breakpoints = { "uncaught" }
+
 		dap.listeners.after.event_initialized["dapui_config"] = function()
 			dapui.open()
 		end
 		dap.listeners.before.event_terminated["dapui_config"] = function()
 			dapui.close()
 		end
-		dap.listeners.before.event_exited["dapui_config"] = function()
+
+		-- Close ui only if its not an error
+		dap.listeners.after.event_exited.dap_ui_config = function(_, body)
+			if body and body.exitCode then
+				if body.exitCode == 0 then
+					dapui.close()
+				end
+			end
+		end
+
+		dap.listeners.after.disconnect.dap_ui_config = function()
 			dapui.close()
 		end
+
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = "dap-repl",
+			callback = function()
+				require("dap.ext.autocompl").attach()
+			end,
+		})
 	end,
 }
