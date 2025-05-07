@@ -16,6 +16,8 @@ export TERMINAL="alacritty"
 export BROWSER="brave"
 export GPG_TTY=$(tty)
 
+export SDKMAN_DIR="$HOME/.sdkman"
+
 # For QT Themes
 export QT_QPA_PLATFORMTHEME=qt5ct
 

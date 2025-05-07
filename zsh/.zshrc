@@ -102,4 +102,5 @@ else
 	zsh_add_file "zsh-prompt"
 fi
 
+unfunction lazy_load
 # zprof
