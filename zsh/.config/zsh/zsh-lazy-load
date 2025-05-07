@@ -1,8 +1,5 @@
-function sdk() {
-	unfunction "$0"
-
-	export SDKMAN_DIR="$HOME/.sdkman"
-	[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-	$0
-}
+# lazy load sdkman
+lazy_load 'sdk' 'java' 'javac' 'gradle' 'mvn' <<- 'EOF'
+	#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+	[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+EOF
