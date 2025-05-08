@@ -1,0 +1,19 @@
+local versions = require("settings.versions")
+return {
+	"leoluz/nvim-dap-go",
+	config = true,
+	commit = versions.nvim_dap_go,
+	dependencies = {
+		"mfussenegger/nvim-dap",
+		commit = versions.nvim_dap,
+	},
+	keys = {
+		{
+			"<leader>dt",
+			function()
+				require("dap-go").debug_test()
+			end,
+			desc = "Debug test",
+		},
+	},
+}
