@@ -1,0 +1,9 @@
+% android
+
+# List connected android devices
+adb devices -l
+
+# Disconnect android device
+adb disconnect <device>
+
+$ device: adb devices -l --- --headers 1 --column 1 --expand
