@@ -1,29 +1,38 @@
-eclipse.jdt.ls
-.netrwhist
-log_pdf.log
-coc
-nvim/plugin
-nvim/plugin/packer_compiled.vim
-java-debug
-nvim/.config/nvim/plugin
-nvim/.config/nvim/after
-tmux/.config/tmux/session-scripts/env/*
-!tmux/.config/tmux/session-scripts/env/.gitkeep
-nvim/.config/nvim/lua/user/treesitter/overrides.lua
-nvim/.config/nvim/lua/lsp/overrides.lua
-zsh/.config/zsh/env/*
-!zsh/.config/zsh/env/.gitkeep
-cheat/.config/cheat/local/*
-!cheat/.config/cheat/local/.gitkeep
-navi/.config/navi/local/*
-!navi/.config/navi/local/.gitkeep
-tmux/.config/tmux/plugins
-nvim/.config/nvim/lazy-lock.json
+# zsh
 zsh/.config/iterm2
 zsh/.zprofile
+zsh/.config/zsh/env/*
+!zsh/.config/zsh/env/.gitkeep
+zsh/.config/environment.d/env-*
 
+# navi
+navi/.config/navi/local/*
+!navi/.config/navi/local/.gitkeep
+cheat/.config/cheat/local/*
+!cheat/.config/cheat/local/.gitkeep
+
+# tmux
+tmux/.config/tmux/session-scripts/env/*
+!tmux/.config/tmux/session-scripts/env/.gitkeep
+tmux/.config/tmux/plugins
+
+# nvim
 nvim/.config/nvim/lua/user/overrides/treesitter/init.lua
 nvim/.config/nvim/lua/user/overrides/lsp/init.lua
 nvim/.config/nvim/lua/user/overrides/linters/init.lua
 nvim/.config/nvim/lua/user/overrides/formatters/init.lua
 nvim/.config/nvim/lua/user/overrides/dap/init.lua
+nvim/.config/nvim/lazy-lock.json
+nvim/plugin
+nvim/plugin/packer_compiled.vim
+nvim/.config/nvim/plugin
+nvim/.config/nvim/after
+nvim/.config/nvim/lua/user/treesitter/overrides.lua
+nvim/.config/nvim/lua/lsp/overrides.lua
+
+# misc
+eclipse.jdt.ls
+.netrwhist
+log_pdf.log
+coc
+java-debug

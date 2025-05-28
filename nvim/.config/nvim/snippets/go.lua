@@ -172,7 +172,7 @@ ls.add_snippets("go", {
 			}} {{
 			// Test cases here
 			}}
-			for name, tc := range testCases {{
+			for _, tc := range testCases {{
 				t.Run(tc.name, func(t *testing.T) {{
 					{}
 				}})
