@@ -86,6 +86,10 @@ nnoremap <silent> <leader>st <C-W>T
 " -------
 " ACTIONS
 " -------
+"" Buffers
+nnoremap <silent> <leader>bp :action PinActivateTab<CR>
+nnoremap <silent> <leader>bk :action CloseActiveTab<CR>
+
 "" Editor
 nnoremap <silent> <leader>h :noh<CR>
 
