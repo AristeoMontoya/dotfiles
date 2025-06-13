@@ -167,13 +167,13 @@ ls.add_snippets("go", {
 		{ trig = "paratest", dscr = "Paramaetric tests" },
 		fmt(
 			[[
-			testCases := map[string]struct {{
+			testCases := []struct {{
 				{}
 			}} {{
 			// Test cases here
 			}}
-			for name, tc := range testCases {{
-				t.Run(name, func(t *testing.T) {{
+			for _, tc := range testCases {{
+				t.Run(tc.name, func(t *testing.T) {{
 					{}
 				}})
 			}}

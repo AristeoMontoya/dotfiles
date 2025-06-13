@@ -9,6 +9,7 @@ $ tag: git tag -l
 $ repo_root: git rev-parse --show-toplevel
 $ unstaged_files: git status --untracked-files=all -s --porcelain | awk '{print $NF}' | xargs -I % realpath -s --relative-to="$(pwd)" "<repo_root>/%" --- --multi --expand
 $ staged_files: git diff --cached --name-only | xargs -I % realpath -s --relative-to="$(pwd)" "<repo_root>/%" --- --multi --expand
+$ commit_from_all: git reflog show --all --- --delimiter ' ' --column 1
 
 # Change branch
 git checkout <branch>
@@ -48,6 +49,12 @@ git submodule add <submodule_name>
 
 # Initialize submodules
 git submodule update --init --recursive
+
+# Identify branch containing commit
+git branch -a --contain <commit_from_all>
+
+# Rename current branch
+git branch -m '<new_name>'
 
 % git, stash
 @ git
