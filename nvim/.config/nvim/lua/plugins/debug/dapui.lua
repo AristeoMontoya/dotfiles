@@ -182,6 +182,12 @@ local versions = require("settings.versions")
 -- 		}
 -- 	end,
 -- }
+
+
+
+
+
+
 return {
 	"rcarriga/nvim-dap-ui",
 	commit = versions.nvim_dap_ui,

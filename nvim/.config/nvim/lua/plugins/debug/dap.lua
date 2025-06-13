@@ -2,8 +2,17 @@ local versions = require("settings.versions")
 return {
 	"mfussenegger/nvim-dap",
 	commit = versions.nvim_dap,
-	dependencies = { "rcarriga/nvim-dap-ui", commit = versions.nvim_dap_ui },
+	dependencies = {
+		{ "rcarriga/nvim-dap-ui", commit = versions.nvim_dap_ui },
+		{ "jay-babu/mason-nvim-dap.nvim", commit = versions.mason_nvim_dap },
+		{ "nvim-neotest/nvim-nio", commit = versions.nvim_nio },
+		{ "williamboman/mason.nvim", commit = versions.mason },
+	},
 	config = function()
+		require("mason").setup()
+		require("mason-nvim-dap").setup()
+		require("dap-go").setup()
+
 		local hl_status, set_highlights = pcall(require, "utils.register_highlights")
 		if not hl_status then
 			return
@@ -32,6 +41,30 @@ return {
 		local dap = require("dap")
 		dap.defaults.fallback.switchbuf = "usevisible,usetab,uselast"
 		dap.defaults.fallback.exception_breakpoints = { "uncaught" }
+
+		dap.configurations.go = {
+			{
+				type = "delve",
+				name = "Debug",
+				request = "launch",
+				program = "${file}",
+			},
+			{
+				type = "delve",
+				name = "Debug test", -- configuration for debugging test files
+				request = "launch",
+				mode = "test",
+				program = "${file}",
+			},
+			-- works with go.mod packages and sub packages
+			{
+				type = "delve",
+				name = "Debug test (go.mod)",
+				request = "launch",
+				mode = "test",
+				program = "./${relativeFileDirname}",
+			},
+		}
 	end,
 	-- stylua: ignore
 	keys = {
