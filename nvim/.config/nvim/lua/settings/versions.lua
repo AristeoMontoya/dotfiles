@@ -44,6 +44,7 @@ return {
 	popup = "b7404d3",
 	smart_splits = "d8b0e77",
 	statuscol = "8822f76",
+	telescope_frecency = "03a0efd",
 	telescope_ui_select = "6e51d7d",
 	telescope = "85922dd",
 	trouble = "46cf952",

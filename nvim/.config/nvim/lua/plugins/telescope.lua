@@ -7,6 +7,7 @@ return {
 		{ "nvim-lua/popup.nvim", commit = versions.popup },
 		{ "nvim-lua/plenary.nvim", commit = versions.plenary },
 		{ "nvim-telescope/telescope-ui-select.nvim", commit = versions.telescope_ui_select },
+		{ "nvim-telescope/telescope-frecency.nvim", commit = versions.telescope_frecency }
 	},
 	config = function()
 		local actions = require("telescope.actions")
@@ -15,7 +16,7 @@ return {
 
 		-- Telescope
 		opts.desc = "Find files"
-		map("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+		map("n", "<leader>ff", ":Telescope frecency<CR>", opts)
 
 		opts.desc = "Find grep"
 		map("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
@@ -94,5 +95,6 @@ return {
 		})
 
 		require("telescope").load_extension("ui-select")
+		require("telescope").load_extension("frecency")
 	end,
 }
