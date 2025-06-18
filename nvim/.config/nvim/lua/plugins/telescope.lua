@@ -16,7 +16,7 @@ return {
 
 		-- Telescope
 		opts.desc = "Find files"
-		map("n", "<leader>ff", ":Telescope frecency<CR>", opts)
+		map("n", "<leader>ff", ":Telescope frecency workspace=CWD<CR>", opts)
 
 		opts.desc = "Find grep"
 		map("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
