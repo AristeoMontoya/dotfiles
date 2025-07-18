@@ -14,7 +14,6 @@ return {
 	dressing = "fc78a3c",
 	flash = "34c7be1",
 	gitsigns = "5f808b5",
-	indent_blankline = "7871a88",
 	lazy = "",
 	lazydev = "f59bd14",
 	lualine = "2a5bae9",
@@ -44,9 +43,6 @@ return {
 	popup = "b7404d3",
 	smart_splits = "d8b0e77",
 	statuscol = "8822f76",
-	telescope_frecency = "03a0efd",
-	telescope_ui_select = "6e51d7d",
-	telescope = "85922dd",
 	trouble = "46cf952",
 	vim_illuminate = "19cb21f",
 	which_key = "b9684c6",
@@ -58,5 +54,5 @@ return {
 	sqlite_lua = "b487fcc",
 	project = "8c6bad7",
 	snacks = "bc0630e",
-	todo = "304a8d2"
+	rainbow_delimiters = "5ebe9f2",
 }
