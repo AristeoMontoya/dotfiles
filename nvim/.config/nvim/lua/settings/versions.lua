@@ -56,5 +56,7 @@ return {
 	neotest_dap_go = "8763ced",
 	bookmarks = "a447706",
 	sqlite_lua = "b487fcc",
-	project = "8c6bad7"
+	project = "8c6bad7",
+	snacks = "bc0630e",
+	todo = "304a8d2"
 }

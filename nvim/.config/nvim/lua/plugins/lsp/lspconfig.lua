@@ -45,7 +45,7 @@ return {
 				-- set keybinds
 				opts.desc = "Show LSP references"
 				keymap.set("n", "gR", function()
-					require("telescope.builtin").lsp_references({ reuse_win = true })
+					require("snacks").picker.lsp_references({ jump = { reuse_win = true } })
 				end, opts) -- show definition, references
 
 				opts.desc = "Go to declaration"
@@ -53,7 +53,7 @@ return {
 
 				opts.desc = "Show LSP definitions"
 				keymap.set("n", "gd", function()
-					require("telescope.builtin").lsp_definitions({ reuse_win = true })
+					require("snacks").picker.lsp_definitions({ jump = { reuse_win = true } })
 				end, opts) -- show lsp definitions
 
 				opts.desc = "Preview LSP definitions"
@@ -63,12 +63,12 @@ return {
 
 				opts.desc = "Show LSP implementations"
 				keymap.set("n", "gi", function()
-					require("telescope.builtin").lsp_implementations({ reuse_win = true })
+					require("snacks").picker.lsp_implementations({ jump = { reuse_win = true } })
 				end, opts) -- show lsp implementations
 
 				opts.desc = "Show LSP type definitions"
 				keymap.set("n", "gt", function()
-					require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
+					require("snacks").picker.lsp_type_definitions({ jump = { reuse_win = true } })
 				end, opts) -- show lsp type definitions
 
 				opts.desc = "See available code actions"
@@ -76,7 +76,7 @@ return {
 
 				opts.desc = "List file symbols"
 				keymap.set({ "n", "v" }, "<leader>ls", function()
-					vim.cmd("Telescope lsp_document_symbols")
+					require("snacks").picker.lsp_symbols()
 				end, opts) -- see available code actions, in visual mode will apply to selection
 
 				opts.desc = "Smart rename"
@@ -84,7 +84,12 @@ return {
 
 				opts.desc = "Find diagnostics for current buffer"
 				keymap.set("n", "<leader>fd", function()
-					vim.cmd("Telescope diagnostics bufnr=0")
+					Snacks.picker.diagnostics_buffer()
+				end, opts) -- show  diagnostics for file
+
+				opts.desc = "Find diagnostics for project"
+				keymap.set("n", "<leader>fD", function()
+					Snacks.picker.diagnostics()
 				end, opts) -- show  diagnostics for file
 
 				opts.desc = "Show line diagnostics"
