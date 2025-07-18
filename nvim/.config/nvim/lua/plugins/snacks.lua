@@ -4,6 +4,9 @@ return {
 	commit = versions.snacks,
 	-- priority = 1000,
 	lazy = false,
+	dependencies = {
+		{ "folke/todo-comments.nvim", commit = versions.todo, opts = {} },
+	},
 	opts = function()
 		local hl_status, set_highlights = pcall(require, "utils.register_highlights")
 		if not hl_status then
