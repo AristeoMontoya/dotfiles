@@ -5,6 +5,7 @@ return {
 	dependencies = {
 		{ "nvim-treesitter/nvim-treesitter-textobjects", commit = versions.nvim_treesitter_textobjects },
 		{ "nvim-treesitter/nvim-treesitter-context", commit = versions.nvim_treesitter_context },
+		{ "HiPhish/rainbow-delimiters.nvim", commit = versions.rainbow_delimiters },
 	},
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
@@ -25,6 +26,29 @@ return {
 			return
 		end
 
+		vim.g.rainbow_delimiters = {
+			strategy = {
+				[""] = "rainbow-delimiters.strategy.global",
+				vim = "rainbow-delimiters.strategy.local",
+			},
+			query = {
+				[""] = "rainbow-delimiters",
+				lua = "rainbow-blocks",
+			},
+			priority = {
+				[""] = 110,
+				lua = 210,
+			},
+			highlight = {
+				"RainbowDelimiterRed",
+				"RainbowDelimiterYellow",
+				"RainbowDelimiterBlue",
+				"RainbowDelimiterGreen",
+				"RainbowDelimiterViolet",
+				"RainbowDelimiterCyan",
+			},
+		}
+
 		set_highlights({
 			{ group = "tskeywordoperator", value = { fg = "#d291e4" } },
 			{ group = "tstypebuiltin", value = { fg = "#c678dd" } },
@@ -37,6 +61,12 @@ return {
 			{ group = "htmltstagattribute", value = { bg = nil, fg = "#e5c07b" } },
 			{ group = "tscharacter", value = { fg = "#98c379" } },
 			{ group = "tsmethod", value = { fg = "#61afef", bold = true } }, -- This was bolded
+			{ group = "RainbowDelimiterRed", value = { fg = "#E06C75" } }, -- This was bolded
+			{ group = "RainbowDelimiterYellow", value = { fg = "#E5C07B" } }, -- This was bolded
+			{ group = "RainbowDelimiterBlue", value = { fg = "#61AFEF" } }, -- This was bolded
+			{ group = "RainbowDelimiterGreen", value = { fg = "#98C379" } }, -- This was bolded
+			{ group = "RainbowDelimiterViolet", value = { fg = "#C678DD" } }, -- This was bolded
+			{ group = "RainbowDelimiterCyan", value = { fg = "#56B6C2" } }, -- This was bolded
 		})
 
 		require("nvim-treesitter.configs").setup({
@@ -76,18 +106,6 @@ return {
 						["<leader>A"] = "@parameter.inner",
 					},
 				},
-			},
-			rainbow = {
-				enable = true,
-				colors = {
-					"#69BBFF",
-					"#FFD68A",
-					"#B5E890",
-					"#FF7A85",
-					"#E48AFF",
-					"#66D9E8",
-				},
-				max_file_lines = 1000,
 			},
 			incremental_selection = {
 				enable = true,
