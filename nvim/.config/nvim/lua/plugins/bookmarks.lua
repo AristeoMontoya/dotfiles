@@ -4,7 +4,6 @@ return {
 	commit = versions.bookmarks,
 	dependencies = {
 		{ "kkharji/sqlite.lua", commit = versions.sqlite_lua },
-		{ "nvim-telescope/telescope.nvim", commit = versions.telescope },
 		{ "stevearc/dressing.nvim", commit = versions.dressing },
 		{ "ahmedkhalf/project.nvim", commit = versions.project },
 	},
