@@ -1,6 +1,10 @@
+local versions = require("settings.versions")
 return {
 	"folke/trouble.nvim",
-	commit = require("settings.versions").trouble,
+	commit = versions.trouble,
+	dependencies = {
+		{ "folke/todo-comments.nvim", commit = versions.todo, opts = {} },
+	},
 	-- event = "InsertEnter",
 	opts = function()
 		local opts = { silent = true }
@@ -11,6 +15,9 @@ return {
 
 		opts.desc = "Toggle diagnostics list for project"
 		map("n", "<leader>lD", "<cmd>Trouble diagnostics toggle<CR>", opts)
+
+		opts.desc = "Toggle diagnostics list for project"
+		map("n", "<leader>lt", "<cmd>TodoTrouble<CR>", opts)
 
 		return {
 			auto_close = false, -- auto close when there are no items
