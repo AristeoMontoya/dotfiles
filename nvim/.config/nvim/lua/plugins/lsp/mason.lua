@@ -22,7 +22,7 @@ return {
 
 		-- Load user defined overrides
 		-- Some devices are not compatible with my defaults.
-		local lsp_overrides_ok, lsp_overrides = pcall(require, "user.overrides.lsp")
+		local lsp_overrides_ok, lsp_overrides = pcall(require, "user.overrides.lsp.servers")
 		local linters_overrides_ok, linters_overrides = pcall(require, "user.overrides.linters")
 		local formatters_overrides_ok, formatters_overrides = pcall(require, "user.overrides.formatters")
 		local debuggers_overrides_ok, debuggers_overrides = pcall(require, "user.overrides.dap")
