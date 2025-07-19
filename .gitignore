@@ -28,7 +28,8 @@ nvim/plugin/packer_compiled.vim
 nvim/.config/nvim/plugin
 nvim/.config/nvim/after
 nvim/.config/nvim/lua/user/treesitter/overrides.lua
-nvim/.config/nvim/lua/lsp/overrides.lua
+nvim/.config/nvim/lua/user/overrides/lsp/*
+!nvim/.config/nvim/lua/user/overrides/lsp/template*
 
 # misc
 eclipse.jdt.ls

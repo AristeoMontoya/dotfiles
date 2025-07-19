@@ -27,6 +27,12 @@ return {
 			return
 		end
 
+		local config_overrides_ok, config_overrides = pcall(require, "user.overrides.lsp.configs")
+		-- Setting an empty table to merge
+		if not config_overrides_ok then
+			config_overrides = {}
+		end
+
 		set_highlights({
 			{ group = "DiagnosticError", value = { fg = "#E06C75" } },
 			{ group = "DiagnosticErrorLine", value = { bg = "#433943" } },
@@ -114,6 +120,20 @@ return {
 		-- used to enable autocompletion (assign to every lsp server config)
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
+		---Returns a table containing the passed configuration
+		---merged with user defined overrides
+		---@param server_name string
+		---@param settings table
+		---@return table
+		local function get_merged_configs(server_name, settings)
+			local overrides = config_overrides[server_name]
+			if overrides == nil then
+				overrides = {}
+			end
+			local merged = vim.tbl_deep_extend("force", settings, overrides)
+			return merged
+		end
+
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		local signs = {
 			[vim.diagnostic.severity.ERROR] = "",
@@ -134,11 +154,6 @@ return {
 				current_line = true,
 			},
 		})
-
-		-- for type, icon in pairs(signs) do
-		-- 	local hl = "DiagnosticSign" .. type
-		-- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		-- end
 
 		configs.ccls = {
 			default_config = {
@@ -165,26 +180,16 @@ return {
 			},
 		})
 
-		-- lspconfig["jdtls"].setup({
-		-- 	handlers = {
-		-- 		-- By assigning an empty function, you can remove the notifications
-		-- 		-- printed to the cmd
-		-- 		["$/progress"] = function(_, result, ctx) end,
-		-- 	},
-		-- 	jdk = {
-		-- 		auto_install = false,
-		-- 	},
-		-- 	java_test = {
-		-- 		enable = false,
-		-- 	},
-		-- })
-
+		-- TODO: Find a more maintainable way to do this.
+		-- Also update this to mason v2
 		mason_lspconfig.setup_handlers({
 			-- default handler for installed servers
 			function(server_name)
-				lspconfig[server_name].setup({
+				local settings = {
 					capabilities = capabilities,
-				})
+				}
+				local merged = get_merged_configs(server_name, settings)
+				lspconfig[server_name].setup(merged)
 			end,
 			["vimls"] = function()
 				lspconfig["vimls"].setup({
@@ -192,7 +197,7 @@ return {
 				})
 			end,
 			["pyright"] = function()
-				lspconfig["pyright"].setup({
+				local settings = {
 					capabilities = capabilities,
 					settings = {
 						pyright = {
@@ -207,11 +212,12 @@ return {
 							},
 						},
 					},
-				})
+				}
+				lspconfig["pyright"].setup(get_merged_configs("pyright", settings))
 			end,
 			["emmet_ls"] = function()
 				-- configure emmet language server
-				lspconfig["emmet_ls"].setup({
+				local settings = {
 					capabilities = capabilities,
 					filetypes = {
 						"html",
@@ -223,11 +229,12 @@ return {
 						"less",
 						"svelte",
 					},
-				})
+				}
+				lspconfig["emmet_ls"].setup(get_merged_configs("emmet_ls", settings))
 			end,
 			["lua_ls"] = function()
 				-- configure lua server (with special settings)
-				lspconfig["lua_ls"].setup({
+				local settings = {
 					capabilities = capabilities,
 					settings = {
 						Lua = {
@@ -253,10 +260,11 @@ return {
 							},
 						},
 					},
-				})
+				}
+				lspconfig["lua_ls"].setup(get_merged_configs("lua_ls", settings))
 			end,
 			["ts_ls"] = function()
-				lspconfig["ts_ls"].setup({
+				local settings = {
 					capabilities = capabilities,
 					javascript = {
 						referencesCodeLens = {
@@ -274,10 +282,11 @@ return {
 						"jsconfig.json",
 						".git"
 					),
-				})
+				}
+				lspconfig["ts_ls"].setup(get_merged_configs("ts_ls", settings))
 			end,
 			["angularls"] = function()
-				lspconfig["angularls"].setup({
+				local settings = {
 					capabilities = capabilities,
 					root_dir = require("lspconfig/util").root_pattern(
 						"package.json",
@@ -285,7 +294,8 @@ return {
 						"jsconfig.json",
 						".git"
 					),
-				})
+				}
+				lspconfig["angularls"].setup(get_merged_configs("angularls", settings))
 			end,
 		})
 	end,
