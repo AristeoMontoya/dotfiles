@@ -63,9 +63,6 @@ return {
 		dap.listeners.after.event_initialized["dapui_config"] = function()
 			dapui.open()
 		end
-		dap.listeners.before.event_terminated["dapui_config"] = function()
-			dapui.close()
-		end
 
 		-- Close ui only if its not an error
 		dap.listeners.after.event_exited.dap_ui_config = function(_, body)
