@@ -180,6 +180,10 @@ return {
 			},
 		})
 
+		lspconfig["kulala_ls"].setup({
+			capabilities = capabilities
+		})
+
 		-- TODO: Find a more maintainable way to do this.
 		-- Also update this to mason v2
 		mason_lspconfig.setup_handlers({
