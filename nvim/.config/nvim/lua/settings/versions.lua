@@ -11,7 +11,6 @@ return {
 	cmp_luasnip = "98d9cb5",
 	Comment = "e30b7f2",
 	conform = "a203480",
-	dressing = "fc78a3c",
 	flash = "34c7be1",
 	gitsigns = "5f808b5",
 	lazy = "",

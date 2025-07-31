@@ -18,6 +18,13 @@ return {
 		},
 	},
 	opts = {
+		formatters = {
+			kulala = {
+				command = "kulala-fmt",
+				args = { "format", "$FILENAME" },
+				stdin = false,
+			},
+		},
 		formatters_by_ft = {
 			javascript = { "prettier" },
 			typescript = { "prettier" },
@@ -33,6 +40,7 @@ return {
 			liquid = { "prettier" },
 			lua = { "stylua" },
 			python = { "isort", "black" },
+			http = { "kulala" },
 		},
 	},
 }
