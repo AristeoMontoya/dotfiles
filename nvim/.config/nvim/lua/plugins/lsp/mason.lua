@@ -66,6 +66,10 @@ return {
 					package_uninstalled = "✗",
 				},
 			},
+			registries = {
+				"github:mason-org/mason-registry",
+				"github:mistweaverco/zana-registry"
+			},
 		})
 
 		mason_lspconfig.setup({
