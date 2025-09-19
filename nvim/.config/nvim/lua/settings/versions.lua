@@ -54,5 +54,5 @@ return {
 	project = "8c6bad7",
 	snacks = "bc0630e",
 	rainbow_delimiters = "5ebe9f2",
-	kulala = "3e81123"
+	kulala = "ab3effa"
 }
