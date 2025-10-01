@@ -7,8 +7,8 @@
 # This could be useful like for example a directory picker
 #
 # Session setup should be handled by each script
-SESSION_NAME="dotfiles"
-tmux new -s $SESSION_NAME -c ~/dotfiles/ -d
+SESSION_NAME="scratch"
+tmux new -s $SESSION_NAME -c ~/ -d
 
 # In the end the script should return a session name
 echo $SESSION_NAME
