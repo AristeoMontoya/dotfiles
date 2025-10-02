@@ -6,4 +6,25 @@ adb devices -l
 # Disconnect android device
 adb disconnect <device>
 
+# Enable adb wifi (default port is 5555)
+adb -s <device> tcpip <adb_wifi_port>
+
+# Connect to android device through wifi
+adb pair "<device_ip>:<pair_port>" && adb connect "<device_ip>:<connection_port>"
+
+# List packages
+adb -s <device> shell pm list packages
+
+# List all available permissions
+adb -s <device> shell pm list permissions <grouped_permissions>
+
+# Grant permissions to package
+adb -s <device> shell pm grant <package> <permissions>
+
+# Force stop android app
+adb -s <device> shell am force-stop <package>
+
+$ grouped_permissions: echo 'grouped ungrouped' | tr ' ' '\n' --- --map "grep -q ungrouped && echo '' || echo '-g'"
 $ device: adb devices -l --- --headers 1 --column 1 --expand
+$ permissions: adb shell pm list permissions --- --delimiter ':' --column 2 --headers 2 --multi --expand
+$ package: adb shell pm list packages --- --delimiter ':' --column 2 
