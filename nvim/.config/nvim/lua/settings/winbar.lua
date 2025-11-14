@@ -3,7 +3,13 @@ if not call_ok then
 	return
 end
 
-local function get_modified_symbol()
+Winbar = {}
+
+Winbar.is_window_active = function(window)
+	return window == vim.api.nvim_get_current_win()
+end
+
+Winbar.get_modified_symbol = function()
 	if vim.bo.modified then
 		return " ● "
 	else
@@ -11,8 +17,7 @@ local function get_modified_symbol()
 	end
 end
 
-local winbar_hg_group = "WinBarDynamic"
-local winbar_format = "%= %#" .. winbar_hg_group .. "#%m %t "
+local winbar_format = "%= %{%(nvim_get_current_win()==#g:actual_curwin) ? '%#WinBarDynamic#' : '%#WinBarDynamicNC#'%} %{%luaeval('Winbar.get_modified_symbol()')%} %t "
 
 vim.api.nvim_create_autocmd({
 	"CursorMoved",

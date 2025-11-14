@@ -32,6 +32,7 @@ return {
 			{ group = "NormalFloat", value = { bg = "#1f2228" } },
 			{ group = "PmenuSel", value = { fg = "#282C34", bg = "#98C379" } },
 			{ group = "WinBarDynamic", value = { fg = "#282C34", bg = "#98C379" } },
+			{ group = "WinBarDynamicNC", value = { fg = "#abb2bf", bg = "#353b45" } },
 			-- search
 			{ group = "Search", value = { bg = "#424242" } },
 			-- winbar
