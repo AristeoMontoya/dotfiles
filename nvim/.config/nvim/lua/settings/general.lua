@@ -39,6 +39,5 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.smartindent = true
 opt.autoindent = true
-opt.winbar = "%=%m %f"
 
 gopt.scrolloff = 3
