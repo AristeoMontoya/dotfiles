@@ -367,6 +367,7 @@ return {
 			scroll = { enabled = false },
 			statuscolumn = { enabled = false },
 			words = { enabled = false },
+			bufdelete = { enabled = true }
 		}
 	end,
 	keys = {
@@ -407,6 +408,13 @@ return {
 				Snacks.picker.todo_comments()
 			end,
 			desc = "Find ToDo's",
+		},
+		{
+			"<leader>bk",
+			function()
+				Snacks.bufdelete.delete()
+			end,
+			desc = "Close buffer",
 		},
 	},
 }

@@ -27,12 +27,13 @@ return {
 			{ group = "Underlined", value = { fg = nil } },
 			{ group = "Error", value = { fg = nil, bg = nil } },
 			{ group = "vimTSStringSpecial", value = { fg = "#c678dd", bg = nil } },
-			{ group = "WinBar", value = { bg = "#454C59" } },
-			{ group = "WinBarNC", value = { bg = "#454C59" } },
+			{ group = "WinBar", value = { bg = "#1f2228", fg = "#98C379", bold = true } },
+			{ group = "WinBarNC", value = { bg = "#353b45" } },
 			{ group = "NormalFloat", value = { bg = "#1f2228" } },
 			{ group = "PmenuSel", value = { fg = "#282C34", bg = "#98C379" } },
 			-- search
 			{ group = "Search", value = { bg = "#424242" } },
+			-- winbar
 		})
 	end,
 }

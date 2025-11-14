@@ -4,4 +4,5 @@ require("settings.constants")
 -- defined inside plugin specs.
 require("settings.general")
 require("settings.keymaps")
+require("settings.winbar")
 require("lazy-plugins")
