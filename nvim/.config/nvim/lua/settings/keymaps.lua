@@ -109,3 +109,10 @@ map(
 	{ noremap = true, desc = "Enable spellcheck for english" }
 )
 map("n", "<leader>vn", ":setlocal nospell<CR>", { noremap = true, silent = true, desc = "Disable spellcheck" })
+
+map(
+	"n",
+	"<leader>FF",
+	require("utils.count_listed_files"),
+	{ noremap = true, silent = true, desc = "Disable spellcheck" }
+)
