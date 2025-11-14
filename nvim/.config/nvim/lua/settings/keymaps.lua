@@ -60,7 +60,7 @@ map("n", "<leader>st", "<C-W>T", { noremap = true, silent = true, desc = "Split 
 map("n", "<C-s>", ":w<CR>", { noremap = true, silent = true, desc = "Save buffer" })
 
 -- Close buffer
-map("n", "<leader>bk", ":bd<CR>", { noremap = true, silent = true, desc = "Close buffer" })
+map("n", "<leader>bk", ":bd<CR>", { noremap = false, silent = true, desc = "Close buffer" })
 
 -- Alternate buffer
 map("n", "<tab>", ":bnext<CR>", { noremap = false, silent = true, desc = "Go to next buffer" })
