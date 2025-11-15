@@ -1,3 +1,6 @@
+--- @alias config.VersionList {plugin:string}
+
+--- @type config.VersionList
 return {
 	mason_lspconfig = "43894ad",
 	goto_preview = "cf561d1",
