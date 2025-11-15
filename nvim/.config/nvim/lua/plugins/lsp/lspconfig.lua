@@ -6,7 +6,7 @@ return {
 	dependencies = {
 		{ "hrsh7th/cmp-nvim-lsp", commit = versions.cmp_nvim_lsp },
 		{ "antosha417/nvim-lsp-file-operations", config = true, commit = versions.nvim_lsp_file_operations },
-		{ "folke/lazydev.nvim", opts = {}, commit = versions.lazydev },
+		{ "folke/lazydev.nvim", ft = "lua", commit = versions.lazydev },
 		{ "rmagatti/goto-preview", config = true, commit = versions.goto_preview },
 	},
 	config = function()
@@ -236,38 +236,38 @@ return {
 				}
 				lspconfig["emmet_ls"].setup(get_merged_configs("emmet_ls", settings))
 			end,
-			["lua_ls"] = function()
-				-- configure lua server (with special settings)
-				local settings = {
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							runtime = {
-								-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-								version = "LuaJIT",
-								-- Setup your lua path
-								path = vim.split(package.path, ";"),
-							},
-							-- make the language server recognize "vim" global
-							diagnostics = {
-								globals = { "vim" },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-							workspace = {
-								-- Make the server aware of Neovim runtime files
-								library = {
-									[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-									[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-									[vim.fn.stdpath("config") .. "/lua"] = true,
-								},
-							},
-						},
-					},
-				}
-				lspconfig["lua_ls"].setup(get_merged_configs("lua_ls", settings))
-			end,
+			-- ["lua_ls"] = function()
+			-- 	-- configure lua server (with special settings)
+			-- 	local settings = {
+			-- 		capabilities = capabilities,
+			-- 		settings = {
+			-- 			Lua = {
+			-- 				runtime = {
+			-- 					-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+			-- 					version = "LuaJIT",
+			-- 					-- Setup your lua path
+			-- 					path = vim.split(package.path, ";"),
+			-- 				},
+			-- 				-- make the language server recognize "vim" global
+			-- 				diagnostics = {
+			-- 					globals = { "vim" },
+			-- 				},
+			-- 				completion = {
+			-- 					callSnippet = "Replace",
+			-- 				},
+			-- 				workspace = {
+			-- 					-- Make the server aware of Neovim runtime files
+			-- 					library = {
+			-- 						[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+			-- 						[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+			-- 						[vim.fn.stdpath("config") .. "/lua"] = true,
+			-- 					},
+			-- 				},
+			-- 			},
+			-- 		},
+			-- 	}
+			-- 	lspconfig["lua_ls"].setup(get_merged_configs("lua_ls", settings))
+			-- end,
 			["ts_ls"] = function()
 				local settings = {
 					capabilities = capabilities,

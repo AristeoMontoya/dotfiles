@@ -11,6 +11,7 @@ return {
 		{ "rcarriga/cmp-dap", commit = versions.cmp_dap },
 		{ "L3MON4D3/LuaSnip", commit = versions.LuaSnip },
 		{ "saadparwaiz1/cmp_luasnip", commit = versions.cmp_luasnip },
+		{ "folke/lazydev.nvim", commit = versions.lazydev },
 	},
 	config = function()
 		-- Setup nvim-cmp.
@@ -124,6 +125,7 @@ return {
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" }, -- For ultisnips users.
 				{ name = "path" }, -- For ultisnips users.
+				{ name = "lazydev", group_index = 0 },
 			}, {
 				-- { name = 'buffer' },
 			}),
