@@ -9,10 +9,10 @@ return {
 	},
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		local overrides_ok, overrides = pcall(require, "user.overrides.treesitter")
-		local filter_ok, filter = pcall(require, "utils.filter_tables")
+		local overrides_ok, overrides = pcall(require, "user.overrides.treesitter") --- @type boolean, config.TSParsers
+		local filter_ok, filter = pcall(require, "utils.filter_tables") --- @type boolean, utils.FilterTables
 
-		local defaults = require("defaults.treesitter.default_parsers")
+		local defaults = require("defaults.treesitter.default_parsers") --- @type config.TSParsers
 		local ensure_installed = {}
 
 		if overrides_ok and filter_ok then
@@ -21,7 +21,7 @@ return {
 			ensure_installed = defaults
 		end
 
-		local hl_status, set_highlights = pcall(require, "utils.register_highlights")
+		local hl_status, set_highlights = pcall(require, "utils.register_highlights") --- @type boolean, utils.RegisterHighlights
 		if not hl_status then
 			return
 		end
@@ -69,54 +69,9 @@ return {
 			{ group = "RainbowDelimiterCyan", value = { fg = "#56B6C2" } }, -- This was bolded
 		})
 
-		require("nvim-treesitter.configs").setup({
-			ensure_installed = ensure_installed, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-			highlight = {
-				enable = true, -- false will disable the whole extension
-			},
-			indent = {
-				enable = true,
-			},
-			textobjects = {
-				select = {
-					enable = true,
-					lookahead = true,
-					keymaps = {
-						af = "@function.outer",
-						["if"] = "@function.inner",
-						ac = "@class.outer",
-						ic = "@class.inner",
-					},
-				},
-				lsp_interop = {
-					enable = true,
-					border = "none",
-					floating_preview_opts = {},
-					peek_definition_code = {
-						["<leader>df"] = "@function.outer",
-						["<leader>dF"] = "@class.outer",
-					},
-				},
-				swap = {
-					enable = true,
-					swap_next = {
-						["<leader>a"] = "@parameter.inner",
-					},
-					swap_previous = {
-						["<leader>A"] = "@parameter.inner",
-					},
-				},
-			},
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "<C-space>",
-					node_incremental = "<return>",
-					scope_incremental = false,
-					node_decremental = "<bs>",
-				},
-			},
-		})
+		-- Incremental selection is not supported now.
+		require("nvim-treesitter").install(ensure_installed)
+
 		require("treesitter-context").setup({
 			enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
 			multiwindow = false, -- Enable multiwindow support.
@@ -132,5 +87,64 @@ return {
 			zindex = 20, -- The Z-index of the context window
 			on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 		})
+
+		require("nvim-treesitter-textobjects").setup({
+			select = {
+				enable = true,
+				lookahead = true,
+				keymaps = {
+					af = "@function.outer",
+					["if"] = "@function.inner",
+					ac = "@class.outer",
+					ic = "@class.inner",
+				},
+			},
+			-- Not sure if this is still supported after the new
+			-- re-write. Leaving it here until I figure it out.
+			lsp_interop = {
+				enable = true,
+				border = "none",
+				floating_preview_opts = {},
+				peek_definition_code = {
+					["<leader>df"] = "@function.outer",
+					["<leader>dF"] = "@class.outer",
+				},
+			},
+		})
+
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = ensure_installed,
+			callback = function()
+				vim.treesitter.start()
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end,
+		})
+
+		-- keymaps
+		-- You can use the capture groups defined in `textobjects.scm`
+		vim.keymap.set({ "x", "o" }, "af", function()
+			require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
+		end)
+		vim.keymap.set({ "x", "o" }, "if", function()
+			require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
+		end)
+		vim.keymap.set({ "x", "o" }, "ac", function()
+			require("nvim-treesitter-textobjects.select").select_textobject("@class.outer", "textobjects")
+		end)
+		vim.keymap.set({ "x", "o" }, "ic", function()
+			require("nvim-treesitter-textobjects.select").select_textobject("@class.inner", "textobjects")
+		end)
+		-- You can also use captures from other query groups like `locals.scm`
+		vim.keymap.set({ "x", "o" }, "as", function()
+			require("nvim-treesitter-textobjects.select").select_textobject("@local.scope", "locals")
+		end)
+
+		-- Parameter swap
+		vim.keymap.set("n", "<leader>a", function()
+			require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner")
+		end)
+		vim.keymap.set("n", "<leader>A", function()
+			require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.inner")
+		end)
 	end,
 }

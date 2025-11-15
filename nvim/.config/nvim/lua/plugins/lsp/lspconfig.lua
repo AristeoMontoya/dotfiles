@@ -22,12 +22,12 @@ return {
 
 		local keymap = vim.keymap -- for conciseness
 
-		local hl_status, set_highlights = pcall(require, "utils.register_highlights")
+		local hl_status, set_highlights = pcall(require, "utils.register_highlights") --- @type boolean, utils.RegisterHighlights
 		if not hl_status then
 			return
 		end
 
-		local config_overrides_ok, config_overrides = pcall(require, "user.overrides.lsp.configs")
+		local config_overrides_ok, config_overrides = pcall(require, "user.overrides.lsp.configs") --- @type boolean, table
 		-- Setting an empty table to merge
 		if not config_overrides_ok then
 			config_overrides = {}
@@ -181,7 +181,7 @@ return {
 		})
 
 		lspconfig["kulala_ls"].setup({
-			capabilities = capabilities
+			capabilities = capabilities,
 		})
 
 		-- TODO: Find a more maintainable way to do this.
@@ -260,6 +260,7 @@ return {
 								library = {
 									[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 									[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+									[vim.fn.stdpath("config") .. "/lua"] = true,
 								},
 							},
 						},

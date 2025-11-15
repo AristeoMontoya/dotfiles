@@ -3,9 +3,12 @@
 --- @field group string
 --- @field value vim.api.keyset.highlight
 
---- @param highligths Highlight[]
---- Convenience function to allow each plugin
---- to define their own highlight
+--- Registers a list of `Highlight`
+--- @alias utils.RegisterHighlights fun(
+---    highlights: Highlight[],
+--- )
+
+--- @type utils.RegisterHighlights
 return function (highligths)
 	for _, highlight in pairs(highligths) do
 		if highlight.id == nil then

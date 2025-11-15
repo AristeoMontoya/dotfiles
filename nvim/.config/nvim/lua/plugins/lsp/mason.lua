@@ -15,18 +15,18 @@ return {
 		local mason_tool_installer = require("mason-tool-installer")
 
 		-- Load pre-defined servers, linters, formatters and debuggers
-		local default_servers = require("defaults.lsp.servers")
-		local linters = require("defaults.lsp.linters")
-		local formatters = require("defaults.lsp.formatters")
-		local debuggers = require("defaults.dap")
+		local default_servers = require("defaults.lsp.servers") --- @type config.LspServers
+		local linters = require("defaults.lsp.linters") --- @type config.Linters
+		local formatters = require("defaults.lsp.formatters") --- @type config.Formatters
+		local debuggers = require("defaults.dap") --- @type config.DapList
 
 		-- Load user defined overrides
 		-- Some devices are not compatible with my defaults.
-		local lsp_overrides_ok, lsp_overrides = pcall(require, "user.overrides.lsp.servers")
-		local linters_overrides_ok, linters_overrides = pcall(require, "user.overrides.linters")
-		local formatters_overrides_ok, formatters_overrides = pcall(require, "user.overrides.formatters")
-		local debuggers_overrides_ok, debuggers_overrides = pcall(require, "user.overrides.dap")
-		local filter_ok, filter = pcall(require, "utils.filter_tables")
+		local lsp_overrides_ok, lsp_overrides = pcall(require, "user.overrides.lsp.servers") --- @type boolean, config.LspServers
+		local linters_overrides_ok, linters_overrides = pcall(require, "user.overrides.linters") --- @type boolean, config.Linters
+		local formatters_overrides_ok, formatters_overrides = pcall(require, "user.overrides.formatters") --- @type boolean, config.Formatters
+		local debuggers_overrides_ok, debuggers_overrides = pcall(require, "user.overrides.dap") --- @type boolean, config.DapList
+		local filter_ok, filter = pcall(require, "utils.filter_tables") --- @type boolean, utils.FilterTables
 
 		local ensure_lsp_installed = {}
 		local ensure_installed_tools = {}
@@ -68,7 +68,7 @@ return {
 			},
 			registries = {
 				"github:mason-org/mason-registry",
-				"github:mistweaverco/zana-registry"
+				"github:mistweaverco/zana-registry",
 			},
 		})
 

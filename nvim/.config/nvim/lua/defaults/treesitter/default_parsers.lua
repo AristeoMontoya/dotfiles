@@ -1,3 +1,6 @@
+--- @alias config.TSParsers string[]
+
+--- @type config.TSParsers
 local defaults = {
 	"vim",
 	"php",
@@ -19,6 +22,8 @@ local defaults = {
 	"rst",
 	"c_sharp",
 	"go",
+	"gomod",
+	"gosum",
 	"c",
 	"scheme",
 	"http",
@@ -37,6 +42,7 @@ local defaults = {
 	"bibtex",
 	"javascript",
 	"bash",
+	"make",
 	"cmake",
 	"cpp",
 	"typescript",

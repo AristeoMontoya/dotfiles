@@ -3,7 +3,7 @@ return {
 	commit = require("settings.versions").flash,
 	event = "VeryLazy",
 	opts = function()
-		local hl_status, set_highlights = pcall(require, "utils.register_highlights")
+		local hl_status, set_highlights = pcall(require, "utils.register_highlights") --- @type boolean, utils.RegisterHighlights
 		if not hl_status then
 			return
 		end

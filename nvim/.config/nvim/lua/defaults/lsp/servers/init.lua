@@ -1,3 +1,6 @@
+--- @alias config.LspServers string[]
+
+--- @type config.LspServers
 return {
 	"bashls",
 	"cssls",
