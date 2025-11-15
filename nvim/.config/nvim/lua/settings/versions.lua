@@ -34,8 +34,8 @@ return {
 	nvim_lspconfig = "4ae9796",
 	nvim_nio = "21f5324",
 	nvim_surround = "fcfa7e0",
-	nvim_treesitter = "42fc28b",
-	nvim_treesitter_textobjects = "5ca4aaa",
+	nvim_treesitter = "2696fb8",
+	nvim_treesitter_textobjects = "227165a",
 	nvim_treesitter_context = "198720b",
 	nvim_web_devicons = "8dcb311",
 	plenary = "b9fd522", -- Utility functions for plugins. Mostly a dependency

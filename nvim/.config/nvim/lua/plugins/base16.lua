@@ -7,7 +7,7 @@ return {
 			base16(base16.themes["onedark"], true)
 		end
 
-		local hl_status, set_highlights = pcall(require, "utils.register_highlights")
+		local hl_status, set_highlights = pcall(require, "utils.register_highlights") --- @type boolean, utils.RegisterHighlights
 		if not hl_status then
 			return
 		end

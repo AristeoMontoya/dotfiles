@@ -2,7 +2,7 @@
 -- Intended to work without any plugin installed.
 -- Plugin related keymaps should be defined within
 -- the plugin spec.
-local map = V.keymap.set
+local map = vim.keymap.set
 
 local function is_text_buffer(pressed_key)
 	local buf_type = vim.api.nvim_get_option_value("buftype", { buf = vim.api.nvim_get_current_buf() })
@@ -109,10 +109,3 @@ map(
 	{ noremap = true, desc = "Enable spellcheck for english" }
 )
 map("n", "<leader>vn", ":setlocal nospell<CR>", { noremap = true, silent = true, desc = "Disable spellcheck" })
-
-map(
-	"n",
-	"<leader>FF",
-	require("utils.count_listed_files"),
-	{ noremap = true, silent = true, desc = "Disable spellcheck" }
-)
