@@ -1,4 +1,3 @@
-# lazy load sdkman
 lazy_load 'sdk' 'java' 'javac' 'gradle' 'mvn' <<- 'EOF'
 	#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 	[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
