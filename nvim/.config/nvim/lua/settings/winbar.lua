@@ -1,5 +1,5 @@
-local call_ok, get_files_count = pcall(require, "utils.count_listed_files")
-if not call_ok then
+local open_window_ok, get_window_count = pcall(require, "utils.count_open_windows")
+if not open_window_ok then
 	return
 end
 
@@ -17,27 +17,20 @@ Winbar.get_modified_symbol = function()
 	end
 end
 
-local winbar_format = "%= %{%(nvim_get_current_win()==#g:actual_curwin) ? '%#WinBarDynamic#' : '%#WinBarDynamicNC#'%} %{%luaeval('Winbar.get_modified_symbol()')%} %t "
+local winbar_format =
+	"%= %{%(nvim_get_current_win()==#g:actual_curwin) ? '%#WinBarDynamic#' : '%#WinBarDynamicNC#'%} %{%luaeval('Winbar.get_modified_symbol()')%} %t "
 
-vim.api.nvim_create_autocmd({
-	"CursorMoved",
-	"CursorHold",
-	"BufWinEnter",
-	"BufFilePost",
-	"InsertEnter",
-	"BufWritePost",
-	"TabClosed",
-}, {
+vim.api.nvim_create_autocmd({ "WinNew", "WinClosed" }, {
 	group = vim.api.nvim_create_augroup("winbar_when_needed", { clear = true }),
 	callback = function()
-		if not call_ok then
-			return
-		end
-
-		if get_files_count() > 1 then
-			vim.opt.winbar = winbar_format
-			return
-		end
-		vim.opt.winbar = nil
+		--- Scheduling so the function runs after
+		--- neovim is done updating the layout
+		vim.schedule(function()
+			if get_window_count(false) > 1 then
+				vim.opt.winbar = winbar_format
+			else
+				vim.opt.winbar = nil
+			end
+		end)
 	end,
 })
