@@ -1,4 +1,4 @@
-local call_ok, get_files_count = pcall(require, "utils.count_listed_files") ---@type boolean, utils.CountListedFiles
+local call_ok, get_files_count = pcall(require, "utils.count_listed_files")
 if not call_ok then
 	return
 end

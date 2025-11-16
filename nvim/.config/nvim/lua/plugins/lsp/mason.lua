@@ -26,7 +26,7 @@ return {
 		local linters_overrides_ok, linters_overrides = pcall(require, "user.overrides.linters") --- @type boolean, config.Linters
 		local formatters_overrides_ok, formatters_overrides = pcall(require, "user.overrides.formatters") --- @type boolean, config.Formatters
 		local debuggers_overrides_ok, debuggers_overrides = pcall(require, "user.overrides.dap") --- @type boolean, config.DapList
-		local filter_ok, filter = pcall(require, "utils.filter_tables") --- @type boolean, utils.FilterTables
+		local filter_ok, filter = pcall(require, "utils.filter_tables")
 
 		local ensure_lsp_installed = {}
 		local ensure_installed_tools = {}
