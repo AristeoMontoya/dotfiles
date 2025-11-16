@@ -72,6 +72,9 @@ return {
 				},
 				buffer_visible = {
 					bg = "none",
+					fg = "#61AFEF",
+					bold = true,
+					italic = true
 				},
 				buffer_selected = {
 					fg = "#98c379",
@@ -122,7 +125,7 @@ return {
 					italic = true,
 				},
 				duplicate_visible = {
-					bg = "#282C34",
+					bg = "#353b45",
 				},
 				duplicate_selected = {
 					bg = "#282C34",
