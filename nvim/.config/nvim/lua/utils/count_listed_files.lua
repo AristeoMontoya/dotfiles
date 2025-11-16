@@ -1,8 +1,6 @@
---- Returns the amount of opened files.
---- @alias utils.CountListedFiles fun(): integer
-
---- @type utils.CountListedFiles
-return function()
+--- Returns the amount of open files
+--- @return integer: file count
+local function count_listed_files()
 	local count = 0
 	local all_buffers = vim.api.nvim_list_bufs()
 
@@ -14,3 +12,5 @@ return function()
 	end
 	return count
 end
+
+return count_listed_files

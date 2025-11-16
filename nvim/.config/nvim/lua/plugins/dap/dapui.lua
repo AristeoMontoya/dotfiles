@@ -70,7 +70,7 @@ return {
 		opts.desc = "Evaluate expression under cursor"
 		keymap.set("n", "<leader>dE", "<cmd>lua require'dapui'.eval()<cr>", opts)
 
-		local hl_status, set_highlights = pcall(require, "utils.register_highlights") --- @type boolean, utils.RegisterHighlights
+		local hl_status, set_highlights = pcall(require, "utils.register_highlights")
 		if not hl_status then
 			return
 		end

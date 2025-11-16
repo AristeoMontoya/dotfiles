@@ -4,12 +4,8 @@
 --- @field value vim.api.keyset.highlight
 
 --- Registers a list of `Highlight`
---- @alias utils.RegisterHighlights fun(
----    highlights: Highlight[],
---- )
-
---- @type utils.RegisterHighlights
-return function (highligths)
+--- @param highligths Highlight[]: List of `Highlight` to register.
+local function register_highlights(highligths)
 	for _, highlight in pairs(highligths) do
 		if highlight.id == nil then
 			highlight.id = 0
@@ -28,3 +24,5 @@ return function (highligths)
 		)
 	end
 end
+
+return register_highlights

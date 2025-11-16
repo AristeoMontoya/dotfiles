@@ -10,7 +10,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local overrides_ok, overrides = pcall(require, "user.overrides.treesitter") --- @type boolean, config.TSParsers
-		local filter_ok, filter = pcall(require, "utils.filter_tables") --- @type boolean, utils.FilterTables
+		local filter_ok, filter = pcall(require, "utils.filter_tables")
 
 		local defaults = require("defaults.treesitter.default_parsers") --- @type config.TSParsers
 		local ensure_installed = {}
@@ -21,7 +21,7 @@ return {
 			ensure_installed = defaults
 		end
 
-		local hl_status, set_highlights = pcall(require, "utils.register_highlights") --- @type boolean, utils.RegisterHighlights
+		local hl_status, set_highlights = pcall(require, "utils.register_highlights")
 		if not hl_status then
 			return
 		end
