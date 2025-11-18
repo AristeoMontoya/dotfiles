@@ -1,6 +1,8 @@
 # zsh
 zsh/.config/iterm2
 zsh/.zprofile
+zsh/.config/zsh/.zsh_history*
+zsh/.config/zsh/.zsh_sessions*
 zsh/.config/zsh/env/*
 !zsh/.config/zsh/env/.gitkeep
 zsh/.config/environment.d/env-*
