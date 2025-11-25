@@ -62,8 +62,11 @@ git branch -m '<new_name>'
 # List stashes
 git stash list
 
-# Show stash summary
+# Show stash summary list
 git stash show <stash>
+
+# Show stash diff
+git stash show -p <stash>
 
 # Remove stash
 git stash drop <stash>
