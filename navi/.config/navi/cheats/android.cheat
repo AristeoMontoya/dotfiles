@@ -24,7 +24,15 @@ adb -s <device> shell pm grant <package> <permissions>
 # Force stop android app
 adb -s <device> shell am force-stop <package>
 
+# Logcat
+adb -s <device> logcat -v color
+
+
+# Logcat for specific app
+adb -s <device> logcat --pid=<pid> -v color
+
 $ grouped_permissions: echo 'grouped ungrouped' | tr ' ' '\n' --- --map "grep -q ungrouped && echo '' || echo '-g'"
 $ device: adb devices -l --- --headers 1 --column 1 --expand
 $ permissions: adb shell pm list permissions --- --delimiter ':' --column 2 --headers 2 --multi --expand
 $ package: adb shell pm list packages --- --delimiter ':' --column 2 
+$ pid: adb -s <device> shell pidof <package>
