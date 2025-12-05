@@ -4,6 +4,7 @@
 return {
 	Comment = "e30b7f2",
 	LuaSnip = "3732756",
+	avante = "d3ec7c7",
 	bookmarks = "6d39685",
 	bufferline = "655133c",
 	cmp_buffer = "3022dbc",
@@ -14,6 +15,8 @@ return {
 	cmp_omni = "4ef610b",
 	cmp_path = "91ff86c",
 	conform = "cde4da5",
+	copilot = "881f99b",
+	copilot_lsp = "884034b",
 	flash = "fcea7ff",
 	gitsigns = "20ad441",
 	goto_preview = "cf561d1",
@@ -51,6 +54,7 @@ return {
 	plenary = "b9fd522", -- Utility functions for plugins. Mostly a dependency
 	project = "8c6bad7", -- bookmarks dependency to get a project root.
 	rainbow_delimiters = "8aafe2c",
+	render_markdown = "b2b1353",
 	smart_splits = "79d78a0",
 	snacks = "dec29f5",
 	sqlite_lua = "50092d6",
