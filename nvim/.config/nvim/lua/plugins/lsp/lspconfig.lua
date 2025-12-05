@@ -282,10 +282,10 @@ return {
 						},
 					},
 					root_dir = require("lspconfig/util").root_pattern(
+						".git",
 						"package.json",
 						"tsconfig.json",
-						"jsconfig.json",
-						".git"
+						"jsconfig.json"
 					),
 				}
 				lspconfig["ts_ls"].setup(get_merged_configs("ts_ls", settings))
@@ -294,10 +294,10 @@ return {
 				local settings = {
 					capabilities = capabilities,
 					root_dir = require("lspconfig/util").root_pattern(
+						".git",
 						"package.json",
 						"tsconfig.json",
-						"jsconfig.json",
-						".git"
+						"jsconfig.json"
 					),
 				}
 				lspconfig["angularls"].setup(get_merged_configs("angularls", settings))
