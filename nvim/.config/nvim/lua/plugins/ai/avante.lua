@@ -8,6 +8,7 @@ return {
 	event = "VeryLazy",
 	version = false, -- Never set this value to "*"! Never!
 	commit = versions.avante,
+	enabled = require("utils.resolve_features")().ai,
 	---@module 'avante'
 	---@type avante.Config
 	opts = {

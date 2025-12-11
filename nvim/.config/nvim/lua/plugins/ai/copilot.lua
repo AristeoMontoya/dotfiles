@@ -8,6 +8,7 @@ return {
 	commit = versions.copilot,
 	cmd = "Copilot",
 	event = "InsertEnter",
+	enabled = require("utils.resolve_features")().ai,
 	config = function()
 		require("copilot").setup({})
 	end,
