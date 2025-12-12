@@ -10,6 +10,8 @@ return {
 	event = "InsertEnter",
 	enabled = require("utils.resolve_features")().ai,
 	config = function()
-		require("copilot").setup({})
+		require("copilot").setup({
+			copilot_model = "gpt-5-mini",
+		})
 	end,
 }
