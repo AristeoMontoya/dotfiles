@@ -26,12 +26,14 @@ local defaults = {
 	"http",
 	"ini",
 	"java",
+	"javadoc",
 	"javascript",
 	"jsdoc",
 	"json",
 	"json5",
 	"jsonc",
 	"jsondoc",
+	"jsx",
 	"kotlin",
 	"lua",
 	"make",
@@ -49,6 +51,7 @@ local defaults = {
 	"scheme",
 	"scss",
 	"sql",
+	"templ",
 	"toml",
 	"tsx",
 	"typescript",
@@ -56,7 +59,7 @@ local defaults = {
 	"vue",
 	"xml",
 	"yaml",
-	"zsh"
+	"zsh",
 }
 
 return defaults

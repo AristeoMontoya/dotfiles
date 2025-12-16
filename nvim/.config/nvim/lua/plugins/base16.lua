@@ -39,7 +39,7 @@ return {
 			-- search
 			{ group = "Search", value = { bg = "#424242" } },
 
-			-- Sytnaxt
+			-- Syntax
 			{ group = "SpecialChar", value = { fg = "#E06C75", bold = true } },
 		})
 	end,
