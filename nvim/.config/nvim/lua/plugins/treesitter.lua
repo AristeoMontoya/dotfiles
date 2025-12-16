@@ -120,6 +120,14 @@ return {
 			end,
 		})
 
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = {"javascriptreact"},
+			callback = function()
+				vim.treesitter.start()
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end,
+		})
+
 		-- keymaps
 		-- You can use the capture groups defined in `textobjects.scm`
 		vim.keymap.set({ "x", "o" }, "af", function()
