@@ -112,19 +112,43 @@ return {
 			},
 		})
 
-		vim.api.nvim_create_autocmd("FileType", {
-			pattern = ensure_installed,
-			callback = function()
-				vim.treesitter.start()
-				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-			end,
-		})
+		-- Taken from:
+		-- https://github.com/ThorstenRhau/neovim/blob/dd62b1508f261a599c34a952309494ec5f549a40/lua/optional/treesitter.lua
+		local ignore_filetypes = {
+			checkhealth = true,
+			lazy = true,
+			mason = true,
+			notify = true,
+			noice = true,
+			qf = true,
+			toggleterm = true,
+		}
+
+		local function enable_treesitter(buf, lang)
+			if not vim.api.nvim_buf_is_valid(buf) then
+				return
+			end
+
+			local ok = pcall(vim.treesitter.start, buf, lang)
+			if ok then
+				vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				for _, win in ipairs(vim.api.nvim_list_wins()) do
+					if vim.api.nvim_win_get_buf(win) == buf and vim.api.nvim_win_is_valid(win) then
+						vim.wo[win].foldmethod = "expr"
+					end
+				end
+			end
+		end
 
 		vim.api.nvim_create_autocmd("FileType", {
-			pattern = {"javascriptreact"},
-			callback = function()
-				vim.treesitter.start()
-				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			desc = "Enable TreeSitter on supported filetypes",
+			callback = function(event)
+				if ignore_filetypes[event.match] then
+					return
+				end
+
+				local lang = vim.treesitter.language.get_lang(event.match) or event.match
+				enable_treesitter(event.buf, lang)
 			end,
 		})
 
