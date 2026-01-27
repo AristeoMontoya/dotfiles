@@ -6,6 +6,7 @@ zsh/.config/zsh/.zsh_sessions*
 zsh/.config/zsh/env/*
 !zsh/.config/zsh/env/.gitkeep
 zsh/.config/environment.d/env-*
+zsh/.config/zsh/.zcompcache
 
 # navi
 navi/.config/navi/local/*

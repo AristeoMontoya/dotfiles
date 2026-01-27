@@ -1,0 +1,26 @@
+zc() {
+  local dir
+  dir="$(mktemp -d)"
+  local pipe="$dir/zellij.pipe"
+  mkfifo "$pipe"
+
+  # run in floating zellij pane
+  zellij run \
+    --floating \
+    --pinned=true \
+    --close-on-exit \
+    --name "$1" \
+    -- \
+    zsh -c "$* > '$pipe'"
+
+  # read the command output
+  cat "$pipe"
+  rm -rf "$dir"
+}
+
+zcw() {
+  local out
+  out="$(zc "$@")"
+  zellij action write-chars "$out"
+}
+
