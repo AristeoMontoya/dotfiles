@@ -22,3 +22,6 @@ export SDKMAN_DIR="$HOME/.sdkman"
 export QT_QPA_PLATFORMTHEME=qt5ct
 
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
+
+# Required for ./gradlew to work
+export PATH=".:$PATH"

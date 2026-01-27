@@ -29,6 +29,7 @@ compinit -C
 
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' use-cache on
 # zstyle ':completion::complete:lsof:*' menu yes select
 zmodload zsh/complist
 _comp_options+=(globdots)   # Include hidden files.
@@ -64,6 +65,7 @@ zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
 zsh_add_plugin "chriskempson/base16-shell"
+zsh_add_plugin "gradle/gradle-completion"
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins
 # More completions https://github.com/zsh-users/zsh-completions
 
