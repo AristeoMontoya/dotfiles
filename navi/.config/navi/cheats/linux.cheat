@@ -27,3 +27,12 @@ $ multiple_groups: awk -F: '{print $1}' /etc/group --- --multi --expand  --map "
 
 # Remove orphan packages
 pacman -Qdtq | sudo pacman -Rns -
+
+# List orphans
+pacman -Qdtq
+
+# Show package information
+pacman -Qi <packages>
+
+$ package: pacman -Qqe
+$ packages: pacman -Qqe --- --multi --expand
