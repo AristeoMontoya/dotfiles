@@ -1,0 +1,6 @@
+#!/bin/zsh
+if [ "$1" -le 80 ]; then
+  tmux set-option -g status-right "#[fg=green,bg=default,bright]#(free -m | awk 'NR==2{printf \" %.2f%%\", \$3*100/\$2 }') #[fg=red]#H #[fg=magenta]󰓦 #{continuum_status} "
+else
+  tmux set-option -g status-right "#[fg=green,bg=default,bright]#(free -m | awk 'NR==2{printf \" %.2f%%\", \$3*100/\$2 }') #[fg=yellow,bg=default]󰌢 #(whoami)#[fg=white]@#[fg=red]#H  #[fg=blue] %d/%m/%Y #[fg=magenta]󰓦 #{continuum_status} "
+fi
