@@ -18,6 +18,9 @@ sudo lsof -i -P -n | grep LISTEN
 # export variables from env file
 export $(grep -v '^#' <env_file> | xargs -d '\n')
 
+# Get today's date
+date +"%Y-%m-%d"
+
 $ env_file: find -name "*env"
 $ system_users: awk -F: '{print $1}' /etc/passwd
 $ system_groups: awk -F: '{print $1}' /etc/group
