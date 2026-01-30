@@ -27,7 +27,10 @@ BASE16_SHELL="$ZDOTDIR/plugins/base16-shell/"
 
 # We're lazy loading completions and vim-mode in the same file
 zsh-defer zsh_add_file "zsh-completions"
-zsh-defer zsh_add_file "zsh-vim-mode"
+
+# complist is required for vim mode
+zmodload zsh/complist
+zsh_add_file "zsh-vim-mode"
 
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
