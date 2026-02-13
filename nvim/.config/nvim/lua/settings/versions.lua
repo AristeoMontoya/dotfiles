@@ -20,7 +20,7 @@ return {
 	flash = "fcea7ff",
 	gitsigns = "20ad441",
 	goto_preview = "cf561d1",
-	kulala = "cd3eaa8",
+	kulala = "6656c9d",
 	lazy = "",
 	lazydev = "f59bd14",
 	lualine = "3946f01",
