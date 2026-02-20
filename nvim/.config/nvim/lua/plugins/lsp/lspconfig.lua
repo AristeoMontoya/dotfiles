@@ -10,15 +10,6 @@ return {
 		{ "rmagatti/goto-preview", config = true, commit = versions.goto_preview },
 	},
 	config = function()
-		-- import lspconfig plugin
-		local lspconfig = require("lspconfig")
-		local configs = require("lspconfig.configs")
-
-		-- import mason_lspconfig plugin
-		local mason_lspconfig = require("mason-lspconfig")
-
-		-- import cmp-nvim-lsp plugin
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 		local keymap = vim.keymap -- for conciseness
 
@@ -27,6 +18,7 @@ return {
 			return
 		end
 
+		-- TODO: Move this to lsp dir itself
 		local config_overrides_ok, config_overrides = pcall(require, "user.overrides.lsp.configs") --- @type boolean, table
 		-- Setting an empty table to merge
 		if not config_overrides_ok then
@@ -43,7 +35,6 @@ return {
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
-				--
 				-- Buffer local mappings.
 				-- See `:help vim.lsp.*` for documentation on any of the below functions
 				local opts = { buffer = ev.buf, silent = true }
@@ -102,10 +93,10 @@ return {
 				keymap.set("n", "<leader>ll", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
 				opts.desc = "Go to previous diagnostic"
-				keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+				keymap.set("n", "[d", function() vim.diagnostic.jump({count = -1, float = false}) end, opts) -- jump to previous diagnostic in buffer
 
 				opts.desc = "Go to next diagnostic"
-				keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+				keymap.set("n", "]d", function() vim.diagnostic.jump({count = 1, float = false}) end, opts) -- jump to next diagnostic in buffer
 
 				opts.desc = "Show documentation for what is under cursor"
 				keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
@@ -116,23 +107,6 @@ return {
 				end, opts) -- mapping to restart lsp if necessary
 			end,
 		})
-
-		-- used to enable autocompletion (assign to every lsp server config)
-		local capabilities = cmp_nvim_lsp.default_capabilities()
-
-		---Returns a table containing the passed configuration
-		---merged with user defined overrides
-		---@param server_name string
-		---@param settings table
-		---@return table
-		local function get_merged_configs(server_name, settings)
-			local overrides = config_overrides[server_name]
-			if overrides == nil then
-				overrides = {}
-			end
-			local merged = vim.tbl_deep_extend("force", settings, overrides)
-			return merged
-		end
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		local signs = {
@@ -155,153 +129,6 @@ return {
 			},
 		})
 
-		configs.ccls = {
-			default_config = {
-				cmd = { "ccls" },
-				filetypes = { "cpp", "c" },
-				root_dir = function(fname)
-					return require("lspconfig/util").root_pattern("compile_commands.json", ".ccls")(fname)
-						or vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1])
-				end,
-				single_file_support = false,
-			},
-		}
-		-- Not handled by Mason
-		lspconfig["ccls"].setup({
-			capabilities = capabilities,
-			init_options = {
-				compilationDatabaseDirectory = "build",
-				index = {
-					threads = 2,
-				},
-				clang = {
-					excludeArgs = { "-frounding-math" },
-				},
-			},
-		})
-
-		lspconfig["kulala_ls"].setup({
-			capabilities = capabilities,
-		})
-
-		-- TODO: Find a more maintainable way to do this.
-		-- Also update this to mason v2
-		mason_lspconfig.setup_handlers({
-			-- default handler for installed servers
-			function(server_name)
-				local settings = {
-					capabilities = capabilities,
-				}
-				local merged = get_merged_configs(server_name, settings)
-				lspconfig[server_name].setup(merged)
-			end,
-			["vimls"] = function()
-				lspconfig["vimls"].setup({
-					capabilities = capabilities,
-				})
-			end,
-			["pyright"] = function()
-				local settings = {
-					capabilities = capabilities,
-					settings = {
-						pyright = {
-							autoImportCompletion = true,
-						},
-						python = {
-							analysis = {
-								autoSearchPaths = true,
-								diagnosticMode = "openFilesOnly",
-								useLibraryCodeForTypes = true,
-								typeCheckingMode = "off",
-							},
-						},
-					},
-				}
-				lspconfig["pyright"].setup(get_merged_configs("pyright", settings))
-			end,
-			["emmet_ls"] = function()
-				-- configure emmet language server
-				local settings = {
-					capabilities = capabilities,
-					filetypes = {
-						"html",
-						"typescriptreact",
-						"javascriptreact",
-						"css",
-						"sass",
-						"scss",
-						"less",
-						"svelte",
-					},
-				}
-				lspconfig["emmet_ls"].setup(get_merged_configs("emmet_ls", settings))
-			end,
-			-- ["lua_ls"] = function()
-			-- 	-- configure lua server (with special settings)
-			-- 	local settings = {
-			-- 		capabilities = capabilities,
-			-- 		settings = {
-			-- 			Lua = {
-			-- 				runtime = {
-			-- 					-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-			-- 					version = "LuaJIT",
-			-- 					-- Setup your lua path
-			-- 					path = vim.split(package.path, ";"),
-			-- 				},
-			-- 				-- make the language server recognize "vim" global
-			-- 				diagnostics = {
-			-- 					globals = { "vim" },
-			-- 				},
-			-- 				completion = {
-			-- 					callSnippet = "Replace",
-			-- 				},
-			-- 				workspace = {
-			-- 					-- Make the server aware of Neovim runtime files
-			-- 					library = {
-			-- 						[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-			-- 						[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-			-- 						[vim.fn.stdpath("config") .. "/lua"] = true,
-			-- 					},
-			-- 				},
-			-- 			},
-			-- 		},
-			-- 	}
-			-- 	lspconfig["lua_ls"].setup(get_merged_configs("lua_ls", settings))
-			-- end,
-			["ts_ls"] = function()
-				local settings = {
-					capabilities = capabilities,
-					javascript = {
-						referencesCodeLens = {
-							enabled = true,
-						},
-					},
-					typescript = {
-						referencesCodeLens = {
-							enabled = true,
-						},
-					},
-					root_dir = require("lspconfig/util").root_pattern(
-						".git",
-						"package.json",
-						"tsconfig.json",
-						"jsconfig.json"
-					),
-				}
-				lspconfig["ts_ls"].setup(get_merged_configs("ts_ls", settings))
-			end,
-			["angularls"] = function()
-				local settings = {
-					capabilities = capabilities,
-					root_dir = require("lspconfig/util").root_pattern(
-						".git",
-						"package.json",
-						"tsconfig.json",
-						"jsconfig.json"
-					),
-				}
-				lspconfig["angularls"].setup(get_merged_configs("angularls", settings))
-			end,
-		})
+		vim.lsp.enable("ccls")
 	end,
 }

@@ -37,6 +37,12 @@ return {
 
 		local lsnip = require("luasnip")
 		local cmp = require("cmp")
+		local cmp_nvim_lsp = require("cmp_nvim_lsp")
+		local capabilities = cmp_nvim_lsp.default_capabilities()
+
+		vim.lsp.config("*", {
+			capabilities = capabilities,
+		})
 
 		local kind_icons = {
 			Text = "",
