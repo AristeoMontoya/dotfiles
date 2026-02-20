@@ -1,16 +1,25 @@
 local versions = require("settings.versions")
 return {
-	"williamboman/mason.nvim",
-	commit = versions.mason,
+	"williamboman/mason-lspconfig.nvim",
+	commit = versions.mason_lspconfig,
 	dependencies = {
-		{ "williamboman/mason-lspconfig.nvim", commit = versions.mason_lspconfig },
 		{ "WhoIsSethDaniel/mason-tool-installer.nvim", commit = versions.mason_tool_installer },
+		{ "neovim/nvim-lspconfig", commit = versions.nvim_lspconfig, event = { "BufReadPre", "BufNewFile" } },
+		{
+			"williamboman/mason.nvim",
+			commit = versions.mason,
+			opts = {
+				ui = {
+					icons = {
+						package_installed = "✓",
+						package_pending = "➜",
+						package_uninstalled = "✗",
+					},
+				},
+			},
+		},
 	},
 	opts = function()
-		-- import mason
-		local mason = require("mason")
-
-		-- import mason-lspconfig
 		local mason_lspconfig = require("mason-lspconfig")
 		local mason_tool_installer = require("mason-tool-installer")
 
@@ -54,23 +63,6 @@ return {
 		for _, tool in pairs({ linters, formatters, debuggers }) do
 			vim.list_extend(ensure_installed_tools, tool)
 		end
-
-		-- enable mason and configure icons
-		-- Mason complains if the setup method isn't called
-		-- before calling lsp_config.
-		mason.setup({
-			ui = {
-				icons = {
-					package_installed = "✓",
-					package_pending = "➜",
-					package_uninstalled = "✗",
-				},
-			},
-			registries = {
-				"github:mason-org/mason-registry",
-				"github:mistweaverco/zana-registry",
-			},
-		})
 
 		mason_lspconfig.setup({
 			-- list of servers for mason to install

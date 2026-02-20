@@ -2,7 +2,7 @@
 
 --- @type config.VersionList
 return {
-	Comment = "e30b7f2",
+	comment = "e30b7f2",
 	LuaSnip = "3732756",
 	avante = "d3ec7c7",
 	bookmarks = "6d39685",
@@ -24,10 +24,10 @@ return {
 	lazy = "",
 	lazydev = "f59bd14",
 	lualine = "3946f01",
-	mason = "e2f7f90",
-	mason_lspconfig = "43894ad",
-	mason_nvim_dap = "8b9363d",
-	mason_tool_installer = "c5e07b8",
+	mason = "44d1e90",
+	mason_lspconfig = "21c2a84",
+	mason_nvim_dap = "9a10e09",
+	mason_tool_installer = "443f1ef",
 	mini_files = "26baa62",
 	neotest = "deadfb1",
 	neotest_dap_go = "b442115",
@@ -44,7 +44,7 @@ return {
 	nvim_java = "03d0d03",
 	nvim_lint = "2536f1b",
 	nvim_lsp_file_operations = "9744b73",
-	nvim_lspconfig = "4ae9796",
+	nvim_lspconfig = "44acfe8",
 	nvim_nio = "21f5324",
 	nvim_surround = "fcfa7e0",
 	nvim_treesitter = "2696fb8",
