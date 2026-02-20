@@ -11,7 +11,9 @@ return {
 		{ "rcarriga/cmp-dap", commit = versions.cmp_dap },
 		{ "L3MON4D3/LuaSnip", commit = versions.LuaSnip },
 		{ "saadparwaiz1/cmp_luasnip", commit = versions.cmp_luasnip },
-		{ "folke/lazydev.nvim", commit = versions.lazydev },
+		{ "antosha417/nvim-lsp-file-operations", config = true, commit = versions.nvim_lsp_file_operations },
+		{ "folke/lazydev.nvim", ft = "lua", commit = versions.lazydev },
+		{ "rmagatti/goto-preview", config = true, commit = versions.goto_preview },
 	},
 	config = function()
 		-- Setup nvim-cmp.
@@ -37,12 +39,6 @@ return {
 
 		local lsnip = require("luasnip")
 		local cmp = require("cmp")
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-		local capabilities = cmp_nvim_lsp.default_capabilities()
-
-		vim.lsp.config("*", {
-			capabilities = capabilities,
-		})
 
 		local kind_icons = {
 			Text = "",
