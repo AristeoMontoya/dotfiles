@@ -20,6 +20,9 @@ pio device list
 # Connect to serial monitor
 pio device monitor
 
+# Build compile_commands.json
+pio run --target compiledb
+
 $board: pio boards --json-output | jq '.[].id'
 $platform: pio boards | grep -Po "(?<=Platform: ).*"
 $library_query: pio pkg search <query> | awk 'BEGIN { RS=""; FS="\n"; OFS="\t" } NR > 1 { print $1, $NF }' --- --column 1 --delimiter '\t'
