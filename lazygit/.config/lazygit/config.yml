@@ -1,0 +1,9 @@
+git:
+  pagers:
+    - pager: delta --dark --paging=never
+
+gui:
+  theme:
+    selectedLineBgColor:
+      - default
+      - reverse
