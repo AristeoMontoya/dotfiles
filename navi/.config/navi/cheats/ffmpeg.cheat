@@ -1,0 +1,6 @@
+% linux, ffmpeg
+
+# Convert video to gif
+ffmpeg -i "<video_file>" -vf "scale=320:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 "<output>"
+
+$ video_file: find . -maxdepth 1 -type f -exec file -N -i -- {} + | grep "video/" | sed -n 's!: video/[^:]*$!! p'
