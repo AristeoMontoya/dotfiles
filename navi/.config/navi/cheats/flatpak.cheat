@@ -16,4 +16,4 @@ flatpak list --app-runtime <runtime>
 flatpak uninstall <application>
 
 $ runtime: flatpak list --runtime --columns=application | column -t -s $'\t'
-$ application: flatpak list --app --columns=name,application,version | column -t -s $'\t' --- --column 2
+$ application: flatpak list --app --columns=name,application,version | column -t -s $'\t' --- --column 2 --multi --expand
