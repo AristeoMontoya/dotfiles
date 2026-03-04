@@ -1,0 +1,10 @@
+% linux, magick, imagemagick
+
+# Compress jpg
+magick "<jpg>" -quality <quality> "<output>"
+
+# Compress png
+magick mogrify -define png:compression-level=9 -quality <quality> "<png>" "<output>"
+
+$ jpg: find . -maxdepth 1 -type f -exec file -N -i -- {} + | grep 'image/jpeg' | sed -n 's!: image/[^:]*$!! p'
+$ png: find . -maxdepth 1 -type f -exec file -N -i -- {} + | grep 'image/png' | sed -n 's!: image/[^:]*$!! p'
