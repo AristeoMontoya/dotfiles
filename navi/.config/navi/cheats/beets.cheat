@@ -1,0 +1,33 @@
+% linux, beet
+
+# List imported music
+beet ls
+
+# Remove art for album
+beet clearart <imported_album>
+
+# Embed art file for album
+beet embedart -f "<file>" <imported_album>
+
+# Fetch album art
+beet fetchart <imported_album>
+
+# Edit beet config
+beet config <edit_print>
+
+# Edit music library metadata
+beet edit
+
+# Edit album metadata
+beet edit <imported_album>
+
+# Edit track metadata
+beet edit <imported_track>
+
+# Force fetch lyrics for album
+beet lyrics -f <imported_album>
+
+$ imported_album: beet ls -a -f '$albumartist :: $album'--- --multi --expand --column 2 --delimiter ' :: '
+$ imported_track: beet ls -f '$albumartist :: $title' --- --multi --expand --column 2 --delimiter ' :: '
+$ edit_print: echo "edit print" | tr ' ' '\n' --- --map "grep -q edit && echo '-e'"
+$ file: find . -maxdepth 2 -type f
