@@ -1,0 +1,15 @@
+% pipx, python, linux
+
+# Install with pipx
+pipx install "<target>"
+
+# List pipx environments
+pipx list
+
+# Uninstall with pipx
+pipx uninstall <environment>
+
+# Install dependency with pipx
+pipx inject <environment> "<dependencies>"
+
+$ environment: pipx list --short --- --delimiter ' ' --column 1 --expand
