@@ -1,5 +1,5 @@
 return {
-	"norcalli/nvim-colorizer.lua",
+	"catgoose/nvim-colorizer.lua",
 	commit = require("settings.versions").nvim_colorizer,
 	event = "InsertEnter",
 	opts = {
