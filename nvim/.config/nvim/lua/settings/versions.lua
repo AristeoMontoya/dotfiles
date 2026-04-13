@@ -37,7 +37,7 @@ return {
 	nvim_autopairs = "7a2c97c",
 	nvim_base16 = "b336f40",
 	nvim_cmp = "1e1900b",
-	nvim_colorizer = "a065833",
+	nvim_colorizer = "5cfe7ff",
 	nvim_dap = "b38f7d3",
 	nvim_dap_ui = "cf91d5e",
 	nvim_dap_virtual_text = "fbdb48c",
@@ -53,10 +53,10 @@ return {
 	nvim_web_devicons = "8dcb311",
 	plenary = "b9fd522", -- Utility functions for plugins. Mostly a dependency
 	project = "8c6bad7", -- bookmarks dependency to get a project root.
-	rainbow_delimiters = "8aafe2c",
+	rainbow_delimiters = "b81d594",
 	render_markdown = "b2b1353",
 	smart_splits = "79d78a0",
-	snacks = "dec29f5",
+	snacks = "e6fd58c",
 	sqlite_lua = "50092d6",
 	statuscol = "c46172d",
 	trouble = "bd67efe",
