@@ -21,6 +21,3 @@
 
 [diff]
 	colorMoved = default
-
-[include]
-	path = ~/.gitconfig-local # Intended to be used on different hosts
