@@ -1,0 +1,5 @@
+setopt nullglob
+for file in $ZDOTDIR/env/*; do
+	source $file
+done
+unsetopt nullglob
