@@ -25,9 +25,6 @@ BASE16_SHELL="$ZDOTDIR/plugins/base16-shell/"
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         source "$BASE16_SHELL/profile_helper.sh"
 
-# We're lazy loading completions and vim-mode in the same file
-zsh-defer zsh_add_file "zsh-completions"
-
 # complist is required for vim mode
 zmodload zsh/complist
 zsh_add_file "zsh-vim-mode"
@@ -41,29 +38,26 @@ zle -N down-line-or-beginning-search
 autoload -Uz colors && colors
 
 # Source env specific files
-setopt nullglob
-for file in $ZDOTDIR/env/*; do
-	source $file
-done
-unsetopt nullglob
+zsh_add_file "zsh-prepare-env"
 
 # Source withouth checking, should be a bit faster.
 # zsh_add_file "zsh-vim-mode"
+zsh_add_file "zsh-completions"
 zsh_add_file "zsh-exports"
 zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-widgets"
-zsh_add_file "zsh-lazy-load"
 zsh_add_file "zsh-fzf"
 
 # Plugins
 zsh_add_plugin "chriskempson/base16-shell"
-zsh-defer zsh_add_plugin "zdharma-continuum/fast-syntax-highlighting"
 
 ## Lazy loaded
+zsh-defer zsh_add_plugin "zdharma-continuum/fast-syntax-highlighting"
 zsh-defer zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh-defer zsh_add_plugin "hlissner/zsh-autopair"
-zsh-defer zsh_add_plugin "gradle/gradle-completion"
 zsh-defer zsh_add_plugin "matthieusb/zsh-sdkman"
+zsh_add_plugin "gradle/gradle-completion"
+zsh-defer [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins
 # More completions https://github.com/zsh-users/zsh-completions
@@ -96,5 +90,4 @@ else
 	zsh_add_file "zsh-prompt"
 fi
 
-unfunction lazy_load
 # zprof
