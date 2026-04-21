@@ -50,6 +50,15 @@ if [ $commands[fd] ]; then
 	alias vopen='fd --type f --hidden --exclude .git |  fzf-tmux -p 90% --preview="bat --theme=base16 --style=plain --color=always --line-range=:100 {}" --header="Pick a file" --layout reverse --info inline | xargs -r nvim'
 fi
 
+if [ $commands[bat] ]; then
+	alias cat='bat'
+
+	# Pretty syntax highlight on help pages
+	# deferring so it doesn't interferes with sdkman
+	zsh-defer alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+	zsh-defer alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+fi
+
 alias du='du -had 1'
 alias scrcpyd='devour scrcpy'
 alias clip='xclip -sel clip'
