@@ -32,7 +32,7 @@ return {
 	neotest = "deadfb1",
 	neotest_dap_go = "b442115",
 	neotest_golang = "2806bc0",
-	noice = "7bfd942",
+	noice = "7bfd942", -- UI Plugin
 	nui = "de74099",
 	nvim_autopairs = "7a2c97c",
 	nvim_base16 = "b336f40",
