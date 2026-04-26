@@ -26,6 +26,7 @@ return {
 
 		-- Load pre-defined servers, linters, formatters and debuggers
 		local ensure_lsp_installed = config_manager.get_lsp_servers()
+		local lsp_configs = config_manager.get_lsp_configurations()
 		local linters = config_manager.get_linters()
 		local formatters = config_manager.get_formatters()
 		local debuggers = config_manager.get_debuggers()
@@ -38,10 +39,20 @@ return {
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
 			ensure_installed = ensure_lsp_installed,
+			automatic_enable = true,
 		})
 
 		mason_tool_installer.setup({
 			ensure_installed = ensure_installed_tools,
 		})
+
+		-- Setting overrides
+		for _, server in ipairs(ensure_lsp_installed) do
+			local server_opts = lsp_configs[server] or {}
+
+			if next(server_opts) ~= nil then
+				vim.lsp.config(server, server_opts)
+			end
+		end
 	end,
 }
