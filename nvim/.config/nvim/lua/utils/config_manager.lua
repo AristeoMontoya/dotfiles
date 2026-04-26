@@ -7,10 +7,15 @@ local filter_tables = require("utils.filter_tables")
 ---@field overrides? config.TSParsers
 ---@field resolved? config.TSParsers
 
----@class LspCache
+---@class LspServerCache
 ---@field defaults? config.LspServers
 ---@field overrides? config.LspServers
 ---@field resolved? config.LspServers
+
+---@class LspConfigCache
+---@field defaults? table
+---@field overrides? table
+---@field resolved? table
 
 ---@class LinterCache
 ---@field defaults? config.Linters
@@ -29,7 +34,8 @@ local filter_tables = require("utils.filter_tables")
 
 ---@class ConfigCache
 ---@field parsers? ParserCache
----@field lsp_servers? LspCache
+---@field lsp_servers? LspServerCache
+---@field lsp_configs? LspConfigCache
 ---@field linters? LinterCache
 ---@field formatters? FormatterCache
 ---@field dap? DapCache
@@ -42,6 +48,16 @@ local function safe_require(mod)
 		return result
 	end
 	return nil
+end
+
+local function resolve_lsp_configs()
+	local config_name = "lsp_configs"
+	local module_name = "user.overrides.lsp.configs"
+	if cache[config_name] then
+		return cache[config_name]
+	end
+
+	return safe_require(module_name) or {}
 end
 
 local function resolve(config_name, defaults, overrides)
@@ -67,6 +83,12 @@ end
 --- @return config.LspServers
 function M.get_lsp_servers()
 	return resolve("lsp_servers", "defaults.lsp.servers", "user.overrides.lsp.servers")
+end
+
+--- @return config.LspConfigs
+function M.get_lsp_configurations()
+	-- No default overrides
+	return resolve_lsp_configs()
 end
 
 --- @return config.Linters

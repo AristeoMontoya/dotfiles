@@ -56,7 +56,7 @@ zsh-defer zsh_add_plugin "zdharma-continuum/fast-syntax-highlighting"
 zsh-defer zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh-defer zsh_add_plugin "hlissner/zsh-autopair"
 zsh-defer zsh_add_plugin "matthieusb/zsh-sdkman"
-zsh_add_plugin "gradle/gradle-completion"
+zsh_add_completion "gradle/gradle-completion"
 zsh-defer [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins
