@@ -37,5 +37,8 @@ pacman -Qdtq
 # Show package information
 pacman -Qi <packages>
 
+# List N largest directories
+du --human-readable --max-depth=1 | sort -rh | head -n <amount>
+
 $ package: pacman -Qqe
 $ packages: pacman -Qqe --- --multi --expand
