@@ -67,3 +67,7 @@ function lazy_load() {
         }"
     fi
 }
+
+function load_sdkman() {
+	[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+}
