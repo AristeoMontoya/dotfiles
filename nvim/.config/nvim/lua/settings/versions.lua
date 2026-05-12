@@ -4,8 +4,6 @@
 return {
 	comment = "e30b7f2",
 	LuaSnip = "3732756",
-	avante = "d3ec7c7",
-	bookmarks = "6d39685",
 	bufferline = "655133c",
 	cmp_buffer = "3022dbc",
 	cmp_cmdline = "d250c63",
@@ -15,8 +13,6 @@ return {
 	cmp_omni = "4ef610b",
 	cmp_path = "91ff86c",
 	conform = "cde4da5",
-	copilot = "881f99b",
-	copilot_lsp = "884034b",
 	flash = "fcea7ff",
 	gitsigns = "20ad441",
 	goto_preview = "cf561d1",
@@ -52,7 +48,7 @@ return {
 	nvim_treesitter_textobjects = "227165a",
 	nvim_web_devicons = "8dcb311",
 	plenary = "b9fd522", -- Utility functions for plugins. Mostly a dependency
-	project = "8c6bad7", -- bookmarks dependency to get a project root.
+	-- project = "6429c12", -- bookmarks dependency to get a project root.
 	rainbow_delimiters = "b81d594",
 	render_markdown = "b2b1353",
 	smart_splits = "79d78a0",
@@ -62,4 +58,6 @@ return {
 	trouble = "bd67efe",
 	vim_illuminate = "0d1e936",
 	which_key = "3aab214",
+	haunt = "fc910cd",
+	agentic = "6188ace",
 }

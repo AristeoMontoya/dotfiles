@@ -31,6 +31,9 @@ require("lazy").setup({
 		},
 		{
 			import = "plugins.testing"
+		},
+		{
+			import = "plugins.ai"
 		}
 	},
 	checker = {
