@@ -1,7 +1,7 @@
 return {
 	"nvim-java/nvim-java",
 	commit = require("settings.versions").nvim_java,
-	enabled = require("utils.resolve_features")().java,
+	enabled = require("utils.config_manager").is_feature_enabled("java"),
 	config = function()
 		require("java").setup({
 			jdk = {
