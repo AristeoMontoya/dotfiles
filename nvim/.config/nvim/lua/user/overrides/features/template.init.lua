@@ -1,2 +1,4 @@
---- @type model.Features
-return { }
+--- @type config.Features
+return {
+	ai = true
+}

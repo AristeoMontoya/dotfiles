@@ -32,6 +32,11 @@ local filter_tables = require("utils.filter_tables")
 ---@field overrides? config.DapList
 ---@field resolved? config.DapList
 
+---@class FeaturesCache
+---@field defaults? config.Features
+---@field overrides? config.Features
+---@field resolved? config.Features
+
 ---@class ConfigCache
 ---@field parsers? ParserCache
 ---@field lsp_servers? LspServerCache
@@ -39,6 +44,8 @@ local filter_tables = require("utils.filter_tables")
 ---@field linters? LinterCache
 ---@field formatters? FormatterCache
 ---@field dap? DapCache
+---@field features? FeaturesCache
+
 --- Session cache for resolved configurations. Changes made within that session will not take effect.
 local cache = {}
 
@@ -75,6 +82,21 @@ local function resolve(config_name, defaults, overrides)
 	return resolved
 end
 
+local function resolve_table(config_name, defaults, overrides)
+	if cache[config_name] then
+		return cache[config_name]
+	end
+
+	local default = require(defaults)
+	local user = safe_require(overrides) or {}
+
+	-- Additive merge
+	local resolved = vim.tbl_deep_extend("force", default, user)
+
+	cache[config_name] = resolved
+	return resolved
+end
+
 --- @return config.TSParsers
 function M.get_ts_parsers()
 	return resolve("parsers", "defaults.treesitter.default_parsers", "user.overrides.treesitter")
@@ -104,6 +126,24 @@ end
 --- @return config.DapList
 function M.get_debuggers()
 	return resolve("dap", "defaults.dap", "user.overrides.dap")
+end
+
+--- @return config.Features
+function M.resolve_features()
+	return resolve_table("features", "defaults.features", "user.overrides.features")
+end
+
+--- @param feature string
+--- @return boolean is_enabled
+function M.is_feature_enabled(feature)
+	local features = resolve_table("features", "defaults.features", "user.overrides.features") ---@type config.Features
+	local feature_enabled = features[feature]
+
+	if feature_enabled == nil then
+		return false
+	end
+
+	return feature_enabled
 end
 
 return M

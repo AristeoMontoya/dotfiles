@@ -1,4 +1,4 @@
---- @class model.Features
+--- @class config.Features
 --- @field ai boolean?
 --- @field java boolean?
 local features = {
