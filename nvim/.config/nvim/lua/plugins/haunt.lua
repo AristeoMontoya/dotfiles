@@ -66,11 +66,11 @@ return {
 		end, { desc = "Delete all bookmarks" })
 
 		-- move
-		map("n", prefix .. "p", function()
+		map("n", "[m", function()
 			haunt.prev()
 		end, { desc = "Previous bookmark" })
 
-		map("n", prefix .. "n", function()
+		map("n", "]m", function()
 			haunt.next()
 		end, { desc = "Next bookmark" })
 
