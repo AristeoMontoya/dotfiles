@@ -36,7 +36,7 @@ return {
 			end
 			local data_dir = vim.fn.stdpath("data") .. "/haunt/"
 			local project_bookmarks = data_dir .. project_root .. "/bookmarks"
-			vim.print("setting to: " .. project_bookmarks)
+			vim.notify("setting to: " .. project_bookmarks)
 			require("haunt.api").change_data_dir(project_bookmarks)
 		end
 
