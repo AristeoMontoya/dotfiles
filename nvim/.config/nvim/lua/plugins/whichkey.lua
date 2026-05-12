@@ -12,6 +12,22 @@ return {
 			{ group = "WhichKeySeparator", value = { fg = "#61AFEF" } },
 		})
 
+		local wk = require("which-key")
+
+		wk.add({
+			{ "<leader>i", group = "ai" },
+			{ "<leader>b", group = "buffers" },
+			{ "<leader>d", group = "debug" },
+			{ "<leader>f", group = "find" },
+			{ "<leader>l", group = "lsp" },
+			{ "<leader>m", group = "bookmarks" },
+			{ "<leader>R", group = "Requests" },
+			{ "<leader>s", group = "split" },
+			{ "<leader>t", group = "test" },
+			{ "<leader>v", group = "verify grammar" },
+			{ "<leader><leader>", group = "move buffer" },
+		})
+
 		return {
 			plugins = {
 				marks = true,
