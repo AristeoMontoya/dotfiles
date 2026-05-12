@@ -11,7 +11,7 @@ return {
 	-- these are just suggested keymaps; customize as desired
 	keys = {
 		{
-			"<C-\\>",
+			"<leader>it",
 			function()
 				require("agentic").toggle()
 			end,
@@ -19,7 +19,7 @@ return {
 			desc = "Toggle Agentic Chat",
 		},
 		{
-			"<C-'>",
+			"<leader>ic",
 			function()
 				require("agentic").add_selection_or_file_to_context()
 			end,
@@ -27,7 +27,7 @@ return {
 			desc = "Add file or selection to Agentic to Context",
 		},
 		{
-			"<C-,>",
+			"<leader>in",
 			function()
 				require("agentic").new_session()
 			end,
@@ -35,7 +35,7 @@ return {
 			desc = "New Agentic Session",
 		},
 		{
-			"<A-i>r", -- ai Restore
+			"<leader>ir", -- ai Restore
 			function()
 				require("agentic").restore_session()
 			end,
@@ -44,7 +44,7 @@ return {
 			mode = { "n", "v", "i" },
 		},
 		{
-			"<leader>ad", -- ai Diagnostics
+			"<leader>id", -- ai Diagnostics
 			function()
 				require("agentic").add_current_line_diagnostics()
 			end,
@@ -52,7 +52,7 @@ return {
 			mode = { "n" },
 		},
 		{
-			"<leader>aD", -- ai all Diagnostics
+			"<leader>iD", -- ai all Diagnostics
 			function()
 				require("agentic").add_buffer_diagnostics()
 			end,
