@@ -1,10 +1,7 @@
 local versions = require("settings.versions")
 return {
 	"TheNoeTrevino/haunt.nvim",
-	commit = require("settings.versions").haunt,
-	-- dependencies = {
-	-- 	{ "DrKJeff16/project.nvim", commit = versions.project },
-	-- },
+	commit = versions.haunt,
 	-- default config: change to your liking, or remove it to use defaults
 	---@class HauntConfig
 	opts = {
@@ -30,19 +27,22 @@ return {
 		local map = vim.keymap.set
 		local prefix = "<leader>m"
 
-		-- local function get_bookmark_root()
-		-- 	local project_root = require("project").get_project_root()
-		-- 	print("found project root: " .. project_root)
-		-- 	if not project_root then
-		-- 		return
-		-- 	end
-		-- 	local project_bookmarks = project_root .. "/.bookmarks/"
-		-- 	require("haunt.api").change_data_dir(project_bookmarks)
-		-- end
+		local function get_bookmark_root()
+			local project_root = require("utils.project_resolver").get({ use_lsp = true, parents = 1 })
 
-		-- vim.api.nvim_create_autocmd("DirChanged", {
-		-- 	callback = get_bookmark_root,
-		-- })
+			vim.print("found project root: " .. project_root)
+			if not project_root then
+				return
+			end
+			local data_dir = vim.fn.stdpath("data") .. "/haunt/"
+			local project_bookmarks = data_dir .. project_root .. "/bookmarks"
+			vim.print("setting to: " .. project_bookmarks)
+			require("haunt.api").change_data_dir(project_bookmarks)
+		end
+
+		vim.api.nvim_create_autocmd({ "VimEnter" }, {
+			callback = get_bookmark_root,
+		})
 
 		-- annotations
 		map("n", prefix .. "a", function()

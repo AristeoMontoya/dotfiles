@@ -48,7 +48,6 @@ return {
 	nvim_treesitter_textobjects = "227165a",
 	nvim_web_devicons = "8dcb311",
 	plenary = "b9fd522", -- Utility functions for plugins. Mostly a dependency
-	-- project = "6429c12", -- bookmarks dependency to get a project root.
 	rainbow_delimiters = "b81d594",
 	render_markdown = "b2b1353",
 	smart_splits = "79d78a0",
