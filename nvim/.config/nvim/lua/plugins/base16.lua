@@ -36,6 +36,9 @@ return {
 			{ group = "WinBarDynamic", value = { fg = "#282C34", bg = "#98C379" } },
 			{ group = "WinBarDynamicNC", value = { fg = "#abb2bf", bg = "#353b45" } },
 
+			-- Lualine
+			{ group = "LualineFilename", value = { fg = "#61AFEF", bg = "#2C323C", bold = true } },
+
 			-- search
 			{ group = "Search", value = { bg = "#424242" } },
 

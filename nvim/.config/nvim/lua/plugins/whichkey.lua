@@ -15,17 +15,17 @@ return {
 		local wk = require("which-key")
 
 		wk.add({
-			{ "<leader>i", group = "ai" },
-			{ "<leader>b", group = "buffers" },
-			{ "<leader>d", group = "debug" },
-			{ "<leader>f", group = "find" },
-			{ "<leader>l", group = "lsp" },
-			{ "<leader>m", group = "bookmarks" },
-			{ "<leader>R", group = "Requests" },
-			{ "<leader>s", group = "split" },
-			{ "<leader>t", group = "test" },
-			{ "<leader>v", group = "verify grammar" },
-			{ "<leader><leader>", group = "move buffer" },
+			{ mode = {"n"}, "<leader>i", group = "ai" },
+			{ mode = {"n"}, "<leader>b", group = "buffers" },
+			{ mode = {"n"}, "<leader>d", group = "debug" },
+			{ mode = {"n"}, "<leader>f", group = "find" },
+			{ mode = {"n"}, "<leader>l", group = "lsp" },
+			{ mode = {"n"}, "<leader>m", group = "bookmarks" },
+			{ mode = {"n"}, "<leader>R", group = "Requests" },
+			{ mode = {"n"}, "<leader>s", group = "split" },
+			{ mode = {"n"}, "<leader>t", group = "test" },
+			{ mode = {"n"}, "<leader>v", group = "verify grammar" },
+			{ mode = {"n"}, "<leader><leader>", group = "move buffer" },
 		})
 
 		return {
