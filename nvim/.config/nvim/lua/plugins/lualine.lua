@@ -89,9 +89,32 @@ return {
 				lualine_c = {
 					{
 						"filename",
+						colored = true,
 						file_status = true,
 						path = 4,
 						shorting_target = 40,
+						fmt = function(name, _)
+							local tail = vim.fs.basename(name)
+							local parent = vim.fs.dirname(name)
+
+							if parent == "." or parent == "" then
+								return tail
+							end
+
+							return table.concat({
+								parent,
+								"/",
+								"%#LualineFilename#",
+								tail,
+							})
+						end,
+
+						symbols = {
+							modified = " ● ",
+							readonly = "  ",
+							unnamed = "[No Name]",
+							newfile = " * ",
+						},
 					},
 				},
 				lualine_x = { "encoding", "filetype" },
