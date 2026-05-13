@@ -30,7 +30,6 @@ return {
 		local function get_bookmark_root()
 			local project_root = require("utils.project_resolver").get({ use_lsp = true, parents = 1 })
 
-			vim.print("found project root: " .. project_root)
 			if not project_root then
 				return
 			end
