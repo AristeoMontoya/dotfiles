@@ -102,6 +102,7 @@ return {
 							end
 
 							return table.concat({
+								"%#LualineFileContext#",
 								parent,
 								"/",
 								"%#LualineFilename#",

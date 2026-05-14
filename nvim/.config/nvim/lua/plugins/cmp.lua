@@ -9,7 +9,7 @@ return {
 		{ "hrsh7th/cmp-cmdline", commit = versions.cmp_cmdline },
 		{ "hrsh7th/cmp-omni", commit = versions.cmp_omni },
 		{ "rcarriga/cmp-dap", commit = versions.cmp_dap },
-		{ "L3MON4D3/LuaSnip", commit = versions.LuaSnip },
+		{ "L3MON4D3/LuaSnip", commit = versions.luasnip },
 		{ "saadparwaiz1/cmp_luasnip", commit = versions.cmp_luasnip },
 		{ "antosha417/nvim-lsp-file-operations", config = true, commit = versions.nvim_lsp_file_operations },
 		{ "folke/lazydev.nvim", ft = "lua", commit = versions.lazydev },

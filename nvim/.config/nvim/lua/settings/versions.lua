@@ -2,8 +2,7 @@
 
 --- @type config.VersionList
 return {
-	comment = "e30b7f2",
-	LuaSnip = "3732756",
+	agentic = "6188ace",
 	bufferline = "655133c",
 	cmp_buffer = "3022dbc",
 	cmp_cmdline = "d250c63",
@@ -12,14 +11,17 @@ return {
 	cmp_nvim_lsp = "39e2eda",
 	cmp_omni = "4ef610b",
 	cmp_path = "91ff86c",
+	comment = "e30b7f2",
 	conform = "cde4da5",
 	flash = "fcea7ff",
 	gitsigns = "20ad441",
 	goto_preview = "cf561d1",
+	haunt = "fc910cd",
 	kulala = "6656c9d",
 	lazy = "",
 	lazydev = "f59bd14",
 	lualine = "3946f01",
+	luasnip = "3732756",
 	mason = "44d1e90",
 	mason_lspconfig = "21c2a84",
 	mason_nvim_dap = "9a10e09",
@@ -54,9 +56,8 @@ return {
 	snacks = "e6fd58c",
 	sqlite_lua = "50092d6",
 	statuscol = "c46172d",
+	todo = "31e3c38",
 	trouble = "bd67efe",
 	vim_illuminate = "0d1e936",
 	which_key = "3aab214",
-	haunt = "fc910cd",
-	agentic = "6188ace",
 }
