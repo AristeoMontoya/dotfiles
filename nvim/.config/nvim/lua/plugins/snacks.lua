@@ -367,54 +367,79 @@ return {
 			scroll = { enabled = false },
 			statuscolumn = { enabled = false },
 			words = { enabled = false },
-			bufdelete = { enabled = true }
+			bufdelete = { enabled = true },
 		}
 	end,
-	keys = {
-		{
-			"<leader>ff",
-			mode = { "n", "o" },
-			function()
-				require("snacks").picker.files()
-			end,
-			desc = "Find files",
-		},
-		{
-			"<leader>fg",
-			mode = { "n", "o" },
-			function()
-				require("snacks").picker.grep()
-			end,
-			desc = "Live grep",
-		},
-		{
-			"<leader>fb",
-			function()
-				Snacks.picker.buffers()
-			end,
-			desc = "Buffers",
-		},
-		{
-			"<leader>fh",
-			mode = { "n", "o" },
-			function()
-				Snacks.picker.help()
-			end,
-			desc = "Find help",
-		},
-		{
-			"<leader>ft",
-			function()
-				Snacks.picker.todo_comments()
-			end,
-			desc = "Find ToDo's",
-		},
-		{
-			"<leader>bk",
-			function()
-				Snacks.bufdelete.delete()
-			end,
-			desc = "Close buffer",
-		},
-	},
+	keys = function()
+		-- I'm using snacks.picker directly so it basically depends on it
+		local workspace_manager = require("utils.workspace_manager")
+
+		return {
+			{
+				"<leader>ff",
+				mode = { "n", "o" },
+				function()
+					require("snacks").picker.files({ follow = true })
+				end,
+				desc = "Find files",
+			},
+			{
+				"<leader>fg",
+				mode = { "n", "o" },
+				function()
+					require("snacks").picker.grep({ follow = true })
+				end,
+				desc = "Live grep",
+			},
+			{
+				"<leader>fb",
+				function()
+					Snacks.picker.buffers()
+				end,
+				desc = "Buffers",
+			},
+			{
+				"<leader>fh",
+				mode = { "n", "o" },
+				function()
+					Snacks.picker.help()
+				end,
+				desc = "Find help",
+			},
+			{
+				"<leader>ft",
+				function()
+					Snacks.picker.todo_comments()
+				end,
+				desc = "Find ToDo's",
+			},
+			{
+				"<leader>bk",
+				function()
+					Snacks.bufdelete.delete()
+				end,
+				desc = "Close buffer",
+			},
+			{
+				"<leader>wo",
+				workspace_manager.open_workspace,
+				desc = "Open workspace",
+			},
+			{
+				"<leader>wa",
+				workspace_manager.add_folder,
+				desc = "Add directory to current workspace",
+			},
+			{
+				"<leader>wn",
+				workspace_manager.create_workspace,
+				desc = "Create a new workspace",
+			},
+			{
+				"<leader>wd",
+				workspace_manager.delete_workspace,
+				desc = "Delete current workspace",
+			},
+		}
+	end,
 }

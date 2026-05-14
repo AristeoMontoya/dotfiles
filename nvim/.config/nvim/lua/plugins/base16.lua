@@ -37,7 +37,8 @@ return {
 			{ group = "WinBarDynamicNC", value = { fg = "#abb2bf", bg = "#353b45" } },
 
 			-- Lualine
-			{ group = "LualineFilename", value = { fg = "#61AFEF", bg = "#2C323C", bold = true } },
+			{ group = "LualineFileContext", value = { fg = "#7D838F", bg = "#2C323C" } },
+			{ group = "LualineFilename", value = { fg = "#98C379", bg = "#2C323C", bold = true } },
 
 			-- search
 			{ group = "Search", value = { bg = "#424242" } },
