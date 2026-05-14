@@ -19,7 +19,7 @@ return {
 	haunt = "fc910cd",
 	kulala = "6656c9d",
 	lazy = "",
-	lazydev = "f59bd14",
+	lazydev = "ff2cbcb",
 	lualine = "3946f01",
 	luasnip = "3732756",
 	mason = "44d1e90",

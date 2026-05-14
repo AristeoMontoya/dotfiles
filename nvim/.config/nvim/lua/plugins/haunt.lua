@@ -35,11 +35,11 @@ return {
 			end
 			local data_dir = vim.fn.stdpath("data") .. "/haunt/"
 			local project_bookmarks = data_dir .. project_root .. "/bookmarks"
-			vim.notify("setting to: " .. project_bookmarks)
+			vim.notify("Bookmark directory: " .. project_bookmarks, vim.log.levels.INFO)
 			require("haunt.api").change_data_dir(project_bookmarks)
 		end
 
-		vim.api.nvim_create_autocmd({ "VimEnter" }, {
+		vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
 			callback = get_bookmark_root,
 		})
 
@@ -76,7 +76,7 @@ return {
 		-- picker
 		map("n", "<leader>fm", function()
 			haunt_picker.show()
-		end, { desc = "Show Picker" })
+		end, { desc = "Find bookmarks" })
 
 		-- quickfix
 		map("n", prefix .. "q", function()
