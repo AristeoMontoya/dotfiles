@@ -218,8 +218,51 @@ return {
 			end
 		end
 
+		local function workspace_relative_path(path)
+			local cwd = vim.fn.getcwd()
+
+			-- Only operate inside managed workspaces
+			if not vim.startswith(cwd, require("utils.workspace_manager").workspace_root) then
+				return path
+			end
+
+			local workspace_entries = vim.fn.readdir(cwd)
+
+			local real = vim.loop.fs_realpath(path)
+
+			if not real then
+				return path
+			end
+
+			for _, entry in ipairs(workspace_entries) do
+				local link = cwd .. "/" .. entry
+				local target = vim.loop.fs_realpath(link)
+
+				if target and vim.startswith(real, target) then
+					local suffix = real:sub(#target + 1)
+
+					return link .. suffix
+				end
+			end
+
+			return path
+		end
+
 		local show_file_in_explorer = function()
-			local _ = MiniFiles.close() or MiniFiles.open(vim.api.nvim_buf_get_name(0))
+			local path = vim.api.nvim_buf_get_name(0)
+
+			path = workspace_relative_path(path)
+
+			local _ = MiniFiles.close() or MiniFiles.open(path)
+
+			vim.schedule(function()
+				MiniFiles.reveal_cwd()
+			end)
+		end
+
+		local show_working_directory_in_explorer = function()
+			local _ = MiniFiles.close() or MiniFiles.open(nil, false)
+
 			vim.schedule(function()
 				MiniFiles.reveal_cwd()
 			end)
@@ -231,6 +274,12 @@ return {
 			"<leader>fE",
 			show_file_in_explorer,
 			{ silent = true, noremap = true, desc = "Show file explorer" }
+		)
+		keymap.set(
+			"n",
+			"<leader>fw",
+			show_working_directory_in_explorer,
+			{ silent = true, noremap = true, desc = "Open working directory in explorer" }
 		)
 
 		-- Setting up local keymaps
