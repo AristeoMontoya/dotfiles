@@ -2,7 +2,6 @@
 
 --- @type config.VersionList
 return {
-	agentic = "6188ace",
 	bufferline = "655133c",
 	cmp_buffer = "3022dbc",
 	cmp_cmdline = "d250c63",
@@ -60,4 +59,5 @@ return {
 	trouble = "bd67efe",
 	vim_illuminate = "0d1e936",
 	which_key = "3aab214",
+	codecompanion = "b1cbe52",
 }
