@@ -1,11 +1,12 @@
 local versions = require("settings.versions")
 return {
-	"rcarriga/cmp-dap",
-	commit = versions.cmp_dap,
+	"jay-babu/mason-nvim-dap.nvim",
+	commit = versions.mason_nvim_dap,
 	dependencies = {
 		{
-			"jay-babu/mason-nvim-dap.nvim",
-			commit = versions.mason_nvim_dap,
+			"rcarriga/cmp-dap",
+			commit = versions.cmp_dap,
+			enabled = false
 		},
 		{
 			"leoluz/nvim-dap-go",

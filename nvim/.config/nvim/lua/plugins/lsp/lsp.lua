@@ -1,5 +1,5 @@
 local versions = require("settings.versions")
-return {
+local cmp_config = {
 	"hrsh7th/cmp-nvim-lsp",
 	event = { "BufReadPre", "BufNewFile" },
 	commit = versions.cmp_nvim_lsp,
@@ -17,3 +17,19 @@ return {
 		})
 	end,
 }
+
+local blink_config = {
+	"saghen/blink.cmp",
+	event = { "BufReadPre", "BufNewFile" },
+	dependencies = {
+		{ "antosha417/nvim-lsp-file-operations", versions.nvim_lsp_file_operations, config = true },
+		{ "folke/lazydev.nvim", versions.lazydev, opts = {} },
+	},
+	config = function()
+		vim.lsp.config("*", {
+			capabilities = require("blink.cmp").get_lsp_capabilities(),
+		})
+	end,
+}
+
+return blink_config

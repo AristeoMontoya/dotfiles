@@ -60,4 +60,5 @@ return {
 	vim_illuminate = "0d1e936",
 	which_key = "3aab214",
 	codecompanion = "b1cbe52",
+	blink = "78336bc" -- Taken from v1 branch
 }
