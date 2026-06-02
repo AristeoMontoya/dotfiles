@@ -84,10 +84,10 @@ M.markers = {
 
 --- Return the root plus N ancestor segments above it.
 ---@param root string Absolute path returned by M.get()
----@param parents integer How many levels above root to include
+---@param parents integer How many levels above root to include. Returns the absolute path when omitted.
 ---@return string
 local function with_parents(root, parents)
-	if not parents or parents <= 0 then
+	if not parents then
 		return root
 	end
 
