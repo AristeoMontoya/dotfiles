@@ -28,7 +28,7 @@ return {
 		local prefix = "<leader>m"
 
 		local function get_bookmark_root()
-			local project_root = require("utils.project_resolver").get({ use_lsp = true, parents = 1 })
+			local project_root = require("utils.project_resolver").get({ use_lsp = true, parents = 0 })
 
 			if not project_root then
 				return
