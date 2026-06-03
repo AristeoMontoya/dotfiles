@@ -1,4 +1,5 @@
 require("settings.constants")
+require("settings.custom_commands")
 -- Keeping keymaps at the top so I can override
 -- default keymaps with plugin specific ones
 -- defined inside plugin specs.

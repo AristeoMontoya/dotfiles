@@ -407,6 +407,14 @@ return {
 				desc = "Find help",
 			},
 			{
+				"<leader>fc",
+				mode = { "n", "o" },
+				function()
+					Snacks.picker.commands()
+				end,
+				desc = "Find commands",
+			},
+			{
 				"<leader>ft",
 				function()
 					Snacks.picker.todo_comments()
