@@ -2,7 +2,7 @@ local versions = require("settings.versions")
 return {
 	"saghen/blink.cmp",
 	commit = versions.blink,
-	enabled = false,
+	enabled = true,
 	dependencies = {
 		-- LuaSnip commit kept in sync with your versions table
 		{ "L3MON4D3/LuaSnip", commit = versions.luasnip },

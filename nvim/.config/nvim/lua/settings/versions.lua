@@ -11,6 +11,8 @@ return {
 	cmp_omni = "4ef610b",
 	cmp_path = "91ff86c",
 	comment = "e30b7f2",
+	codecompanion = "b1cbe52",
+	codediff = "29b06f3",
 	conform = "cde4da5",
 	flash = "fcea7ff",
 	gitsigns = "20ad441",
@@ -40,7 +42,7 @@ return {
 	nvim_dap_virtual_text = "fbdb48c",
 	nvim_java = "03d0d03",
 	nvim_lint = "2536f1b",
-	nvim_lsp_file_operations = "9744b73",
+	nvim_lsp_file_operations = "b9c795d",
 	nvim_lspconfig = "44acfe8",
 	nvim_nio = "21f5324",
 	nvim_surround = "fcfa7e0",
@@ -59,6 +61,5 @@ return {
 	trouble = "bd67efe",
 	vim_illuminate = "0d1e936",
 	which_key = "3aab214",
-	codecompanion = "b1cbe52",
 	blink = "78336bc" -- Taken from v1 branch
 }

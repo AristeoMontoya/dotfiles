@@ -28,14 +28,17 @@ return {
 		local prefix = "<leader>m"
 
 		local function get_bookmark_root()
-			local project_root = require("utils.project_resolver").get({ use_lsp = true, parents = 1 })
+			local project_root = require("utils.project_resolver").get({ use_lsp = true, parents = 0 })
 
 			if not project_root then
 				return
 			end
 			local data_dir = vim.fn.stdpath("data") .. "/haunt/"
 			local project_bookmarks = data_dir .. project_root .. "/bookmarks"
-			vim.notify("Bookmark directory: " .. project_bookmarks, vim.log.levels.INFO)
+
+			vim.defer_fn(function()
+				vim.notify("Bookmark directory: " .. project_bookmarks, vim.log.levels.INFO)
+			end, 300)
 			require("haunt.api").change_data_dir(project_bookmarks)
 		end
 
