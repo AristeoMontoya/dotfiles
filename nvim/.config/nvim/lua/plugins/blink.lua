@@ -2,17 +2,27 @@ local versions = require("settings.versions")
 return {
 	"saghen/blink.cmp",
 	commit = versions.blink,
-	enabled = true,
 	dependencies = {
 		-- LuaSnip commit kept in sync with your versions table
-		{ "L3MON4D3/LuaSnip", commit = versions.luasnip },
+		{
+			"L3MON4D3/LuaSnip",
+			commit = versions.luasnip,
+		},
 		-- lazydev ships a first-party blink source, no extra adapter needed
-		{ "folke/lazydev.nvim", commit = versions.lazydev, ft = "lua" },
+		{
+			"folke/lazydev.nvim",
+			commit = versions.lazydev,
+			ft = "lua",
+		},
 		-- Native blink DAP source (replaces rcarriga/cmp-dap)
 		-- https://github.com/mayromr/blink-cmp-dap
 		"mayromr/blink-cmp-dap",
 		-- Replaces hrsh7th/cmp-nvim-lsp — capabilities wired below in config
-		{ "antosha417/nvim-lsp-file-operations", commit = versions.nvim_lsp_file_operations, config = true },
+		{
+			"antosha417/nvim-lsp-file-operations",
+			commit = versions.nvim_lsp_file_operations,
+			config = true,
+		},
 	},
 	config = function()
 		-- Mirror the highlight overrides from the old cmp setup.
@@ -72,24 +82,18 @@ return {
 			-- <C-j>/<C-k> are forwarded here so they work in command mode too,
 			-- matching your original { "i", "c" } mode binding.
 			cmdline = {
+				enabled = true,
 				keymap = {
-					preset = "none",
+					-- 	preset = "none",
 					["<C-j>"] = { "select_next", "fallback" },
 					["<C-k>"] = { "select_prev", "fallback" },
-					["<C-e>"] = { "cancel", "fallback" },
 					["<Tab>"] = { "select_and_accept", "fallback" },
-					["<S-Tab>"] = { "select_prev", "fallback" },
 				},
-				sources = function()
-					local t = vim.fn.getcmdtype()
-					if t == "/" or t == "?" then
-						return { "buffer" }
-					end
-					if t == ":" then
-						return { "path", "cmdline" }
-					end
-					return {}
-				end,
+				completion = {
+					menu = {
+						auto_show = true,
+					},
+				},
 			},
 
 			-- ── Sources ─────────────────────────────────────────────────────────
@@ -152,6 +156,11 @@ return {
 					window = { border = "rounded" },
 				},
 			},
+			signature = {
+				window = {
+					border = "rounded",
+				},
+			},
 
 			-- ── Appearance ──────────────────────────────────────────────────────
 			-- Kind icons are a 1-for-1 port of the kind_icons table in cmp.lua.
@@ -159,28 +168,28 @@ return {
 				nerd_font_variant = "mono",
 				kind_icons = {
 					Text = "",
-					Method = "",
+					Method = "",
 					Function = "󰊕",
-					Constructor = "",
-					Field = "",
+					Constructor = "",
+					Field = "",
 					Variable = "󰀫",
-					Class = "",
-					Interface = "",
-					Module = "",
-					Property = "",
-					Unit = "",
-					Value = "",
-					Enum = "",
-					Keyword = "",
+					Class = "",
+					Interface = "",
+					Module = "",
+					Property = "",
+					Unit = "",
+					Value = "",
+					Enum = "",
+					Keyword = "",
 					Snippet = "󰆐",
-					Color = "",
-					File = "",
-					Reference = "",
-					Folder = "",
-					EnumMember = "",
-					Constant = "",
-					Struct = "",
-					Event = "",
+					Color = "",
+					File = "",
+					Reference = "",
+					Folder = "",
+					EnumMember = "",
+					Constant = "",
+					Struct = "",
+					Event = "",
 					Operator = "󰿈",
 					TypeParameter = "󰅲",
 				},

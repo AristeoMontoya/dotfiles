@@ -3,6 +3,7 @@ local cmp_config = {
 	"hrsh7th/cmp-nvim-lsp",
 	event = { "BufReadPre", "BufNewFile" },
 	commit = versions.cmp_nvim_lsp,
+	enabled = false,
 	dependencies = {
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/lazydev.nvim", opts = {} },
@@ -20,10 +21,11 @@ local cmp_config = {
 
 local blink_config = {
 	"saghen/blink.cmp",
-	event = { "BufReadPre", "BufNewFile" },
+	commit = versions.blink,
+	-- event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		{ "antosha417/nvim-lsp-file-operations", versions.nvim_lsp_file_operations, config = true },
-		{ "folke/lazydev.nvim", versions.lazydev, opts = {} },
+		{ "antosha417/nvim-lsp-file-operations", commit = versions.nvim_lsp_file_operations, config = true },
+		{ "folke/lazydev.nvim", commit = versions.lazydev, opts = {} },
 	},
 	config = function()
 		vim.lsp.config("*", {
@@ -32,4 +34,4 @@ local blink_config = {
 	end,
 }
 
-return blink_config
+return cmp_config
