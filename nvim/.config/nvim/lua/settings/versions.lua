@@ -11,6 +11,8 @@ return {
 	cmp_omni = "4ef610b",
 	cmp_path = "91ff86c",
 	comment = "e30b7f2",
+	codecompanion = "b1cbe52",
+	codediff = "29b06f3",
 	conform = "cde4da5",
 	flash = "fcea7ff",
 	gitsigns = "20ad441",
@@ -59,5 +61,4 @@ return {
 	trouble = "bd67efe",
 	vim_illuminate = "0d1e936",
 	which_key = "3aab214",
-	codecompanion = "b1cbe52",
 }
