@@ -3,23 +3,13 @@ return {
 	"saghen/blink.cmp",
 	commit = versions.blink,
 	dependencies = {
-		{
-			"L3MON4D3/LuaSnip",
-			commit = versions.luasnip,
-		},
-		{
-			"folke/lazydev.nvim",
-			commit = versions.lazydev,
-			ft = "lua",
-		},
+		{ "L3MON4D3/LuaSnip", commit = versions.luasnip },
+		{ "folke/lazydev.nvim", commit = versions.lazydev, ft = "lua" },
 		-- Native blink DAP source (replaces rcarriga/cmp-dap)
 		-- https://github.com/mayromr/blink-cmp-dap
-		"mayromr/blink-cmp-dap",
-		{
-			"antosha417/nvim-lsp-file-operations",
-			commit = versions.nvim_lsp_file_operations,
-			config = true,
-		},
+		{ "mayromr/blink-cmp-dap", commit = versions.cmp_dap },
+		{ "antosha417/nvim-lsp-file-operations", commit = versions.nvim_lsp_file_operations, config = true },
+		{ "rmagatti/goto-preview", config = true, commit = versions.goto_preview },
 	},
 	config = function()
 		-- Mirror the highlight overrides from the old cmp setup.
