@@ -1,7 +1,7 @@
 local versions = require("settings.versions")
 return {
 	"hrsh7th/nvim-cmp",
-	enabled = true,
+	enabled = false,
 	commit = versions.nvim_cmp,
 	dependencies = {
 		{ "hrsh7th/cmp-nvim-lsp", commit = versions.cmp_nvim_lsp },
