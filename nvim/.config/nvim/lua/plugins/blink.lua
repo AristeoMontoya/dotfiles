@@ -49,13 +49,8 @@ return {
 				return vim.bo.buftype ~= "prompt"
 			end,
 
-			-- ── Snippets ────────────────────────────────────────────────────────
-			-- Delegates expand/jump/active to LuaSnip, matching your lsnip usage.
 			snippets = { preset = "luasnip" },
 
-			-- ── Keymaps (insert / select mode) ─────────────────────────────────
-			-- preset = "none" so we own every binding – nothing inherited.
-			--
 			-- <Tab>  chain: accept selected → jump snippet forward → open menu → fallback
 			-- <S-Tab> chain: select prev   → jump snippet back → fallback
 			-- This matches the three-branch logic in your old <Tab> mapping.
@@ -68,8 +63,48 @@ return {
 				["<C-Space>"] = { "show", "fallback" },
 				["<C-x><C-o>"] = { "show", "fallback" },
 				["<C-e>"] = { "cancel", "fallback" },
-				["<Tab>"] = { "select_and_accept", "snippet_forward", "show", "fallback" },
-				["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+				-- TODO: Make this readable
+				["<Tab>"] = {
+					function(cmp)
+						if cmp.is_visible() then
+							return cmp.select_and_accept()
+						end
+					end,
+					function()
+						local ls = require("luasnip")
+						if ls.expand_or_locally_jumpable() then
+							vim.schedule(function()
+								ls.expand_or_jump()
+							end)
+							return true
+						end
+					end,
+					function(cmp)
+						local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+						local before = vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col)
+						if col ~= 0 and before:match("%s") == nil then
+							return cmp.show()
+						end
+					end,
+					"fallback",
+				},
+				["<S-Tab>"] = {
+					function(cmp)
+						if cmp.is_visible() then
+							return cmp.select_prev()
+						end
+					end,
+					function()
+						local ls = require("luasnip")
+						if ls.jumpable(-1) then
+							vim.schedule(function()
+								ls.jump(-1)
+							end)
+							return true
+						end
+					end,
+					"fallback",
+				},
 			},
 			cmdline = {
 				enabled = true,
