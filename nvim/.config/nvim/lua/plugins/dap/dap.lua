@@ -4,11 +4,6 @@ return {
 	commit = versions.mason_nvim_dap,
 	dependencies = {
 		{
-			"rcarriga/cmp-dap",
-			commit = versions.cmp_dap,
-			enabled = false
-		},
-		{
 			"leoluz/nvim-dap-go",
 			commit = versions.neotest_dap_go,
 		},

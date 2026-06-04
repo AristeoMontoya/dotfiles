@@ -3,12 +3,10 @@ return {
 	"saghen/blink.cmp",
 	commit = versions.blink,
 	dependencies = {
-		-- LuaSnip commit kept in sync with your versions table
 		{
 			"L3MON4D3/LuaSnip",
 			commit = versions.luasnip,
 		},
-		-- lazydev ships a first-party blink source, no extra adapter needed
 		{
 			"folke/lazydev.nvim",
 			commit = versions.lazydev,
@@ -17,7 +15,6 @@ return {
 		-- Native blink DAP source (replaces rcarriga/cmp-dap)
 		-- https://github.com/mayromr/blink-cmp-dap
 		"mayromr/blink-cmp-dap",
-		-- Replaces hrsh7th/cmp-nvim-lsp — capabilities wired below in config
 		{
 			"antosha417/nvim-lsp-file-operations",
 			commit = versions.nvim_lsp_file_operations,
@@ -74,13 +71,6 @@ return {
 				["<Tab>"] = { "select_and_accept", "snippet_forward", "show", "fallback" },
 				["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
 			},
-
-			-- ── Cmdline mode ────────────────────────────────────────────────────
-			-- Mirrors the two cmp.setup.cmdline blocks:
-			--   "/" → buffer source    (was cmp "/" setup)
-			--   ":" → path + cmdline   (was cmp ":" setup)
-			-- <C-j>/<C-k> are forwarded here so they work in command mode too,
-			-- matching your original { "i", "c" } mode binding.
 			cmdline = {
 				enabled = true,
 				keymap = {
@@ -96,7 +86,6 @@ return {
 				},
 			},
 
-			-- ── Sources ─────────────────────────────────────────────────────────
 			sources = {
 				-- Default order: LSP first, then snippets, path, lazydev.
 				-- Buffer is intentionally left out of default (commented in original).
@@ -125,8 +114,10 @@ return {
 				},
 			},
 
-			-- ── Completion behaviour ────────────────────────────────────────────
 			completion = {
+				ghost_text = {
+					enabled = true,
+				},
 				list = {
 					selection = {
 						-- First item is highlighted so <Tab> can immediately accept.
@@ -139,9 +130,6 @@ return {
 				menu = {
 					border = "rounded",
 					draw = {
-						-- kind_icon | label + detail  [SourceName]
-						-- SourceName replaces the vim_item.menu labels
-						-- ([LSP], [Snip], [Path]) from the old format function.
 						columns = {
 							{ "kind_icon" },
 							{ "label", "label_description", gap = 1 },
@@ -162,8 +150,6 @@ return {
 				},
 			},
 
-			-- ── Appearance ──────────────────────────────────────────────────────
-			-- Kind icons are a 1-for-1 port of the kind_icons table in cmp.lua.
 			appearance = {
 				nerd_font_variant = "mono",
 				kind_icons = {
@@ -196,8 +182,6 @@ return {
 			},
 		})
 
-		-- Replaces cmp-nvim-lsp: wire blink's extended capabilities into every
-		-- LSP server so servers know to send completion, snippet and labelDetails data.
 		vim.lsp.config("*", {
 			capabilities = require("blink.cmp").get_lsp_capabilities(),
 		})
