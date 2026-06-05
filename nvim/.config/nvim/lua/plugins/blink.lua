@@ -7,7 +7,10 @@ return {
 		{ "folke/lazydev.nvim", commit = versions.lazydev, ft = "lua" },
 		-- Native blink DAP source (replaces rcarriga/cmp-dap)
 		-- https://github.com/mayromr/blink-cmp-dap
-		{ "mayromr/blink-cmp-dap", commit = versions.cmp_dap },
+		-- { "mayromr/blink-cmp-dap", commit = versions.cmp_dap },
+		{ "saghen/blink.compat", lazy = true, commit = versions.blink_compat, config = true },
+		{ "Kaiser-Yang/blink-cmp-git", commit = versions.blink_git },
+		{ "rcarriga/cmp-dap", commit = versions.cmp_dap },
 		{ "antosha417/nvim-lsp-file-operations", commit = versions.nvim_lsp_file_operations, config = true },
 		{ "rmagatti/goto-preview", config = true, commit = versions.goto_preview },
 	},
@@ -119,7 +122,7 @@ return {
 				per_filetype = {
 					-- cmp_git has no blink port yet; buffer is the fallback used in
 					-- the original anyway.
-					gitcommit = { "buffer" },
+					gitcommit = { "git" },
 					["dap-repl"] = { "dap" },
 					dapui_watches = { "dap" },
 				},
@@ -132,9 +135,16 @@ return {
 						module = "lazydev.integrations.blink",
 						score_offset = 100,
 					},
+					-- in providers
 					dap = {
-						name = "DAP",
-						module = "blink-cmp-dap",
+						name = "dap",
+						module = "blink.compat.source",
+						async = true,
+						opts = { name = "dap" },
+					},
+					git = {
+						module = "blink-cmp-git",
+						name = "git",
 					},
 				},
 			},

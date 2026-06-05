@@ -2,6 +2,9 @@
 
 --- @type config.VersionList
 return {
+	blink = "78336bc", -- Taken from v1 branch
+	blink_compat = "1454f14", -- Taken from v1 branch
+	blink_git = "d3f2a90",
 	bufferline = "655133c",
 	cmp_buffer = "3022dbc",
 	cmp_cmdline = "d250c63",
@@ -10,9 +13,9 @@ return {
 	cmp_nvim_lsp = "39e2eda",
 	cmp_omni = "4ef610b",
 	cmp_path = "91ff86c",
-	comment = "e30b7f2",
 	codecompanion = "b1cbe52",
 	codediff = "29b06f3",
+	comment = "e30b7f2",
 	conform = "cde4da5",
 	flash = "fcea7ff",
 	gitsigns = "20ad441",
@@ -61,5 +64,4 @@ return {
 	trouble = "bd67efe",
 	vim_illuminate = "0d1e936",
 	which_key = "3aab214",
-	blink = "78336bc" -- Taken from v1 branch
 }
