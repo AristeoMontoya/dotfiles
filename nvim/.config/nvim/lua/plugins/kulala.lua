@@ -15,9 +15,16 @@ return {
 			split_direction = "horizontal",
 			win_opts = {
 				wo = {
-					foldmethod = "manual" -- Why is auto fold by default?
-				}
-			}
-		}
+					foldmethod = "manual", -- Why is auto fold by default?
+				},
+			},
+		},
+		lsp = {
+			enable = true,
+			filetypes = { "http", "rest", "json", "yaml", "bruno" },
+			keymaps = false,
+			formatter = {},
+			on_attach = nil,
+		},
 	},
 }
