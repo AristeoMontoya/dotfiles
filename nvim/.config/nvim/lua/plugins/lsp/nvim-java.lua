@@ -7,6 +7,10 @@ return {
 			jdk = {
 				auto_install = false,
 			},
+			lombok = {
+				enable = true,
+				version = "1.18.40",
+			},
 		})
 		vim.lsp.enable("jdtls")
 	end,
