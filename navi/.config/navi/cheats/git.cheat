@@ -10,6 +10,7 @@ $ repo_root: git rev-parse --show-toplevel
 $ unstaged_files: git status --untracked-files=all -s --porcelain | awk '{print $NF}' | xargs -I % realpath -s --relative-to="$(pwd)" "<repo_root>/%" --- --multi --expand
 $ staged_files: git diff --cached --name-only | xargs -I % realpath -s --relative-to="$(pwd)" "<repo_root>/%" --- --multi --expand
 $ commit_from_all: git reflog show --all --- --delimiter ' ' --column 1
+$ worktree: git worktree list --- column 1 --delimiter ' '
 
 # Change branch
 git checkout <branch>
@@ -116,3 +117,18 @@ git config --global gpg.format ssh
 
 ### Pick which ssh key to use
 git config --global user.signingkey <path-to-pub-key>
+
+%git, worktrees
+@git
+
+### Add a new worktree
+git worktree add "<new_worktree>"
+
+### List worktrees
+git worktree list
+
+### Clean removed worktrees
+git worktree prune
+
+### Remove worktree
+git worktree remove "<worktree>"
