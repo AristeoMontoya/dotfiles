@@ -21,7 +21,7 @@ return {
 	gitsigns = "20ad441",
 	goto_preview = "cf561d1",
 	haunt = "fc910cd",
-	kulala = "1c55c7c",
+	kulala = "3dc1b52",
 	lazy = "",
 	lazydev = "ff2cbcb",
 	lualine = "3946f01",
