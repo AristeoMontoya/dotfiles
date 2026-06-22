@@ -6,7 +6,10 @@ session_dir="$HOME/.config/tmux/session-scripts"
 realpath_cmd=$(command -v grealpath || command -v realpath)
 
 # Read existing tmux sessions into an array and a lookup table
-mapfile -t tmux_sessions < <(tmux list-sessions -F '#S' 2>/dev/null || true)
+tmux_sessions=()
+while IFS= read -r line; do
+    [ -n "$line" ] && tmux_sessions+=("$line")
+done < <(tmux list-sessions -F '#S' 2>/dev/null)
 
 declare -A session_set
 for s in "${tmux_sessions[@]}"; do
@@ -20,9 +23,13 @@ for s in "${tmux_sessions[@]}"; do
 done
 
 # Collect scripts relative to session_dir, excluding .gitkeep
-mapfile -t scripts < <(
-    find "$session_dir" -type f ! -iname ".gitkeep" \
-        -exec "$realpath_cmd" --relative-to="$session_dir" {} \;
+scripts=()
+while IFS= read -r line; do
+    [ -n "$line" ] && scripts+=("$line")
+done < <(
+    find "$session_dir" -type f ! -name ".gitkeep" | while IFS= read -r filepath; do
+        "$realpath_cmd" --relative-to="$session_dir" "$filepath"
+    done
 )
 
 # Filter scripts that already have sessions
@@ -62,7 +69,10 @@ if [[ "$clean_session" == "Kill Session" ]]; then
     [[ -z "$sessions_to_kill" ]] && exit 0
 
     # Extract names
-    mapfile -t kill_list < <(sed 's/^\*//' <<<"$sessions_to_kill")
+	kill_list=()
+	while IFS= read -r line; do
+    	[ -n "$line" ] && kill_list+=("$line")
+	done < <(sed 's/^\*//' <<<"$sessions_to_kill")
 
     printf "Kill session(s): \033[33m%s\033[0m? (y/n): " \
         "$(printf '%s, ' "${kill_list[@]}" | sed 's/, $//')"
