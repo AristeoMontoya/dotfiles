@@ -35,6 +35,9 @@ nvim/.config/nvim/plugin
 nvim/plugin
 nvim/plugin/packer_compiled.vim
 
+# ghostty
+ghostty/.config/ghostty/local.conf
+
 # misc
 eclipse.jdt.ls
 .netrwhist
