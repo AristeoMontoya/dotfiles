@@ -1,0 +1,52 @@
+# General settings
+confirm-close-surface = false
+
+# Font
+font-family = JetBrainsMono NFM
+font-family-bold = JetBrainsMono NFM
+font-family-italic = JetBrainsMono NFM
+font-size = 10
+
+# Colors - Primary
+background = #282C34
+foreground = #ABB2BF
+
+# Colors - Normal (0-7)
+palette = 0=#282C34
+palette = 1=#E06C75
+palette = 2=#98C379
+palette = 3=#E5C07B
+palette = 4=#61AFEF
+palette = 5=#C678DD
+palette = 6=#56B6C2
+palette = 7=#ABB2BF
+
+# Colors - Bright (8-15)
+palette = 8=#454C59
+palette = 9=#FF7A85
+palette = 10=#B5E890
+palette = 11=#FFD68A
+palette = 12=#69BBFF
+palette = 13=#E48AFF
+palette = 14=#66D9E8
+palette = 15=#CFD7E6
+
+# Cursor
+cursor-style = bar
+
+# Window
+window-decoration = true
+window-width = 70
+window-height = 25
+
+# Environment
+#env = TERM=xterm-256color
+
+# Shell
+command = zsh -l -c "tmux attach || exec tmux"
+
+# Keybind - Alt+ñ sends ESC+ñ
+keybind = alt+ñ=text:\x1bñ
+
+# Local overrides
+config-file = ?~/.config/ghostty/local.conf
