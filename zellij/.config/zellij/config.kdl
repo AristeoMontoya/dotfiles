@@ -1,0 +1,69 @@
+// Zellij configuration
+//
+// Counterpart to ../../tmux (tmux/.config/tmux). tmux gates almost everything
+// behind a prefix key; Zellij instead has modes that are entered with a
+// dedicated Ctrl combo and auto-return to "normal" after one action — that's
+// effectively Zellij's version of the prefix table:
+//
+//   Ctrl p  pane      Ctrl t  tab      Ctrl n  resize
+//   Ctrl h  move      Ctrl s  scroll   Ctrl o  session
+//   Ctrl g  lock      Ctrl q  quit
+//
+// Because of that, keybinds below are additive on top of Zellij's own
+// defaults (clear-defaults is left off) instead of a full rewrite — that
+// keeps all the built-in vim-style pane/tab navigation, resize mode, and the
+// default session mode (which already launches Zellij's built-in
+// session-manager plugin, the "default session manager" this config leans
+// on instead of a custom picker like tmux's session_picker script).
+//
+// No hooks/plugins/status-bar sections exist here on purpose: Zellij only
+// reads a single config.kdl (no tmux-style source-file split), ships its own
+// tab/status bar plugins instead of a scriptable status line, and its
+// session_serialization option below is the built-in equivalent of
+// tmux-resurrect/continuum.
+
+mouse_mode true
+pane_frames true
+default_shell "zsh"
+copy_command "xclip -selection clipboard"
+scroll_buffer_size 10000
+session_serialization true
+
+keybinds {
+    normal {
+        // Direct pane navigation, no mode switch needed first — mirrors
+        // tmux's `bind-key -n C-Left/C-Right/C-Up/C-Down`. (Alt+h/j/k/l is
+        // already bound this way by Zellij's own defaults.)
+        bind "Ctrl Left" { MoveFocus "Left"; }
+        bind "Ctrl Right" { MoveFocus "Right"; }
+        bind "Ctrl Up" { MoveFocus "Up"; }
+        bind "Ctrl Down" { MoveFocus "Down"; }
+
+        // Quick lazygit popup — mirrors tmux's prefix+G.
+        bind "Ctrl Alt g" {
+            Run "lazygit" {
+                floating true
+                close_on_exit true
+                name "lazygit"
+            }
+        }
+
+        // Quick Navi popup — mirrors tmux's Navi cheatsheet binds. Runs
+        // interactively (rather than tmux's --print + load-buffer/paste-buffer
+        // dance) since Navi already executes the chosen snippet itself in
+        // that pane, which is the simpler fit for Zellij's floating panes.
+        bind "Ctrl Alt n" {
+            Run "navi" {
+                floating true
+                close_on_exit true
+                name "navi"
+            }
+        }
+    }
+
+    pane {
+        // Extra alias next to Zellij's default fullscreen-toggle key —
+        // mirrors tmux's prefix+m (resize-pane -Z).
+        bind "m" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
+    }
+}
