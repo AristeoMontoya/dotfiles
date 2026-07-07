@@ -30,10 +30,89 @@ scroll_buffer_size 10000
 session_serialization true
 
 keybinds {
+    // Zellij's own defaults bind Alt+h/j/k/l (via shared_except) straight to
+    // MoveFocusOrTab/MoveFocus, always consuming the key itself before it
+    // reaches a pane's program — unlike tmux, there's no "forward to the app
+    // unless it's vim" dispatch built in. Plain `unbind` doesn't fix this: it
+    // makes the key reach Neovim, but leaves plain shell panes with no pane-
+    // switching at all (that's the vim-zellij-navigator plugin's whole job).
+    //
+    // vim-zellij-navigator (https://github.com/hiasr/vim-zellij-navigator) is
+    // a Zellij-side plugin that intercepts the key in every pane, uses
+    // `zellij action list-clients` to check whether the focused pane is
+    // running Neovim, and either relays the keypress into it (so Neovim's own
+    // smart-splits.nvim, nvim/.config/nvim/lua/plugins/smart_splits.lua, can
+    // move within its splits first and fall back to `zellij action
+    // move-focus` at its edge) or moves the Zellij pane directly otherwise.
+    // `move_mod`/`resize_mod` tell it which modifier to relay into Neovim, so
+    // they're set to match smart-splits.nvim's existing <A-h/j/k/l> (move)
+    // and <C-A-h/j/k/l> (resize) mappings — no nvim-side changes needed.
+    //
+    // Known quirk (upstream, not this config): the first directional keypress
+    // in a session makes the pane flash once while the plugin's wasm is
+    // fetched/cached; this needs network access the first time it's used.
+    shared_except "locked" {
+        bind "Alt h" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "move_focus_or_tab"
+                payload "left"
+                move_mod "alt"
+            }
+        }
+        bind "Alt j" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "move_focus"
+                payload "down"
+                move_mod "alt"
+            }
+        }
+        bind "Alt k" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "move_focus"
+                payload "up"
+                move_mod "alt"
+            }
+        }
+        bind "Alt l" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "move_focus_or_tab"
+                payload "right"
+                move_mod "alt"
+            }
+        }
+        bind "Ctrl Alt h" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "resize"
+                payload "left"
+                resize_mod "ctrl+alt"
+            }
+        }
+        bind "Ctrl Alt j" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "resize"
+                payload "down"
+                resize_mod "ctrl+alt"
+            }
+        }
+        bind "Ctrl Alt k" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "resize"
+                payload "up"
+                resize_mod "ctrl+alt"
+            }
+        }
+        bind "Ctrl Alt l" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "resize"
+                payload "right"
+                resize_mod "ctrl+alt"
+            }
+        }
+    }
+
     normal {
         // Direct pane navigation, no mode switch needed first — mirrors
-        // tmux's `bind-key -n C-Left/C-Right/C-Up/C-Down`. (Alt+h/j/k/l is
-        // already bound this way by Zellij's own defaults.)
+        // tmux's `bind-key -n C-Left/C-Right/C-Up/C-Down`.
         bind "Ctrl Left" { MoveFocus "Left"; }
         bind "Ctrl Right" { MoveFocus "Right"; }
         bind "Ctrl Up" { MoveFocus "Up"; }
