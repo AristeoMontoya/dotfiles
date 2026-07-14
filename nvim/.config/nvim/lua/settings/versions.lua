@@ -6,13 +6,7 @@ return {
 	blink_compat = "1454f14", -- Taken from v1 branch
 	blink_git = "d3f2a90",
 	bufferline = "655133c",
-	cmp_buffer = "3022dbc",
-	cmp_cmdline = "d250c63",
 	cmp_dap = "ea92773",
-	cmp_luasnip = "98d9cb5",
-	cmp_nvim_lsp = "39e2eda",
-	cmp_omni = "4ef610b",
-	cmp_path = "91ff86c",
 	codecompanion = "b1cbe52",
 	codediff = "29b06f3",
 	conform = "cde4da5",
