@@ -12,6 +12,16 @@ return {
 				version = "1.18.40",
 			},
 		})
+
+		vim.lsp.config("jdtls", {
+			settings = {
+				java = {
+					import = {
+						generatesMetadataFilesAtProjectRoot = false,
+					},
+				},
+			},
+		})
 		vim.lsp.enable("jdtls")
 	end,
 }
