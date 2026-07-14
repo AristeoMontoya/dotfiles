@@ -14,12 +14,8 @@ return {
 		})
 
 		vim.lsp.config("jdtls", {
-			settings = {
-				java = {
-					import = {
-						generatesMetadataFilesAtProjectRoot = false,
-					},
-				},
+			cmd_env = {
+				JAVA_TOOL_OPTIONS = "-Djava.import.generatesMetadataFilesAtProjectRoot=false",
 			},
 		})
 		vim.lsp.enable("jdtls")
