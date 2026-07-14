@@ -8,7 +8,6 @@
     # email -> Define in global config
     # signingkey -> Define in global config
 
-
 [core]
 	editor = nvim
 	pager = delta
@@ -29,3 +28,6 @@
 
 [diff]
 	colorMoved = default
+
+[push]
+	autoSetupRemote = true
