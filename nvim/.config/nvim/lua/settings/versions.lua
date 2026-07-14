@@ -15,7 +15,6 @@ return {
 	cmp_path = "91ff86c",
 	codecompanion = "b1cbe52",
 	codediff = "29b06f3",
-	comment = "e30b7f2",
 	conform = "cde4da5",
 	flash = "fcea7ff",
 	gitsigns = "20ad441",
