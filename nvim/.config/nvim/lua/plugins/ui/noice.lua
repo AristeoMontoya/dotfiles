@@ -2,6 +2,7 @@ local versions = require("settings.versions")
 return {
 	"folke/noice.nvim",
 	commit = versions.noice,
+	enabled = false,
 	event = "VeryLazy",
 	dependencies = {
 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
