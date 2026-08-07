@@ -121,7 +121,7 @@ keybinds clear-defaults=true {
         }
         bind "d" { Detach; }
         bind "g" {
-            Run "python3" "/home/aristeo/.config/zellij/scripts/session_picker.py" {
+            Run "python3" "~/.config/zellij/scripts/session_picker.py" {
                 floating true
                 close_on_exit true
                 name "session-picker"
@@ -289,7 +289,7 @@ plugins {
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
-    zjstatus location="file:/home/aristeo/.config/zellij/plugins/zjstatus.wasm" {
+    zjstatus location="file:~/.config/zellij/plugins/zjstatus.wasm" {
         format_left  "{mode}#[fg=#282C34,bg=#98C379,bold] {session} #[bg=#282C34] {tabs}"
         format_center ""
         format_right ""
