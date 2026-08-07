@@ -33,12 +33,8 @@ map("n", "J", "mzJ`z", { noremap = true, silent = true, desc = "Join lines" })
 -- Copy to the end of line
 map("n", "Y", "y$", { noremap = true, silent = true, desc = "Copy until end of line" })
 
--- Split movements
--- Need to replace this keymaps with vanilla nvim ones
-map("n", "<A-h>", "<C-w>h")
-map("n", "<A-j>", "<C-w>j")
-map("n", "<A-k>", "<C-w>k")
-map("n", "<A-l>", "<C-w>l")
+-- Split movements are handled by smart-splits.nvim (plugins/smart_splits.lua),
+-- which loads after this file and overrides <A-h/j/k/l> with mux-aware versions.
 
 -- -- Split resize
 map("n", "<C-A-h>", "<cmd>resize -3<CR>")

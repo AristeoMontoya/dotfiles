@@ -7,6 +7,7 @@ zsh/.config/zsh/env/*
 !zsh/.config/zsh/env/.gitkeep
 zsh/.config/environment.d/env-*
 zsh/.config/zsh/.zcompcache
+zsh/.config/zsh/.zshenv
 
 # navi
 navi/.config/navi/local/*
@@ -18,6 +19,11 @@ cheat/.config/cheat/local/*
 tmux/.config/tmux/session-scripts/env/*
 !tmux/.config/tmux/session-scripts/env/.gitkeep
 tmux/.config/tmux/plugins
+
+# zellij
+zellij/.config/zellij/layouts/env/*
+!zellij/.config/zellij/layouts/env/.gitkeep
+zellij/.config/zellij/plugins
 
 # nvim
 !nvim/.config/nvim/lua/user/overrides/lsp/template*

@@ -63,3 +63,5 @@ alias du='du -had 1'
 alias scrcpyd='devour scrcpy'
 alias clip='xclip -sel clip'
 alias svim='sudo -E -s nvim'
+
+alias za="zellij attach -c --index 0"
