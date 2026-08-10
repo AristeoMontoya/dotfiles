@@ -2,26 +2,32 @@
 # HISTFILE="$XDG_DATA_HOME"/zsh/history
 HISTSIZE=1000000
 SAVEHIST=1000000
-export PATH="$HOME/.local/bin":$PATH
+
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
+
+# Path
+export PATH="$HOME/.local/bin":$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.local/share/go/bin:$PATH
 export GOPATH=$HOME/.local/share/go
 export PATH="$PATH:./node_modules/.bin"
+
 export BAT_THEME=base16
 
 export EDITOR="nvim"
-export TERMINAL="alacritty"
-export BROWSER="brave"
 export GPG_TTY=$(tty)
 
-export SDKMAN_DIR="$HOME/.sdkman"
+# mouse support for delta
+export DELTA_PAGER="less -RF --mouse"
+export BAT_PAGER="less -RF"
 
 # For QT Themes
 export QT_QPA_PLATFORMTHEME=qt5ct
 
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
+
+export SDKMAN_DIR="$HOME/.sdkman"
 
 # Required for ./gradlew to work
 export PATH=".:$PATH"

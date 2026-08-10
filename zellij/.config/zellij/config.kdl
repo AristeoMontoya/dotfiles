@@ -290,7 +290,7 @@ plugins {
         welcome_screen true
     }
     zjstatus location="file:~/.config/zellij/plugins/zjstatus.wasm" {
-        format_left  "{mode}#[fg=#282C34,bg=#98C379,bold] {session} #[bg=#282C34] {tabs}"
+        format_left  "{mode}#[fg=#282C34,bg=#98C379,bold] {session} #[bg=#282C34]{tabs}"
         format_center ""
         format_right ""
         format_space "#[bg=#282C34]"
