@@ -1,0 +1,10 @@
+// Same as default.kdl, but with the status bar first (top) instead of last
+// (bottom) — applied automatically by zellij-boot-evaluator when the
+// session is running on a host we SSH'd into (see scripts/is-ssh-session.sh),
+// mirroring tmux.remote.conf's `set -g status-position top`.
+layout {
+    pane size=1 borderless=true {
+        plugin location="zjstatus"
+    }
+    pane
+}

@@ -23,7 +23,6 @@ tmux/.config/tmux/plugins
 # zellij
 zellij/.config/zellij/layouts/env/*
 !zellij/.config/zellij/layouts/env/.gitkeep
-zellij/.config/zellij/plugins
 
 # nvim
 !nvim/.config/nvim/lua/user/overrides/lsp/template*

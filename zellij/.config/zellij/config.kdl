@@ -258,6 +258,17 @@ keybinds clear-defaults=true {
     shared_among "renametab" "renamepane" {
         bind "Ctrl c" { SwitchToMode "locked"; }
     }
+    // Ctrl+a arms/disarms whether Ctrl+b (above) is recognized as a keybind
+    // at all, regardless of mode: disarmed, Ctrl+b passes straight through
+    // to whatever's running in the pane (e.g. a nested remote session that
+    // wants it as its own prefix). See zellij-keymap-overrider.
+    shared_except "entersearch" "renametab" "renamepane" {
+        bind "Ctrl a" {
+            MessagePlugin "zellij-keymap-overrider" {
+                name "toggle"
+            }
+        }
+    }
     renamepane {
         bind "esc" { UndoRenamePane; SwitchToMode "pane"; }
     }
@@ -281,23 +292,23 @@ plugins {
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
+    zellij-keymap-overrider location="file:~/.config/zellij/plugins/zellij-keymap-overrider.wasm" {
+        target_key "Ctrl b"
+        on_arm_payload "zjstatus::pipe::pipe_lock_pill::\u{1b}[38;2;40;44;52m\u{1b}[48;2;152;195;121m\u{1b}[1m "
+        on_disarm_payload "zjstatus::pipe::pipe_lock_pill::\u{1b}[38;2;207;215;230m\u{1b}[48;2;69;76;89m\u{1b}[1m "
+    }
+    zellij-boot-evaluator location="file:~/.config/zellij/plugins/zellij-boot-evaluator.wasm" {
+        script "~/.config/zellij/scripts/is-ssh-session.sh"
+        on_success_layout "remote"
+    }
     zjstatus location="file:~/.config/zellij/plugins/zjstatus.wasm" {
-        format_left  "{mode}#[fg=#282C34,bg=#98C379,bold] {session} #[bg=#282C34]{tabs}"
+        format_left  "{pipe_lock_pill} {session} #[bg=#282C34]{tabs}"
         format_center ""
         format_right ""
         format_space "#[bg=#282C34]"
 
-        mode_normal      "#[bg=#61AFEF]"
-        mode_locked      "#[bg=#E06C75]"
-        mode_pane        "#[bg=#98C379]"
-        mode_tab         "#[bg=#E5C07B]"
-        mode_resize      "#[bg=#56B6C2]"
-        mode_move        "#[bg=#C678DD]"
-        mode_scroll      "#[bg=#56B6C2]"
-        mode_search      "#[bg=#56B6C2]"
-        mode_session     "#[bg=#61AFEF]"
-        mode_prompt      "#[bg=#61AFEF]"
-        mode_tmux        "#[bg=#E06C75]"
+        pipe_lock_pill_format "{output}"
+        pipe_lock_pill_rendermode "raw"
 
         tab_normal               " #[fg=#ABB2BF,bg=#454C59] {index}:{name} {sync_indicator}{floating_indicator}"
         tab_active               " #[fg=#282C34,bg=#61AFEF,bold] {index}:{name} {sync_indicator}{floating_indicator}"
@@ -316,6 +327,8 @@ plugins {
 load_plugins {
     zellij:link
     compact-bar
+    zellij-keymap-overrider
+    zellij-boot-evaluator
 }
 
 web_client {
