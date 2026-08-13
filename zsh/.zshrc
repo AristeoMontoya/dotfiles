@@ -77,9 +77,17 @@ if [ -d "$HOME/.bookmarks" ]; then
 	alias goto="cd -P $HOME/.bookmarks/"
 fi
 
-# tmux over ssh
-if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
-	tmux attach || tmux new-session
+# Attach to a multiplexer over ssh. $MUX ("tmux"/"zellij") is set per-host
+# in one of the env specific files above; unset means attach nothing.
+if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -z "$ZELLIJ" ]] && [[ -n "$SSH_TTY" ]]; then
+	case "$MUX" in
+		tmux)
+			tmux attach || tmux new-session
+			;;
+		zellij)
+			zellij attach -c --index 0
+			;;
+	esac
 fi
 
 # Starship can be disabled by setting "DISABLE_STARSHIP" to any value
