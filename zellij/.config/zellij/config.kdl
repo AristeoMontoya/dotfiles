@@ -302,7 +302,7 @@ plugins {
         on_success_layout "remote"
     }
     zjstatus location="file:~/.config/zellij/plugins/zjstatus.wasm" {
-        format_left  "{pipe_lock_pill} {session} #[bg=#282C34]{tabs}"
+        format_left  "{pipe_lock_pill}{session} #[bg=#282C34]{tabs}"
         format_center ""
         format_right ""
         format_space "#[bg=#282C34]"
