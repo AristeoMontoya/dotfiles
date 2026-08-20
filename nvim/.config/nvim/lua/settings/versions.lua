@@ -49,7 +49,7 @@ return {
 	plenary = "b9fd522", -- Utility functions for plugins. Mostly a dependency
 	rainbow_delimiters = "b81d594",
 	render_markdown = "b2b1353",
-	smart_splits = "79d78a0",
+	smart_splits = "289971c",
 	snacks = "e6fd58c",
 	sqlite_lua = "50092d6",
 	statuscol = "c46172d",

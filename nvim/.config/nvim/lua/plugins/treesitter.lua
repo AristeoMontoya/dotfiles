@@ -78,6 +78,24 @@ return {
 			on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 		})
 
+		-- treesitter-context's floating window shifts codediff's side-by-side
+		-- alignment, so pause it for the duration of a diff session.
+		local codediff_group = vim.api.nvim_create_augroup("codediff_disable_context", { clear = true })
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "CodeDiffOpen",
+			group = codediff_group,
+			callback = function()
+				require("treesitter-context").disable()
+			end,
+		})
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "CodeDiffClose",
+			group = codediff_group,
+			callback = function()
+				require("treesitter-context").enable()
+			end,
+		})
+
 		require("nvim-treesitter-textobjects").setup({
 			select = {
 				enable = true,

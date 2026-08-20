@@ -39,7 +39,15 @@ end
 local winbar_format =
 	"%= %{%(nvim_get_current_win()==#g:actual_curwin) ? '%#WinBarDynamic#' : '%#WinBarDynamicNC#'%} %{%luaeval('Winbar.get_modified_symbol()')%} %t "
 
+-- codediff clears winbar on its own diff windows to keep the side-by-side
+-- alignment intact, so we back off entirely while a diff session is open.
+local codediff_open = false
+
 local function should_show_winbar(win)
+	if codediff_open then
+		return false
+	end
+
 	local buf = vim.api.nvim_win_get_buf(win)
 	local ft = vim.bo[buf].filetype
 	local bt = vim.bo[buf].buftype
@@ -68,5 +76,14 @@ vim.api.nvim_create_autocmd({ "WinNew", "WinClosed" }, {
 	group = vim.api.nvim_create_augroup("winbar_when_needed", { clear = true }),
 	callback = function()
 		vim.schedule(update_winbars)
+	end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = { "CodeDiffOpen", "CodeDiffClose" },
+	group = vim.api.nvim_create_augroup("winbar_codediff", { clear = true }),
+	callback = function(event)
+		codediff_open = event.match == "CodeDiffOpen"
+		update_winbars()
 	end,
 })
