@@ -131,6 +131,11 @@ return {
 			-- this functionality is only supported on tmux and Wezterm due to kitty
 			-- not having a way to check if a pane is zoomed
 			disable_multiplexer_nav_when_zoomed = true,
+			-- Default 'previous' can silently no-op: if the current window is
+			-- floating and the alternate window ('#') is also floating, it
+			-- does nothing at all instead of falling through to the
+			-- multiplexer. 'mux' always defers to zellij/tmux/etc in that case.
+			float_win_behavior = "mux",
 			-- Supply a Kitty remote control password if needed,
 			-- or you can also set vim.g.smart_splits_kitty_password
 			-- see https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.remote_control_password
