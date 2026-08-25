@@ -7,7 +7,7 @@ keybinds clear-defaults=true {
         bind "down" { MoveFocus "down"; }
         bind "up" { MoveFocus "up"; }
         bind "right" { MoveFocus "right"; }
-        bind ";" { FocusLastPane; }
+        bind "r" { SwitchToMode "renamepane"; PaneNameInput 0; }
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "locked"; }
         bind "f" { ToggleFocusFullscreen; SwitchToMode "locked"; }
         bind "h" { NewPane "down"; SwitchToMode "locked"; }
@@ -17,7 +17,6 @@ keybinds clear-defaults=true {
         bind "l" { MoveFocus "right"; }
         bind "n" { NewPane; SwitchToMode "locked"; }
         bind "p" { SwitchToMode "normal"; }
-        bind "r" { SwitchToMode "renamepane"; PaneNameInput 0; }
         bind "s" { NewPane "stacked"; SwitchToMode "locked"; }
         bind "v" { NewPane "right"; SwitchToMode "locked"; }
         bind "w" { ToggleFloatingPanes; SwitchToMode "locked"; }
@@ -30,6 +29,10 @@ keybinds clear-defaults=true {
         bind "down" { GoToNextTab; }
         bind "up" { GoToPreviousTab; }
         bind "right" { GoToNextTab; }
+        bind "h" { GoToPreviousTab; }
+        bind "j" { GoToNextTab; }
+        bind "k" { GoToPreviousTab; }
+        bind "l" { GoToNextTab; }
         bind "1" { GoToTab 1; SwitchToMode "locked"; }
         bind "2" { GoToTab 2; SwitchToMode "locked"; }
         bind "3" { GoToTab 3; SwitchToMode "locked"; }
@@ -42,10 +45,6 @@ keybinds clear-defaults=true {
         bind "[" { BreakPaneLeft; SwitchToMode "locked"; }
         bind "]" { BreakPaneRight; SwitchToMode "locked"; }
         bind "b" { BreakPane; SwitchToMode "locked"; }
-        bind "h" { GoToPreviousTab; }
-        bind "j" { GoToNextTab; }
-        bind "k" { GoToPreviousTab; }
-        bind "l" { GoToNextTab; }
         bind "n" { NewTab; SwitchToMode "locked"; }
         bind "r" { SwitchToMode "renametab"; TabNameInput 0; }
         bind "s" { ToggleActiveSyncTab; SwitchToMode "locked"; }
@@ -90,16 +89,12 @@ keybinds clear-defaults=true {
         bind "Alt down" { MoveFocus "down"; SwitchToMode "locked"; }
         bind "Alt up" { MoveFocus "up"; SwitchToMode "locked"; }
         bind "Alt right" { MoveFocusOrTab "right"; SwitchToMode "locked"; }
-        bind "[" { ScrollToPreviousPrompt; }
-        bind "]" { ScrollToNextPrompt; }
-        bind "c" { CopyLastCommandOutput; SwitchToMode "locked"; }
         bind "e" { EditScrollback; SwitchToMode "locked"; }
         bind "f" { SwitchToMode "entersearch"; SearchInput 0; }
         bind "Alt h" { MoveFocusOrTab "left"; SwitchToMode "locked"; }
         bind "Alt j" { MoveFocus "down"; SwitchToMode "locked"; }
         bind "Alt k" { MoveFocus "up"; SwitchToMode "locked"; }
         bind "Alt l" { MoveFocusOrTab "right"; SwitchToMode "locked"; }
-        bind "m" { SelectCommandAtScrollPosition; }
         bind "s" { SwitchToMode "normal"; }
     }
     search {
@@ -110,8 +105,6 @@ keybinds clear-defaults=true {
         bind "w" { SearchToggleOption "Wrap"; }
     }
     session {
-        bind "[" { FocusGuestSession; SwitchToMode "locked"; }
-        bind "]" { FocusHostSession; SwitchToMode "locked"; }
         bind "c" {
             LaunchOrFocusPlugin "configuration" {
                 floating true
@@ -120,14 +113,13 @@ keybinds clear-defaults=true {
             SwitchToMode "locked"
         }
         bind "d" { Detach; }
-        bind "f" { ToggleHostFullscreen; SwitchToMode "locked"; }
         bind "g" {
             Run "python3" "~/.config/zellij/scripts/session_picker.py" {
                 floating true
-                hold_on_close false
+                close_on_exit true
+                name "session-picker"
                 width "65%"
                 height "60%"
-                name "session-picker"
             }
             SwitchToMode "locked"
         }
@@ -161,18 +153,6 @@ keybinds clear-defaults=true {
             SwitchToMode "locked"
         }
     }
-    // Ctrl+a arms/disarms whether Ctrl+b (above) is recognized as a keybind
-    // at all, regardless of mode: disarmed, Ctrl+b passes straight through
-    // to whatever's running in the pane (e.g. a nested remote session that
-    // wants it as its own prefix). See zellij-keymap-overrider.
-    shared_except "entersearch" "renametab" "renamepane" {
-        bind "Ctrl a" {
-            MessagePlugin "zellij-keymap-overrider" {
-                name "toggle"
-                floating false
-            }
-        }
-    }
     shared_among "normal" "locked" "pane" {
         bind "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
@@ -190,7 +170,6 @@ keybinds clear-defaults=true {
             MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
                 name "move_focus_or_tab"
                 payload "left"
-                floating false
                 move_mod "alt"
             }
         }
@@ -199,7 +178,6 @@ keybinds clear-defaults=true {
             MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
                 name "move_focus"
                 payload "down"
-                floating false
                 move_mod "alt"
             }
         }
@@ -207,7 +185,6 @@ keybinds clear-defaults=true {
             MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
                 name "move_focus"
                 payload "up"
-                floating false
                 move_mod "alt"
             }
         }
@@ -215,7 +192,6 @@ keybinds clear-defaults=true {
             MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
                 name "move_focus_or_tab"
                 payload "right"
-                floating false
                 move_mod "alt"
             }
         }
@@ -233,14 +209,14 @@ keybinds clear-defaults=true {
     shared_except "locked" "entersearch" "renametab" "renamepane" {
         bind "esc" { SwitchToMode "locked"; }
     }
+    shared_except "locked" "entersearch" "renametab" "renamepane" "move" {
+        bind "m" { SwitchToMode "move"; }
+    }
     shared_except "locked" "entersearch" "search" "renametab" "renamepane" "session" {
         bind "o" { SwitchToMode "session"; }
     }
     shared_except "locked" "scroll" "search" "renametab" "renamepane" {
         bind "Ctrl b" { SwitchToMode "locked"; }
-    }
-    shared_except "locked" "scroll" "entersearch" "renametab" "renamepane" "move" {
-        bind "m" { SwitchToMode "move"; }
     }
     shared_except "locked" "tab" "entersearch" "renametab" "renamepane" {
         bind "t" { SwitchToMode "tab"; }
@@ -282,6 +258,17 @@ keybinds clear-defaults=true {
     shared_among "renametab" "renamepane" {
         bind "Ctrl c" { SwitchToMode "locked"; }
     }
+    // Ctrl+a arms/disarms whether Ctrl+b (above) is recognized as a keybind
+    // at all, regardless of mode: disarmed, Ctrl+b passes straight through
+    // to whatever's running in the pane (e.g. a nested remote session that
+    // wants it as its own prefix). See zellij-keymap-overrider.
+    shared_except "entersearch" "renametab" "renamepane" {
+        bind "Ctrl a" {
+            MessagePlugin "zellij-keymap-overrider" {
+                name "toggle"
+            }
+        }
+    }
     renamepane {
         bind "esc" { UndoRenamePane; SwitchToMode "pane"; }
     }
@@ -305,41 +292,45 @@ plugins {
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
-    zellij-boot-evaluator location="file:~/.config/zellij/plugins/zellij-boot-evaluator.wasm" {
-        on_success_layout "remote"
-        script "~/.config/zellij/scripts/is-ssh-session.sh"
-    }
     zellij-keymap-overrider location="file:~/.config/zellij/plugins/zellij-keymap-overrider.wasm" {
-        on_arm_payload "zjstatus::pipe::pipe_lock_pill::[38;2;40;44;52m[48;2;152;195;121m[1m "
-        on_disarm_payload "zjstatus::pipe::pipe_lock_pill::[38;2;207;215;230m[48;2;69;76;89m[1m "
         target_key "Ctrl b"
+        on_arm_payload "zjstatus::pipe::pipe_lock_pill::\u{1b}[38;2;40;44;52m\u{1b}[48;2;152;195;121m\u{1b}[1m "
+        on_disarm_payload "zjstatus::pipe::pipe_lock_pill::\u{1b}[38;2;207;215;230m\u{1b}[48;2;69;76;89m\u{1b}[1m "
+    }
+    zellij-boot-evaluator location="file:~/.config/zellij/plugins/zellij-boot-evaluator.wasm" {
+        script "~/.config/zellij/scripts/is-ssh-session.sh"
+        on_success_layout "remote"
     }
     zjstatus location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+        format_left  "{pipe_lock_pill}{session} #[bg=#282C34]{tabs}"
         format_center ""
-        format_left "{pipe_lock_pill}{session} #[bg=#282C34]{tabs}"
         format_right ""
         format_space "#[bg=#282C34]"
+
         pipe_lock_pill_format "{output}"
         pipe_lock_pill_rendermode "raw"
-        tab_active " #[fg=#282C34,bg=#61AFEF,bold] {index}:{name} {sync_indicator}{floating_indicator}"
-        tab_active_fullscreen " #[fg=#282C34,bg=magenta,bold] {fullscreen_indicator}{index}:{name} {sync_indicator}{floating_indicator}"
-        tab_floating_indicator "󱂬 "
+
+        tab_normal               " #[fg=#ABB2BF,bg=#454C59] {index}:{name} {sync_indicator}{floating_indicator}"
+        tab_active               " #[fg=#282C34,bg=#61AFEF,bold] {index}:{name} {sync_indicator}{floating_indicator}"
+        tab_normal_fullscreen    " #[fg=magenta,bg=#454C59] {fullscreen_indicator}{index}:{name} {sync_indicator}{floating_indicator}"
+        tab_active_fullscreen    " #[fg=#282C34,bg=magenta,bold] {fullscreen_indicator}{index}:{name} {sync_indicator}{floating_indicator}"
         tab_fullscreen_indicator "󰍉 "
-        tab_normal " #[fg=#ABB2BF,bg=#454C59] {index}:{name} {sync_indicator}{floating_indicator}"
-        tab_normal_fullscreen " #[fg=magenta,bg=#454C59] {fullscreen_indicator}{index}:{name} {sync_indicator}{floating_indicator}"
-        tab_sync_indicator " "
+        tab_sync_indicator       " "
+        tab_floating_indicator   "󱂬 "
     }
+
 }
 
 // Plugins to load in the background when a new session starts
 // eg. "file:/path/to/my-plugin.wasm"
 // eg. "https://example.com/my-plugin.wasm"
 load_plugins {
-    zellij-keymap-overrider
     zellij:link
     compact-bar
+    zellij-keymap-overrider
     zellij-boot-evaluator
 }
+
 web_client {
     font "monospace"
 }
@@ -417,13 +408,6 @@ default_mode "locked"
 //   - false
 // 
 pane_frames false
- 
-// Set the pane frame style when pane_frames is enabled
-// Options:
-//   - full
-//   - titles (default)
-// 
-pane_frame_style "titles"
  
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
@@ -544,12 +528,6 @@ pane_frame_style "titles"
 // Default: true (if the host terminal supports it)
 // 
 // support_kitty_keyboard_protocol false
- 
-// Enable or disable support for the Kitty Graphics Protocol, used to display images (the host terminal must also support it)
-// (Requires restart)
-// Default: true (if the host terminal supports it)
-// 
-// support_kitty_graphics_protocol false
 // Whether to make sure a local web server is running when a new Zellij session starts.
 // This web server will allow creating new sessions and attaching to existing ones that have
 // opted in to being shared in the browser.
@@ -602,11 +580,6 @@ pane_frame_style "titles"
 // 
 // stacked_resize false
  
-// Whether stacked panes display as a list with the expanded pane pinned to the bottom
-// Default: true
-// 
-stacked_pane_list false
- 
 // Whether to show tips on startup
 // Default: true
 // 
@@ -621,17 +594,9 @@ show_startup_tips false
 // default is true
 // advanced_mouse_actions false
  
-// Whether Ctrl+ScrollWheel resizes panes
-// default is true
-// mouse_scroll_resize false
- 
 // Whether to enable mouse hover visual effects (frame highlight and help text)
 // default is true
 // mouse_hover_effects false
- 
-// Whether to show mouse hover help-text tips (resize help and group shortcuts)
-// default is true
-// mouse_hover_tips false
  
 // Whether to show visual bell indicators (pane/tab frame flash and [!] suffix)
 // default is true
@@ -644,16 +609,6 @@ show_startup_tips false
 // Whether clicking a pane to focus it also sends the click into the pane
 // default is false
 // mouse_click_through false
- 
-// Whether triple-clicking inside command output marked by the shell (OSC 133) selects
-// the command and its output instead of the logical line
-// default is true
-// osc133_command_selection false
- 
-// Characters that terminate a word when double-clicking to select it
-// whitespace is always a separator and need not be listed here
-// default is "[]{}<>()"
-// word_separators "[]{}<>()"
  
 // The ip address the web server should listen on when it starts
 // Default: "127.0.0.1"
@@ -678,30 +633,3 @@ show_startup_tips false
 // typically work best. Set to 0 to use the number of (physical) CPU cores.
 // Note: This only applies to web clients at the moment.
 // client_async_worker_tasks 4
- 
-// Whether to let programs running inside panes read the paste buffer
-// (clipboard) with the OSC 52 escape sequence. When enabled, any program
-// in any pane - including one running on a remote machine over SSH - can
-// read the clipboard without the user being asked.
-// Default: false
-// dangerously_enable_paste_buffer_read false
- 
-// How to handle a nested Zellij session detected inside a pane.
-// Options:
-//   - "ask" (Default — prompt with a modal)
-//   - "fullscreen" (always zoom into the nested session)
-//   - "descend" (always control the nested session on focus)
-//   - "never" (never prompt or descend; do it manually)
-// 
-// nested_session_handling "ask"
- 
-// Which escape sequence desktop notifications coming from panes are
-// forwarded to the host terminal with.
-// Options:
-//   - "auto" (Default — detect from the host terminal environment)
-//   - "osc9" (the legacy iTerm2 protocol, understood by most terminals)
-//   - "osc99" (kitty's notification protocol)
-//   - "bell" (ring the terminal bell instead)
-//   - "off" (do not forward notifications to the host terminal)
-// 
-// host_notification_protocol "auto"
