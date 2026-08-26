@@ -194,7 +194,6 @@ keybinds clear-defaults=true {
                 move_mod "alt"
             }
         }
-        bind "Alt i" { MoveTab "left"; }
         bind "Alt j" {
             MessagePlugin "file:~/.config/zellij/plugins/vim-zellij-navigator.wasm" {
                 name "move_focus"
@@ -290,8 +289,83 @@ keybinds clear-defaults=true {
 // Plugin aliases - can be used to change the implementation of Zellij
 // changing these requires a restart to take effect
 plugins {
-    compact-bar location="zellij:compact-bar" {
-        tooltip ""
+    which-zellij location="file:~/.config/zellij/plugins/which-zellij.wasm" {
+    	shared {
+			// shared among every mode
+    		except {
+        		"Ctrl a" {
+        			hidden true
+        		}
+
+            	// Vim movements
+            	"Alt" {
+            		group "h" "j" "k" "l"
+            		hidden true
+            	}
+        		"ENTER" hidden=true
+        		"ESC" hidden=true
+    		}
+
+    		except "normal" {
+    			// Mode switches
+        		"t" hidden=true
+        		"o" hidden=true
+
+        		"Ctrl b" hidden=true
+        		"Ctrl q" hidden=true
+    		}
+    		except "normal" "tab" "pane" {
+    			// rename
+				"r" hidden=true
+    		}
+    		except "normal" "move" "session" {
+    			// Pane backwards and plugin manager
+				"p" hidden=true
+    		}
+    		except "normal" "scroll" {
+    			// command scroll
+				"m" hidden=true
+    		}
+    	}
+        normal {
+            "Alt [" hidden=true
+            "Alt ]" hidden=true
+            "Alt Shift p" hidden=true
+            "Alt f" hidden=true
+            "Alt -" hidden=true
+            "Alt =" hidden=true
+            "Alt +" hidden=true
+            "Alt o" hidden=true
+            "Alt i" hidden=true
+            "Alt p" hidden=true
+            "Alt n" hidden=true
+        }
+        session {
+        	g "Fzf manager"
+        	l "Layout manager"
+        	s "Share"
+        }
+        tab {
+        	"0" hidden=true
+        	"1" hidden=true
+        	"2" hidden=true
+        	"3" hidden=true
+        	"4" hidden=true
+        	"5" hidden=true
+        	"6" hidden=true
+        	"7" hidden=true
+        	"8" hidden=true
+        	"9" hidden=true
+        }
+        scroll {
+        	"s" hidden=true
+        }
+        pane {
+        	"Alt" {
+        		group "[" "]"
+        		label "Previous/next layout"
+        	}
+        }
     }
     configuration location="zellij:configuration"
     filepicker location="zellij:strider" {
@@ -337,7 +411,8 @@ plugins {
 load_plugins {
     zellij-keymap-overrider
     zellij:link
-    compact-bar
+    // compact-bar
+    which-zellij
     zellij-boot-evaluator
 }
 web_client {
