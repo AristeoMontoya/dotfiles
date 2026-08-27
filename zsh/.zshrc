@@ -79,7 +79,10 @@ fi
 
 # Attach to a multiplexer over ssh. $MUX ("tmux"/"zellij") is set per-host
 # in one of the env specific files above; unset means attach nothing.
-if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -z "$ZELLIJ" ]] && [[ -n "$SSH_TTY" ]]; then
+# Checks $ZELLIJ_SESSION_NAME rather than $ZELLIJ: the latter is now
+# forwarded over ssh (SendEnv ZELLIJ, for nested-session detection) so it's
+# no longer reliable as an "am I already inside a pane on this host" check.
+if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -z "$ZELLIJ_SESSION_NAME" ]] && [[ -n "$SSH_TTY" ]]; then
 	case "$MUX" in
 		tmux)
 			tmux attach || tmux new-session
