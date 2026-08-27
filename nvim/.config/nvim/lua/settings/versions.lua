@@ -42,7 +42,7 @@ return {
 	nvim_lspconfig = "44acfe8",
 	nvim_nio = "21f5324",
 	nvim_surround = "fcfa7e0",
-	nvim_treesitter = "2696fb8",
+	nvim_treesitter = "8b98b44",
 	nvim_treesitter_context = "198720b",
 	nvim_treesitter_textobjects = "227165a",
 	nvim_web_devicons = "8dcb311",
