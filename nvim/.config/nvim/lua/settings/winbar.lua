@@ -1,8 +1,3 @@
-local open_window_ok, get_window_count = pcall(require, "utils.count_open_windows")
-if not open_window_ok then
-	return
-end
-
 -- Patterns matched against filetype with string.find (regex)
 -- Uses lua patterns, so things like "-" need to be scaped with "%-"
 -- Need escaping: "( ) . % + - * ? [ ] ^ $"
@@ -62,11 +57,10 @@ local function should_show_winbar(win)
 end
 
 local function update_winbars()
-	local show = get_window_count(false) > 1
-	for _, win in ipairs(vim.api.nvim_list_wins()) do
-		if should_show_winbar(win) then
-			vim.wo[win].winbar = show and winbar_format or ""
-		end
+	local counted_wins = vim.iter(vim.api.nvim_list_wins()):filter(should_show_winbar):totable()
+	local show = #counted_wins > 1
+	for _, win in ipairs(counted_wins) do
+		vim.wo[win].winbar = show and winbar_format or ""
 		-- Ignored filetypes: we deliberately leave vim.wo[win].winbar alone,
 		-- so kulala (and others) can manage their own winbar freely.
 	end
