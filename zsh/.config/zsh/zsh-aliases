@@ -52,11 +52,6 @@ fi
 
 if [ $commands[bat] ]; then
 	alias cat='bat'
-
-	# Pretty syntax highlight on help pages
-	# deferring so it doesn't interferes with sdkman
-	zsh-defer alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
-	zsh-defer alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 fi
 
 alias du='du -had 1'
