@@ -15,6 +15,7 @@ return {
 
 		set_highlights({
 			{ group = "SnacksIndentScope", value = { fg = "#E5C07B" } },
+			{ group = "SnacksPickerComment", value = { link = "Keyword" } },
 		})
 		return {
 			-- your configuration comes here
