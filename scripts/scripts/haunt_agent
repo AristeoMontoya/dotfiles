@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+# Bridges haunt.nvim bookmarks and a coding agent, without needing Neovim
+# running. Mirrors the storage-path logic in
+# haunt.nvim/lua/haunt/persistence.lua (get_storage_path/path_for_key) plus
+# this dotfiles' override in nvim/.config/nvim/lua/plugins/haunt.lua
+# (get_bookmark_root), which redirects data_dir to
+# ~/.local/share/nvim/haunt/<project-basename>/bookmarks/.
+#
+# Usage:
+#   haunt_agent --tasks [--file PATH]
+#       List bookmarks whose note starts with "ai:" as "file:line<TAB>[id]<TAB>note".
+#
+#   haunt_agent --respond [--file PATH] <bookmark-id> <one-sentence reply>
+#       Append "agent: <reply>" as a new line on that bookmark's note.
+#       Run :HauntReload in Neovim afterwards to see it.
+set -euo pipefail
+
+usage() {
+	echo "usage: haunt_agent --tasks [--file PATH]" >&2
+	echo "       haunt_agent --respond [--file PATH] <bookmark-id> <one-sentence reply>" >&2
+	exit 1
+}
+
+cmd="${1:-}"
+[ -n "$cmd" ] || usage
+shift
+
+bookmarks_file=""
+if [ "${1:-}" = "--file" ]; then
+	bookmarks_file="$2"
+	shift 2
+fi
+
+root=""
+if [ -z "$bookmarks_file" ]; then
+	root=$(git rev-parse --show-toplevel 2>/dev/null) || {
+		echo "haunt_agent: not inside a git repository" >&2
+		exit 1
+	}
+
+	branch=$(git -C "$root" branch --show-current)
+	if [ -z "$branch" ]; then
+		branch=$(git -C "$root" rev-parse --short HEAD)
+	fi
+
+	project_id=$(git -C "$root" rev-list --max-parents=0 HEAD | tail -n1)
+	if [ -z "$project_id" ]; then
+		project_id="$root"
+	fi
+
+	hash=$(printf '%s' "${project_id}|${branch}" | sha256sum | cut -c1-12)
+	bookmarks_file="$HOME/.local/share/nvim/haunt/$(basename "$root")/bookmarks/${hash}.json"
+fi
+
+case "$cmd" in
+--tasks)
+	if [ ! -f "$bookmarks_file" ]; then
+		echo "haunt_agent: no bookmarks file for this project/branch ($bookmarks_file)" >&2
+		exit 0
+	fi
+	jq -r --arg root "$root" '
+    .bookmarks
+    | map(select(.note | startswith("ai:")))
+    | sort_by(.file, .line)
+    | .[]
+    | "\($root)/\(.file):\(.line)\t[\(.id)]\t\(.note)"
+  ' "$bookmarks_file"
+	;;
+--respond)
+	id="${1:-}"
+	reply="${2:-}"
+	[ -n "$id" ] && [ -n "$reply" ] || usage
+
+	if [ ! -f "$bookmarks_file" ]; then
+		echo "haunt_agent: bookmarks file not found ($bookmarks_file)" >&2
+		exit 1
+	fi
+
+	if ! jq -e --arg id "$id" '.bookmarks | any(.id == $id)' "$bookmarks_file" >/dev/null; then
+		echo "haunt_agent: no bookmark with id $id in $bookmarks_file" >&2
+		exit 1
+	fi
+
+	tmp=$(mktemp "${bookmarks_file}.XXXXXX")
+	trap 'rm -f "$tmp"' EXIT
+
+	# haunt.nvim's own annotate() edits notes through vim.fn.input(), a
+	# single-line prompt that mangles a real embedded newline byte. It
+	# expects a literal two-char "\n" instead (see haunt/display.lua's
+	# build_box_lines, which un-escapes it before rendering), so use that
+	# here too to stay editable from `ma`.
+	jq --arg id "$id" --arg reply "agent: $reply" '
+    .bookmarks |= map(
+      if .id == $id
+      then .note = .note + "\\n" + $reply
+      else .
+      end
+    )
+  ' "$bookmarks_file" >"$tmp"
+
+	mv "$tmp" "$bookmarks_file"
+	trap - EXIT
+	echo "haunt_agent: appended reply to bookmark $id (run :HauntReload in Neovim to see it)"
+	;;
+*)
+	usage
+	;;
+esac
