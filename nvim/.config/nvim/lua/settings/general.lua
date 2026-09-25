@@ -6,7 +6,7 @@ local g = V.g
 
 g.mapleader = " "
 
-opt.listchars = { tab = "▎  " }
+opt.listchars = { tab = "│  ", leadmultispace = "│ " }
 opt.signcolumn = "yes"
 
 opt.termguicolors = true
