@@ -161,18 +161,7 @@ keybinds clear-defaults=true {
             SwitchToMode "locked"
         }
     }
-    // Ctrl+a arms/disarms whether Ctrl+b (above) is recognized as a keybind
-    // at all, regardless of mode: disarmed, Ctrl+b passes straight through
-    // to whatever's running in the pane (e.g. a nested remote session that
-    // wants it as its own prefix). See zellij-keymap-overrider.
-    shared_except "entersearch" "renametab" "renamepane" {
-        bind "Ctrl a" {
-            MessagePlugin "zellij-keymap-overrider" {
-                name "toggle"
-                floating false
-            }
-        }
-    }
+
     shared_among "normal" "locked" "pane" {
         bind "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
@@ -383,14 +372,9 @@ plugins {
         on_success_layout "remote"
         script "~/.config/zellij/scripts/is-ssh-session.sh"
     }
-    zellij-keymap-overrider location="file:~/.config/zellij/plugins/zellij-keymap-overrider.wasm" {
-        on_arm_payload "zjstatus::pipe::pipe_lock_pill::[38;2;40;44;52m[48;2;152;195;121m[1m "
-        on_disarm_payload "zjstatus::pipe::pipe_lock_pill::[38;2;207;215;230m[48;2;69;76;89m[1m "
-        target_key "Ctrl b"
-    }
     zjstatus location="file:~/.config/zellij/plugins/zjstatus.wasm" {
         format_center ""
-        format_left "{pipe_lock_pill}{session} #[bg=#282C34]{tabs}"
+        format_left "{pipe_lock_pill}#[fg=#282C34,bg=#98C379,bold] {session} #[bg=#282C34] {tabs}"
         format_right ""
         format_space "#[bg=#282C34]"
         pipe_lock_pill_format "{output}"
@@ -409,7 +393,6 @@ plugins {
 // eg. "file:/path/to/my-plugin.wasm"
 // eg. "https://example.com/my-plugin.wasm"
 load_plugins {
-    zellij-keymap-overrider
     zellij:link
     // compact-bar
     which-zellij
