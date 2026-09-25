@@ -1,0 +1,22 @@
+#!/bin/bash
+# Intended to work with KDE.
+# This might be a terrible idea, from what I've read is not really recommended to
+# drop memory caches, it doesn't make sense in most cases. This is a script that
+# I'm using for testing, hopefully helping me with some memory issues before
+# hibernating my computer.
+#
+# No longer in use. I disabled the systemd unit and this is kept
+# just for archival purposes.
+
+# Free memory threshold in kB (4GB default)
+THRESHOLD_GB=${1:-4}
+THRESHOLD=$(( THRESHOLD_GB * 1024 * 1024 ))
+
+AVAILABLE=$(grep MemAvailable /proc/meminfo | awk '{print $2}')
+
+if [ "$AVAILABLE" -lt "$THRESHOLD" ]; then
+    logger "hibernate-prepare: Low memory (${AVAILABLE}kB available, threshold ${THRESHOLD}kB), dropping caches"
+    sync
+    echo 3 > /proc/sys/vm/drop_caches
+    sleep 1
+fi
