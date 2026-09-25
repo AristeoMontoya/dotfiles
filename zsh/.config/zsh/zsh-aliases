@@ -59,4 +59,4 @@ alias scrcpyd='devour scrcpy'
 alias clip='xclip -sel clip'
 alias svim='sudo -E -s nvim'
 
-alias za="zellij attach -c --index 0"
+alias za="zellij_attach_last"

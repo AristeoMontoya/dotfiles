@@ -88,7 +88,7 @@ if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -z "$ZELLIJ_SESSION_NAME" ]] && [[ -n
 			tmux attach || tmux new-session
 			;;
 		zellij)
-			zellij attach -c --index 0
+			zellij_attach_last
 			;;
 	esac
 fi

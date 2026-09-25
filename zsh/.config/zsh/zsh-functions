@@ -71,3 +71,16 @@ function lazy_load() {
 function load_sdkman() {
 	[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 }
+
+# Attach to the last session in `zellij ls --short` (alive sessions sort last),
+# creating one if none exist. Uses command substitution rather than piping into
+# `attach` so stdin stays the terminal; piping breaks interactivity.
+function zellij_attach_last() {
+	local session
+	session="$(zellij ls --short 2>/dev/null | tail -n 1)"
+	if [ -n "$session" ]; then
+		zellij attach -c "$session"
+	else
+		zellij attach -c --index 0
+	fi
+}
