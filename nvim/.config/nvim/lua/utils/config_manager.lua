@@ -1,6 +1,6 @@
 local M = {}
 
-local filter_tables = require("utils.filter_tables")
+local filter_list = require("utils.filter_list")
 
 ---@class ParserCache
 ---@field defaults? config.TSParsers
@@ -37,6 +37,9 @@ local filter_tables = require("utils.filter_tables")
 ---@field overrides? config.Features
 ---@field resolved? config.Features
 
+---@class PluginCache
+---@field overrides? table<string, table<any>>
+
 ---@class ConfigCache
 ---@field parsers? ParserCache
 ---@field lsp_servers? LspServerCache
@@ -45,9 +48,43 @@ local filter_tables = require("utils.filter_tables")
 ---@field formatters? FormatterCache
 ---@field dap? DapCache
 ---@field features? FeaturesCache
+---@field plugins? PluginCache
 
 --- Session cache for resolved configurations. Changes made within that session will not take effect.
 local cache = {}
+
+--- Retrieves a nested value from a table given a string path using Neovim helpers.
+--- @param path string The dot-separated path
+--- @return any The value if found, or nil
+local function get_cache_by_path(path)
+	local keys = vim.split(path, ".", { plain = true })
+
+	return vim.tbl_get(cache, unpack(keys))
+end
+
+--- Sets a nested value in a table given a string path.
+--- @param path string The dot-separated path
+--- @param value any The value to assign
+local function set_cache_by_path(path, value)
+	local keys = vim.split(path, ".", { plain = true })
+	if #keys == 0 then
+		return
+	end
+
+	local current = cache
+
+	-- Traverse up to the second-to-last key
+	for i = 1, #keys - 1 do
+		local key = keys[i]
+		if type(current[key]) ~= "table" then
+			current[key] = {}
+		end
+		current = current[key]
+	end
+
+	-- Assign the final key
+	current[keys[#keys]] = value
+end
 
 local function safe_require(mod)
 	local ok, result = pcall(require, mod)
@@ -60,31 +97,57 @@ end
 local function resolve_lsp_configs()
 	local config_name = "lsp_configs"
 	local module_name = "user.overrides.lsp.configs"
-	if cache[config_name] then
-		return cache[config_name]
+
+	local cached_config = get_cache_by_path(config_name)
+	if cached_config then
+		return cached_config
 	end
 
 	return safe_require(module_name) or {}
 end
 
-local function resolve(config_name, defaults, overrides)
-	if cache[config_name] then
-		return cache[config_name]
+--- Sources a table configuration and puts it into cache.
+--- If config_name is already cached, then cache is used.
+--- @param config_name string cache config key
+--- @param module_name string lua module name to source
+local function resolve_table(config_name, module_name)
+	local cached_config = get_cache_by_path(config_name)
+	if cached_config then
+		return cached_config
+	end
+
+	local config = safe_require(module_name) or {}
+	set_cache_by_path(config_name, config)
+
+	return config
+end
+
+--- @param config_name string
+--- @param defaults string
+--- @param overrides string
+local function resolve_list_with_defaults(config_name, defaults, overrides)
+	local cached_config = get_cache_by_path(config_name)
+	if cached_config then
+		return cached_config
 	end
 
 	local default = require(defaults)
 	local user = safe_require(overrides) or {}
 
 	-- User overrides wins
-	local resolved = filter_tables(default, user)
+	local resolved = filter_list(default, user)
+	set_cache_by_path(config_name, resolved)
 
-	cache[config_name] = resolved
 	return resolved
 end
 
-local function resolve_table(config_name, defaults, overrides)
-	if cache[config_name] then
-		return cache[config_name]
+--- @param config_name string
+--- @param defaults string
+--- @param overrides string
+local function resolve_table_with_defaults(config_name, defaults, overrides)
+	local cached_config = get_cache_by_path(config_name)
+	if cached_config then
+		return cached_config
 	end
 
 	local default = require(defaults)
@@ -92,19 +155,19 @@ local function resolve_table(config_name, defaults, overrides)
 
 	-- Additive merge
 	local resolved = vim.tbl_deep_extend("force", default, user)
+	set_cache_by_path(config_name, resolved)
 
-	cache[config_name] = resolved
 	return resolved
 end
 
 --- @return config.TSParsers
 function M.get_ts_parsers()
-	return resolve("parsers", "defaults.treesitter.default_parsers", "user.overrides.treesitter")
+	return resolve_list_with_defaults("parsers", "defaults.treesitter.default_parsers", "user.overrides.treesitter")
 end
 
 --- @return config.LspServers
 function M.get_lsp_servers()
-	return resolve("lsp_servers", "defaults.lsp.servers", "user.overrides.lsp.servers")
+	return resolve_list_with_defaults("lsp_servers", "defaults.lsp.servers", "user.overrides.lsp.servers")
 end
 
 --- @return config.LspConfigs
@@ -115,28 +178,28 @@ end
 
 --- @return config.Linters
 function M.get_linters()
-	return resolve("linters", "defaults.lsp.linters", "user.overrides.linters")
+	return resolve_list_with_defaults("linters", "defaults.lsp.linters", "user.overrides.linters")
 end
 
 --- @return config.Formatters
 function M.get_formatters()
-	return resolve("formatters", "defaults.lsp.formatters", "user.overrides.formatters")
+	return resolve_list_with_defaults("formatters", "defaults.lsp.formatters", "user.overrides.formatters")
 end
 
 --- @return config.DapList
 function M.get_debuggers()
-	return resolve("dap", "defaults.dap", "user.overrides.dap")
+	return resolve_list_with_defaults("dap", "defaults.dap", "user.overrides.dap")
 end
 
 --- @return config.Features
 function M.resolve_features()
-	return resolve_table("features", "defaults.features", "user.overrides.features")
+	return resolve_table_with_defaults("features", "defaults.features", "user.overrides.features")
 end
 
 --- @param feature string
 --- @return boolean is_enabled
 function M.is_feature_enabled(feature)
-	local features = resolve_table("features", "defaults.features", "user.overrides.features") ---@type config.Features
+	local features = resolve_table_with_defaults("features", "defaults.features", "user.overrides.features") ---@type config.Features
 	local feature_enabled = features[feature]
 
 	if feature_enabled == nil then
@@ -144,6 +207,16 @@ function M.is_feature_enabled(feature)
 	end
 
 	return feature_enabled
+end
+
+--- Returns a plugin configuration from user overrides
+--- @param plugin string
+--- @return table<any> config
+function M.get_local_plugin_config(plugin)
+	local module_path = "user.overrides.plugins." .. plugin
+	local config_key = "plugins." .. plugin
+
+	return resolve_table(config_key, module_path)
 end
 
 return M
