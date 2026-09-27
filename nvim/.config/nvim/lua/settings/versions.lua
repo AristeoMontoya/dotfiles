@@ -48,6 +48,7 @@ return {
 	nvim_web_devicons = "8dcb311",
 	plenary = "b9fd522", -- Utility functions for plugins. Mostly a dependency
 	rainbow_delimiters = "b81d594",
+	obsidian = "84ca672",
 	render_markdown = "b2b1353",
 	smart_splits = "289971c",
 	snacks = "e6fd58c",

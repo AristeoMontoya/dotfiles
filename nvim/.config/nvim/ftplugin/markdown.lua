@@ -4,6 +4,9 @@ vim.opt_local.linebreak = true
 vim.opt_local.number = false
 vim.opt_local.relativenumber = false
 
+-- Required for obsidian rendering
+vim.opt_local.conceallevel = 2
+
 -- disable wrap while inside a table, since wrapping mangles table alignment
 local group = vim.api.nvim_create_augroup("markdown_table_wrap", { clear = false })
 vim.api.nvim_clear_autocmds({ group = group, buffer = 0 })

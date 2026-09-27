@@ -1,4 +1,6 @@
 --- @type config.Features
 return {
-	ai = true
+	ai = true,
+	java = true,
+	notes = true
 }

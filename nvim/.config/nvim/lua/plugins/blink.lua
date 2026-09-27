@@ -125,6 +125,7 @@ return {
 					gitcommit = { "git" },
 					["dap-repl"] = { "dap" },
 					dapui_watches = { "dap" },
+					markdown = { "lsp" },
 				},
 
 				providers = {
