@@ -42,11 +42,14 @@ zsh_add_file "zsh-prepare-env"
 
 # Source withouth checking, should be a bit faster.
 # zsh_add_file "zsh-vim-mode"
-zsh_add_file "zsh-completions"
 zsh_add_file "zsh-exports"
 zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-widgets"
-zsh_add_file "zsh-fzf"
+
+# Deferred in order: gradle adds to fpath, which compinit must see, and fzf calls compdef
+zsh-defer zsh_add_completion "gradle/gradle-completion"
+zsh-defer zsh_add_file "zsh-completions"
+zsh-defer zsh_add_file "zsh-fzf"
 
 # Plugins
 zsh_add_plugin "chriskempson/base16-shell"
@@ -56,7 +59,6 @@ zsh-defer zsh_add_plugin "zdharma-continuum/fast-syntax-highlighting"
 zsh-defer zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh-defer zsh_add_plugin "hlissner/zsh-autopair"
 zsh-defer zsh_add_plugin "matthieusb/zsh-sdkman"
-zsh_add_completion "gradle/gradle-completion"
 zsh-defer load_sdkman
 
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins

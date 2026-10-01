@@ -1,8 +1,10 @@
 autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do
+# Full compinit only when the dump is older than 24h, otherwise skip the security check
+if [[ -n $ZDOTDIR/.zcompdump(#qN.mh+24) ]]; then
   compinit
-done
-compinit -C
+else
+  compinit -C
+fi
 
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
