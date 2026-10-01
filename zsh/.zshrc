@@ -47,19 +47,21 @@ zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-widgets"
 
 # Deferred in order: gradle adds to fpath, which compinit must see, and fzf calls compdef
-zsh-defer zsh_add_completion "gradle/gradle-completion"
-zsh-defer zsh_add_file "zsh-completions"
-zsh-defer zsh_add_file "zsh-fzf"
+# -p drops zle reset-prompt per task, this caused the prompt to sit doing nothing for a bit.
+# Only noticeable in MacOS where process forks are expensive.
+zsh-defer -p zsh_add_completion "gradle/gradle-completion"
+zsh-defer -p zsh_add_file "zsh-completions"
+zsh-defer -p zsh_add_file "zsh-fzf"
 
 # Plugins
 zsh_add_plugin "chriskempson/base16-shell"
 
 ## Lazy loaded
-zsh-defer zsh_add_plugin "zdharma-continuum/fast-syntax-highlighting"
-zsh-defer zsh_add_plugin "zsh-users/zsh-autosuggestions"
-zsh-defer zsh_add_plugin "hlissner/zsh-autopair"
-zsh-defer zsh_add_plugin "matthieusb/zsh-sdkman"
-zsh-defer load_sdkman
+zsh-defer -p zsh_add_plugin "zdharma-continuum/fast-syntax-highlighting"
+zsh-defer -p zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh-defer -p zsh_add_plugin "hlissner/zsh-autopair"
+zsh-defer -p zsh_add_plugin "matthieusb/zsh-sdkman"
+zsh-defer -p load_sdkman
 
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins
 # More completions https://github.com/zsh-users/zsh-completions
@@ -99,6 +101,7 @@ fi
 # The proper way to do this would be in one of the env specific files
 if [[ $commands[starship] ]] && [[ -z "${DISABLE_STARSHIP+1}" ]]; then
 	eval "$(starship init zsh)"
+	RPROMPT=''
 else
 	zsh_add_file "zsh-prompt"
 fi
