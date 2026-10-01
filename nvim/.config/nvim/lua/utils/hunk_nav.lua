@@ -4,15 +4,26 @@ local M = {}
 
 ---@alias HunkDirection "next"|"prev"
 
-local handlers = {} ---@type { fn: fun(direction: HunkDirection): boolean?, priority: integer }[]
+---@alias HandlerFunction fun(direction: HunkDirection): boolean? Returns true when it handled the jump
 
----@param handler fun(direction: HunkDirection): boolean? Returns true when it handled the jump
+---@class DirectionHandler
+---@field fn HandlerFunction
+---@field priority integer
+
+local handlers = {} ---@type DirectionHandler[]
+
+---@param handler HandlerFunction
 ---@param priority? integer Higher runs first, defaults to 0
 function M.register(handler, priority)
 	table.insert(handlers, { fn = handler, priority = priority or 0 })
-	table.sort(handlers, function(a, b)
-		return a.priority > b.priority
-	end)
+	table.sort(
+		handlers,
+		--- @param a DirectionHandler
+		--- @param b DirectionHandler
+		function(a, b)
+			return a.priority > b.priority
+		end
+	)
 end
 
 ---@param direction HunkDirection

@@ -95,6 +95,7 @@ map("v", ">", ">gv", { noremap = true, silent = true, desc = "Increase indentati
 map("n", "]h", function()
 	require("utils.hunk_nav").next()
 end, { noremap = true, silent = true, desc = "Next hunk" })
+
 map("n", "[h", function()
 	require("utils.hunk_nav").prev()
 end, { noremap = true, silent = true, desc = "Previous hunk" })
