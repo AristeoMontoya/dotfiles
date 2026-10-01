@@ -45,7 +45,10 @@ command = zsh -l -c "tmux attach || exec tmux"
 # Keybind - Alt+ñ sends ESC+ñ
 keybind = alt+ñ=text:\x1bñ
 
+link-url = true
+
+# Don't let any orphaned processes
+quit-after-last-window-closed = true
+
 # Local overrides
 config-file = ?~/.config/ghostty/local.conf
-
-link-url = true
