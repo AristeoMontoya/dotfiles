@@ -374,7 +374,7 @@ plugins {
     }
     zjstatus location="file:~/.config/zellij/plugins/zjstatus.wasm" {
         format_center ""
-        format_left "{pipe_lock_pill}#[fg=#282C34,bg=#98C379,bold] {session} #[bg=#282C34] {tabs}"
+        format_left "{pipe_lock_pill}#[fg=#282C34,bg=#98C379,bold] {session} #[bg=#282C34]{tabs}"
         format_right ""
         format_space "#[bg=#282C34]"
         pipe_lock_pill_format "{output}"
