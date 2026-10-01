@@ -7,6 +7,15 @@ return {
 	},
 	-- event = "InsertEnter",
 	opts = function()
+		require("utils.hunk_nav").register(function(direction)
+			-- Native diff windows are handled by the fallback in hunk_nav
+			if V.wo.diff or not V.b.gitsigns_status_dict then
+				return false
+			end
+			V.cmd.Gitsigns({ args = { "nav_hunk", direction } })
+			return true
+		end)
+
 		local hl_status, set_highlights = pcall(require, "utils.register_highlights")
 		if not hl_status then
 			return
@@ -48,6 +57,8 @@ return {
 			},
 			auto_attach = true,
 			attach_to_untracked = true,
+			-- Open the native quickfix list instead of Trouble
+			trouble = false,
 			current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
 			current_line_blame_opts = {
 				virt_text = true,
@@ -77,29 +88,13 @@ return {
 					V.keymap.set(mode, l, r, opts)
 				end
 
-				-- Navigation
-				map("n", "]h", function()
-					if V.wo.diff then
-						vim.cmd.normal({ "]]", bang = true })
-					else
-						gs.nav_hunk("next")
-					end
-				end)
-
-				map("n", "[h", function()
-					if V.wo.diff then
-						vim.cmd.normal({ "[[", bang = true })
-					else
-						gs.nav_hunk("prev")
-					end
-				end)
-
 				-- Actions
 				map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>")
 				map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>")
-				map("n", "<leader>gu", gs.undo_stage_hunk)
+				map("n", "<leader>gu", ":Gitsigns stage_hunk<CR>")
 				map("n", "<leader>gp", gs.preview_hunk)
 				map("n", "<leader>gd", gs.diffthis)
+				map("n", "<leader>gq", "<cmd>Gitsigns setqflist all<CR>", { desc = "Hunks to quickfix list" })
 
 				-- Text object
 				map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")

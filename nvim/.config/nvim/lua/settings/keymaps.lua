@@ -91,6 +91,14 @@ end, { expr = true })
 map("v", "<", "<gv", { noremap = true, silent = true, desc = "Decrease indentations" })
 map("v", ">", ">gv", { noremap = true, silent = true, desc = "Increase indentation" })
 
+-- Hunk navigation, plugins hook into it through utils.hunk_nav
+map("n", "]h", function()
+	require("utils.hunk_nav").next()
+end, { noremap = true, silent = true, desc = "Next hunk" })
+map("n", "[h", function()
+	require("utils.hunk_nav").prev()
+end, { noremap = true, silent = true, desc = "Previous hunk" })
+
 -- Spells
 map(
 	"n",
