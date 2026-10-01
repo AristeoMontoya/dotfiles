@@ -11,7 +11,11 @@ return {
 		{ "saghen/blink.compat", lazy = true, commit = versions.blink_compat, config = true },
 		{ "Kaiser-Yang/blink-cmp-git", commit = versions.blink_git },
 		{ "rcarriga/cmp-dap", commit = versions.cmp_dap },
-		{ "antosha417/nvim-lsp-file-operations", commit = versions.nvim_lsp_file_operations, config = true },
+		{
+			"antosha417/nvim-lsp-file-operations",
+			commit = versions.nvim_lsp_file_operations,
+			opts = { auto_save = true },
+		},
 		{ "rmagatti/goto-preview", config = true, commit = versions.goto_preview },
 	},
 	config = function()
