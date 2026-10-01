@@ -84,3 +84,12 @@ function zellij_attach_last() {
 		zellij attach -c --index 0
 	fi
 }
+
+# Redefines itself on first call so the OS check only runs once per session
+function clip() {
+	case $OSTYPE in
+		darwin*) clip() { pbcopy "$@" } ;;
+		*) clip() { xclip -sel clip "$@" } ;;
+	esac
+	clip "$@"
+}
