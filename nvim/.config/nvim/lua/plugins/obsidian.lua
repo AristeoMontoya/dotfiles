@@ -2,6 +2,9 @@ return {
 	"obsidian-nvim/obsidian.nvim",
 	commit = require("settings.versions").obsidian,
 	enabled = require("utils.config_manager").is_feature_enabled("notes"),
+	ft = "markdown",
+	-- With legacy_commands disabled, `:Obsidian` is the only command exposed
+	cmd = "Obsidian",
 	opts = function()
 		local config_manager = require("utils.config_manager")
 
