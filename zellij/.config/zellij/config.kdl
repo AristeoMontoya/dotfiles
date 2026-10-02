@@ -2,6 +2,29 @@ keybinds clear-defaults=true {
     locked {
         bind "Ctrl b" { SwitchToMode "normal"; }
     }
+    normal {
+        bind "G" {
+            Run "lazygit" {
+                floating true
+                close_on_exit true
+                width "80%"
+                height "80%"
+                name "lazygit"
+            }
+            SwitchToMode "locked"
+        }
+        bind "n" {
+            // sh doesn't expand ~ in its own arguments, so let a shell do it
+            Run "sh" "-c" "sh ~/.config/zellij/scripts/navi_paste.sh" {
+                floating true
+                close_on_exit true
+                width "90%"
+                height "60%"
+                name "navi"
+            }
+            SwitchToMode "locked"
+        }
+    }
     pane {
         bind "left" { MoveFocus "left"; }
         bind "down" { MoveFocus "down"; }
@@ -328,6 +351,8 @@ plugins {
             "Alt i" hidden=true
             "Alt p" hidden=true
             "Alt n" hidden=true
+            n "Navi"
+            G "Lazygit"
         }
         session {
         	g "Fzf manager"
