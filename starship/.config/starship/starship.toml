@@ -7,6 +7,7 @@ $hostname\
 $localip\
 $kubernetes\
 $directory\
+${custom.worktree}\
 $git_branch\
 $git_commit\
 $git_state\
@@ -51,6 +52,20 @@ fill.symbol = " "
 [character]
 success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
 error_symbol = "[➜](bold red)"
+
+[custom.worktree]
+# Empty output hides the module, so `when` is a plain boolean instead of a shell check (saves a spawn per prompt)
+when = true
+command = '''
+out=$(git rev-parse --path-format=absolute --absolute-git-dir --git-common-dir 2>/dev/null) || exit
+gd=${out%%
+*}
+common=${out#*
+}
+[ "$gd" != "$common" ] && basename "$common" .git
+'''
+format = "([\\($output\\) ]($style))"
+style = "bold yellow"
 
 [git_branch]
 symbol = " "
