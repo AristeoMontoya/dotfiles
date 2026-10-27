@@ -47,9 +47,9 @@ return {
 		})
 
 		-- Setting overrides
-		for _, server in ipairs(ensure_lsp_installed) do
-			local server_opts = lsp_configs[server] or {}
-
+		-- Iterate the configs (not the ensure list) so servers installed manually
+		-- through mason and auto-enabled can also be overridden
+		for server, server_opts in pairs(lsp_configs) do
 			if next(server_opts) ~= nil then
 				vim.lsp.config(server, server_opts)
 			end
