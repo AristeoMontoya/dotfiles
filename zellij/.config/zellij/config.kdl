@@ -393,10 +393,6 @@ plugins {
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
-    zellij-boot-evaluator location="file:~/.config/zellij/plugins/zellij-boot-evaluator.wasm" {
-        on_success_layout "remote"
-        script "~/.config/zellij/scripts/is-ssh-session.sh"
-    }
     zjstatus location="file:~/.config/zellij/plugins/zjstatus.wasm" {
         format_center ""
         format_left "{pipe_lock_pill}#[fg=#282C34,bg=#98C379,bold] {session} #[bg=#282C34]{tabs}"
@@ -421,7 +417,6 @@ load_plugins {
     zellij:link
     // compact-bar
     which-zellij
-    zellij-boot-evaluator
 }
 web_client {
     font "monospace"

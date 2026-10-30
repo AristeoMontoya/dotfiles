@@ -75,13 +75,18 @@ function load_sdkman() {
 # Attach to the last session in `zellij ls --short` (alive sessions sort last),
 # creating one if none exist. Uses command substitution rather than piping into
 # `attach` so stdin stays the terminal; piping breaks interactivity.
+# Over SSH, new sessions start with the "remote" layout (status bar on top).
+# It's chosen at creation instead of swapped in later because override_layout
+# leaves the old status bar behind as an extra pane on every reattach.
 function zellij_attach_last() {
 	local session
+	local layout_args=()
+	[[ -n "$SSH_CLIENT" ]] && layout_args=(--layout remote)
 	session="$(zellij ls --short 2>/dev/null | tail -n 1)"
 	if [ -n "$session" ]; then
-		zellij attach -c "$session"
+		zellij "${layout_args[@]}" attach -c "$session"
 	else
-		zellij attach -c --index 0
+		zellij "${layout_args[@]}" attach -c --index 0
 	fi
 }
 
