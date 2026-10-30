@@ -38,3 +38,7 @@ vim.api.nvim_create_user_command(
 	end,
 	{ desc = "Enable presentation mode. Disable relative lines." }
 )
+
+vim.api.nvim_create_user_command("NotificationHistory", function()
+	Snacks.notifier.show_history()
+end, { desc = "Show the notification history." })
